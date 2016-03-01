@@ -1,4 +1,4 @@
-Erklärung: 
+Erklärung:
     -projektive, affine, euklidische Ebene
     -homogone, inhomogene, affine Punkte
 
@@ -8,11 +8,15 @@ Definition elliptische Kurven
     -Weierstraßgleichung (nachfragen wie allgemein erklären)
     -Singularitäten: Knicke, Knoten
     -Gruppenaxiome und -beweise
-    -Ordnung einer elliptischen Kurve
+    -Ordnung einer elliptischen Kurve, Satz von Hasse
+
 
 Anwendung zur Verschlüsselung:
     -Parameter der elliptische Kurve
     -effiziente Skalarmultiplikation
     -Schlüsselgenerierung
     -Wahl der Parameter
-     
+
+Andere Anwendungen:
+    -Faktorisierung mit elliptischen Kurven
+    -Signaturverfahren ECDSA

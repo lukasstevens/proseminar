@@ -1,0 +1,18 @@
+Erklärung: 
+    -projektive, affine, euklidische Ebene
+    -homogone, inhomogene, affine Punkte
+
+Geschichte elliptische Kurven
+
+Definition elliptische Kurven
+    -Weierstraßgleichung (nachfragen wie allgemein erklären)
+    -Singularitäten: Knicke, Knoten
+    -Gruppenaxiome und -beweise
+    -Ordnung einer elliptischen Kurve
+
+Anwendung zur Verschlüsselung:
+    -Parameter der elliptische Kurve
+    -effiziente Skalarmultiplikation
+    -Schlüsselgenerierung
+    -Wahl der Parameter
+     

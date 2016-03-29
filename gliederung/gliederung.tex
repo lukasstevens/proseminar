@@ -1,11 +1,7 @@
-\documentclass{llncs}
+\documentclass{article}
 
-%% Verwende A4-Format statt Letter
-\usepackage{a4}
 %% Deutsche Silbentrennung und Sprache (neue Rechtschreibung)
 \usepackage[ngerman]{babel}
-%% Verwende Schriftart mit "echten" Umlauten statt Akzenten
-\usepackage[T1]{fontenc}
 %% Verwende Umlaute direkt
 \usepackage[utf8x]{inputenc}
 %% Hyperlinks für interne Referenzen
@@ -14,38 +10,57 @@
 \usepackage{graphicx}
 %% Paket für Unterabbildungen pro Abbildung
 %\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 % Titel der Arbeit
-\title{Seminarausarbeitung}
-
+\title{Elliptische Kurven}
 % Angaben zum Author
-\author{Vorname Nachname}
-\institute{%
-   Fakultät für Informatik, \\
-   Technische Universität München \\
-%    Munich, Germany\\
-   \email{email@in.tum.de}
-}
-
+\author{Kevin Kappelmann, Lukas Stevens}
 \pagestyle{plain}
 
 %------------------------------------------------------------------------------
 \begin{document}
 
 \maketitle
+\newpage
+\tableofcontents
+\newpage
 
-%------------------------------------------------------------------------------
-\begin{abstract}
-Diese Arbeit behandelt ein interessantes Thema.
-\end{abstract}
+\section{Abstract}
+Was wird in dieser Arbeit behandelt.
+\section{Motivation}
+Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
+\section{Grundbegriffe}
+\subsection{Affine Ebenen}
+Definition, Beispiele
+\subsection{Projektive Ebenen}
+Definition
+\subsubsection{Die projektive Ebene PG(2, $\mathbb{F}$)}
+Konstruktion, Beispiel
+\subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen}
+Beweis, Beispiel
+\section{Elliptische Kurven $E$}
+\subsection{Definiton elliptischer Kurven}
+Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
+\subsection{Die unendliche Gerade über PG(2, $\mathbb{F}$)}
+Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
+\subsection{Affine Darstellung elliptischer Kurven}
+Erklärung, Beispiel(Graphen)
+\section{Eine Gruppe über $E$}
+\subsection{Tangenten elliptischer Kurven}
+\subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
+Unendlich ferne Gerade mit Schnittpunkt $\mathcal{O}$, Affine Geraden, Parallele zur y-Achse
+\subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}
+Definition, Beweis der Abgeschlossenheit, graphische Interpretation
+\subsection{Die Gruppe $(E, +)$}
+Gruppe ist abelsch mit neutralem Element $\mathcal{O}$, Beispiel
+\section{Anwendung elliptischer Kurven in der Kryptologie}
+\subsection{Elgamal mit der Gruppe $(E, +)$}
+Beschreibung, Beispiel
+\subsection{Effizienz und Sicherheit}
+Schlüssellänge im Vergleich zu RSA u.ä., Eigenschaften der Domänenparameter
+\subsection{Weitere Anwendungen und Algorithmen?}
 
-%------------------------------------------------------------------------------
-\section{Einleitung}
-
-Für diese Arbeit ist das Papier \cite{Popek1974} relevant.
-
-%------------------------------------------------------------------------------
-\bibliographystyle{alpha}
-\bibliography{literature.bib}
-
+\section{Fazit und Ausblick}
 \end{document}

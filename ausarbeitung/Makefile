@@ -1,5 +1,4 @@
 all:
-	latex ausarbeitung && bibtex ausarbeitung && latex ausarbeitung
-
+	latexmk -bibtex -auxdir=build -pdf ausarbeitung.tex
 clean:
-	rm ausarbeitung.a* ausarbeitung.b* ausarbeitung.d* ausarbeitung.f* ausarbeitung.l* ausarbeitung.o* ausarbeitung.ps ausarbeitung.toc
+	rm -rf build/*

@@ -4,6 +4,6 @@ TARGET=ausarbeitung
 .PHONY: all clean
 
 all:
-	latexmk -gg -bibtex -auxdir=$(BUILD_DIR) -outdir=$(BUILD_DIR) -pdf $(TARGET).tex && mv $(BUILD_DIR)/$(TARGET).pdf .
+	latexmk -gg -bibtex -auxdir=$(BUILD_DIR) -outdir=$(BUILD_DIR) -pdf $(TARGET).tex && cp $(BUILD_DIR)/$(TARGET).pdf .
 clean:
 	rm -rf $(BUILD_DIR)/*

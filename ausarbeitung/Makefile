@@ -1,4 +1,9 @@
+BUILD_DIR=build
+TARGET=ausarbeitung
+
+.PHONY: all clean
+
 all:
-	latexmk -bibtex -auxdir=build -pdf ausarbeitung.tex
+	latexmk -gg -bibtex -auxdir=$(BUILD_DIR) -outdir=$(BUILD_DIR) -pdf $(TARGET).tex && mv $(BUILD_DIR)/$(TARGET).pdf .
 clean:
-	rm -rf build/*
+	rm -rf $(BUILD_DIR)/*

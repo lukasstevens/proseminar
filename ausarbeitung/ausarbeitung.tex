@@ -1,5 +1,3 @@
-% vim: autocmd BufWritePost * silent exec "!make 2& >/dev/null"
-
 \documentclass[hidelinks]{article}
 
 %% Deutsche Silbentrennung und Sprache (neue Rechtschreibung)
@@ -15,8 +13,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% Seitenränder
 \usepackage[margin=1.5in]{geometry}
+% Zitate
 \usepackage{cite}
+% Tabellen
+\usepackage[table]{xcolor}
+\definecolor{lightblue}{HTML}{8ADAF2}
+\definecolor{lightred}{HTML}{F2A28A}
+\definecolor{lightgreen}{HTML}{A6F28A}
+
+\setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\thinspace}
 \newcommand{\mybar}{\thinspace | \thinspace}
@@ -30,20 +37,48 @@
 %------------------------------------------------------------------------------
 \begin{document}
 
+\pagenumbering{gobble}
 \maketitle
 \newpage
-\tableofcontents
+\tableofcontents % Inhaltsverzeichnis
+\listoffigures % Abbildungsverzeichnis
+\listoftables % Tabellenverzeichnis 
 \newpage
 
+\pagenumbering{arabic}
+
+\begin{sloppypar}
 Darstellungsformen nicht vergessen! Edwards Kurven und so
 
-Beispiel zitat
-\cite[Kapitel~5, S.~215]{blablubb}
+\section{Einleitung}
+Asymmetrische Verschlüsselungsverfahren wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
+Daraus ergibt sich sowohl eine hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das diskrete Logarithmenproblem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen. 
+Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~64]{nist}
 
-\section{Motivation und Geschichte}
-Moderne asymmetrische Verschlüsselungsverfahren wie RSA leiden oft
-Macht Kevin\\
-Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
+\begin{table}[h]
+\centering
+	\begin{tabular}{| c | c | c |}
+	\hline
+	\rowcolor{lightblue}
+	Sicherheitsniveau & RSA/Diffie-Hellman\footnotemark[\value{footnote}] & Elliptische-Kurven\\ \hline
+	\rowcolor{lightred}
+	$\le80$ 	& 1024 & 160-223 \\ \hline
+	\rowcolor{lightgreen}
+	112 	& 2048 & 224-255 \\ \hline
+	\rowcolor{lightgreen}
+	128 	& 3072 & 256-383 \\ \hline
+	\rowcolor{lightgreen}
+	192 	& 7680 & 384-511 \\ \hline
+	\rowcolor{lightgreen}
+	256 	& 15360 & 512+ \\ \hline
+	\end{tabular}
+\caption{Vergleich Schlüssellängen}
+\end{table}
+
+Oben rot markierte Verfahren gelten als unsicher, grüne als aktuell sicher.
+
+%\\ Macht Kevin\\ Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
 \section{Grundbegriffe}
 \subsection{Affine Ebenen}
 Definition, Beispiele
@@ -57,7 +92,7 @@ Beweis, Beispiel
 Macht Lukas\\
 \subsection{Definiton elliptischer Kurven}
 %Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
-Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt. \\
+Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
 Diese hat die folgende Punktemenge:
 \begin{equation}
     P = \left\{(u:v:w) \mybar (u,v,w) \in \mathbb{F}^3 \setminus (0,0,0) \right\}
@@ -89,6 +124,7 @@ Welche Charakteristiken für elliptische Kurven, Domänenparameter
 \subsection{Noch einen für Signaturen}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter
 
+\end{sloppypar}
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{quellen}

@@ -18,6 +18,9 @@
 \usepackage[margin=1.5in]{geometry}
 \usepackage{cite}
 
+\newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\thinspace}
+\newcommand{\mybar}{\thinspace | \thinspace}
+
 % Titel der Arbeit
 \title{Elliptische Kurven}
 % Angaben zum Author
@@ -46,15 +49,27 @@ Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
 Definition, Beispiele
 \subsection{Projektive Ebenen}
 Definition
-\subsubsection{Die projektive Ebene PG(2, $\mathbb{F}$)}
+\subsubsection{Die projektive Ebene \pgtwo}
 Konstruktion, Beispiel
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen}
 Beweis, Beispiel
 \section{Elliptische Kurven $E$}
 Macht Lukas\\
 \subsection{Definiton elliptischer Kurven}
-Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
-\subsection{Die unendliche Gerade über PG(2, $\mathbb{F}$)}
+%Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
+Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt. \\
+Diese hat die folgende Punktemenge:
+\begin{equation}
+    P = \left\{(u:v:w) \mybar (u,v,w) \in \mathbb{F}^3 \setminus (0,0,0) \right\}
+\end{equation}
+Nun wollen wir die Punktemenge der elliptischen Kurve einführen. Dazu benötigen wir Polynome in drei Unbestimmten.
+Der Polynomring mit drei Unbestimmten über $\mathbb{F}$ ist mit 
+\begin{equation}
+    \mathbb{F}[X,Y,Z] = \left\{ \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \mybar a_{k,l,m} \in \mathbb{F} \right\}
+\end{equation}
+definiert.
+
+\subsection{Die unendliche Gerade über \pgtwo}
 Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
 \subsection{Affine Darstellung elliptischer Kurven}
 Erklärung, Beispiel(Graphen)

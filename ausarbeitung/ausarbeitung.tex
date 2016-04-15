@@ -10,8 +10,18 @@
 \usepackage{graphicx}
 %% Paket für Unterabbildungen pro Abbildung
 %\usepackage{subfig}
+\usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
+% Proof system
+\usepackage{amsthm}
+\newtheorem{thm}{Satz}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\thm}{\thmheadpunct{.}}{\thmheadpunct{\\}}{}{}
+\makeatother
 
 % Seitenränder
 \usepackage[margin=1.5in]{geometry}
@@ -31,7 +41,7 @@
 \addto{\captionsngerman}{\renewcommand{\refname}{Literaturverzeichnis}}
 
 % Titel der Arbeit
-\title{Elliptische-Kurven-Kryptgraphie}
+\title{Elliptische-Kurven-Kryptographie}
 % Angaben zum Author
 \author{Kevin Kappelmann, Lukas Stevens}
 \pagestyle{plain}
@@ -82,9 +92,25 @@ Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die 
 Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die Elliptische-Kurven-Kryptographie (kurz ECC für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
 So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC\cite{austria}. Aber auch die Reisepässe der meisten Europäischen Staaten nutzen inzwischen meist in einer Form ECC.\cite{eu}
 
+
 \section{Grundbegriffe}
+Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $\mathbb{F}$.
+
 \subsection{Affine Ebenen}
-Definition, Beispiele
+\begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{A})$.
+Das Paar $(\mathcal{A},\mathcal{G})$ heißt affine Ebene, falls folgende vier Bedingungen erfüllt sind:
+	\begin{enumerate}
+		\item[(A1)] $\forall G\in\mathcal{G}:|G|\ge 2$ (auf jeder Gerade liegen mindestens zwei Punkte).
+		\item[(A2)] Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
+		Wir schreiben $\overline{a,b}$ für dieses G.
+		\item[(A3)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).
+		\item[(A4)] Es gibt drei Punkte $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$ (es gibt drei Punkte, die nicht alle auf einer Gerade liegen).
+	\end{enumerate}
+\end{defn}
+Die Menge $\mathcal{A}$ nennt man die Punktmenge und die Menge $\mathcal{G}$ die Geradenmenge der affinen Ebene $(\mathcal{A},\mathcal{G})$.\\\\
+TODO
+Anschaulich beschreibt eine affine Ebene den uns bekannten geometrischen Raum
+
 \subsection{Projektive Ebenen}
 Definition
 \subsubsection{Die projektive Ebene \pgtwo}

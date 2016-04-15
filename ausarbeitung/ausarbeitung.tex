@@ -29,7 +29,7 @@
 \newcommand{\mybar}{\thinspace | \thinspace}
 
 % Titel der Arbeit
-\title{Elliptische Kurven}
+\title{Elliptische-Kurven-Kryptgraphie}
 % Angaben zum Author
 \author{Kevin Kappelmann, Lukas Stevens}
 \pagestyle{plain}
@@ -50,11 +50,12 @@
 \begin{sloppypar}
 Darstellungsformen nicht vergessen! Edwards Kurven und so
 
-\section{Einleitung}
-Asymmetrische Verschlüsselungsverfahren wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
+\section{Einleitung und Motivation}
+Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
 Daraus ergibt sich sowohl eine hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
-Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das diskrete Logarithmenproblem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen. 
-Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~64]{nist}
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das diskrete Logarithmenproblem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
+Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
+Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
 
 \begin{table}[h]
 \centering
@@ -76,9 +77,9 @@ Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich 
 \caption{Vergleich Schlüssellängen}
 \end{table}
 
-Oben rot markierte Verfahren gelten als unsicher, grüne als aktuell sicher.
+Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die Elliptische-Kurven-Kryptographie (kurz ECC für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
+So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC\cite{austria}. Aber auch die Reisepässe der meisten Europäischen Staaten nutzen inzwischen meist in einer Form ECC.\cite{eu}
 
-%\\ Macht Kevin\\ Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
 \section{Grundbegriffe}
 \subsection{Affine Ebenen}
 Definition, Beispiele

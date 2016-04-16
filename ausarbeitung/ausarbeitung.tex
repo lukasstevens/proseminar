@@ -1,5 +1,3 @@
-% vim: autocmd BufWritePost * silent exec "!make 2& >/dev/null"
-
 \documentclass[hidelinks]{article}
 
 %% Deutsche Silbentrennung und Sprache (neue Rechtschreibung)
@@ -12,16 +10,37 @@
 \usepackage{graphicx}
 %% Paket für Unterabbildungen pro Abbildung
 %\usepackage{subfig}
+\usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
+% Proof system
+\usepackage{amsthm}
+\newtheorem{thm}{Satz}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\thm}{\thmheadpunct{.}}{\thmheadpunct{\\}}{}{}
+\makeatother
 
+% Seitenränder
 \usepackage[margin=1.5in]{geometry}
+% Zitate
 \usepackage{cite}
+% Tabellen
+\usepackage[table]{xcolor}
+\definecolor{lightblue}{HTML}{8ADAF2}
+\definecolor{lightred}{HTML}{F2A28A}
+\definecolor{lightgreen}{HTML}{A6F28A}
+
+\setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\thinspace}
 
+\addto{\captionsngerman}{\renewcommand{\refname}{Literaturverzeichnis}}
+
 % Titel der Arbeit
-\title{Elliptische Kurven}
+\title{Elliptische-Kurven-Kryptographie}
 % Angaben zum Author
 \author{Kevin Kappelmann, Lukas Stevens}
 \pagestyle{plain}
@@ -29,22 +48,68 @@
 %------------------------------------------------------------------------------
 \begin{document}
 
+\pagenumbering{gobble}
 \maketitle
 \newpage
-\tableofcontents
+\tableofcontents % Inhaltsverzeichnis
+\listoffigures % Abbildungsverzeichnis
+\listoftables % Tabellenverzeichnis 
 \newpage
 
+\pagenumbering{arabic}
+
+\begin{sloppypar}
 Darstellungsformen nicht vergessen! Edwards Kurven und so
 
-Beispiel zitat
-\cite[Kapitel~5, S.~215]{blablubb}
+\section{Einleitung und Motivation}
+Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
+Daraus ergibt sich sowohl eine hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das diskrete Logarithmenproblem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
+Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
+Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
 
-\section{Motivation und Geschichte}
-Macht Kevin\\
-Einleitung, warum elliptische Kurven, etc. (geschichtliches?)
+\begin{table}[h]
+\centering
+	\begin{tabular}{| c | c | c |}
+	\hline
+	\rowcolor{lightblue}
+	Sicherheitsniveau & RSA/Diffie-Hellman\footnotemark[\value{footnote}] & Elliptische-Kurven\\ \hline
+	\rowcolor{lightred}
+	$\le80$ 	& 1024 & 160-223 \\ \hline
+	\rowcolor{lightgreen}
+	112 	& 2048 & 224-255 \\ \hline
+	\rowcolor{lightgreen}
+	128 	& 3072 & 256-383 \\ \hline
+	\rowcolor{lightgreen}
+	192 	& 7680 & 384-511 \\ \hline
+	\rowcolor{lightgreen}
+	256 	& 15360 & 512+ \\ \hline
+	\end{tabular}
+\caption{Vergleich Schlüssellängen}
+\end{table}
+
+Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die Elliptische-Kurven-Kryptographie (kurz ECC für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
+So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC\cite{austria}. Aber auch die Reisepässe der meisten Europäischen Staaten nutzen inzwischen meist in einer Form ECC.\cite{eu}
+
+
 \section{Grundbegriffe}
+Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $\mathbb{F}$.
+
 \subsection{Affine Ebenen}
-Definition, Beispiele
+\begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{A})$.
+Das Paar $(\mathcal{A},\mathcal{G})$ heißt affine Ebene, falls folgende vier Bedingungen erfüllt sind:
+	\begin{enumerate}
+		\item[(A1)] $\forall G\in\mathcal{G}:|G|\ge 2$ (auf jeder Gerade liegen mindestens zwei Punkte).
+		\item[(A2)] Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
+		Wir schreiben $\overline{a,b}$ für dieses G.
+		\item[(A3)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).
+		\item[(A4)] Es gibt drei Punkte $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$ (es gibt drei Punkte, die nicht alle auf einer Gerade liegen).
+	\end{enumerate}
+\end{defn}
+Die Menge $\mathcal{A}$ nennt man die Punktmenge und die Menge $\mathcal{G}$ die Geradenmenge der affinen Ebene $(\mathcal{A},\mathcal{G})$.\\\\
+TODO
+Anschaulich beschreibt eine affine Ebene den uns bekannten geometrischen Raum
+
 \subsection{Projektive Ebenen}
 Definition
 \subsubsection{Die projektive Ebene \pgtwo}
@@ -55,7 +120,7 @@ Beweis, Beispiel
 Macht Lukas\\
 \subsection{Definiton elliptischer Kurven}
 %Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
-Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt. \\
+Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
 Diese hat die folgende Punktemenge:
 \begin{equation*}
     P = \left\{(u:v:w) \mid (u,v,w) \in \mathbb{F}^3 \setminus (0,0,0) \right\}
@@ -66,7 +131,7 @@ Der Polynomring mit drei Unbestimmten über $\mathbb{F}$ ist mit
     \mathbb{F}[X,Y,Z] = \left\{ \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \mid a_{k,l,m} \in \mathbb{F} \right\}
 \end{equation*}
 definiert.
-
+Bemerkung von Kevin: Ich würde Unbekannte statt Unbestimmte verwenden. Ist der gebräuchliche Begriff dazu.
 \subsection{Die unendliche Gerade über \pgtwo}
 Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
 \subsection{Affine Darstellung elliptischer Kurven}
@@ -82,11 +147,13 @@ Definition, Beweis der Abgeschlossenheit, graphische Interpretation
 Macht Lukas bis fertig\\
 Gruppe ist abelsch mit neutralem Element $\mathcal{O}$, Beispiel
 \section{Anwendung elliptischer Kurven in der Kryptologie}
-\subsection{Elgamal}
+\subsection{ElGamal}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter
 \subsection{Noch einen für Signaturen}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter
 
+\end{sloppypar}
+\newpage
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{quellen}

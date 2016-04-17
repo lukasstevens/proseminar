@@ -15,13 +15,17 @@
 \usepackage{amssymb}
 % Proof system
 \usepackage{amsthm}
+
 \newtheorem{thm}{Satz}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{defn}[thm]{Definition}
-\usepackage{xpatch}
-\makeatletter
-\xpatchcmd{\thm}{\thmheadpunct{.}}{\thmheadpunct{\\}}{}{}
-\makeatother
+\newtheorem{bsp}[thm]{Beispiel}
+%\usepackage{xpatch}
+%\makeatletter
+%% Remove last point from definitions, theorems, etc.
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{\\}}{}{}
+%\makeatother
+
 
 % Seitenränder
 \usepackage[margin=1.5in]{geometry}
@@ -33,10 +37,14 @@
 \definecolor{lightred}{HTML}{F2A28A}
 \definecolor{lightgreen}{HTML}{A6F28A}
 
+% Graphs
+\usepackage{tikz}
+
 \setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
 
+%Rename of Literatur to Literaturverzeichnis
 \addto{\captionsngerman}{\renewcommand{\refname}{Literaturverzeichnis}}
 
 % Titel der Arbeit
@@ -88,7 +96,7 @@ Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die 
 \caption{Vergleich Schlüssellängen}
 \end{table}
 
-Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die Elliptische-Kurven-Kryptographie (kurz ECC für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
+Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die \textbf{Elliptische-Kurven-Kryptographie} (kurz \textbf{ECC} für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
 So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC\cite{austria}. Aber auch die Reisepässe der meisten Europäischen Staaten nutzen inzwischen meist in einer Form ECC.\cite{eu}
 
 
@@ -97,18 +105,38 @@ Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affin
 
 \subsection{Affine Ebenen}
 \begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{A})$.
-Das Paar $(\mathcal{A},\mathcal{G})$ heißt affine Ebene, falls folgende vier Bedingungen erfüllt sind:
+Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der affinen Ebene $(\mathcal{A},\mathcal{G})$, falls folgende vier Bedingungen erfüllt sind:
 	\begin{enumerate}
 		\item[(A1)] $\forall G\in\mathcal{G}:|G|\ge 2$ (auf jeder Gerade liegen mindestens zwei Punkte).
 		\item[(A2)] Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
 		Wir schreiben $\overline{a,b}$ für dieses G.
-		\item[(A3)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).
+		\item[(A3)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).\\
+		Das sogenannte \textbf{Parallelenaxiom}.
 		\item[(A4)] Es gibt drei Punkte $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$ (es gibt drei Punkte, die nicht alle auf einer Gerade liegen).
 	\end{enumerate}
 \end{defn}
-Die Menge $\mathcal{A}$ nennt man die Punktmenge und die Menge $\mathcal{G}$ die Geradenmenge der affinen Ebene $(\mathcal{A},\mathcal{G})$.\\\\
+
+\begin{bsp}
+Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte. TODO Beweisreferenz
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,draw}]
+
+\node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
+\node at (1.25,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
+\node at (2.5,0)[main node] (C) [label={[label]0:$c$}] {};
+\node at (1.25,-0.8) [main node] (D) [label={[label]0:$d$}] {};
+
+\draw (A) -- (B) -- (C) -- (D) -- (A) -- (C)
+      (D) -- (B);
+
+\end{tikzpicture}
+\end{center}
+
+\end{bsp}
+
+\begin{bsp}
 TODO
-Anschaulich beschreibt eine affine Ebene den uns bekannten geometrischen Raum
+\end{bsp}
 
 \subsection{Projektive Ebenen}
 Definition

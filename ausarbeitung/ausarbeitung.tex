@@ -123,8 +123,19 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte. TODO Bewe
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
 \node at (1.25,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
-\node at (2.5,0)[main node] (C) [label={[label]0:$c$}] {};
-\node at (1.25,-0.8) [main node] (D) [label={[label]0:$d$}] {};
+\node at (2.5,0)[main node] (D) [label={[label]0:$c$}] {};
+\node at (1.25,-0.8) [main node] (C) [label={[label]0:$d$}] {};
+
+\draw (A) -- (B) -- (C) -- (D) -- (A) -- (C)
+      (D) -- (B);
+
+\end{tikzpicture}
+\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,draw}]
+
+\node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
+\node at (0,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
+\node at (2.5,-2.5)[main node] (C) [label={[label]0:$c$}] {};
+\node at (2.5,0) [main node] (D) [label={[label]0:$d$}] {};
 
 \draw (A) -- (B) -- (C) -- (D) -- (A) -- (C)
       (D) -- (B);
@@ -199,7 +210,6 @@ Welche Charakteristiken für elliptische Kurven, Domänenparameter
 
 \end{sloppypar}
 \newpage
-\nocite{*}
 \bibliographystyle{plain}
 \bibliography{quellen}
 \end{document}

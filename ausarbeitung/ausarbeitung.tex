@@ -162,32 +162,46 @@ Diese hat die folgende Punktemenge:
 \begin{equation*}
     P = \left\{(u:v:w) \mid (u,v,w) \in \mathbb{F}^3 \setminus (0,0,0) \right\}
 \end{equation*}
-Nun wollen wir die Punktemenge $E$ der elliptischen Kurve einführen. Dazu benötigen wir Polynome in drei Unbekannten.
+Nun wollen wir die Punktemenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktemenge $\mathcal{P}$ ist, d.h. $E \subseteq \mathcal{P}$. 
+Dazu benötigen wir Polynome in drei Unbekannten.
 Der Polynomring mit drei Unbekannten über $\mathbb{F}$ ist mit 
 \begin{equation*}
     \mathbb{F}[X,Y,Z] = \left\{ \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \mid a_{k,l,m} \in \mathbb{F} \right\}
 \end{equation*}
 definiert. 
-$F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[X,Y,Z]$ wird Polynom genannt. \\ 
-\newline
+$F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[X,Y,Z]$ wird Polynom genannt. 
+\begin{defn} \label{weierstrass}
 Eine elliptische Kurve $E$ ist durch die Lösung der Weierstraß-Gleichung 
-\begin{equation*}
-    Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
-\end{equation*}
+    \begin{equation*}
+        Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
+    \end{equation*}
 gegeben, wobei gilt $a_i \in \mathbb{F}$. Da der zugrundeliegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
 Wenn man die Gleichung als Polynom 
 \begin{equation*}
     F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
 \end{equation*}
 schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$.
-\\ TODO char etc.
+\end{defn}
+TODO char etc.
 
 \subsection{Die unendliche Gerade über \pgtwo}
 %Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
-Um in~\ref{affine-darstellung} eine affine Darstellung herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
-Wir wählen dazu eine Gerade $U \in \mathcal{G}$ aus. Prinzipiell kann dazu jede Gerade gewählt werden. Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraßgleichung zu vereinfachen. \\
-Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h. $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. Diese Menge $U$ bezeichnen wir im Folgenden als unendlich ferne Gerade. 
-\\ TODO Lemma
+Um in~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
+Wir wählen dazu eine Gerade $U \in \mathcal{G}$ aus. Prinzipiell kann dazu jede Gerade gewählt werden. Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraßgleichung(\ref{weierstrass}) zu vereinfachen. \\
+\newline
+Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h. $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. 
+Diese Menge $U$ bezeichnen wir im Folgenden als unendlich ferne Gerade.
+Im dreidimensionalen Raum ist das genau die $x,y$-Ebene.
+% \begin{bsp}
+%     \begin{tikzpicture}
+%         [grid/.style={very thin,gray},axis/.style={->,black,thick}]
+% 
+%         %draw the axes
+%         \draw[axis] (0,0,0) -- (3,0,0) node[anchor=west]{$y$};
+%         \draw[axis] (0,0,0) -- (0,3,0) node[anchor=west]{$z$};
+%         \draw[axis] (0,0,0) -- (0,0,3) node[anchor=west]{$x$};
+%     \end{tikzpicture} 
+% \end{bsp}
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Erklärung, Beispiel(Graphen)
 \section{Eine Gruppe über $E$}

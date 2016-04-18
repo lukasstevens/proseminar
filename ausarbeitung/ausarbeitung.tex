@@ -117,20 +117,22 @@ Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathca
 \end{defn}
 
 \begin{bsp}
-Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte. TODO Beweisreferenz
+Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seite~16]{henn}
 \begin{center}
-\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,draw}]
+\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
 \node at (1.25,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
 \node at (2.5,0)[main node] (D) [label={[label]0:$c$}] {};
 \node at (1.25,-0.8) [main node] (C) [label={[label]0:$d$}] {};
 
+\node at (3,-1.25) {$\boldsymbol\cong$};
+
 \draw (A) -- (B) -- (C) -- (D) -- (A) -- (C)
       (D) -- (B);
 
 \end{tikzpicture}
-\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,draw}]
+\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
 \node at (0,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
@@ -143,10 +145,6 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte. TODO Bewe
 \end{tikzpicture}
 \end{center}
 
-\end{bsp}
-
-\begin{bsp}
-TODO
 \end{bsp}
 
 \subsection{Projektive Ebenen}

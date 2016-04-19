@@ -67,7 +67,6 @@
 \pagenumbering{arabic}
 
 \begin{sloppypar}
-Darstellungsformen nicht vergessen! Edwards Kurven und so
 
 \section{Einleitung und Motivation}
 Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
@@ -118,7 +117,8 @@ Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathca
 
 \begin{bsp}
 Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seite~16]{henn}
-\begin{center}
+\begin{figure}[h]
+\centering
 \begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
@@ -141,10 +141,38 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 
 \draw (A) -- (B) -- (C) -- (D) -- (A) -- (C)
       (D) -- (B);
-
 \end{tikzpicture}
-\end{center}
+\caption{Minimalmodell einer affinen Ebene}
+\end{figure}
 
+\end{bsp}
+
+\begin{bsp}
+Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist eine affine Ebene, in der zusätzich Längen- und Winkelmaß definiert sind.
+\begin{figure}[h]
+\centering
+ \begin{tikzpicture}[scale=0.9,domain=-3:3] 
+    \draw[step=1cm,very thin,color=gray] (-2.9,-2.9) grid (2.9,2.9);
+    \draw[thick, ->] (-3.2,0) -- (3.2,0) node[right] {$x$}; 
+    \draw[thick, ->] (0,-3.2) -- (0,3.2) node[above] {$y$};
+    \foreach \x/\xtext in {-2, -1, 1, 2} 
+	\draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north,fill=white] {$\xtext$};
+    \foreach \y/\ytext in {-2, -1, 1, 2} 
+	\draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east,fill=white] {$\ytext$};
+    \draw[red] (-1.5,-0.5) node[right] {$a$};
+    \draw[red] (1.5,2.5) node[right] {$b$};
+    \draw[blue] (-1.5,-2.5) node[right] {$c$};
+    \draw[blue] (1.5,0.5) node[right] {$d$};
+    \draw[domain=-3:2,color=red]    plot (\x,1+\x)   node[right] {$\overline{a,b}$}; 
+    \draw[domain=-2:3,color=blue]    plot (\x,-1+\x)   node[right] {$\overline{c,d}$};
+    \filldraw[red] (-1.5,-0.5) circle[radius=2pt];
+    \filldraw[red] (1.5,2.5) circle[radius=2pt];
+    \filldraw[blue] (-1.5,-2.5) circle[radius=2pt];
+    \filldraw[blue] (1.5,0.5) circle[radius=2pt];
+    \draw (4,3) node[draw] {$\overline{a,b}\parallel\overline{c,d}$};
+   \end{tikzpicture}
+ \caption{Parallelen in der euklidischen Ebene}
+\end{figure}
 \end{bsp}
 
 \subsection{Projektive Ebenen}

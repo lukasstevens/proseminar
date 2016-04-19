@@ -100,18 +100,17 @@ So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängi
 
 
 \section{Grundbegriffe}
-Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $\mathbb{F}$.
+Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie und ihrer Verwandtheit auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $\mathbb{F}$.
 
 \subsection{Affine Ebenen}
-\begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq P(\mathcal{A})$.
-Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der affinen Ebene $(\mathcal{A},\mathcal{G})$, falls folgende vier Bedingungen erfüllt sind:
+\begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{A})$.
+Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der affinen Ebene $(\mathcal{A},\mathcal{G})$, falls folgende drei Bedingungen erfüllt sind:
 	\begin{enumerate}
-		\item[(A1)] $\forall G\in\mathcal{G}:|G|\ge 2$ (auf jeder Gerade liegen mindestens zwei Punkte).
-		\item[(A2)] Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
+		\item[(A1)] Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
 		Wir schreiben $\overline{a,b}$ für dieses G.
-		\item[(A3)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).\\
+		\item[(A2)] Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$ (durch jeden Punkt geht genau eine Gerade, die zu einer gegebenen Gerade parallel ist).\\
 		Das sogenannte \textbf{Parallelenaxiom}.
-		\item[(A4)] Es gibt drei Punkte $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$ (es gibt drei Punkte, die nicht alle auf einer Gerade liegen).
+		\item[(A3)] Es existieren drei Elemente $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$ (es gibt drei Punkte, die nicht alle auf einer Gerade liegen).
 	\end{enumerate}
 \end{defn}
 
@@ -119,7 +118,7 @@ Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathca
 Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seite~16]{henn}
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
+\begin{tikzpicture}[scale=1.1,node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
 \node at (1.25,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
@@ -132,7 +131,7 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
       (D) -- (B);
 
 \end{tikzpicture}
-\begin{tikzpicture}[node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
+\begin{tikzpicture}[scale=1.1,node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
 \node at (0,0) [main node] (A) [label={[label]180:$a$}] {}; 
 \node at (0,-2.5) [main node] (B) [label={[label]180:$b$}] {}; 
@@ -176,10 +175,48 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 \end{bsp}
 
 \subsection{Projektive Ebenen}
-Definition
+\begin{defn} Es sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
+Die Menge $\mathcal{P}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der projektiven Ebene $(\mathcal{P},\mathcal{G})$, falls folgende drei Bedingungen erfüllt sind:
+	\begin{enumerate}
+		\item[(P1)] Zu je zwei Elementen $P, Q\in \mathcal{A}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
+		Wir schreiben $\overline{P,Q}$ für dieses G.
+		\item[(P2)] Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$ (zwei verschiedene Geraden schneiden sich in genau einem Punkt).
+		\item[(P3)] Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen (es gibt vier Punkte, sodass nie drei davon auf derselben Gerade liegen).
+	\end{enumerate}
+\end{defn}
+Im wesentlichen Unterschied zu affinen Ebenen existieren in einer projektiven Ebene \textbf{keine Parallelen}.
+
+\begin{bsp}
+Die \textbf{Fano-Ebene} ist das Minimalmodell einer projektiven Ebene und umfasst genau 7 Punkte. TODO Quelle fuer minimalitaet\\
+Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und den daraufliegenden Punkten eine affine Ebene entsteht. Dies ist kein Spezialfall sondern funktioniert immer, was wir auch im Abschnitt~\ref{konstr-aff-aus-proj} zeigen werden.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
+
+\node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
+\node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {}; 
+\node at (-0.12,-3)[main node] (C) [label={[label]270:$C$}] {};
+\node at (1.5,-3) [main node] (D) [label={[label]270:$D$}] {};
+\node at (3.12,-3) [main node] (E) [label={[label]270:$E$}] {};
+\node at (2.37,-1.5) [main node] (F) [label={[label]0:$F$}] {};
+\node at (1.5,-2) [main node] (G) [label={[label]0:$G$}] {};
+
+\draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (A)
+	(B) -- (G) -- (D)
+	(G) -- (F);
+
+\draw (1.5,-2) circle [radius=1];
+
+\end{tikzpicture}
+\caption{Fano-Ebene}
+\end{figure}
+\end{bsp}
+
+
 \subsubsection{Die projektive Ebene \pgtwo}
 Konstruktion, Beispiel
-\subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen}
+\subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
+
 Beweis, Beispiel
 \section{Elliptische Kurven $E$}
 Macht Lukas\\

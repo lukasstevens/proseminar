@@ -203,7 +203,10 @@ Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und
 
 \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (A)
 	(B) -- (G) -- (D)
-	(G) -- (F);
+    (G) -- (F);
+\draw (G) -- (E);
+\draw (G) -- (A);
+\draw (G) -- (C);
 
 \draw (1.5,-2) circle [radius=1];
 
@@ -236,16 +239,16 @@ Der Polynomring mit drei Unbekannten über $\mathbb{F}$ ist mit
 definiert. 
 $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[X,Y,Z]$ wird Polynom genannt. 
 \begin{defn} \label{weierstrass}
-Eine elliptische Kurve $E$ ist durch die Lösung der Weierstraß-Gleichung 
+    Eine elliptische Kurve $E$ ist durch die Lösung der Weierstraß-Gleichung 
     \begin{equation*}
         Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
     \end{equation*}
-gegeben, wobei gilt $a_i \in \mathbb{F}$. Da der zugrundeliegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
-Wenn man die Gleichung als Polynom 
-\begin{equation*}
-    F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
-\end{equation*}
-schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$.
+    gegeben, wobei gilt $a_i \in \mathbb{F}$. Da der zugrundeliegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
+    Wenn man die Gleichung als Polynom 
+    \begin{equation*}
+        F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
+    \end{equation*}
+    schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$.
 \end{defn}
 TODO char etc.
 

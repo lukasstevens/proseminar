@@ -46,14 +46,12 @@
 % Graphs
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{every axis/.append style={
-                    axis x line=middle,    % put the x axis in the middle
+\pgfplotsset{every axis/.append style={axis x line=middle,    % put the x axis in the middle
                     axis y line=middle,    % put the y axis in the middle
                     axis line style={->,color=black}, % arrows on the axis
                     xlabel={$x$},          % default put x on x-axis
                     ylabel={$y$},          % default put y on y-axis
-				}}
-
+	}}
 \setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
@@ -168,8 +166,8 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 \centering
  \begin{tikzpicture}[scale=0.9,domain=-3:3] 
     \draw[step=1cm,very thin,color=gray] (-2.9,-2.9) grid (2.9,2.9);
-    \draw[thick, ->] (-3.2,0) -- (3.2,0) node[right] {$x$}; 
-    \draw[thick, ->] (0,-3.2) -- (0,3.2) node[above] {$y$};
+    \draw[thick, ->] (-3.2,0) -- (3.2,0) node[above] {$x$}; 
+    \draw[thick, ->] (0,-3.2) -- (0,3.2) node[right] {$y$};
     \foreach \x/\xtext in {-2, -1, 1, 2} 
 	\draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north,fill=white] {$\xtext$};
     \foreach \y/\ytext in {-2, -1, 1, 2} 
@@ -313,11 +311,11 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
 				restrict x to domain = -1:1.6,
 				]
                 \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
-				({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
+				({1/(x^3 - 1)}, {(x/(x^3 - 1))^1.5});
                 \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
 				({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5}); 
-			\end{axis}
-		\end{tikzpicture}
+	    \end{axis}
+	\end{tikzpicture}
         \begin{tikzpicture}
             \begin{axis}[
                 ticks = none,

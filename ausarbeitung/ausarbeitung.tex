@@ -9,7 +9,7 @@
 %% Grafiken einbinden
 \usepackage{graphicx}
 %% Paket für Unterabbildungen pro Abbildung
-%\usepackage{subfig}
+\usepackage{subfig}
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -46,12 +46,14 @@
 % Graphs
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{every axis/.append style={axis x line=middle,    % put the x axis in the middle
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
                     axis y line=middle,    % put the y axis in the middle
                     axis line style={->,color=black}, % arrows on the axis
                     xlabel={$x$},          % default put x on x-axis
                     ylabel={$y$},          % default put y on y-axis
-	}}
+				}}
+
 \setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
@@ -166,8 +168,8 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 \centering
  \begin{tikzpicture}[scale=0.9,domain=-3:3] 
     \draw[step=1cm,very thin,color=gray] (-2.9,-2.9) grid (2.9,2.9);
-    \draw[thick, ->] (-3.2,0) -- (3.2,0) node[above] {$x$}; 
-    \draw[thick, ->] (0,-3.2) -- (0,3.2) node[right] {$y$};
+    \draw[thick, ->] (-3.2,0) -- (3.2,0) node[right] {$x$}; 
+    \draw[thick, ->] (0,-3.2) -- (0,3.2) node[above] {$y$};
     \foreach \x/\xtext in {-2, -1, 1, 2} 
 	\draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north,fill=white] {$\xtext$};
     \foreach \y/\ytext in {-2, -1, 1, 2} 
@@ -263,6 +265,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
         \phi(ac^{-1},bc^{-1}) = (ac^{-1}:bc^{-1}:1) = (a:b:c)
     \end{equation*}
     surjektiv ist. Die Injektivität gilt auch, da mit $(a,b) \neq (a',b')$ die Vektoren $(a,b,1)$ und $(a',b',1)$ linear unabhängig sind, womit $(a:b:1) \neq (a':b':1)$ folgt.
+    TODO Rest des Lemmas
 \end{proof}
 \subsection{Definiton elliptischer Kurven} \label{definition-ek}
 %Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
@@ -293,42 +296,47 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$.
 \end{defn}
 \begin{defn}[Singularitäten]
-    Eine Kurve $E$ besitzt eine Singularität, wenn sie mindestens in einem Punkt singulär ist. Eine Kurve ist singulär in einem Punkt $P = (a:b:c) \in E$, wenn gilt
+    Eine Kurve $E$ ist singulär in einem Punkt $P = (a:b:c) \in E$, wenn gilt
     \begin{equation*}
         \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
     \end{equation*}
-    Man sagt auch die partiellen Ableitungen des Polynoms $F$ im Punkt $P$ verschwinden. Falls die elliptische Kurve $E$ in keinem Punkt singulär ist, dann bezeichnet man sie als nicht-singulär~\cite[Seite~227]{karpfinger-kiechle}.
+    Man sagt auch, dass die partiellen Ableitungen des Polynoms $F$ im Punkt $P$ verschwinden. Falls die elliptische Kurve $E$ in keinem Punkt singulär ist, dann bezeichnet man sie als nicht-singulär~\cite[Seite~227]{karpfinger-kiechle}.
 \end{defn}
 \begin{bsp}[Singularitäten]
-    Wenn eine Kurve in einem Punkt eine Singularität hat, dann gibt es mehrere Tangenten an diesen Punkt.
+    Die folgenden Kurven sind jeweils in einem Punkt singulär. Damit gibt es mehrere Tangenten an diesen Punkt.
     \begin{figure}[h]
         \centering
-        \begin{tikzpicture}
-            \begin{axis}[
-                ticks = none,
-				axis equal,
-				restrict y to domain = -4:4,
-				restrict x to domain = -1:1.6,
-				]
-                \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
-				({1/(x^3 - 1)}, {(x/(x^3 - 1))^1.5});
-                \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
-				({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5}); 
-	    \end{axis}
-	\end{tikzpicture}
-        \begin{tikzpicture}
-            \begin{axis}[
-                ticks = none,
-                axis equal,
-                ]
-                \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
-                {sqrt(x^3)};
-                \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
-                {-sqrt(x^3)};
-            \end{axis}
-        \end{tikzpicture}
+        \subfloat[$y^2=x^3+x^2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.8,
+                    ticks = none,
+                    axis equal,
+                    restrict y to domain = -4:4,
+                    restrict x to domain = -1:1.6,
+                    ]
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5}); 
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.8,
+                    ticks = none,
+                    axis equal,
+                    ]
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {sqrt(x^3)};
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {-sqrt(x^3)};
+                \end{axis}
+            \end{tikzpicture}}
         \caption{Kurven mit Singularitäten(Knoten und Spitze)}
-	\end{figure}
+    \end{figure}
 \end{bsp}
 TODO char etc..
 

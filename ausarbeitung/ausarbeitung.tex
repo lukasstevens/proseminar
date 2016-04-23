@@ -333,7 +333,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \begin{equation*}
         F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
     \end{equation*}
-    schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$. Bemerkenswert ist hier, dass es sich um ein homogenes Polynom vom Grad 3 handelt, d.h.\ für jedes Summenglied $a_{k,l,m}X^kY^lZ^m$ mit $a_{k,l,m}$ gilt $k + l + m = 3$.
+    schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$. Bemerkenswert ist hier, dass es sich um ein homogenes Polynom vom Grad 3 handelt, d.h.\ für jedes Summenglied $a_{k,l,m}X^kY^lZ^m$ mit $a_{k,l,m} \neq 0$ gilt $k + l + m = 3$.
 \end{defn}
 \begin{defn}[Singularitäten]
     Eine Kurve $E$ ist singulär in einem Punkt $P=(a:b:c)\in E$, wenn gilt
@@ -379,7 +379,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \end{figure}
 \end{bsp}
 Wir hatten eine elliptische Kurve $E$ als Nullstellenmenge des Polynoms $F(X,Y,Z)$ mit $E \coloneqq \left\{(u:v:w) \in \mathcal{P} \mid F(u,v,w) = 0 \right\}$ definiert.
-Es handelt sich bei Punkten in der projektiven Ebene und damit auch bei den Elementen von $E$ jedoch um Äquivalenzklassen. Deswegen müssen wir noch die Wohldefiniertheit der Nullstellen begründen. 
+Jedoch handelt es sich bei Punkten in der projektiven Ebene und damit auch bei den Elementen von $E$ um Äquivalenzklassen. Deswegen müssen wir noch die Wohldefiniertheit der Nullstellen begründen. 
 Wir rufen uns dazu noch einmal die Definition der Äquivalenzrelation $\sim$ ins Gedächtnis: $(u:v:w) \sim (u':v':w') \iff \exists \lambda \in \mathbb{F} \setminus {0}: (u,v,w) = \lambda (u',v',w')$.
 Wir setzen ein:
 \begin{equation*}
@@ -413,9 +413,10 @@ Damit lautet das Ergebnis
 \end{equation}
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\mathcal{O} = (0:1:0)$, auf $E$ liegt.
-Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt also, bis auf Äquivalenz, nur drei verschiedene Punkte: $P = (1:0:0)$, $Q = (1:1:0)$ und $\mathcal{O} = (0:1:0)$. Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\mathcal{O}$ die Gleichung. \\ 
-Für jeden Punkt $P \in E$ mit $P \neq Q$ gilt also $P \in \pu$. 
-Aufgrund der Äquivalenzrelation $\sim$ können wir ohne Einschränkung der Allgemeinheit annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten $y^2 = x^3 + ax + b$ oder als Polynom: 
+Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \mathbb{F} \setminus {0}$ und $\mathcal{O} = (0:1:0)$. 
+Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\mathcal{O}$ die Gleichung. \\ 
+Für jeden Punkt $P \in E$ mit $P \neq \mathcal{O}$ gilt also $P \in \pu$. 
+Aufgrund der Äquivalenzrelation $\sim$ können wir ohne Einschränkung der Allgemeinheit annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
 \end{equation}

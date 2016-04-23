@@ -1,0 +1,13 @@
+An Lukas
+
+Bei den Definitionen, Beispiele den Parameter weglassen Bsp. statt \begin{defn}{Singularitäten} nur \begin{defn}
+damit alles einheitlicher bleibt.
+
+Bei den ellitpischen Kurven über R im Kapitel 3.3 ist die rote Linie bei der rechten Grafik unterbrochen (oder gehört das so, weil es da ins komplexe geht?), sieht jedenfalls komisch aus.
+Da fehlt auch noch die Bildunterschrift. Vorschlag: als Bildunterschrift "Elliptische Kurven über R" und als Text neben dem Beispiel ein paar erklärende Worte.
+
+Bei der Grafik mit der Singularitäten würde ich die Bildunterschrift zu "Elliptische Kurven mit Singularitäten" ändern und die Singularitäten Knote und Spitze im Text beim Beispiel nennen und erläutern.
+
+
+------------------------------
+An Kevin

@@ -16,5 +16,10 @@ Ja die Graphen in 3.3 habe ich noch nicht fertig.
 Zur einheitlichkeit würde ich einfach Vorschlagne, dass wir uns mal zusammen hinsetzen, wenn wir mit der Arbeit fertig sind.
 Dann können wir das alles auf einmal klären.
 
+Kevin sagt: Passt
+
 Zu 3.2 Kurven mit Singularitäten sind keine elliptischen Kurven sondern degenerierte elliptische Kurven.
-Was würdest du zu den Singularitäten sagen wollen?
+Kevin sagt: stimmt, hast du recht
+
+Was würdest du zu den Singularitäten sagen wollen? 
+Kevin sagt: Vielleicht sowas wie, dass aequivalent gilt: "an elliptic curve is non-singular; that is, its graph has no cusps or self-intersections" oder so was, damit man das bisschen bildlicher sich vorstellen kann https://en.wikipedia.org/wiki/Elliptic_curve

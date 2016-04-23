@@ -252,9 +252,11 @@ Weiters definieren wir die Menge aller Äquivalenzklassen als unsere Punktemenge
 \begin{equation*}
 	\mathcal{P}\coloneqq\left \{[a]\mid a\in\ftnz\right \}
 \end{equation*}
+$\mathcal{P}$ stellt ein sogenanntes \textbf{homogenes Koordinatensystem} dar. Im Gegensatz zu den uns vertrauten (inhomogenen) Koordinaten, die jeden Punkt eindeutig identifizieren, haben homogene Koordinaten die Eigenschaft, dass sie für einen gegebenen Punkt nicht eindeutig bestimmt sind. So wird beispielsweise der Punkt $P=(2,4,8)$ sowohl von den homogenen Koordinaten $(1:2:4)$ als auch $(2:4:8)$ beschrieben.\\
+
 Für zwei verschiedene Punkte $P=[a]\in\mathcal{P}$ und $Q=[b]\in\mathcal{P}$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
 \begin{equation*}
-	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid(0,0)\ne(\lambda,\mu)\in\mathbb{F}\bigr \}
+	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid a,b\in\ftnz \land (0,0)\ne(\lambda,\mu)\in\mathbb{F}\bigr \}
 \end{equation*}
 Mit $\lambda=1$ und $\mu=0$ bzw.\ $\lambda=0$ und $\mu=1$ folgt direkt $P,Q\in\overline{P,Q}$.\\
 
@@ -262,7 +264,14 @@ Nun können wir auch die Menge aller Geraden bilden:
 \begin{equation*}
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
+Das Tupel $(\mathcal{P},\mathcal{G})$ beschreibt ein sogenanntes \textbf{homogenes Modell} und bildet eine projektive Ebene. Dies wollen wir im Folgenden beweisen.
 
+\begin{lem}
+	Es ist \normalfont{\pgtwo}$\coloneqq(\mathcal{P},\mathcal{G})$ eine projektive Ebene über $\mathbb{F}$.
+\end{lem}
+\begin{proof}
+	Trivial.
+\end{proof}
 
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}

@@ -8,11 +8,16 @@
 \usepackage{hyperref}
 %% Grafiken einbinden
 \usepackage{graphicx}
+\usepackage{float}
 %% Paket für Unterabbildungen pro Abbildung
 \usepackage{subfig}
+
+
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
+
+\usepackage{mathtools}
 % Proof system
 \usepackage{amsthm}
 
@@ -264,9 +269,22 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \begin{equation*}
         \phi(ac^{-1},bc^{-1}) = (ac^{-1}:bc^{-1}:1) = (a:b:c)
     \end{equation*}
-    surjektiv ist. Die Injektivität gilt auch, da mit $(a,b) \neq (a',b')$ die Vektoren $(a,b,1)$ und $(a',b',1)$ linear unabhängig sind, womit $(a:b:1) \neq (a':b':1)$ folgt.
-    TODO Rest des Lemmas
+    surjektiv ist. Die Injektivität gilt auch, da mit $(a,b) \neq (a',b')$ die Vektoren $(a,b,1)$ und $(a',b',1)$ linear unabhängig sind, womit $(a:b:1) \neq (a':b':1)$ folgt. \\
+    \newline
+    Jede Gerade in $\mathbb{F}^2$ ist von der Form $\overline{a,b} = \left\{ a + \lambda b \mid \lambda \in \mathbb{F}, a,b \in \mathbb{F}^2, b \neq (0,0) \right\}$. Für einen Punkt $P = a + \lambda b \in \overline{a,b}$ gilt dann:
+    \begin{equation*}
+        \begin{aligned}
+            \phi(a + \lambda b) & = (a_1 + \lambda b_1 : a_2 + \lambda b_2 : 1) = (a_1 : a_2 : 1) + \lambda (b_1 : b_2 : 0) \\
+            & \sim \mu (a_1 : a_2 : 1) + \mu \lambda (b_1 : b_2 : 0)
+        \end{aligned}
+    \end{equation*}
+    Hierbei ist zu beachten, dass $\mu \in \mathbb{F} \setminus \{0\}$ laut Definition der Äquivalenzrelation $\sim$ gilt. Man betrachte nun die Gerade
+    \begin{equation*}
+        G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \mathbb{F}^2  \setminus \{(0,0)\} \right\}.
+    \end{equation*}
+    Alle Punkte der Bildmenge von $\phi$ liegen auf der Gerade $G$. Es wird nur ein Punkt nicht erreicht, nämlich der Punkt $R = (b_1 : b_2 : 0)$. Wie man sehen kann, gilt $G \cap U = R$. Es folgt $\phi(\overline{a,b}) = G \cap \pu \in \gu$.
 \end{proof}
+Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projektiven Geraden abbilden kann. Außerdem bekommen diese affinen Geraden im Projektiven dann einen Schnittpunkt, der auf der unendlich fernen Gerade $U$ liegt.
 \subsection{Definiton elliptischer Kurven} \label{definition-ek}
 %Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
@@ -293,7 +311,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \begin{equation*}
         F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
     \end{equation*}
-    schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$.
+    schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$. Bemerkenswert ist hier, dass es sich um ein homogenes Polynom vom Grad 3 handelt, d.h. für jedes Summenglied $a_{k,l,m}X^kY^lZ^m$ mit $a_{k,l,m}$ gilt $k + l + m = 3$.
 \end{defn}
 \begin{defn}[Singularitäten]
     Eine Kurve $E$ ist singulär in einem Punkt $P = (a:b:c) \in E$, wenn gilt
@@ -304,7 +322,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
 \end{defn}
 \begin{bsp}[Singularitäten]
     Die folgenden Kurven sind jeweils in einem Punkt singulär. Damit gibt es mehrere Tangenten an diesen Punkt.
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \subfloat[$y^2=x^3+x^2$]{
             \begin{tikzpicture}
@@ -338,8 +356,39 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
         \caption{Kurven mit Singularitäten(Knoten und Spitze)}
     \end{figure}
 \end{bsp}
-TODO char etc..
-
+Wir hatten eine elliptische Kurve $E$ als Nullstellenmenge des Polynoms $F(X,Y,Z)$ mit $E \coloneqq \left\{(u:v:w) \in \mathcal{P} \mid F(u,v,w) = 0 \right\}$ definiert.
+Es handelt sich bei Punkten in der projektiven Ebene und damit auch bei den Elementen von $E$ jedoch um Äquivalenzklassen. Deswegen müssen wir noch die Wohldefiniertheit der Nullstellen begründen. 
+Wir rufen uns dazu noch einmal die Definition der Äquivalenzrelation $\sim$ ins Gedächtnis: $(u:v:w) \sim (u':v':w') \iff \exists \lambda \in \mathbb{F} \setminus {0}: (u,v,w) = \lambda (u',v',w')$.
+Wir setzen ein:
+\begin{equation*}
+    F(u',v',w') = F(\lambda u, \lambda v, \lambda w) = \lambda^3 F(u,v,w).
+\end{equation*}
+Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, dass die Nullstellen von $F$ in $\mathcal{P}$ wohldefiniert sind:
+\begin{equation*}
+    F(u,v,w) = 0 \iff F(\lambda u, \lambda v, \lambda w) = 0.
+\end{equation*}
+\newline
+Wir wollen nun noch eine Einschränkung treffen; die Charakteristik des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw. $char \: \mathbb{F} \neq 3$. 
+Dies bedeutet, dass $1 + 1 \neq 0$ bzw. $1 + 1 + 1 \neq 0$, oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw. 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. 
+Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. \\
+\newline
+%Zitat? Seite 50 Milner
+Wir können jetzt die Weierstraßgleichung(\ref{weierstrass}), welche die Form
+\begin{equation*}
+    Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
+\end{equation*}
+hat, umformen. Zuerst können wir, wenn $char \: \mathbb{F} \neq 2$ gilt, den Term $XYZ$ mit folgendem Variablenwechsel eliminieren:
+\begin{equation*}
+    X' = X, \: Y' = Y + \frac{a_1}{2} X, \: Z' = Z 
+\end{equation*}
+Anschließen könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $char \: \mathbb{F} \neq 2,3$ gilt:
+\begin{equation*}
+    X' = X + \frac{a_2}{3}, \: Y' = Y + \frac{a_3}{2}, \: Z' = Z
+\end{equation*}
+Damit lautet das Ergebnis
+\begin{equation*}
+    Y^2Z = X^3 + aXZ^2 + bZ^3.
+\end{equation*}
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Erklärung, Beispiel(Graphen)
 \section{Eine Gruppe über $E$}

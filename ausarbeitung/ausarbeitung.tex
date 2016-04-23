@@ -51,6 +51,7 @@
 % Graphs
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
 \pgfplotsset{every axis/.append style={
                     axis x line=middle,    % put the x axis in the middle
                     axis y line=middle,    % put the y axis in the middle
@@ -264,7 +265,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \end{equation*}
     bijektiv und bildet Geraden auf Geraden ab, d.h. $\phi$ ist ein Isomorphismus von affinen Ebenen. 
 \end{lem}
-\begin{proof}
+\begin{proof} \label{isomorphismus-lemma}
     Wie im Lemma~\ref{projektive-zu-affinen} gezeigt wurde, erhält man eine affine Ebene, wenn man aus einer projektiven Ebene eine Gerade mitsamt allen ihren Punkten entfernt. Daraus folgt, dass es sich bei $(\mathcal{P}_U, \mathcal{G}_U)$ um eine affine Ebene handelt. Es sei $(a:b:c) \in \mathcal{P}_U$. Da gilt $(a:b:c) \notin U$, folgt $c \neq 0$. Das heißt $c^{-1}$ ist definiert, womit die Abbildung
     \begin{equation*}
         \phi(ac^{-1},bc^{-1}) = (ac^{-1}:bc^{-1}:1) = (a:b:c)
@@ -386,11 +387,51 @@ Anschließen könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $
     X' = X + \frac{a_2}{3}, \: Y' = Y + \frac{a_3}{2}, \: Z' = Z
 \end{equation*}
 Damit lautet das Ergebnis
-\begin{equation*}
+\begin{equation} \label{reduziert-weierstrass}
     Y^2Z = X^3 + aXZ^2 + bZ^3.
-\end{equation*}
+\end{equation}
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
-Erklärung, Beispiel(Graphen)
+Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\mathcal{O} = (0:1:0)$, auf $E$ liegt.
+Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt also, bis auf Äquivalenz, nur drei verschiedene Punkte: $P = (1:0:0)$, $Q = (1:1:0)$ und $\mathcal{O} = (0:1:0)$. Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\mathcal{O}$ die Gleichung. \\ 
+Für jeden Punkt $P \in E$ mit $P \neq Q$ gilt also $P \in \pu$. 
+Aufgrund der Äquivalenzrelation $\sim$ können wir ohne Einschränkung der Allgemeinheit annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten $y^2 = x^3 + ax + b$ oder als Polynom: 
+\begin{equation} \label{affines-polynom}
+    f(x,y) \coloneqq y^2 - x^3 - ax - b
+\end{equation}
+Wir wissen aus Lemma~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktemenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktemenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\mathcal{O}$:
+\begin{equation*}
+    E = \left\{(u:v:1) \mid (u,v) \in \mathbb{F}^2 \land f(u,v) = 0 \right\} \cup \left\{ \mathcal{O} \right\}
+\end{equation*}
+Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\mathcal{O}$ nicht außer Acht lassen.
+\begin{bsp}
+    Skizzen elliptischer Kurven über dem Körper $\mathbb{R}$
+    \begin{figure}[H]
+        \centering
+        \subfloat[$y^2=x^3 + 0.3x + 2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    no markers,
+                    samples=800,
+                    scale=0.8,
+                    ]
+                \addplot gnuplot{atanh(x)};
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.8,
+                    axis equal,
+                    ]
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {sqrt(x^3 - 2*x)};
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {-sqrt(x^3 - 2*x)};
+                \end{axis}
+            \end{tikzpicture}}
+    \end{figure}
+\end{bsp}
 \section{Eine Gruppe über $E$}
 Macht Kevin bis 4.3\\
 \subsection{Tangenten elliptischer Kurven}

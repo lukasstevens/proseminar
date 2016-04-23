@@ -63,8 +63,8 @@
 \setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
-\newcommand{\fnz}{\mathbb{F}\setminus\{0\}}
-\newcommand{\ftnz}{\mathbb{F}^{3}\setminus\{\boldsymbol 0\}}
+\newcommand{\fnz}{\mathbb{F}\setminus\{0_K\}}
+\newcommand{\ftnz}{\mathbb{F}^{3}\setminus\{0_V\}}
 \newcommand{\pu}{\mathcal{P}_U}
 \newcommand{\gu}{\mathcal{G}_U}
 
@@ -123,7 +123,9 @@ So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängi
 
 
 \section{Grundbegriffe}
-Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie und ihrer Verwandtheit auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $\mathbb{F}$.
+Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie und ihrer Verwandtheit auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $(\mathbb{F},+,*)$.\\\\
+In den folgenden Kapiteln kürzen wir zu Gunsten der Notation den Körper $(\mathbb{F},+,*)$ mit $\mathbb{F}$ ab.\\
+
 
 \subsection{Affine Ebenen}
 \begin{defn} Es sei $\mathcal{A}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{A}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{A})$.
@@ -198,7 +200,7 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 \end{bsp}
 
 \subsection{Projektive Ebenen}
-\begin{defn} Es sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
+\begin{defn} ps sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
 Die Menge $\mathcal{P}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der projektiven Ebene $(\mathcal{P},\mathcal{G})$, falls folgende drei Bedingungen erfüllt sind:
 	\begin{enumerate}
 		\item[(P1)] Zu je zwei Elementen $P, Q\in \mathcal{A}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
@@ -240,11 +242,24 @@ Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und
 
 
 \subsubsection{Die projektive Ebene \pgtwo}
-Es sei $\mathbb{F}$ ein beliebiger Körper mit neutralem Element $0$ und $\mathbb{F}^3$ der dreidimensionale Vektorraum über $\mathbb{F}$ mit Nullvektor $\boldsymbol 0:=(0,0,0)$. Wir definieren eine Äquivalenzrelation~``$\sim$'' für alle $a,b\in\ftnz$ wie folgt:\\
+Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0_K$ und $\mathbb{F}^3$ der dreidimensionale $\mathbb{F}$-Vektorraum mit Nullvektor $0_V$. Wir definieren eine Äquivalenzrelation~$\sim$ für alle $a,b\in\ftnz$ wie folgt:\\
 \begin{equation*}
-	a\sim b :\Leftrightarrow \exists\lambda\in\fnz:\lambda*a=b
+	a\sim b :\Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
 \end{equation*}
-Für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$ schreiben wir $[a]$ und $(a_1:a_2:a_3)$.
+Für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$ schreiben wir $[a]$ oder auch $(a_1:a_2:a_3)$.\\
+
+Weiters definieren wir die Menge aller Äquivalenzklassen als unsere Punktemenge:
+\begin{equation*}
+	\mathcal{P}:=\Bigl \{[a]\mid a\in\ftnz\Bigr \}
+\end{equation*}
+Für zwei verschiedene Punkte $P=[a]\in\mathcal{P}$ und $Q=[b]\in\mathcal{P}$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
+\begin{equation*}
+	\overline{P,Q}:=\Bigl \{[\lambda a+\mu b]\mid\lambda,\mu\in\fnz\Bigr\}
+\end{equation*}
+Womit wir nun auch die Menge aller Geraden bilden können:
+\begin{equation*}
+	\mathcal{G}:=\{\overline{P,Q}\mid P,Q\in\mathcal{P}\wedge P\ne Q\}
+\end{equation*}
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
 

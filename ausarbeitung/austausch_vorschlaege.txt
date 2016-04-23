@@ -11,3 +11,10 @@ Bei der Grafik mit der Singularitäten würde ich die Bildunterschrift zu "Ellip
 
 ------------------------------
 An Kevin
+
+Ja die Graphen in 3.3 habe ich noch nicht fertig.
+Zur einheitlichkeit würde ich einfach Vorschlagne, dass wir uns mal zusammen hinsetzen, wenn wir mit der Arbeit fertig sind.
+Dann können wir das alles auf einmal klären.
+
+Zu 3.2 Kurven mit Singularitäten sind keine elliptischen Kurven sondern degenerierte elliptische Kurven.
+Was würdest du zu den Singularitäten sagen wollen?

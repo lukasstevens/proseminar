@@ -254,12 +254,16 @@ Weiters definieren wir die Menge aller Äquivalenzklassen als unsere Punktemenge
 \end{equation*}
 Für zwei verschiedene Punkte $P=[a]\in\mathcal{P}$ und $Q=[b]\in\mathcal{P}$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
 \begin{equation*}
-	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid\lambda,\mu\in\fnz\bigr \}
+	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid(0,0)\ne(\lambda,\mu)\in\mathbb{F}\bigr \}
 \end{equation*}
-Womit wir nun auch die Menge aller Geraden bilden können:
+Mit $\lambda=1$ und $\mu=0$ bzw.\ $\lambda=0$ und $\mu=1$ folgt direkt $P,Q\in\overline{P,Q}$.\\
+
+Nun können wir auch die Menge aller Geraden bilden:
 \begin{equation*}
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
+
+
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
 
@@ -300,7 +304,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
             & \sim \mu (a_1 : a_2 : 1) + \mu \lambda (b_1 : b_2 : 0)
         \end{aligned}
     \end{equation*}
-    Hierbei ist zu beachten, dass $\mu \in \mathbb{F} \setminus \{0\}$ laut Definition der Äquivalenzrelation $\sim$ gilt. Man betrachte nun die Gerade
+    Hierbei ist zu beachten, dass $\mu \in \fnz$ laut Definition der Äquivalenzrelation $\sim$ gilt. Man betrachte nun die Gerade
     \begin{equation*}
         G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \mathbb{F}^2  \setminus \{(0,0)\} \right\}.
     \end{equation*}
@@ -417,7 +421,7 @@ Damit lautet das Ergebnis
 \end{equation}
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\mathcal{O} = (0:1:0)$, auf $E$ liegt.
-Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \mathbb{F} \setminus \{0\}$ und $\mathcal{O} = (0:1:0)$. 
+Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz\}$ und $\mathcal{O} = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\mathcal{O}$ die Gleichung. \\ 
 Für jeden Punkt $P \in E$ mit $P \neq \mathcal{O}$ gilt also $P \in \pu$. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir ohne Einschränkung der Allgemeinheit annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 

@@ -63,8 +63,8 @@
 \setlength{\parindent}{0pt}
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
-\newcommand{\fnz}{\mathbb{F}\setminus\{0_K\}}
-\newcommand{\ftnz}{\mathbb{F}^{3}\setminus\{0_V\}}
+\newcommand{\fnz}{\mathbb{F}\setminus\{0\}}
+\newcommand{\ftnz}{\mathbb{F}^{3}\setminus\{\boldsymbol 0\}}
 \newcommand{\pu}{\mathcal{P}_U}
 \newcommand{\gu}{\mathcal{G}_U}
 
@@ -242,7 +242,7 @@ Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und
 
 
 \subsubsection{Die projektive Ebene \pgtwo}
-Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0_K$ und $\mathbb{F}^3$ der dreidimensionale $\mathbb{F}$-Vektorraum mit Nullvektor $0_V$. Wir definieren eine Äquivalenzrelation~$\sim$ für alle $a,b\in\ftnz$ wie folgt:\\
+Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3$ der dreidimensionale $\mathbb{F}$-Vektorraum mit Nullvektor $\boldsymbol 0$. Wir definieren eine Äquivalenzrelation~$\sim$ für alle $a,b\in\ftnz$ wie folgt:\\
 \begin{equation*}
 	a\sim b :\Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
 \end{equation*}
@@ -250,15 +250,15 @@ Für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$ schreiben wir $[a]$ od
 
 Weiters definieren wir die Menge aller Äquivalenzklassen als unsere Punktemenge:
 \begin{equation*}
-	\mathcal{P}:=\Bigl \{[a]\mid a\in\ftnz\Bigr \}
+	\mathcal{P}\coloneqq\left \{[a]\mid a\in\ftnz\right \}
 \end{equation*}
 Für zwei verschiedene Punkte $P=[a]\in\mathcal{P}$ und $Q=[b]\in\mathcal{P}$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
 \begin{equation*}
-	\overline{P,Q}:=\Bigl \{[\lambda a+\mu b]\mid\lambda,\mu\in\fnz\Bigr\}
+	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid\lambda,\mu\in\fnz\bigr \}
 \end{equation*}
 Womit wir nun auch die Menge aller Geraden bilden können:
 \begin{equation*}
-	\mathcal{G}:=\{\overline{P,Q}\mid P,Q\in\mathcal{P}\wedge P\ne Q\}
+	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
@@ -293,7 +293,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \end{equation*}
     surjektiv ist. Die Injektivität gilt auch, da mit $(a,b) \neq (a',b')$ die Vektoren $(a,b,1)$ und $(a',b',1)$ linear unabhängig sind, womit $(a:b:1) \neq (a':b':1)$ folgt. \\
     \newline
-    Jede Gerade in $\mathbb{F}^2$ ist von der Form $\overline{a,b} = \left\{ a + \lambda b \mid \lambda \in \mathbb{F}, a,b \in \mathbb{F}^2, b \neq (0,0) \right\}$. Für einen Punkt $P = a + \lambda b \in \overline{a,b}$ gilt dann:
+    Jede Gerade in $\mathbb{F}^2$ ist von der Form $\overline{a,b} = \left\{ a + \lambda b \mid \lambda \in \mathbb{F}\land a,b \in \mathbb{F}^2 \land b \neq (0,0) \right\}$. Für einen Punkt $P = a + \lambda b \in \overline{a,b}$ gilt dann:
     \begin{equation*}
         \begin{aligned}
             \phi(a + \lambda b) & = (a_1 + \lambda b_1 : a_2 + \lambda b_2 : 1) = (a_1 : a_2 : 1) + \lambda (b_1 : b_2 : 0) \\
@@ -312,7 +312,7 @@ Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projekt
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
 Diese hat die folgende Punktemenge:
 \begin{equation*}
-    P = \left\{(u:v:w) \mid (u,v,w) \in \mathbb{F}^3 \setminus (0,0,0) \right\}
+    P = \left\{(u:v:w) \mid (u,v,w) \in \ftnz \right\}
 \end{equation*}
 Nun wollen wir die Punktemenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktemenge $\mathcal{P}$ ist, d.h. $E \subseteq \mathcal{P}$. 
 Dazu benötigen wir Polynome in drei Unbekannten.
@@ -380,14 +380,17 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
 \end{bsp}
 Wir hatten eine elliptische Kurve $E$ als Nullstellenmenge des Polynoms $F(X,Y,Z)$ mit $E \coloneqq \left\{(u:v:w) \in \mathcal{P} \mid F(u,v,w) = 0 \right\}$ definiert.
 Es handelt sich bei Punkten in der projektiven Ebene und damit auch bei den Elementen von $E$ jedoch um Äquivalenzklassen. Deswegen müssen wir noch die Wohldefiniertheit der Nullstellen begründen. 
-Wir rufen uns dazu noch einmal die Definition der Äquivalenzrelation $\sim$ ins Gedächtnis: $(u:v:w) \sim (u':v':w') \iff \exists \lambda \in \mathbb{F} \setminus {0}: (u,v,w) = \lambda (u',v',w')$.
+Wir rufen uns dazu noch einmal die Definition der Äquivalenzrelation $\sim$ ins Gedächtnis: 
+\begin{equation*}
+	(u:v:w) \sim (u':v':w') \Leftrightarrow \exists \lambda \in \fnz: (u,v,w) = \lambda (u',v',w')
+\end{equation*}
 Wir setzen ein:
 \begin{equation*}
     F(u',v',w') = F(\lambda u, \lambda v, \lambda w) = \lambda^3 F(u,v,w).
 \end{equation*}
 Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, dass die Nullstellen von $F$ in $\mathcal{P}$ wohldefiniert sind:
 \begin{equation*}
-    F(u,v,w) = 0 \iff F(\lambda u, \lambda v, \lambda w) = 0.
+    F(u,v,w) = 0 \Leftrightarrow F(\lambda u, \lambda v, \lambda w) = 0.
 \end{equation*}
 \newline
 Wir wollen nun noch eine Einschränkung treffen; die Charakteristik des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 

@@ -24,13 +24,24 @@
 \theoremstyle{plain}
 \newtheorem{thm}{Satz}[section]
 \newtheorem{lem}[thm]{Lemma}
-\newtheorem{bsp}[thm]{Beispiel}
 
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
+\newtheorem{bsp}[thm]{Beispiel}
 
-\theoremstyle{remark}
+\newtheoremstyle{rem} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {}                   % Body font
+    {}                           % Indent amount
+    {\bf}                   % Theorem head font
+    {:}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{rem}
 \newtheorem*{remark}{Bemerkung}
+
 %\usepackage{xpatch}
 %\makeatletter
 %% Remove last point from definitions, theorems, etc.
@@ -272,16 +283,35 @@ Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen somit der Menge 
 	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b\Leftrightarrow c\in\mathbb{F}a+\mathbb{F}b
 \end{equation*}
 \begin{defn}
-	Es sei $V$ ein $n$-dimensionaler Vektorraum, $U$ ein beliebiger $(n-1)$-dimensionaler Untervektorraum von $V$ und $v\in V$ beliebig. Eine Teilmenge $H\subset V$ nennt man \textbf{Hyperebene} von $V$, wenn gilt:
+	Es sei $V$ ein $n$-dimensionaler Vektorraum, $U$ ein beliebiger \mbox{$(n-1)$-dimensionaler} Untervektorraum von $V$ und $v\in V$ beliebig. Eine Teilmenge $H\subset V$ nennt man \textbf{Hyperebene} von $V$, wenn gilt:
 \begin{equation*}
 	H=v+U=\{v+u\mid u\in U\} 
 \end{equation*}
 \end{defn}
-Wird für den Vektor $v$ der Nullvektor gewählt, so wird die erzeugte Ebene auch als lineare Hyperebene bezeichnet.\\
-In unserem Fall stellt also jede Gerade $\overline{P,Q}\cup\{\boldsymbol 0\}$ eine lineare Hyperebene über $\mathbb{F}^3$ dar.\\
-Jede lineare Hyperebene lässt sich als Lösungsmenge einer homogenen linearen Gleichung beschreiben.\cite[Seite~189]{linalg}
-Dies lässt eine alternative Definition unserer Geradenmenge zu, die uns oft nützlich sein wird. \\
-
+Wird für den Vektor $v$ der Nullvektor gewählt, so wird die erzeugte Ebene auch als \textit{lineare Hyperebene} bezeichnet.\\
+In unserem Fall stellt also jede Gerade $\overline{P,Q}\cup\{\boldsymbol 0\}$ eine lineare Hyperebene über $\mathbb{F}^3$ dar.
+\begin{thm}\label{hyperebene}
+Es sei $V$ ein $n$-dimensionaler Vektorraum, $U$ ein beliebiger $(n-1)$-dimensionaler Untervektorraum von $V$ und $v\in V$ beliebig. 
+Jede Hyperebene $H=v+U$ lässt sich für ein geeignetes $n\in V\setminus\{\boldsymbol 0\}$ äquivalent als Lösungsmenge einer homogenen linearen Gleichung beschreiben:
+\begin{equation*}
+	H=\{w\in V\mid \langle n,w-v\rangle=0\}
+\end{equation*}
+Wobei $\langle a,b\rangle$ das Standardskalarprodukt zweier Vektoren $a,b$ darstellt.
+\end{thm}
+\begin{proof}
+	Wir verweisen hier auf\cite[Seite~189]{linalg}.
+\end{proof}
+\begin{remark}
+Es ergibt sich, dass $n$ ein Normalenvektor zu $H$ sein muss.
+\end{remark}
+Satz~\ref{hyperebene} lässt eine alternative Definition unsere Geraden zu, die uns oft nützlich sein wird. Da alle Geraden $\overline{P,Q}\cup\{\boldsymbol 0\}$ lineare Hyperebenen sind, gilt nämlich für ein geeignetes \mbox{$n=(n_1,n_2,n_3)\in\ftnz$}:
+\begin{equation*}
+	\overline{P,Q}=\{(a_1:a_2:a_3)\in\mathcal{P}\mid n_1a_1+n_2a_2+n_3a_3=0\}
+\end{equation*}
+und somit
+\begin{equation*}
+	[c]\in\overline{P,Q}\Leftrightarrow n_1c_1+n_2c_2+n_3c_3=0
+\end{equation*}
 
 \begin{lem}
 	Es ist \normalfont{\pgtwo}$\coloneqq(\mathcal{P},\mathcal{G})$ eine projektive Ebene über $\mathbb{F}$.

@@ -200,7 +200,8 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 \end{bsp}
 
 \subsection{Projektive Ebenen}
-\begin{defn} ps sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
+\begin{defn} \label{projektive-ebene}
+Es sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
 Die Menge $\mathcal{P}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der projektiven Ebene $(\mathcal{P},\mathcal{G})$, falls folgende drei Bedingungen erfüllt sind:
 	\begin{enumerate}
 		\item[(P1)] Zu je zwei Elementen $P, Q\in \mathcal{A}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
@@ -244,35 +245,40 @@ Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und
 \subsubsection{Die projektive Ebene \pgtwo}
 Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3$ der dreidimensionale $\mathbb{F}$-Vektorraum mit Nullvektor $\boldsymbol 0$. Wir definieren eine Äquivalenzrelation~$\sim$ für alle $a,b\in\ftnz$ wie folgt:\\
 \begin{equation*}
-	a\sim b :\Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
+	a\sim b \Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
 \end{equation*}
-Für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$ schreiben wir $[a]$ oder auch $(a_1:a_2:a_3)$.\\
+Wir schreiben $[a]$ oder auch $(a_1:a_2:a_3)$ für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$.\\
+Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ also gerade den eindimensionalen Untervektorraum $\mathbb{F}a$ dar.\\
 
-Weiters definieren wir die Menge aller Äquivalenzklassen als unsere Punktemenge:
+Weiters definieren wir uns die Quotientenmenge, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktemenge:
 \begin{equation*}
-	\mathcal{P}\coloneqq\left \{[a]\mid a\in\ftnz\right \}
+	\mathcal{P}\coloneqq(\ftnz)/\sim\ = \left \{[a]\mid a\in\ftnz\right \}
 \end{equation*}
-$\mathcal{P}$ stellt ein sogenanntes \textbf{homogenes Koordinatensystem} dar. Im Gegensatz zu den uns vertrauten (inhomogenen) Koordinaten, die jeden Punkt eindeutig identifizieren, haben homogene Koordinaten die Eigenschaft, dass sie für einen gegebenen Punkt nicht eindeutig bestimmt sind. So wird beispielsweise der Punkt $P=(2,4,8)$ sowohl von den homogenen Koordinaten $(1:2:4)$ als auch $(2:4:8)$ beschrieben.\\
+$\mathcal{P}$ stellt ein sogenanntes \textbf{homogenes Koordinatensystem} dar. Im Gegensatz zu den uns vertrauten (inhomogenen) Koordinaten, die jeden Punkt eindeutig identifizieren, haben homogene Koordinaten die Eigenschaft, dass sie für einen gegebenen Punkt nicht eindeutig bestimmt sind. So wird beispielsweise der Punkt $P=(2,4,8)\in\mathbb{R}^3$ sowohl von den homogenen Koordinaten $(1:2:4)$ als auch $(2:4:8)$ beschrieben.\\
 
-Für zwei verschiedene Punkte $P=[a]\in\mathcal{P}$ und $Q=[b]\in\mathcal{P}$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
+Für zwei Punkte $P=[a],Q=[b]\in\mathcal{P}$ mit $P\ne Q$ setzen wir die Verbindungsgerade zwischen $P$ und $Q$ fest mit:
 \begin{equation*}
-	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid a,b\in\ftnz \land (0,0)\ne(\lambda,\mu)\in\mathbb{F}\bigr \}
+	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
 \end{equation*}
 Mit $\lambda=1$ und $\mu=0$ bzw.\ $\lambda=0$ und $\mu=1$ folgt direkt $P,Q\in\overline{P,Q}$.\\
-
-Nun können wir auch die Menge aller Geraden bilden:
+Man beachte, dass die Bedingung $P\ne Q$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also gerade den zweidimensionalen Untervektorraum $\mathbb{F}a+\mathbb{F}b$ dar. 
+Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen also der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedückt:
+\begin{equation*}
+	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b		
+\end{equation*}
+Schlussendlich bilden wir noch die Menge aller Geraden:
 \begin{equation*}
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
-Das Tupel $(\mathcal{P},\mathcal{G})$ beschreibt ein sogenanntes \textbf{homogenes Modell} und bildet eine projektive Ebene. Dies wollen wir im Folgenden beweisen.
 
 \begin{lem}
 	Es ist \normalfont{\pgtwo}$\coloneqq(\mathcal{P},\mathcal{G})$ eine projektive Ebene über $\mathbb{F}$.
 \end{lem}
 \begin{proof}
-	Trivial.
+	Wir müssen zeigen, dass die unter~\ref{projektive-ebene} definierten Bedingungen (P1), (P2) und (P3) gelten.\\
+	(P1) Die Existenz folgt direkt aus der Definition unserer Menge $\mathcal{G}$. Die Eindeutigkeit folgt aus (P2).\\
+	(P2) Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$.
 \end{proof}
-
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
 

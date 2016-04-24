@@ -58,9 +58,11 @@
 \definecolor{lightblue}{HTML}{8ADAF2}
 \definecolor{lightred}{HTML}{F2A28A}
 \definecolor{lightgreen}{HTML}{A6F28A}
+\definecolor{darkgreen}{HTML}{43A822}
 
 % Graphs
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{every axis/.append style={
@@ -152,7 +154,7 @@ Die Menge $\mathcal{A}$ nennt man die \textbf{Punktmenge} und die Menge $\mathca
 
 \begin{bsp}
 Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seite~16]{henn}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[scale=1.1,node distance=2.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
@@ -184,9 +186,9 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 
 \begin{bsp}
 Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist eine affine Ebene, in der zusätzich Längen- und Winkelmaß definiert sind.
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
- \begin{tikzpicture}[scale=0.9,domain=-3:3] 
+ \begin{tikzpicture}[scale=0.8,domain=-3:3] 
     \draw[step=1cm,very thin,color=gray] (-2.9,-2.9) grid (2.9,2.9);
     \draw[thick, ->] (-3.2,0) -- (3.2,0) node[right] {$x$}; 
     \draw[thick, ->] (0,-3.2) -- (0,3.2) node[above] {$y$};
@@ -226,7 +228,7 @@ Im wesentlichen Unterschied zu affinen Ebenen existieren in einer projektiven Eb
 \begin{bsp}
 Die \textbf{Fano-Ebene} ist das Minimalmodell einer projektiven Ebene und umfasst genau 7 Punkte (beachte: auch der Kreis gilt hier als Gerade!).\cite[Seite~9]{projmin}\\
 Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und den daraufliegenden Punkten eine affine Ebene entsteht. Dies ist kein Spezialfall sondern funktioniert immer, was wir auch im Abschnitt~\ref{konstr-aff-aus-proj} zeigen werden.
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
@@ -334,6 +336,72 @@ und somit
 	\item[(P3)] Die vier Punkte $(1:0:0),(0:1:0),(0:0:1),(1:1:1)$ erfüllen die Bedingung.
 \end{enumerate}
 \end{proof}
+\begin{bsp}
+Mit Wahl von $\mathbb{F}=\mathbb{R}$ erhält man für PG(2,$\mathbb{R}$) die relle projektive Ebene, die über das selbe Koordinatensystem, wie der euklidische Raum (``Der dreidimensionale Raum unserer Anschauung''), definiert ist.\\
+Die projektiven Punkte entsprechen den eindimensionalen Untervektorräumen von $\mathbb{R}^3$, d.h.\ die Menge aller Geraden durch den Ursprung und die Menge der projektiven Geraden entspricht analog der Menge aller Ebenen durch den Ursprung.\\
+Der Punkt $(0,0,0)$ ist dabei nicht enthalten.\\
+Wählt man zwei projektive Punkte $P,Q$ aus, d.h.\ anschaulich betrachtet zwei Ursprungsgeraden, so ergibt sich als Verbindungsgerade $\overline{P,Q}$ die Ebene, die beide Geraden umfässt und durch den Ursprung verläuft.\\
+
+\begin{figure}[H]
+\tdplotsetmaincoords{80}{100}
+\begin{tikzpicture}[
+		tdplot_main_coords,
+		axis/.style={->,black,thick},
+		line/.style={thick,red},
+		scale=0.8]
+
+	% coordinates in (z,x,y)
+	\filldraw[
+		draw=darkgreen,%
+		fill=darkgreen!20,%
+	    ]          (-8,-2.5,0)
+		    -- (-8,2.5,0)
+		    -- (8,2.5,0)
+		    -- (8,-2.5,0)
+		    -- cycle;
+
+	%draw the axes
+	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+
+	\draw[line] (2,3,0) -- (-2,-3,0) node[anchor=east]{$P=[3:0:2]$};
+	\draw[line,blue] (6,3,0) -- (-6,-3,0) node[anchor=east]{$Q=[1:0:2]$};
+	\node[darkgreen] at (8,-3.0,0) {$\overline{P,Q}$};
+
+\end{tikzpicture}
+\qquad	
+\tdplotsetmaincoords{80}{100}
+\begin{tikzpicture}[
+		tdplot_main_coords,
+		axis/.style={->,black,thick},
+		line/.style={thick,red},
+		scale=0.8]
+
+	% coordinates in (z,x,y)
+	\filldraw[
+		draw=darkgreen,%
+		fill=darkgreen!20,%
+	    ]          (0,-2.5,-2.5)
+		    -- (0,-2.5,2.5)
+		    -- (0,2.5,2.5)
+		    -- (0,2.5,-2.5)
+		    -- cycle;
+
+	%draw the axes
+	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+
+	\draw[line] (0,-3,-2) -- (0,3,2) node[anchor=west]{$P=[3:2:0]$};
+	\draw[line,blue] (0,-3,-1) -- (0,3,1) node[anchor=west]{$Q=[3:1:0]$};
+	\node[darkgreen] at (11,4.9,0) {$\overline{P,Q}$};
+
+\end{tikzpicture}
+	\caption{Geraden und Punkte projektiver reeler Ebenen}
+\end{figure}
+\end{bsp}
+
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
 

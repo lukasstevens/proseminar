@@ -248,7 +248,7 @@ Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3
 	a\sim b \Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
 \end{equation*}
 Wir schreiben $[a]$ oder auch $(a_1:a_2:a_3)$ für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$.\\
-Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ also gerade den eindimensionalen Untervektorraum $\mathbb{F}a$ dar.\\
+Man bemerke: Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ gerade den von a aufgespannten eindimensionalen Untervektorraum $\langle a \rangle=\mathbb{F}a=\{\lambda a\mid\lambda\in\mathbb{F}\}$ dar.\\
 
 Weiters definieren wir uns die Quotientenmenge, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktemenge:
 \begin{equation*}
@@ -261,22 +261,36 @@ Für zwei Punkte $P=[a],Q=[b]\in\mathcal{P}$ mit $P\ne Q$ setzen wir die Verbind
 	\overline{P,Q}\coloneqq\bigl \{[\lambda a+\mu b]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
 \end{equation*}
 Mit $\lambda=1$ und $\mu=0$ bzw.\ $\lambda=0$ und $\mu=1$ folgt direkt $P,Q\in\overline{P,Q}$.\\
-Man beachte, dass die Bedingung $P\ne Q$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also gerade den zweidimensionalen Untervektorraum $\mathbb{F}a+\mathbb{F}b$ dar. 
-Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen also der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedückt:
-\begin{equation*}
-	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b		
-\end{equation*}
-Schlussendlich bilden wir noch die Menge aller Geraden:
+
+Nun bilden wir noch die Menge aller Geraden:
 \begin{equation*}
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
+Man beachte, dass die Bedingung $[a]=P\ne Q=[b]$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also gerade den zweidimensionalen Untervektorraum $\langle a,b\rangle=\mathbb{F}a+\mathbb{F}b=\{\lambda a+\mu b\mid \lambda,\mu\in\mathbb{F}\}$ dar. 
+Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen somit der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedückt:
+\begin{equation*}
+	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b\Leftrightarrow c\in\mathbb{F}a+\mathbb{F}b
+\end{equation*}
+\begin{defn}
+	Es sei $V$ ein $n$-dimensionaler Vektorraum, $U$ ein beliebiger $(n-1)$-dimensionaler Untervektorraum von $V$ und $v\in V$ beliebig. Eine Teilmenge $H\subset V$ nennt man \textbf{Hyperebene} von $V$, wenn gilt:
+\begin{equation*}
+	H=v+U=\{v+u\mid u\in U\} 
+\end{equation*}
+\end{defn}
+Wird für den Vektor $v$ der Nullvektor gewählt, so wird die erzeugte Ebene auch als lineare Hyperebene bezeichnet.\\
+In unserem Fall stellt also jede Gerade $\overline{P,Q}\cup\{\boldsymbol 0\}$ eine lineare Hyperebene über $\mathbb{F}^3$ dar.\\
+Jede lineare Hyperebene lässt sich als Lösungsmenge einer homogenen linearen Gleichung beschreiben.\cite[Seite~189]{linalg}
+Dies lässt eine alternative Definition unserer Geradenmenge zu, die uns oft nützlich sein wird. \\
+
 
 \begin{lem}
 	Es ist \normalfont{\pgtwo}$\coloneqq(\mathcal{P},\mathcal{G})$ eine projektive Ebene über $\mathbb{F}$.
 \end{lem}
 \begin{proof}
 	Wir müssen zeigen, dass die unter~\ref{projektive-ebene} definierten Bedingungen (P1), (P2) und (P3) gelten.\\
-	(P1) Die Existenz folgt direkt aus der Definition unserer Menge $\mathcal{G}$. Die Eindeutigkeit folgt aus (P2).\\
+	(P1) Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.\\
+	Es sei nun $G\in\mathcal{G}$ mit $P,Q\in G$ und $\overline{P,Q}\ne G$.
+	Dann folgt, dass der von $P$ und $Q$ aufgespannte Unterraum $\langle P,Q\rangle$ eine Teilmenge von $G$ sein muss, also $\overline{P,Q}\subseteq G$. Allerdings gilt, dass jede Gerade in $\mathcal{G}$ die Dimension zwei besitzt, also $\overline{P,Q}=G$. \\
 	(P2) Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$.
 \end{proof}
 

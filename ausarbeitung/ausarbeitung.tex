@@ -215,7 +215,7 @@ Die euklidische Ebene (``Der zweidimensionale Raum unserer Anschauung'') ist ein
 Es sei $\mathcal{P}$ eine Menge und $\mathcal{G}$ eine Teilmenge der Potenzmenge von $\mathcal{P}$, d.h. $\mathcal{G}\subseteq Pot(\mathcal{P})$.
 Die Menge $\mathcal{P}$ nennt man die \textbf{Punktmenge} und die Menge $\mathcal{G}$ die \textbf{Geradenmenge} der projektiven Ebene $(\mathcal{P},\mathcal{G})$, falls folgende drei Bedingungen erfüllt sind:
 	\begin{enumerate}
-		\item[(P1)] Zu je zwei Elementen $P, Q\in \mathcal{A}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
+		\item[(P1)] Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$ (durch zwei verschiedene Punkte geht genau eine Gerade).\\
 		Wir schreiben $\overline{P,Q}$ für dieses G.
 		\item[(P2)] Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$ (zwei verschiedene Geraden schneiden sich in genau einem Punkt).
 		\item[(P3)] Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen (es gibt vier Punkte, sodass nie drei davon auf derselben Gerade liegen).
@@ -313,15 +313,26 @@ und somit
 	[c]\in\overline{P,Q}\Leftrightarrow n_1c_1+n_2c_2+n_3c_3=0
 \end{equation*}
 
-\begin{lem}
+\begin{thm}
 	Es ist \normalfont{\pgtwo}$\coloneqq(\mathcal{P},\mathcal{G})$ eine projektive Ebene über $\mathbb{F}$.
-\end{lem}
+\end{thm}
 \begin{proof}
-	Wir müssen zeigen, dass die unter~\ref{projektive-ebene} definierten Bedingungen (P1), (P2) und (P3) gelten.\\
-	(P1) Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.\\
-	Es sei nun $G\in\mathcal{G}$ mit $P,Q\in G$ und $\overline{P,Q}\ne G$.
-	Dann folgt, dass der von $P$ und $Q$ aufgespannte Unterraum $\langle P,Q\rangle$ eine Teilmenge von $G$ sein muss, also $\overline{P,Q}\subseteq G$. Allerdings gilt, dass jede Gerade in $\mathcal{G}$ die Dimension zwei besitzt, also $\overline{P,Q}=G$. \\
-	(P2) Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$.
+	Wir müssen zeigen, dass die unter~\ref{projektive-ebene} definierten Bedingungen (P1), (P2) und (P3) gelten.
+\begin{enumerate}
+	\item[(P1)] Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.\\
+	Die Eindeutigkeit ergibt sich aus (P2).
+	\item[(P2)] Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
+	\begin{align*}
+	P & = \{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\}\ \normalfont{und}\\
+	Q & =\{(x:y:z)\in\mathcal{P}\mid a'x+b'y+c'z=0\}
+	\end{align*}
+	Es folgt:
+	\begin{equation*}
+		P\cap Q=\{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\land a'x+b'y+c'z=0\}
+	\end{equation*}
+	Dieses lineare Gleichungssystem hat als Lösungsmenge einen eindimensionalen Untervektorraum, also genau einen Punkt in $\mathcal{P}$. Folglich gilt $|P\cap Q|=1$.
+	\item[(P3)] Die vier Punkte $(1:0:0),(0:1:0),(0:0:1),(1:1:1)$ erfüllen die Bedingung.
+\end{enumerate}
 \end{proof}
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}

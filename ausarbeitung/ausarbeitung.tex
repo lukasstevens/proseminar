@@ -59,6 +59,8 @@
 \definecolor{lightred}{HTML}{F2A28A}
 \definecolor{lightgreen}{HTML}{A6F28A}
 \definecolor{darkgreen}{HTML}{43A822}
+\definecolor{grey}{HTML}{AAAAAA}
+
 
 % Graphs
 \usepackage{tikz}
@@ -419,6 +421,19 @@ Wir müssen zeigen, dass die unter Definition~\ref{affine-ebene} festgelegten Be
 	\item[(A1)] Zwei beliebige Punkte $P,Q\in\pu$ sind wegen (P1) durch genau eine Gerade verbunden. Diese Gerade wurde nicht entfernt, denn sonst wären auch auch die beiden Punkte $P,Q$ entfernt worden.
 	\item[(A2)] Es sei $G_U\in\gu$, $G\in\mathcal{G}$ mit $G_U=G\setminus U$ und $P\in\pu\setminus G_U$. Die Gerade $G$ hatte wegen (P1) einen Schnittpunkt $F$ mit der Geraden $U$, der in $G_U$ entfernt wurde. Ebenfalls gibt es wegen (P1) eine Gerade $H_U\in\gu$ und eine Gerade $H\in\mathcal{G}$ mit $H_U=H\setminus U$, sodass $F,P\in H$. Da nach (P2) sich alle Geraden in genau einem Punkt schneiden und $H$ und $G$ sich im entfernten Schnittpunkt $F$ geschnitten haben, gilt $H_U\cap G_U=\emptyset$\\
 	Jede andere Gerade in $\gu$ hat nach (P2) einen Schnittpunkt mit $G_U$, der nicht entfernt wurde. $H_U$ ist also die einzige Parallele von $G_U$ durch $P$.
+\begin{figure}[H]
+\centering
+ \begin{tikzpicture}[scale=1,domain=0:4] 
+    \draw[domain=0:4]    plot (\x,-0.5+1/2*\x)  node[right] {$H_U$}; 
+    \draw[domain=0:4]    plot (\x,0)   node[right] {$G_U=G\setminus U$};
+    \draw[red]    plot (\x,0.25-1/4*\x)   node[right] {$U$};
+    \draw[red] (1,0) node[anchor=north] {$F$};
+    \filldraw[red] (1,0) circle[radius=1.5pt];
+    \draw (3,1) node[above] {$P$};
+    \filldraw (3,1) circle[radius=1.5pt];
+   \end{tikzpicture}
+ \caption{Parallelen in \pgtwo nach Entfernen einer Geraden}
+\end{figure}
 	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie 3 davon auf derselben Gerade liegen. Lag also höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
 	Lagen zwei der vier Punkte $A,B$ auf $U$, so 
 \end{enumerate}

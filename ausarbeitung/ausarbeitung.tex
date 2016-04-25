@@ -434,8 +434,10 @@ Wir müssen zeigen, dass die unter Definition~\ref{affine-ebene} festgelegten Be
    \end{tikzpicture}
  \caption{Parallelen in \pgtwo nach Entfernen einer Geraden}
 \end{figure}
-	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie drei davon auf derselben Gerade liegen. Lag also höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
-		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existiern zwei Geraden $\overline{A,C}$ und $\overline{B,C}$, die sich in einem Punkt $E$ schneiden. Es gilt somit $E\notin\overline{C,D}$.
+	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie drei davon auf derselben Gerade liegen.\\
+		Lag höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
+		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existiern zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
+		Wäre nämlich $E$ inzident zu $\overline{A,B}$, dann würde aufgrund von (P1) $A\in\overline{B,D}$ und $B\in\overline{A,C}$ folgen, was im Widerspruch zur Annahme steht.\\ Es gilt somit $E\in\pu$. $E$ kann auch nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von (P1) $A,B\in\overline{C,D}$ gelten. Es folgt somit $E\notin\overline{C,D}$.
 \begin{figure}[H]
 \centering
  \begin{tikzpicture}[scale=1,domain=0:4] 

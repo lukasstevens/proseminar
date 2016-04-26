@@ -79,6 +79,7 @@
 
 \newcommand{\pgtwo}{PG(2, $\mathbb{F}$)\ }
 \newcommand{\fnz}{\mathbb{F}\setminus\{0\}}
+\newcommand{\ftwnz}{\mathbb{F}^{2}\setminus\{\boldsymbol 0\}}
 \newcommand{\ftnz}{\mathbb{F}^{3}\setminus\{\boldsymbol 0\}}
 \newcommand{\pu}{\mathcal{P}_U}
 \newcommand{\gu}{\mathcal{G}_U}
@@ -502,7 +503,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \end{equation*}
     surjektiv ist. Die Injektivität gilt auch, da mit $(a,b) \neq (a',b')$ die Vektoren $(a,b,1)$ und $(a',b',1)$ linear unabhängig sind, womit $(a:b:1) \neq (a':b':1)$ folgt. \\
     \newline
-    Jede Gerade in $\mathbb{F}^2$ ist von der Form $\overline{a,b} = \left\{ a + \lambda b \mid \lambda \in \mathbb{F}\land a,b \in \mathbb{F}^2 \land b \neq (0,0) \right\}$. Für einen Punkt $P = a + \lambda b \in \overline{a,b}$ gilt dann:
+    Jede Gerade in $\mathbb{F}^2$ ist von der Form $\overline{a,b} = \left\{ a + \lambda b \mid \lambda \in \mathbb{F}\land a,b \in \mathbb{F}^2 \land b \neq \boldsymbol 0 \right\}$. Für einen Punkt $P = a + \lambda b \in \overline{a,b}$ gilt dann:
     \begin{equation*}
         \begin{aligned}
             \phi(a + \lambda b) & = (a_1 + \lambda b_1 : a_2 + \lambda b_2 : 1) = (a_1 : a_2 : 1) + \lambda (b_1 : b_2 : 0) \\
@@ -511,7 +512,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \end{equation*}
     Hierbei ist zu beachten, dass $\mu \in \fnz$ laut Definition der Äquivalenzrelation $\sim$ gilt. Man betrachte nun die Gerade
     \begin{equation*}
-        G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \mathbb{F}^2  \setminus \{(0,0)\} \right\}.
+        G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \ftwnz\} \right\}.
     \end{equation*}
     Alle Punkte der Bildmenge von $\phi$ liegen auf der Gerade $G$. Es wird nur ein Punkt nicht erreicht, nämlich der Punkt $R = (b_1 : b_2 : 0)$. Wie man sehen kann, gilt $G \cap U = R$. Es folgt $\phi(\overline{a,b}) = G \cap \pu \in \gu$.
 \end{proof}

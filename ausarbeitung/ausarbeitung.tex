@@ -98,6 +98,12 @@
 
 \pagenumbering{gobble}
 \maketitle
+\vspace{6em}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{cover}
+\end{figure}
+
 \newpage
 \tableofcontents % Inhaltsverzeichnis
 \listoffigures % Abbildungsverzeichnis
@@ -546,7 +552,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$. Bemerkenswert ist hier, dass es sich um ein homogenes Polynom vom Grad 3 handelt, d.h.\ für jedes Summenglied $a_{k,l,m}X^kY^lZ^m$ mit $a_{k,l,m} \neq 0$ gilt $k + l + m = 3$.
 \end{defn}
 \begin{defn}[Singularitäten]
-    Eine Kurve $E$ ist singulär in einem Punkt $P=(a:b:c)\in E$, wenn gilt
+	Eine Kurve $E$ ist singulär in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt
     \begin{equation*}
         \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
     \end{equation*}
@@ -588,8 +594,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
         \caption{Kurven mit Singularitäten (Knoten und Spitze)}
     \end{figure}
 \end{bsp}
-Wir hatten eine elliptische Kurve $E$ als Nullstellenmenge des Polynoms $F(X,Y,Z)$ mit $E \coloneqq \left\{(u:v:w) \in \mathcal{P} \mid F(u,v,w) = 0 \right\}$ definiert.
-<<<<<<< HEAD
+Wir hatten eine elliptische Kurve $E$ als Nullstellenmenge des Polynoms $F(X,Y,Z)$ mit \mbox{$E \coloneqq \left\{(u:v:w) \in \mathcal{P} \mid F(u,v,w) = 0 \right\}$} definiert.
 Jedoch handelt es sich bei Punkten in der projektiven Ebene und damit auch bei den Elementen von $E$ um Äquivalenzklassen. Deswegen müssen wir noch die Wohldefiniertheit der Nullstellen begründen. 
 Wir rufen uns dazu noch einmal die Definition der Äquivalenzrelation $\sim$ ins Gedächtnis: 
 \begin{equation*}
@@ -603,8 +608,7 @@ Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, da
 \begin{equation*}
     F(u,v,w) = 0 \Leftrightarrow F(\lambda u, \lambda v, \lambda w) = 0.
 \end{equation*}
-\newline
-Wir wollen nun noch eine Einschränkung treffen; die Charakteristik des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 
+Wir wollen nun noch eine Einschränkung treffen: die Charakteristik des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 
 Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw.\ 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. 
 Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. \\
 \newline
@@ -617,7 +621,7 @@ hat, umformen. Zuerst können wir, wenn $char \: \mathbb{F} \neq 2$ gilt, den Te
 \begin{equation*}
     X' = X, \: Y' = Y + \frac{a_1}{2} X, \: Z' = Z 
 \end{equation*}
-Anschließen könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $char \: \mathbb{F} \neq 2,3$ gilt:
+Anschließend könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $char \: \mathbb{F} \neq 2,3$ gilt:
 \begin{equation*}
     X' = X + \frac{a_2}{3}, \: Y' = Y + \frac{a_3}{2}, \: Z' = Z
 \end{equation*}
@@ -630,11 +634,11 @@ Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nu
 Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz\}$ und $\mathcal{O} = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\mathcal{O}$ die Gleichung. \\ 
 Für jeden Punkt $P \in E$ mit $P \neq \mathcal{O}$ gilt also $P \in \pu$. 
-Aufgrund der Äquivalenzrelation $\sim$ können wir ohne Einschränkung der Allgemeinheit annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
+Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
 \end{equation}
-Wir wissen aus Lemma~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktemenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktemenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\mathcal{O}$:
+Wir wissen aus Satz~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktemenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktemenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\mathcal{O}$:
 \begin{equation*}
     E = \left\{(u:v:1) \mid (u,v) \in \mathbb{F}^2 \land f(u,v) = 0 \right\} \cup \left\{ \mathcal{O} \right\}
 \end{equation*}

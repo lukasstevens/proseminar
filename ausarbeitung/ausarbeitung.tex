@@ -199,7 +199,7 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 	\begin{equation*}
 		\mathcal{G}\coloneqq\{a+\mathbb{F}b\mid a,b\in\mathbb{F}^2\land b\ne\boldsymbol 0\}
 	\end{equation*}
-	wobei $\mathbb{F}b=\{\lambda b\mid\lambda\in\mathbb{F}\}$ den von b erzeugten eindimensionale Untervektorraum von $\mathbb{F}^2$ darstellt. Dann ist $(\mathbb{F}^2,\mathcal{G})$ eine affine Ebene.
+	wobei $\mathbb{F}b=\{\lambda b\mid\lambda\in\mathbb{F}\}$ den von b erzeugten eindimensionalen Untervektorraum von $\mathbb{F}^2$ darstellt. Dann ist $(\mathbb{F}^2,\mathcal{G})$ eine affine Ebene.
 \end{thm}
 \begin{proof}
 	Wir verweisen hier auf\cite[Seite~87]{karpfinger-kiechle}.
@@ -327,7 +327,7 @@ Wobei $\langle a,b\rangle$ das Standardskalarprodukt zweier Vektoren $a,b$ darst
 \begin{remark}
 Es ergibt sich, dass $n$ ein Normalenvektor zu $H$ sein muss.
 \end{remark}
-Satz~\ref{hyperebene} lässt eine alternative Definition unsere Geraden zu, die uns oft nützlich sein wird. Da alle Geraden $\overline{P,Q}\cup\{\boldsymbol 0\}$ lineare Hyperebenen sind, gilt nämlich für ein geeignetes \mbox{$n=(n_1,n_2,n_3)\in\ftnz$}:
+Satz~\ref{hyperebene} lässt eine alternative Definition unserer Geraden zu, die uns oft nützlich sein wird. Da alle Geraden $\overline{P,Q}\cup\{\boldsymbol 0\}$ lineare Hyperebenen sind, gilt nämlich für ein geeignetes \mbox{$n=(n_1,n_2,n_3)\in\ftnz$}:
 \begin{equation*}
 	\overline{P,Q}=\{(a_1:a_2:a_3)\in\mathcal{P}\mid n_1a_1+n_2a_2+n_3a_3=0\}
 \end{equation*}
@@ -455,7 +455,8 @@ Wir müssen zeigen, dass die unter Definition~\ref{affine-ebene} festgelegten Be
 	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie drei davon auf derselben Gerade liegen.\\
 		Lag höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
 		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existiern zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
-		Wäre nämlich $E$ inzident zu $\overline{A,B}$, dann würde aufgrund von (P1) $A\in\overline{B,D}$ und $B\in\overline{A,C}$ folgen, was im Widerspruch zur Annahme steht.\\ Es gilt somit $E\in\pu$. $E$ kann auch nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von (P1) $A,B\in\overline{C,D}$ gelten. Es folgt somit $E\notin\overline{C,D}$.
+		Wäre nämlich $E$ inzident zu $\overline{A,B}$, dann würde aufgrund von (P1) $A\in\overline{B,D}$ und $B\in\overline{A,C}$ folgen, was im Widerspruch zur Annahme steht. Es gilt somit $E\in\pu$.\\
+$E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von (P1) $A,B\in\overline{C,D}$ gelten. Es folgt somit $E\notin\overline{C,D}$.
 \begin{figure}[H]
 \centering
  \begin{tikzpicture}[scale=1,domain=0:4] 

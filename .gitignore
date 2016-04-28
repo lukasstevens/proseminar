@@ -160,3 +160,7 @@ TSWLatexianTemp*
 
 # Build folder
 build/
+
+# Gnuplot
+*.gnuplot
+*.table

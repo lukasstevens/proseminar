@@ -3,10 +3,10 @@ TARGET=ausarbeitung
 
 .PHONY: all clean watch
 
-OPTIONS=-gg -bibtex -auxdir=$(BUILD_DIR) -outdir=$(BUILD_DIR) -pdf
+OPTIONS=-bibtex -pdf -pdflatex="pdflatex --shell-escape"
 
 all:
-	latexmk $(OPTIONS) $(TARGET).tex && cp $(BUILD_DIR)/$(TARGET).pdf .
+	latexmk $(OPTIONS) $(TARGET).tex
 watch:
 	latexmk -pvc $(OPTIONS) $(TARGET).tex
 clean:

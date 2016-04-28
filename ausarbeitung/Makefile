@@ -10,4 +10,4 @@ all:
 watch:
 	latexmk -pvc $(OPTIONS) $(TARGET).tex
 clean:
-	rm -rf $(BUILD_DIR)/*
+	rm -rf *.aux *.bbl *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.gnuplot *.table *.toc

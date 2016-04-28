@@ -651,7 +651,7 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
     Skizzen elliptischer Kurven über dem Körper $\mathbb{R}$
     \begin{figure}[H]
         \centering
-        \subfloat[$y^2=x^3 + 0.3x + 2$]{
+        \subfloat[$y^2=x^3 + 0.5x + 2$]{
             \begin{tikzpicture}
                 \begin{axis}[
                     axis equal, 
@@ -696,10 +696,94 @@ Macht Kevin bis 4.3\\
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}
-Definition, Beweis der Abgeschlossenheit, graphische Interpretation
+\begin{thm} \label{oplus-op}
+    Definition und Beweis $\oplus$
+\end{thm}
 \subsection{Die Gruppe $(E, +)$}
-Macht Lukas bis fertig\\
-Gruppe ist abelsch mit neutralem Element $\patinf$, Beispiel
+Die Verknüpfung $\oplus$ hat schon einige Eigenschaften, die für eine Gruppenoperation wichtig sind.
+Sie ist kommutativ und abgeschlossen. Jedoch fehlt eine wichtige Eigenschaft, nämlich die Existenz eines neutralen Elements.
+Deshalb wollen wir die Verknüpfung $\oplus$ modifizieren um eine neue Verknüpfung $+$ zu erhalten, die ein neutrales Element besitzt. 
+Damit erhalten wir dann eine Gruppe $(E, +)$ über elliptischen Kurven. \\
+Die Definition der Verknüpfung $+$ für $P, Q \in E$ lautet folgendermaßen:
+\begin{equation} \label{plus-op}
+    P + Q \coloneqq \patinf \oplus (P \oplus Q) = -(P \oplus Q).
+\end{equation}
+Und es gilt:
+\begin{thm}
+    $(E, +)$ ist eine abelsche Gruppe mit neutralem Element $\patinf$.
+\end{thm}
+\begin{proof}
+    Aus der Kommutativität von $\oplus$ folgt die Kommutativität von $+$. \\
+    Des Weiteren gilt für alle $P \in E$:
+    \begin{equation*}
+        \patinf + P = \patinf \oplus (\patinf \oplus P) = \patinf \oplus (-P) = P
+    \end{equation*}
+    Damit ist $\patinf$ das neutrale Element. Außerdem gilt noch für $P \in E$:
+    \begin{equation*}
+        P + (-P) = \patinf \oplus (P \oplus (-P)) = \patinf \oplus \patinf = \patinf.
+    \end{equation*}
+    Da der Beweis für die Assoziativität sehr aufwändig ist wollen, wir diesen hier nicht erbringen und auf \cite{knapp} verweisen.
+    Mit Assoziativität, Kommutativität und der Existenz eines neutralen Elements mit $\patinf$ folgt, dass es sich bei $(E, +)$ um eine abelsche Gruppe handelt.
+\end{proof}
+Mit Hilfe der Formeln aus Satz~\ref{oplus-op} können wir die Addition $P + Q \in E$ zweier Punkte explizit formulieren.
+Wir setzten $P = (p_1, p_2)$ und $Q = (q_1, q_2)$. Dann gilt 
+\begin{equation*}
+    P + Q = \begin{cases}
+        \patinf, & \text{falls $P=-Q$ oder $P=Q=\patinf$,} \\
+        P, & \text{falls $Q=\patinf$,} \\
+        Q, & \text{falls $P=\patinf$,} \\
+        (\omega, - \alpha (\omega - p_1) - p_2), & \text{sonst,} \\
+    \end{cases}
+\end{equation*}
+wobei
+\begin{equation*}
+    \omega = \alpha^2 - p_1 - q_1 \text{ und } \alpha = 
+    \begin{cases}
+        \frac{p_2 - q_2}{p_1 - q_1}, & \text{falls $P \neq Q, -Q$,} \\
+        \frac{3p_1^2 + \alpha}{2p_2}, & \text{falls $P = Q \neq -P$.} \\
+    \end{cases}
+\end{equation*}
+Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden ohne auf die graphische Lösung zurückzugreifen.
+
+\begin{bsp}
+    Addition der Punkte $P = (-1,1)$ und $Q = (0,1)$ auf $E$ über $\mathbb{R}$
+    \begin{figure}[H]
+        \centering
+        \subfloat[$E: y^2=x^3 - x + 1$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis equal, 
+                    minor tick num={1},
+                    minor tick num={1},
+                    xtick={-2, 2},
+                    minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    ytick={-2, 2},
+                    scale=0.8,
+                    grid=both,
+                    ]
+
+                    \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                    \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                    \draw (1,1) node[label={94:\footnotesize $P \oplus Q$}](PQ){\textbullet};
+                    \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-3:3];
+                        set yrange [-2:2];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 + x - 1 
+                    };
+                    \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+                    \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
+                \end{axis}
+            \end{tikzpicture}}
+    \end{figure}
+\end{bsp}
+
 \section{Anwendung elliptischer Kurven in der Kryptologie}
 \subsection{ElGamal}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter

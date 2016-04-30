@@ -688,6 +688,7 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
                     };
                 \end{axis}
             \end{tikzpicture}}
+        \caption{Beispiele elliptischer Kurven}
     \end{figure}
 \end{bsp}
 \section{Eine Gruppe über $E$}
@@ -740,13 +741,16 @@ wobei
     \omega = \alpha^2 - p_1 - q_1 \text{ und } \alpha = 
     \begin{cases}
         \frac{p_2 - q_2}{p_1 - q_1}, & \text{falls $P \neq Q, -Q$,} \\
-        \frac{3p_1^2 + \alpha}{2p_2}, & \text{falls $P = Q \neq -P$.} \\
+        \frac{3p_1^2 + a}{2p_2}, & \text{falls $P = Q \neq -P$.} \\
     \end{cases}
 \end{equation*}
+Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung(\ref{affines-polynom}) von $E$ gemeint. \\
+\newline
 Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden ohne auf die graphische Lösung zurückzugreifen.
-
+Es ist also auch möglich Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}$ zu definieren.
 \begin{bsp}
-    Addition der Punkte $P = (-1,1)$ und $Q = (0,1)$ auf $E$ über $\mathbb{R}$
+    Es ist möglich die Punkte $P = (-1,1)$ und $Q = (0,1)$ auf $E$ über $\mathbb{R}$ graphisch zu addieren. 
+    Man zieht dazu eine Gerade durch die Punkte $P$ und $Q$ und erhält den Schnittpunkt $P \oplus Q$. Danach berechnet man den Punkt $-(P \oplus Q)$, d.h. man spiegelt an der $x$-Achse.
     \begin{figure}[H]
         \centering
         \subfloat[$E: y^2=x^3 - x + 1$]{
@@ -765,7 +769,8 @@ Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kan
 
                     \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
                     \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
-                    \draw (1,1) node[label={94:\footnotesize $P \oplus Q$}](PQ){\textbullet};
+                    % quad for label positioning 
+                    \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
                     \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
                     \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
                         set size square;
@@ -781,10 +786,39 @@ Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kan
                     \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
                 \end{axis}
             \end{tikzpicture}}
+        \caption{Addition in $(E, +)$}
     \end{figure}
 \end{bsp}
 
 \section{Anwendung elliptischer Kurven in der Kryptologie}
+Bis jetzt haben wir uns mit den mathematischen Grundlagen rund um elliptische Kurven beschäftigt. Wir haben den Begriff der projektiven Ebenen eingeführt und elliptische Kurven als eine Teilmenge dieser beschrieben. 
+Wir haben außerdem eine Operation $+$ über den elliptischen Kurven $E$ eingeführt, mit der man eine Gruppe über $E$ erhält.
+Die Frage ist nun, welche Relevanz diese Gruppe für die Kryptologie hat. \\
+In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel -, dann soll das Problem jedoch leicht zu lösen sein. \\
+Bei elliptischen Kurven wird sich dabei die Schwierigkeit des diskreten Logarithmierungsproblems zu Nutze gemacht.
+\subsection{Verschlüsselung und das diskrete Logarithmierungsproblem}
+Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist folgendermaßen definiert:
+%Seite 376 silverman
+\begin{defn} \label{DLP}
+    Sei $G$ endliche Gruppe und seien $x,y \in G$. $y$ soll die Untergruppe sein, die durch $x$ generiert wird. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
+    \begin{equation*}
+        x^m = y,
+    \end{equation*}
+    wird diskretes Logarithmierungsproblem(DLP) genannt.
+\end{defn}
+Jede Gruppe $G$ hat ihr eigenes Logarithmierungsproblem.
+Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$. 
+Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
+Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen wie schwer das DLP elliptischer Kurven zu lösen ist. \\
+\newline
+Das DLP kann in nahezu allen Gruppen mit dem Babystep-Giantstep Algorithmus gelöst werden, welcher eine Laufzeit von $O(\sqrt{|E|})$ hat.
+Da die Anzahl der Gruppenelemente jedoch exponentiell mit der Schlüssellänge wächst, steigt auch die Laufzeit dieses Algorithmus exponentiell mit der Schlüssellänge.
+Ein weiteres prominentes Beispiel ist Pollard's $\rho$ Algorithmus. Auch für diesen Algorithmus kann gezeigt werden, dass die Laufzeit in $O(\sqrt{|E|})$ ist. Somit kann auch hiermit keine subexponentielle Laufzeit erreicht werden~\cite[Seite~386]{silverman}. \\
+In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allgemeinen elliptische Kurven in subexponentieller Zeit lösen kann. Wenn man jedoch bestimmte Einschränkungen für die Parameter trifft, dann sind durchaus subexponentielle Laufzeiten möglich~\cite{joux2011}.
+Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei geeigner Wahl der Domänenparameter sicher. \\
+\newline
+% Index calculus
+Interessant ist der Vergleich mit anderen Verschlüsselungsverfahren, welche auf anderen Gruppen basieren.
 \subsection{ElGamal}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter
 \subsection{Noch einen für Signaturen}

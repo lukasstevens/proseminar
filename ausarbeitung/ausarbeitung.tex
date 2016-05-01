@@ -489,7 +489,7 @@ $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von
 Um in~\ref{definition-ek} elliptische Kurven genau beschreiben zu können und in~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
 Wir wählen dazu eine Gerade $U \in \mathcal{G}$ aus. 
 Prinzipiell kann dazu jede Gerade gewählt werden. 
-Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraßgleichung(\ref{weierstrass}) zu vereinfachen. \\
+Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraßgleichung~(\ref{weierstrass}) zu vereinfachen. \\
 \newline
 Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h.\ $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. 
 Diese Menge $U$ bezeichnen wir im Folgenden als unendlich ferne Gerade.
@@ -631,9 +631,9 @@ Damit lautet das Ergebnis
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\patinf = (0:1:0)$, auf $E$ liegt.
 Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenz, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
-Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\patinf$ die Gleichung. \\ 
+Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung. \\ 
 Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
-Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
+Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~(\ref{reduziert-weierstrass}) vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
 \end{equation}
@@ -643,7 +643,7 @@ Wir wissen aus Satz~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktemeng
 \end{equation*}
 Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\patinf$ nicht außer Acht lassen.
 \begin{bsp}
-    Skizzen elliptischer Kurven über dem Körper $\mathbb{R}$
+    Skizzen elliptischer Kurven über dem Körper $\mathbb{R}$.
     \begin{figure}[H]
         \centering
         \subfloat[$y^2=x^3 + 0.5x + 2$]{
@@ -687,8 +687,13 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
     \end{figure}
 \end{bsp}
 \section{Eine Gruppe über $E$}
-Macht Kevin bis 4.3\\
+Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punkte elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
+
+In den folgenden Kapiteln beschränken
 \subsection{Tangenten elliptischer Kurven}
+\begin{defn}
+	Es sei $P$ ein Punkt der elliptischen Kurve 
+\end{defn}
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}
@@ -739,7 +744,7 @@ wobei
         \frac{3p_1^2 + a}{2p_2}, & \text{falls $P = Q \neq -P$.} \\
     \end{cases}
 \end{equation*}
-Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung(\ref{affines-polynom}) von $E$ gemeint. \\
+Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung~(\ref{affines-polynom}) von $E$ gemeint. \\
 \newline
 Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden ohne auf die graphische Lösung zurückzugreifen.
 Es ist also auch möglich Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}$ zu definieren.

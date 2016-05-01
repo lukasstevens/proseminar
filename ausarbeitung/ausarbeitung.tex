@@ -67,7 +67,7 @@
 \usepackage{tikz-3dplot}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
-\pgfplotsset{
+\pgfplotsset{compat=1.12,
     every axis/.append style={
                     axis x line=middle,    % put the x axis in the middle
                     axis y line=middle,    % put the y axis in the middle
@@ -489,7 +489,7 @@ $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von
 Um in~\ref{definition-ek} elliptische Kurven genau beschreiben zu können und in~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
 Wir wählen dazu eine Gerade $U \in \mathcal{G}$ aus. 
 Prinzipiell kann dazu jede Gerade gewählt werden. 
-Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraßgleichung~(\ref{weierstrass}) zu vereinfachen. \\
+Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraß-Gleichung~(\ref{weierstrass}) zu vereinfachen. \\
 \newline
 Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h.\ $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. 
 Diese Menge $U$ bezeichnen wir im Folgenden als unendlich ferne Gerade.
@@ -523,7 +523,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
 \end{proof}
 Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projektiven Geraden abbilden kann. Außerdem bekommen diese affinen Geraden im Projektiven dann einen Schnittpunkt, der auf der unendlich fernen Gerade $U$ liegt.
 \subsection{Definiton elliptischer Kurven} \label{definition-ek}
-%Weierstraßgleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
+%Weierstraß-Gleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
 Diese hat die folgende Punktemenge:
 \begin{equation*}
@@ -612,7 +612,7 @@ Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, oder anders gesagt:
 Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen dafür auf Silverman~\cite[Seite~44]{silverman}.  \\ 
 \newline
 %Zitat? Seite 50 Milner
-Wir können jetzt die Weierstraßgleichung(\ref{weierstrass}), welche die Form
+Wir können jetzt die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
 \begin{equation*}
     Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
 \end{equation*}
@@ -687,12 +687,19 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
     \end{figure}
 \end{bsp}
 \section{Eine Gruppe über $E$}
-Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punkte elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
+Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punktemenge elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
 
-In den folgenden Kapiteln beschränken
+In den folgenden Kapiteln beschränken wir uns auf auf elliptische Kurven $E$ über Körpern $\mathbb{F}$ mit folgenden Voraussetzungen:
+\begin{itemize}
+	\item Es gelte $char\ \mathbb{F}\ne2,3$
+	\item $E$ sei nicht singulär, d.h.\ das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
+\end{itemize}
 \subsection{Tangenten elliptischer Kurven}
 \begin{defn}
-	Es sei $P$ ein Punkt der elliptischen Kurve 
+	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Widr definieren die Tangente an $E$ im Punkt $P$:
+\begin{equation*}
+	T_P\coloneqq\Bigl\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)=0\Bigr\}
+\end{equation*}
 \end{defn}
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse

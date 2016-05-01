@@ -67,7 +67,7 @@
 \usepackage{tikz-3dplot}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
-\pgfplotsset{compat=1.13,
+\pgfplotsset{
     every axis/.append style={
                     axis x line=middle,    % put the x axis in the middle
                     axis y line=middle,    % put the y axis in the middle
@@ -102,11 +102,6 @@
 \pagenumbering{gobble}
 \maketitle
 \vspace{6em}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{cover}
-\end{figure}
-
 \newpage
 \tableofcontents % Inhaltsverzeichnis
 \listoffigures % Abbildungsverzeichnis
@@ -637,7 +632,7 @@ Damit lautet das Ergebnis
 Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\patinf = (0:1:0)$, auf $E$ liegt.
 Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenz, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~\ref{reduziert-weierstrass} einsetzen, dann löst nur $\patinf$ die Gleichung. \\ 
-Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h. alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
+Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~\ref{reduziert-weierstrass} vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
@@ -750,7 +745,7 @@ Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kan
 Es ist also auch möglich Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}$ zu definieren.
 \begin{bsp}
     Es ist möglich die Punkte $P = (-1,1)$ und $Q = (0,1)$ auf $E$ über $\mathbb{R}$ graphisch zu addieren. 
-    Man zieht dazu eine Gerade durch die Punkte $P$ und $Q$ und erhält den Schnittpunkt $P \oplus Q$. Danach berechnet man den Punkt $-(P \oplus Q)$, d.h. man spiegelt an der $x$-Achse.
+    Man zieht dazu eine Gerade durch die Punkte $P$ und $Q$ und erhält den Schnittpunkt $P \oplus Q$. Danach berechnet man den Punkt $-(P \oplus Q)$, d.h.\ man spiegelt an der $x$-Achse.
     \begin{figure}[H]
         \centering
         \subfloat[$E: y^2=x^3 - x + 1$]{

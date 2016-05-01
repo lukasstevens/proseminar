@@ -750,7 +750,7 @@ In den folgenden Kapiteln beschränken wir uns auf auf elliptische Kurven $E$ ü
 \end{defn}
 Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält. Wie gewohnt bezeichne $U=\left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$ die unendlich ferne Gerade.
 
-\begin{lem}
+\begin{lem}\label{proj-tang}
 	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Dann gilt $T_P\in\mathcal{G}$ und $P\in T_P$.
 \end{lem}
 \begin{proof}
@@ -787,7 +787,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	\begin{equation*}
 		\frac{\partial F}{\partial X}=-3X^2+Z,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2+4XZ
 	\end{equation*}
-	Somit folgt
+	Somit folgt:
 	\begin{equation*}
 		\frac{\partial F}{\partial X}(P)=1,\quad \frac{\partial F}{\partial Y}(P)=0,\quad \frac{\partial F}{\partial Z}(P)=0
 	\end{equation*}
@@ -824,6 +824,15 @@ Somit gilt die Behauptung.
 \end{proof}
 
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
+Bevor wir im nächsten Abschnitt eine Verknüpfungsoperation definieren, betrachten wir die Menge der Schnittpunkte einer Geraden mit der Punktmenge $E$.\\
+
+\textbf{Die unendlich ferne Gerade} $U$ schneidet die Punktmenge E nur im unendlich fernen Punkt $\patinf$. Nach Lemma~\ref{proj-tang} gilt $U=T_{\patinf}$.\\
+
+\textbf{Affine Geraden der Form} $y=ax+b$ schneiden die Punktmenge $E$ wie folgt. Wir setzen $y=kx+d$ in die Gleichung~(\ref{affines-polynom}) ein und erhalten:
+\begin{equation*}
+	(kx+d)^2=x^3+ax+b
+\end{equation*}
+
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}\label{schnittpunkt-verkn}
 \begin{thm} \label{oplus-op}
@@ -936,11 +945,11 @@ Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist fo
     wird diskretes Logarithmierungsproblem(DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
 \end{defn}
 Jede Gruppe $G$ hat ihr eigenes Logarithmierungsproblem.
-Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$. 
+Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$. 
 Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
-Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen wie schwer das DLP elliptischer Kurven zu lösen ist. \\
+Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen, wie schwer das DLP elliptischer Kurven zu lösen ist.\\
 \newline
-Der erste, naive Ansatz ist das Lösen des Problems durch Ausprobieren. Es wird mit $x$ gestartet und die Gruppenoperation so lange angewandt bis das Ergebnis $y$ lautet. 
+Der erste, naive Ansatz ist das Lösen des Problems durch Ausprobieren. Es wird mit $x$ gestartet und die Gruppenoperation so lange angewandt, bis das Ergebnis $y$ lautet. 
 Damit ist die Laufzeit in $O(|E|)$. 
 Da die Anzahl der Gruppenelemente jedoch exponentiell mit der Schlüssellänge wächst, steigt die Laufzeit des naiven Ansatzes dementsprechend exponentiell mit der Schlüssellänge.
 In nahezu allen Gruppen kann das DLP schneller mit dem Babystep-Giantstep Algorithmus gelöst werden, welcher eine Laufzeit von $O(\sqrt{|E|})$ hat.

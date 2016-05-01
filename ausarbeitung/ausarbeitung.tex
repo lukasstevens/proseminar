@@ -12,10 +12,16 @@
 %% Paket für Unterabbildungen pro Abbildung
 \usepackage{subfig}
 
+\usepackage{forloop}
 
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcomment[1]{\(\qquad \triangleright\) #1}
+\algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
 
 \usepackage{mathtools}
 % Proof system
@@ -136,6 +142,7 @@ Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die 
 	256 	& 15360 & 512+ \\ \hline
 	\end{tabular}
 \caption{Vergleich Schlüssellängen}
+\label{keylength}
 \end{table}
 
 Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die \textbf{Elliptische-Kurven-Kryptographie} (kurz \textbf{ECC} für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
@@ -807,27 +814,117 @@ Bei elliptischen Kurven wird sich dabei die Schwierigkeit des diskreten Logarith
 Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist folgendermaßen definiert:
 %Seite 376 silverman
 \begin{defn} \label{DLP}
-    Sei $G$ endliche Gruppe und seien $x,y \in G$. $y$ soll die Untergruppe sein, die durch $x$ generiert wird. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
+    Sei $G$ eine Gruppe und seien $x,y \in G$. $y$ soll die Untergruppe sein, die durch $x$ generiert wird. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
     \begin{equation*}
         x^m = y,
     \end{equation*}
-    wird diskretes Logarithmierungsproblem(DLP) genannt.
+    wird diskretes Logarithmierungsproblem(DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
 \end{defn}
 Jede Gruppe $G$ hat ihr eigenes Logarithmierungsproblem.
 Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$. 
 Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
 Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen wie schwer das DLP elliptischer Kurven zu lösen ist. \\
 \newline
-Das DLP kann in nahezu allen Gruppen mit dem Babystep-Giantstep Algorithmus gelöst werden, welcher eine Laufzeit von $O(\sqrt{|E|})$ hat.
-Da die Anzahl der Gruppenelemente jedoch exponentiell mit der Schlüssellänge wächst, steigt auch die Laufzeit dieses Algorithmus exponentiell mit der Schlüssellänge.
+Der erste, naive Ansatz ist das Lösen des Problems durch Ausprobieren. Es wird mit $x$ gestartet und die Gruppenoperation so lange angewandt bis das Ergebnis $y$ lautet. 
+Damit ist die Laufzeit in $O(|E|)$. 
+Da die Anzahl der Gruppenelemente jedoch exponentiell mit der Schlüssellänge wächst, steigt die Laufzeit des naiven Ansatzes dementsprechend exponentiell mit der Schlüssellänge.
+In nahezu allen Gruppen kann das DLP schneller mit dem Babystep-Giantstep Algorithmus gelöst werden, welcher eine Laufzeit von $O(\sqrt{|E|})$ hat.
+Dadurch ist die Laufzeit jedoch immer noch exponentiell in $log(q)$. 
 Ein weiteres prominentes Beispiel ist Pollard's $\rho$ Algorithmus. Auch für diesen Algorithmus kann gezeigt werden, dass die Laufzeit in $O(\sqrt{|E|})$ ist. Somit kann auch hiermit keine subexponentielle Laufzeit erreicht werden~\cite[Seite~386]{silverman}. \\
-In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allgemeinen elliptische Kurven in subexponentieller Zeit lösen kann. Wenn man jedoch bestimmte Einschränkungen für die Parameter trifft, dann sind durchaus subexponentielle Laufzeiten möglich~\cite{joux2011}.
+In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allgemeinen elliptischen Kurven in subexponentieller Zeit lösen kann. Wenn man jedoch bestimmte Einschränkungen für die Parameter trifft, dann sind durchaus subexponentielle Laufzeiten möglich~\cite{joux2011}.
 Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei geeigner Wahl der Domänenparameter sicher. \\
 \newline
 % Index calculus
-Interessant ist der Vergleich mit anderen Verschlüsselungsverfahren, welche auf anderen Gruppen basieren.
+Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
+Wie bereits erwähnt sind gut gewählte elliptische Kurven gegen diese Angriffe jedoch immun.
+Damit ist das Sicherheitsniveau von ECC im Vergleich zu
+RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle(\ref{keylength}).
+
 \subsection{ElGamal}
-Welche Charakteristiken für elliptische Kurven, Domänenparameter
+\subsubsection{Schlüsselgenerierung, Verschlüsselung und Entschlüsselung}
+Wir wissen nun, dass das DLP auf elliptische Kurven schwer zu lösen ist. Das können wir uns jetzt zu Nutze machen um tatsächlich Nachrichten zu verschlüsseln. Deshalb möchten wir kurz auf ein Verschlüsselungsverfahren eingehen, dass auf der Gruppe $(E, +)$ funktioniert, nämlich das Elgamal-Verschlüsselungsverfahren. \\
+\newline
+Wir haben einen endlichen Körper $\mathbb{F}$, eine elliptische Kurve $E$ über $\mathbb{F}$ und einen Punkt $G \in E$ gegeben. Der Empfänger, den wir Bob nennen, wählt eine natürliche Zahl $a$, berechnet $Q = aG \in E$. \\
+Bob behält $a$ als seinen geheimen Schlüssel. Der öffentliche Schlüssel ist dann $(\mathbb{F}, E, G, Q)$. Bob schickt anschließend der Senderin Alice den öffentlichen Schlüssel. Wenn Alice den Klartext $\mathcal{P} \in E$ nun verschlüsseln will muss sie 3 Schritte durchführen:
+\begin{enumerate}
+    \item Alice wählt zufällig eine Zahl $b \in \mathbb{N}$.
+    \item Alice berechnet $B \coloneqq bG \in E$ und $C \coloneqq bQ + \mathcal{P} \in E$.
+    \item Alice sendet den Geheimtext $\mathcal{C} = (B,C)$ an Bob.
+\end{enumerate}
+Dabei kann ein Angreifer den Klartext $\mathcal{P}$ nicht effizient berechnen, da er dafür das Logarithmierungsproblem auf elliptischen Kurven lösen müsste. \\
+\newline
+Bob hat von Alice jetzt den Geheimtext $\mathcal{C} = (B,C)$ erhalten und möchte mit Hilfe seines geheimen Schlüssels den Klartext $\mathcal{P}$ berechnen. Er berechnet dazu $-aB + C$. 
+Da $B=bG$, $C=bQ + \mathcal{P}$ und $Q = aG$ gilt, folgt:
+\begin{equation*}
+    -aB + C = -abG + bQ + \mathcal{P} = -abG + abG + \mathcal{P} = \mathcal{P}.
+\end{equation*}
+So erhält Bob den Klartext $\mathcal{P} \in E$ aus dem Geheimtext $\mathcal{C}$. In der Praxis muss man ein Verfahren festlegen, wie man von einer Nachricht zu einem Punkt auf der elliptischen Kurve umwandelt.
+\subsubsection{Effiziente Berechnung des Skalarprodukts}
+% Silverman S.364
+Wir haben bereits gesehen, dass die Skalarmultiplikation $aP = Q$ mit $a \in \mathbb{N}$ und $P, Q \in E$ die zentrale Operation bei der Ver- und Entschlüsselung ist. \\
+Wenn man diese naiv berechnet, d.h. man berechnet $(\dots (((P + P) + P) + P) \dots )$ von innen nach außen, dann verhält sich die Laufzeit offensichtlich linear im Bezug auf $a$; die genaue Anzahl der Schritte beträgt $a-1$. \\
+Man kann jedoch die Assoziativität der Operation $+$ ausnutzen um ein deutlich effizienteres Verfahren zu erhalten. Dabei ordnet man die einzelnen Additionen neu an.
+\begin{bsp}
+    Wir wollen $13P$ berechnen.
+    Wenn man die Additionen in einem Baum anordnet können Ergebnisse wiederverwendet werden. Man muss jedes Zwischenergebnis nur einmal berechnen. In diesem Beispiel verringert sich die Anzahl der Operationen von elf beim naiven Ansatz auf fünf beim effizienten Verfahren.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \foreach \y in {0.0, 1.0, ..., 12.0 }{
+                \draw (\y, 0) node {$P$};
+            }
+            \foreach \y in {0.5, 1.5, ..., 11.5} {
+                \draw (\y, 0) node {$+$};
+            }
+            \foreach \y in {0.5, 2.5, ..., 10.5} {
+                \draw (\y, -0.75) node {$2P$};
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y - 0.5, 0) -- (\y, -0.75);
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y + 0.5, 0) -- (\y, -0.75);
+            }
+            \foreach \y in {1.5, 5.5, ..., 9.5} {
+                \draw (\y, -1.5) node {$4P$};
+                \draw (\y, -0.75) node {$+$};
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y - 1.0, -0.75) -- (\y, -1.5);
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y + 1.0, -0.75) -- (\y, -1.5);
+            }
+            \draw (3.5, -2.25) node {$8P$}; 
+            \draw (3.5, -1.5) node {$+$};
+            \draw[shorten <= 0.25cm, shorten >= 0.25cm] (3.5 - 2.0, -1.5) -- (3.5, -2.25);
+            \draw[shorten <= 0.25cm, shorten >= 0.25cm] (3.5 + 2.0, -1.5) -- (3.5, -2.25);
+            \draw (7.5, -2.25) node {$+$};
+            \draw (11.5, -2.25) node {$+$};
+            \draw (9.5, -2.25) node {$4P$};
+            \draw (12.0, -2.25) node {$P$};
+
+        \end{tikzpicture}
+        \caption{Effiziente Skalarmultiplikation mit Additionsbaum}
+    \end{figure}
+\end{bsp}
+Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
+\begin{algorithm}[H]
+    \caption{Multiplikation eines Skalars $n \in \mathbb{N}$ mit einem Punkt $P \in E$ }
+  \begin{algorithmic}[1]
+      \Require{$n$ lässt sich binär zerlegen in $n = n_0 + n_1 \times 2 + n_2 \times 2^2 + \dots + n_t \times 2^t$}
+    \Statex
+    \Function{multipliziere}{$n, P$}
+    \If{$n_0 = 0$} 
+    \Let{$Acc$}{$\patinf$} \Comment{$\mathcal{O}$ ist der unendlich ferne Punkt}
+    \Else
+    \Let{$Acc$}{$P$}
+\EndIf
+\For{$i \gets 1 \textrm{ to } n_t$}
+      \Let{$P$}{$P + P$} 
+      \If{$n_i = 1$}
+      \Let{$Acc$}{$Acc + P$}
+  \EndIf
+      \EndFor
+      \State \Return{$Acc$}
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+Wenn man diesen Algorithmus betrachten, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Diesen Verfahren kann auch auf beliebige Gruppen angewendet
+werden, da die Assoziativität der $+$-Operation in einer Gruppe gegeben sein muss.
+
 \subsection{Noch einen für Signaturen}
 Welche Charakteristiken für elliptische Kurven, Domänenparameter
 

@@ -325,7 +325,7 @@ Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3
 Wir schreiben $[a]$ oder auch $(a_1:a_2:a_3)$ für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$.\\
 Man bemerke: Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ gerade den von a aufgespannten eindimensionalen Untervektorraum $\langle a \rangle=\mathbb{F}a=\{\lambda a\mid\lambda\in\mathbb{F}\}$ dar.\\
 
-Weiters definieren wir uns die \textit{Quotientenmenge}, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktemenge:
+Weiters definieren wir uns die \textit{Quotientenmenge}, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktmenge:
 \begin{equation*}
 	\mathcal{P}\coloneqq(\ftnz)/\sim\ = \left \{[a]\mid a\in\ftnz\right \}
 \end{equation*}
@@ -383,7 +383,7 @@ und somit
 \begin{proof}
 	Wir müssen zeigen, dass die unter Definition~\ref{projektive-ebene} festgelegten Bedingungen (P1), (P2) und (P3) gelten.
 \begin{enumerate}
-	\item[(P1)] Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.\\
+	\item[(P1)] Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.
 	Die Eindeutigkeit ergibt sich aus (P2).
 	\item[(P2)] Es sei $G,H\in\mathcal{G}$ mit $P\ne Q$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
 	\begin{align*}
@@ -568,11 +568,11 @@ Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projekt
 \subsection{Definiton elliptischer Kurven} \label{definition-ek}
 %Weierstraß-Gleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
-Diese hat die folgende Punktemenge:
+Diese hat die folgende Punktmenge:
 \begin{equation*}
     P = \left\{(u:v:w) \mid (u,v,w) \in \ftnz \right\}
 \end{equation*}
-Nun wollen wir die Punktemenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktemenge $\mathcal{P}$ ist, d.h. $E \subseteq \mathcal{P}$. 
+Nun wollen wir die Punktmenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktmenge $\mathcal{P}$ ist, d.h. $E \subseteq \mathcal{P}$. 
 Dazu benötigen wir Polynome in drei Unbekannten.
 Der Polynomring mit drei Unbekannten über $\mathbb{F}$ ist mit 
 \begin{equation*}
@@ -661,11 +661,11 @@ Wir können jetzt die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
 \end{equation*}
 hat, umformen. Zuerst können wir, wenn $char \: \mathbb{F} \neq 2$ gilt, den Term $XYZ$ mit folgendem Variablenwechsel eliminieren:
 \begin{equation*}
-    X' = X, \: Y' = Y + \frac{a_1}{2} X, \: Z' = Z 
+    X' = X,\quad Y' = Y + \frac{a_1}{2} X,\quad Z' = Z 
 \end{equation*}
 Anschließend könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $char \: \mathbb{F} \neq 2,3$ gilt:
 \begin{equation*}
-    X' = X + \frac{a_2}{3}, \: Y' = Y + \frac{a_3}{2}, \: Z' = Z
+    X' = X + \frac{a_2}{3},\quad Y' = Y + \frac{a_3}{2},\quad Z' = Z
 \end{equation*}
 Damit lautet das Ergebnis
 \begin{equation} \label{reduziert-weierstrass}
@@ -674,13 +674,13 @@ Damit lautet das Ergebnis
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
 Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\patinf = (0:1:0)$, auf $E$ liegt.
 Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenz, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
-Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung. \\ 
+Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung.\\ 
 Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~(\ref{reduziert-weierstrass}) vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
 \end{equation}
-Wir wissen aus Satz~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktemenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktemenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\patinf$:
+Wir wissen aus Satz~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktmenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktmenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\patinf$:
 \begin{equation*}
     E = \left\{(u:v:1) \mid (u,v) \in \mathbb{F}^2 \land f(u,v) = 0 \right\} \cup \left\{ \patinf \right\}
 \end{equation*}
@@ -729,21 +729,59 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
         \caption{Beispiele elliptischer Kurven}
     \end{figure}
 \end{bsp}
+
+
 \section{Eine Gruppe über $E$}
-Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punktemenge elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
+Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punktmenge elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
 
 In den folgenden Kapiteln beschränken wir uns auf auf elliptische Kurven $E$ über Körpern $\mathbb{F}$ mit folgenden Voraussetzungen:
 \begin{itemize}
 	\item Es gelte $char\ \mathbb{F}\ne2,3$
 	\item $E$ sei nicht singulär, d.h.\ das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
 \end{itemize}
+
 \subsection{Tangenten elliptischer Kurven}
 \begin{defn}
 	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
 \begin{equation*}
-	T_P\coloneqq\Bigl\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)=0\Bigr\}
+	T_P\coloneqq\Bigl\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\Bigr\}
 \end{equation*}
 \end{defn}
+Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält. Wie gewohnt bezeichne $U=\left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$ die unendlich ferne Gerade.
+
+\begin{lem}
+	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Dann gilt $T_P\in\mathcal{G}$ und $P\in T_P$.
+\end{lem}
+\begin{proof}
+	Wir bestimmen die partiellen Ableitungen von $F$:
+	\begin{equation*}
+		\frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
+	\end{equation*}
+	1. Fall: $P=\patinf=(0:1:0)$. Dann gilt:
+	\begin{equation*}
+		\frac{\partial F}{\partial X}(\patinf)=\frac{\partial F}{\partial Y}(\patinf)=0,\quad \frac{\partial F}{\partial Z}(\patinf)=1
+	\end{equation*}
+	Das bedeutet:
+	\begin{equation*}
+		T_{\patinf}=\{(u:v:w)\in P\mid 0u+0v+1w=0\}=\{(u:v:w)\in P\mid w=0\}=U
+	\end{equation*}
+	Die Tangente im Punkt $\patinf$ ist also genau die unendlich ferne Gerade $U$.\\
+
+	2. Fall: $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
+	\begin{equation*}
+		T_{P}=\{(u:v:w)\in P\mid (-3x^2-a)u+2yv+(y^2-2ax-3b)w=0\}
+	\end{equation*}
+	$T_P$ stellt also ein lineares homogenes Gleichungssystem mit drei Variablen $u,v,w$ dar und besitzt somit als Lösungsmenge einen zweidimensionalen Untervektorraum von $\mathbb{F}^3$, falls nicht alle Koeffizienten gleich 0 sind. Hieraus folgt, dass $T_P$ eine Gerade in \pgtwo ist.\\
+	Wir zeigen nun, dass im Fall $y=0$ sofort $3x^2+a\ne0$ folgt, also immer mindestens ein Koeffizient des Gleichungssystems nicht 0 ist.\\
+	Sei also $y=0$. Dann gilt $x^3+ax+b=0$, da $P=(x:0:1)$ auf $E$ liegt. Dieses Polynom hat nach Voraussetzung keine mehrfachen Nullstellen, deshalb ist $x$ nicht Nullstelle der Ableitung $3x^2+a$, also $3x^2+a\ne0$.\\
+	Nun müssen wir noch $P\in T_P$ zeigen. Dazu setzen wir den Punkt $P$ in das Gleichungssystem für $T_P$ ein:
+	\begin{align*}
+		(-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-3ax+3y^2-3b\\
+	    &=3\underbrace{(y^2-x^3-ax-b)}_{f(x,y)=0}\stackrel{(\ref{affines-polynom})}{=}0
+	\end{align*}
+	Folglich gilt $P\in T_P$.
+\end{proof}
+
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}

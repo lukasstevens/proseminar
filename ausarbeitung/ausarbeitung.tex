@@ -681,9 +681,9 @@ Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P 
     f(x,y) \coloneqq y^2 - x^3 - ax - b
 \end{equation}
 Wir wissen aus Satz~\ref{projektive-zu-affinen}, dass $\pu$ genau die Punktmenge einer affinen Ebene ist. Wenn wir zusätzlich die Abbildung $\phi$ aus Lemma~\ref{isomorphismus-lemma} auf $\pu$ anwenden, dann zerfällt die Punktmenge der elliptischen Kurve $E$ in zwei Teilmengen, einen affinen Teil und den unendlichen Punkt $\patinf$:
-\begin{equation*}
+\begin{equation} \label{elliptic-curve-aff-inf}
     E = \left\{(u:v:1) \mid (u,v) \in \mathbb{F}^2 \land f(u,v) = 0 \right\} \cup \left\{ \patinf \right\}
-\end{equation*}
+\end{equation}
 Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\patinf$ nicht außer Acht lassen.
 \begin{bsp}
     Skizzen elliptischer Kurven über dem Körper $\mathbb{R}$.
@@ -727,6 +727,7 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
                 \end{axis}
             \end{tikzpicture}}
         \caption{Beispiele elliptischer Kurven}
+	\label{fig:elliptic-curves}
     \end{figure}
 \end{bsp}
 
@@ -777,14 +778,54 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	Nun müssen wir noch $P\in T_P$ zeigen. Dazu setzen wir den Punkt $P$ in das Gleichungssystem für $T_P$ ein:
 	\begin{align*}
 		(-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-3ax+3y^2-3b\\
-	    &=3\underbrace{(y^2-x^3-ax-b)}_{f(x,y)=0}\stackrel{(\ref{affines-polynom})}{=}0
+	    &=3\underbrace{(y^2-x^3-ax-b)}_{=f(x,y)=0}\stackrel{(\ref{elliptic-curve-aff-inf})}{=}0
 	\end{align*}
 	Folglich gilt $P\in T_P$.
+\end{proof}
+\begin{bsp}
+	Wir bestimmen die Tangente an $E$ über $F(X,Y,Z)=Y^2Z-X^3+2XZ^2$ im Punkt \mbox{$P=(0:0:1)$}. Die Ableitungen sind:
+	\begin{equation*}
+		\frac{\partial F}{\partial X}=-3X^2+Z,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2+4XZ
+	\end{equation*}
+	Somit folgt
+	\begin{equation*}
+		\frac{\partial F}{\partial X}(P)=1,\quad \frac{\partial F}{\partial Y}(P)=0,\quad \frac{\partial F}{\partial Z}(P)=0
+	\end{equation*}
+	Für die Tangente ergibt sich also:
+	\begin{equation*}
+		T_P=\{(u:v:w)\in \mathcal{P}\mid u=0\}
+	\end{equation*}
+	Affin gedeutet ist $P$ der Nullpunkt und $T_P$ genau die y-Achse. Die Tangente entspricht genau dem, was man sich anschaulich als Tangente für den Punkt vorstellen würde. Dies ist in Abbildung~\ref{fig:elliptic-curves}(b) sichtbar.
+\end{bsp}
+Nun wollen wir die Tangenten der Kurve $E$ ins affine Übersetzen. Die affine Darstellung wird uns dabei vor allem in Abschnitt~\ref{schnittpunkt-verkn} als nützlich erweisen.
+\begin{lem}
+	Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffasen. Dann gilt:
+	\begin{equation*}
+		T_P\setminus U =\Bigl\{(u,v)\mid \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0\Bigr\}
+	\end{equation*}
+\end{lem}
+\begin{proof}
+Wir bestimmen die partiellen Ableitungen von $F$ an der Stelle $P$:
+\begin{equation*}
+		\frac{\partial F}{\partial X}=-3x^2-a=\frac{\partial f}{\partial x},\quad \frac{\partial F}{\partial Y}=2y=\frac{\partial f}{\partial y},\quad \frac{\partial F}{\partial Z}=y^2-2ax-3b
+\end{equation*}
+Da $P$ auf $T_P$ liegt gilt:
+\begin{equation}\label{aff-p-in-tp}
+	\frac{\partial f}{\partial x}(P)x+\frac{\partial f}{\partial y}(P)y=-\frac{\partial F}{\partial Z}(P)
+\end{equation}
+Für einen beliebigen Punkt $Q\in\mathcal{P}$ erhalten wir:
+\begin{align*}
+	Q\in T_P\setminus U & \Leftrightarrow Q=(u:v:1)\in T_P\\
+			    & \Leftrightarrow \frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)=0\\
+	      & \stackrel{(\ref{aff-p-in-tp})}{\Leftrightarrow} \frac{\partial f}{\partial x}(P)u+\frac{\partial f}{\partial y}(P)v-\frac{\partial f}{\partial x}(P)x-\frac{\partial f}{\partial y}(P)y=0\\
+	& \Leftrightarrow \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0
+\end{align*}
+Somit gilt die Behauptung.
 \end{proof}
 
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
-\subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}
+\subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}\label{schnittpunkt-verkn}
 \begin{thm} \label{oplus-op}
     Definition und Beweis $\oplus$
 \end{thm}

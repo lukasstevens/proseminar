@@ -729,7 +729,7 @@ Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir n
 In den folgenden Kapiteln beschränken wir uns auf auf elliptische Kurven $E$ über Körpern $\mathbb{F}$ mit folgenden Voraussetzungen:
 \begin{itemize}
 	\item Es gelte $char\ \mathbb{F}\ne2,3$
-	\item $E$ sei nicht singulär, d.h.\ das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
+	\item $E$ sei nicht singulär, d.h.\ insbesondere das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
 \end{itemize}
 
 \subsection{Tangenten elliptischer Kurven}
@@ -789,7 +789,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	Affin gedeutet ist $P$ der Nullpunkt und $T_P$ genau die y-Achse. Die Tangente entspricht genau dem, was man sich anschaulich als Tangente für den Punkt vorstellen würde. Dies ist in Abbildung~\ref{fig:elliptic-curves}(b) sichtbar.
 \end{bsp}
 Nun wollen wir die Tangenten der Kurve $E$ ins affine Übersetzen. Die affine Darstellung wird uns dabei vor allem in Abschnitt~\ref{schnittpunkt-verkn} als nützlich erweisen.
-\begin{lem}
+\begin{lem}\label{aff-tang}
 	Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffasen. Dann gilt:
 	\begin{equation*}
 		T_P\setminus U =\Bigl\{(u,v)\mid \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0\Bigr\}
@@ -819,12 +819,29 @@ Bevor wir im nächsten Abschnitt eine Verknüpfungsoperation definieren, betrach
 
 \textbf{Die unendlich ferne Gerade} $U$ schneidet die Punktmenge E nur im unendlich fernen Punkt $\patinf$. Nach Lemma~\ref{proj-tang} gilt $U=T_{\patinf}$.\\
 
-\textbf{Affine Geraden der Form} $y=ax+b$ schneiden die Punktmenge $E$ wie folgt. Wir setzen $y=kx+d$ in die Gleichung~(\ref{affines-polynom}) ein und erhalten:
-\begin{equation*}
+\textbf{Affine Geraden der Form} $y=kx+d$ schneiden die Punktmenge $E$ wie folgt. Wir setzen $y=kx+d$ in die Gleichung~(\ref{affines-polynom}) ein und erhalten:
+\begin{equation}\label{aff-ger-elip}
 	(kx+d)^2=x^3+ax+b
+\end{equation}
+Dies ist eine kubische Gleichung für die x-Koordinaten der Schnittpunkte. Somit gibt es im Allgemeinen drei Schnittpunkte der affinen Geraden mit $E$, es seien dies $(x_1,y_1),(x_2,y_2),(x_3,y_3)$.\\
+Die drei x-Koordinaten müssen nicht voneinander verschieden sein, aber falls $x_i=x_j$ für $i\ne j$ gilt, dann auch $y_i=y_j$ und die affine Gerade ist eine Tangente an $E$ im Punkt $P=(x_i,y_i)$.
+Ist $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), muss, da $E$ nicht singulär ist und $x^3+ax+b$ somit keine mehrfache Nullstelle hat, $kx_i+d\ne 0$ gelten und die folgende Gleichung, die durch Ableiten aus Gleichung~(\ref{aff-ger-elip}) entsteht, erfüllen:
+\begin{equation*}
+	2(kx_i+d)x=3x_i^2+a \Leftrightarrow k=\frac{3x_i^2+a}{2(kx_i+d)}
 \end{equation*}
+Somit ist also $k=\frac{3x_i^2+a}{2(kx_i+d)}$ die Steigung von $T_P$.\\
 
-Unendlich ferne Gerade mit Schnittpunkt $\patinf$, Affine Geraden, Parallele zur y-Achse
+\textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
+\begin{equation*}
+	\phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
+\end{equation*}
+Somit hat die Gerade im projektiven einen Schnittpunkt mit $\patinf=(0:1:0)$.\\
+Außerdem hat die Gerade zwei weitere affine Schnittpunkte
+\begin{equation*} 
+	P_{1,2}=(x,\pm \sqrt{x^3+ax+b})
+\end{equation*}
+wobei erneut im Fall von $P_1=P_2=(x,0)$ aus Lemma~\ref{aff-tang} mit $P_i=(x,0)$ folgt, dass die y-Achse eine Tangente an $E$ in $P_i$ ist.
+
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}\label{schnittpunkt-verkn}
 \begin{thm} \label{oplus-op}
     Definition und Beweis $\oplus$

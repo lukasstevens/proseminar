@@ -950,10 +950,9 @@ In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allge
 Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei geeigner Wahl der Domänenparameter sicher. \\
 \newline
 % Index calculus
-Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
-Wie bereits erwähnt sind gut gewählte elliptische Kurven gegen diese Angriffe jedoch immun.
-Damit ist das Sicherheitsniveau von ECC im Vergleich zu
-RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle(\ref{keylength}).
+Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden~\cite{joux2014}. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
+Diese Angriffe verlassen sich jedoch sehr auf bestimmte Eigenschaften von Primzahlen. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven, bei geeigneter Wahl der Parameter gegen diese Angriffe immun.
+Aufgrund dessen ist das Sicherheitsniveau von ECC im Vergleich zu RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle(\ref{keylength}).
 
 \subsection{ElGamal}
 \subsubsection{Schlüsselgenerierung, Verschlüsselung und Entschlüsselung}

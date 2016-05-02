@@ -652,28 +652,19 @@ Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, da
 \end{equation*}
 Wir wollen nun noch eine Einschränkung treffen: die Charakteristik des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 
 Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw.\ 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. \\
-Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen dafür auf Silverman~\cite[Seite~44]{silverman}.  \\ 
-\newline
+Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen dafür auf Silverman~\cite[Seite~44]{silverman}.  \\ \newline
 %Zitat? Seite 50 Milner
-Wir können jetzt die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
+Wenn $char \: \mathbb{F} \neq 2$ und $char \: \mathbb{F} \neq 3$ gegeben ist, dann können wird die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
 \begin{equation*}
     Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
 \end{equation*}
-hat, umformen. Zuerst können wir, wenn $char \: \mathbb{F} \neq 2$ gilt, den Term $XYZ$ mit folgendem Variablenwechsel eliminieren:
-\begin{equation*}
-    X' = X,\quad Y' = Y + \frac{a_1}{2} X,\quad Z' = Z 
-\end{equation*}
-Anschließend könnnen wir auch noch die Terme $X^2$ und $Y$ eliminieren, falls $char \: \mathbb{F} \neq 2,3$ gilt:
-\begin{equation*}
-    X' = X + \frac{a_2}{3},\quad Y' = Y + \frac{a_3}{2},\quad Z' = Z
-\end{equation*}
-Damit lautet das Ergebnis
+hat, umformen. Mit einer Koordinatentransformation kann man die Gleichung
 \begin{equation} \label{reduziert-weierstrass}
-    Y^2Z = X^3 + aXZ^2 + bZ^3.
+    Y^2Z = X^3 + aXZ^2 + bZ^3
 \end{equation}
+herleiten~\cite[Seite~50]{milne2006}.
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
-Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\patinf = (0:1:0)$, auf $E$ liegt.
-Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenz, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
+Wir wollen eine affine Darstellung herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der Punkt $\patinf = (0:1:0)$, auf $E$ liegt.  Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenz, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate haben: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung.\\ 
 Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~(\ref{reduziert-weierstrass}) vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 

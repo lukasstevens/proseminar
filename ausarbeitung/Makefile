@@ -7,6 +7,8 @@ OPTIONS=-bibtex -pdf -pdflatex="pdflatex --shell-escape"
 
 all:
 	latexmk $(OPTIONS) $(TARGET).tex
+force:
+	latexmk -gg $(OPTIONS) $(TARGET).tex
 watch:
 	latexmk -pvc $(OPTIONS) $(TARGET).tex
 clean:

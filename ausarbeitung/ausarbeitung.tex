@@ -821,15 +821,15 @@ Bevor wir im nächsten Abschnitt eine Verknüpfungsoperation definieren, betrach
 
 \textbf{Affine Geraden der Form} $y=kx+d$ schneiden die Punktmenge $E$ wie folgt. Wir setzen $y=kx+d$ in die Gleichung~(\ref{affines-polynom}) ein und erhalten:
 \begin{equation}\label{aff-ger-elip}
-	(kx+d)^2=x^3+ax+b
+	(kx+d)^2=x^3+ax+b\Leftrightarrow 0=x^3+ax+b-(kx+d)^2
 \end{equation}
-Dies ist eine kubische Gleichung für die x-Koordinaten der Schnittpunkte. Somit gibt es im Allgemeinen drei Schnittpunkte der affinen Geraden mit $E$, es seien dies $(x_1,y_1),(x_2,y_2),(x_3,y_3)$.\\
-Die drei x-Koordinaten müssen nicht voneinander verschieden sein, aber falls $x_i=x_j$ für $i\ne j$ gilt, dann auch $y_i=y_j$ und die affine Gerade ist eine Tangente an $E$ im Punkt $P=(x_i,y_i)$.
-Ist $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), muss, da $E$ nicht singulär ist und $x^3+ax+b$ somit keine mehrfache Nullstelle hat, $kx_i+d\ne 0$ gelten und die folgende Gleichung, die durch Ableiten aus Gleichung~(\ref{aff-ger-elip}) entsteht, erfüllen:
+Dies ist eine kubische Gleichung für die x-Koordinaten der Schnittpunkte bzw.\ der Nullstellen. Somit gibt es im Allgemeinen drei Schnittpunkte der affinen Geraden mit $E$, es seien dies $(x_1,y_1),(x_2,y_2),(x_3,y_3)$.\\
+Die drei x-Koordinaten müssen nicht voneinander verschieden sein, aber falls $x_i=x_j$ für $i\ne j$ gilt, dann auch $y_i=y_j$ und die affine Gerade ist genau die Tangente $T_P$ an $E$ im Punkt $P=(x_i,y_i)$.
+Ist nämlich $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), muss, da $E$ nicht singulär ist und $x^3+ax+b$ somit keine mehrfache Nullstelle hat, $kx_i+d\ne 0$ gelten und aufgrund der Vielfachheit der Nullstelle die folgende Gleichung, die durch Ableiten aus Gleichung~(\ref{aff-ger-elip}) entsteht, erfüllen:
 \begin{equation*}
-	2(kx_i+d)x=3x_i^2+a \Leftrightarrow k=\frac{3x_i^2+a}{2(kx_i+d)}
+	2(kx_i+d)k=3x_i^2+a \Leftrightarrow k=\frac{3x_i^2+a}{2(kx_i+d)}=\frac{3x_i^2+a}{2y_i}
 \end{equation*}
-Somit ist also $k=\frac{3x_i^2+a}{2(kx_i+d)}$ die Steigung von $T_P$.\\
+Das bedeutet, die Ableitung der affinen Gerade beschreibt genau die Ableitung unserer Kurve im Punkt $P$. Somit ist also auch $k$ die Steigung von $T_P$. Da $P$ sowohl auf $T_P$ als auch auf der affinen Gerade $y=kx+d$ liegt, gilt folglich Gleichheit.\\
 
 \textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
 \begin{equation*}

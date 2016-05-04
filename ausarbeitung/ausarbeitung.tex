@@ -817,16 +817,24 @@ Setzen wir einen Punkt $(u,v)=Q\ne P=(x,y)\ne(x,0)$ mit $Q\in T_P\setminus U$ un
 \begin{alignat*}{4}
     	&&(-3x^2-a)(u-x)+2y(v-y)&=0\\
 	%dirty alignment cheat, but i'm too tired to fix it...
-	\Leftrightarrow\hspace{1.1em}&&2y(v-y)&=-(-3x^2-a)(u-x)\\
+	\Leftrightarrow\hspace{1.13em}&&2y(v-y)&=-(-3x^2-a)(u-x)\\
 	\stackrel{x\ne u,y\ne0}{\Leftrightarrow}&&\frac{v-y}{u-x}&=\frac{3x^2+a}{2y}
 \end{alignat*}
-Wenn wir einen Punkt $P=(x,0)\in E$ in die Tangentengleichung erhalten wir:
+Wenn wir einen Punkt $P=(x,0)\in E$ in die Tangentengleichung einsetzen, erhalten wir:
 \begin{alignat*}{4}
     	&&(-3x^2-a)(u-x)+0(v-0)&=0\\
-	\Leftrightarrow\hspace{1.1em}&&(-3x^2-a)(u-x)&=0\\
+	%dirty alignment cheat, but i'm too tired to fix it...
+	\Leftrightarrow\hspace{1.48em}&&(-3x^2-a)(u-x)&=0\\
 	\stackrel{-3x^2-a\ne0}{\Leftrightarrow}&&x-u&=0
 \end{alignat*}
-Das bedeutet also $Q\in T_P\Leftrightarrow Q=(x,v)$.
+Das bedeutet: 
+\begin{equation*}
+	Q=(u,v)\in T_P\setminus U\Leftrightarrow Q=(x,v)
+\end{equation*}
+Die Tangente ist also in diesem Fall die Parallele zur y-Achse durch den Punkt P. Formell:
+\begin{equation*}
+	T_P\setminus U=x+\mathbb{F}(0,1)
+\end{equation*}
 
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
 Bevor wir im nächsten Abschnitt eine Verknüpfungsoperation definieren, betrachten wir die Menge der Schnittpunkte einer Geraden mit der Punktmenge $E$.\\
@@ -845,7 +853,7 @@ Ist nämlich $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), 
 \end{equation*}
 Die Steigung $k$ der affinen Gerade $y=kx+d$ entspricht somit genau der Steigung von $T_P\setminus U$. Da $P$ sowohl auf $T_P\setminus U$ als auch auf der affinen Gerade liegt, gilt folglich Gleichheit.\\
 
-\textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
+\textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ im projektiven den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
 \begin{equation*}
 	\phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
 \end{equation*}
@@ -1084,7 +1092,7 @@ Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ und $P \in E(\ma
 \end{equation*}
 effizient berechnen kann, dann kann man das DLP auf elliptischen Kurven auf das DLP auf $G$ reduzieren. Wie bereits erwähnt kann das DLP auch mit subexponentieller Laufzeit gelöst werden. \\ 
 \newline
-Ein Beispiel für elliptische Kurven, für die eine solcher Isomorphismus existiert, sind die sogenannten anomale Elliptische Kurven. Eine elliptische Kurve ist anomal, wenn $\#E(\mathbb{F}_p) = p)$, d.h. die Anzahl der Punkte von $E$ ist gleich der Anzahl der Elemente des Körpers $\mathbb{F}_p$. 
+Ein Beispiel für elliptische Kurven, für die eine solcher Isomorphismus existiert, sind die sogenannten anomale Elliptische Kurven. Eine elliptische Kurve ist anomal, wenn $\#E(\mathbb{F}_p) = p)$, d.h.\ die Anzahl der Punkte von $E$ ist gleich der Anzahl der Elemente des Körpers $\mathbb{F}_p$. 
 Für eine anomale Kurve $E(\mathbb{F}_p)$ gilt, dass sie isomorph zur additiven Gruppe $\mathbb{F}^+_p$ ist. In einer additiven Gruppe kann das Problem effizient durch Berechnen des inversen Elements mit Hilfe des euklidischen Algorithmus gelöst werden.
 Auch der Isomorphismus kann effizient berechnet werden~\cite[Seite~168]{hankersonguide}. Daraus folgt, dass das DLP auf diesen speziellen elliptischen Kurven effizient gelöst werden kann.
 Deshalb sollten diese Kurven nicht für Verschlüsselung verwendet werden. \\

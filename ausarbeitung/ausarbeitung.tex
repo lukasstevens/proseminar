@@ -967,7 +967,7 @@ Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist fo
     wird diskretes Logarithmierungsproblem(DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
 \end{defn}
 Jede Gruppe $G$ hat ihr eigenes Logarithmierungsproblem.
-Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$. 
+Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
 Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
 Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen, wie schwer das DLP elliptischer Kurven zu lösen ist.\\
 \newline
@@ -975,14 +975,14 @@ Der erste, naive Ansatz ist das Lösen des Problems durch Ausprobieren. Es wird 
 Damit ist die Laufzeit in $O(|E|)$. 
 Da die Anzahl der Gruppenelemente jedoch exponentiell mit der Schlüssellänge wächst, steigt die Laufzeit des naiven Ansatzes dementsprechend exponentiell mit der Schlüssellänge.
 In nahezu allen Gruppen kann das DLP schneller mit dem Babystep-Giantstep Algorithmus gelöst werden, welcher eine Laufzeit von $O(\sqrt{|E|})$ hat.
-Dadurch ist die Laufzeit jedoch immer noch exponentiell in $log(q)$. 
+Dadurch ist die Laufzeit jedoch immer noch exponentiell. 
 Ein weiteres prominentes Beispiel ist Pollard's $\rho$ Algorithmus. Auch für diesen Algorithmus kann gezeigt werden, dass die Laufzeit in $O(\sqrt{|E|})$ ist. Somit kann auch hiermit keine subexponentielle Laufzeit erreicht werden~\cite[Seite~386]{silverman}. \\
 In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allgemeinen elliptischen Kurven in subexponentieller Zeit lösen kann. Wenn man jedoch bestimmte Einschränkungen für die Parameter trifft, dann sind durchaus subexponentielle Laufzeiten möglich~\cite{joux2011}.
 Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei geeigner Wahl der Domänenparameter sicher. \\
 \newline
 % Index calculus
 Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden~\cite{joux2014}. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
-Diese Angriffe verlassen sich jedoch sehr auf bestimmte Eigenschaften von Primzahlen. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven, bei geeigneter Wahl der Parameter gegen diese Angriffe immun.
+Diese Angriffe verlassen sich jedoch darauf, dass die Gruppe Primzahlen besitzt. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven, bei geeigneter Wahl der Parameter gegen diese Angriffe immun.
 Aufgrund dessen ist das Sicherheitsniveau von ECC im Vergleich zu RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle(\ref{keylength}).
 
 \subsection{ElGamal}
@@ -1057,7 +1057,7 @@ Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
     \Else
     \Let{$Acc$}{$P$}
 \EndIf
-\For{$i \gets 1 \textrm{ to } n_t$}
+\For{$i \gets 1 \textrm{ to } t$}
       \Let{$P$}{$P + P$} 
       \If{$n_i = 1$}
       \Let{$Acc$}{$Acc + P$}
@@ -1070,8 +1070,34 @@ Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
 Wenn man diesen Algorithmus betrachten, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Diesen Verfahren kann auch auf beliebige Gruppen angewendet
 werden, da die Assoziativität der $+$-Operation in einer Gruppe gegeben sein muss.
 
-\subsection{Noch einen für Signaturen}
-Welche Charakteristiken für elliptische Kurven, Domänenparameter
+\subsection{Angriffe}
+\subsubsection{Universelle Angriffe} 
+Um sich gegen kryptographische Angriffe auf ECC zu wehren, müssen die Domänenparameter $(\mathbb{F}_p, E, G, n)$ gut gewählt werden. 
+Der naheliegenste Angriff ist der bereits beschriebene naive Angriff, bei dem die Gruppenoperation so oft auf $G$ angewendet wird, bis das Ergebnis $Q = nG$ und somit $n$ ermittelt wurde.
+Diesem Angriff kann leicht vorgebeugt werden, indem man $n$ groß genug wählt, sodass dieser Brute-Force impraktikabel wird.
+Des Weiteren sollte $n$ so gewählt werden, dass $n$ einen großen Primzahldivisor hat. Damit ist auch einer der besten universal anwendbaren Algorithmen, eine Kombination aus dem Pohlig-Hellman-Angriff und Pollards $\rho$ Algorithmus, nicht mehr realisierbar, da dieser darauf basiert das Problem auf die Untergruppen mit Primzahlordnung der von $G$ erzeugten zyklischen Gruppe zu reduzieren~\cite[Seite~154-165]{hankersonguide}. 
+
+\subsubsection{Isomorphismus Angriffe}
+Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ und $P \in E(\mathbb{F}_q)$ habe eine Primzahlordnung $n$. Sei $G$ eine Gruppe mit Ordnung $n$ und $\langle P \rangle$ die von P erzeugte, zyklische Untergruppe von $E$. Da n prim ist und $\langle P \rangle$ and $G$ zyklisch sind, sind sie auch isomorph~\cite[Seite~168]{hankersonguide}. Wenn man also diesen Isomorphismus 
+\begin{equation*}
+    \phi : \langle P \rangle \mapsto G
+\end{equation*}
+effizient berechnen kann, dann kann man das DLP auf elliptischen Kurven auf das DLP auf $G$ reduzieren. Wie bereits erwähnt kann das DLP auch mit subexponentieller Laufzeit gelöst werden. \\ 
+\newline
+Ein Beispiel für elliptische Kurven, für die eine solcher Isomorphismus existiert, sind die sogenannten anomale Elliptische Kurven. Eine elliptische Kurve ist anomal, wenn $\#E(\mathbb{F}_p) = p)$, d.h. die Anzahl der Punkte von $E$ ist gleich der Anzahl der Elemente des Körpers $\mathbb{F}_p$. 
+Für eine anomale Kurve $E(\mathbb{F}_p)$ gilt, dass sie isomorph zur additiven Gruppe $\mathbb{F}^+_p$ ist. In einer additiven Gruppe kann das Problem effizient durch Berechnen des inversen Elements mit Hilfe des euklidischen Algorithmus gelöst werden.
+Auch der Isomorphismus kann effizient berechnet werden~\cite[Seite~168]{hankersonguide}. Daraus folgt, dass das DLP auf diesen speziellen elliptischen Kurven effizient gelöst werden kann.
+Deshalb sollten diese Kurven nicht für Verschlüsselung verwendet werden. \\
+\newline
+Weitere Angriffe, die auf Isomorphismen beruhen, sind z.B. Weil und Tate Paarung oder der Weil Abstieg~\cite[Seite~169-170]{hankersonguide}. Die elliptische Kurve sollte entsprechend gewählt werden um solche Angriffe abzuwehren.
+\subsubsection{Seitenkanalangriffe}
+Bei einem Seitenkanalangriff hat der Angreifer phyische Kontrolle über das Gerät, welches für die Verschlüsselung zuständig ist.
+Das ermöglicht dem Angreifer durch Messsen von Werten wie Prozessorgeschwindigkeit und Stromverbrauch Rückschlüsse auf die Operationen, die das Gerät durchführt, zu ziehen.
+Seitenkanalangriffe sind bei elliptischen Kurven sehr interessant, da diese aufgrund der Schlüssellänge in Geräten verwendet werden, die wenig Speicherplatz und Rechenkapazität haben. Dazu gehören Smartcards welche z.B. den ordnungsgemäßen Zugriff auf zahlungspflichtige TV-Sender sicherstellen. In diesem Fall befinden sich die Smartcard dann im physischen Besitz eines potentiellen Angreifers.
+Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punkts und die Addition zweier verschiedener Punkte unter den meisten Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. Es gibt mehrere Ansätze dieses Problem zu lösen. Ein Lösungsansatz ist das Durchführen von Dummy-Additionen, also Additionen deren Ergebnis danach wieder verworfen wird, jedoch kann es dem Angreifer möglich sein dies zu bemerken~\cite{moller2001}.
+Möller schlägt daher ein speziellen Encoding-Algorithmus vor, der gegen Seitenkanalangriffe unter den meisten Bedingungen absichert~\cite{moller2001}. 
+Es gibt auch noch weitere Ansätze, von denen manche bestimmte elliptische Kurven verwenden um das Problem beheben zu können~\cite{moller2001}.
+\subsection{Edwards Kurven}
 
 \end{sloppypar}
 \newpage

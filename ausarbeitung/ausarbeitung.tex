@@ -750,7 +750,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	\begin{equation*}
 		\frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
 	\end{equation*}
-	\underline{1. Fall:} $P=\patinf=(0:1:0)$. Dann gilt:
+	\underline{Fall 1:} $P=\patinf=(0:1:0)$. Dann gilt:
 	\begin{equation*}
 		\frac{\partial F}{\partial X}(\patinf)=\frac{\partial F}{\partial Y}(\patinf)=0,\quad \frac{\partial F}{\partial Z}(\patinf)=1
 	\end{equation*}
@@ -760,7 +760,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	\end{equation*}
 	Die Tangente im Punkt $\patinf$ ist also genau die unendlich ferne Gerade $U$.\\
 
-	\underline{2. Fall:} $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
+	\underline{Fall 2:} $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
 	\begin{equation*}
 		T_{P}=\{(u:v:w)\in P\mid (-3x^2-a)u+2yv+(y^2-2ax-3b)w=0\}
 	\end{equation*}
@@ -899,9 +899,9 @@ Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im f
     \end{align*}
 \end{thm}
 \begin{proof}
-\underline{1. Fall:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
+\underline{Fall 1:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
 
-\underline{2. Fall:} $\patinf\oplus P$: Es gilt:
+\underline{Fall 2:} $\patinf\oplus P$: Es gilt:
 \begin{equation*}
 	\overline{\patinf,P}=\bigl\{[\lambda(0,1,0)+\mu(x,y,1)]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
 \end{equation*}
@@ -918,7 +918,7 @@ Es folgt also $\lambda+y=-y$, denn der Fall $\lambda=0$ würde auf den Punkt $P$
 Ist $y\ne 0$ ist der dritte Schnittpunk $\patinf\oplus P=-P$ gefunden.\\
 Ist $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
 
-\underline{3. Fall:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
+\underline{Fall 3:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
 Falls $y=v=0$ gilt, folgt $P=Q$ und somit nach Vereinbarung $\overline{P,Q}=\overline{P,P}=T_P$. Erneut ist $T_P$ affin gedeutet eine Parallele zur y-Achse.
 Es folgt somit $P\oplus Q=\patinf$, da $\patinf$ der dritte Schnittpunkt von $T_P$ mit $E$ ist.\\
 Falls $y=-v\ne 0$ gilt, erhalten wir:
@@ -946,7 +946,22 @@ Dieses kubische Polynom hat nach Konstruktion $x$ und $u$ als Nullstellen. Durch
 \end{alignat*}
 Durch Einsetzen von w in die Geradengleichung von $\overline{P,Q}$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.\\
 
-\underline{5. Fall:}
+\underline{Fall 5:} $P\oplus Q$, falls $P=Q\ne-P$: Wir haben also $x=u$ und $y\ne 0$. Nach Vereinbarung gilt somit $\overline{P,Q}=\overline{P,P}=T_P$. Nach Lemma~\ref{aff-tang} gilt für die Steigung der affinen Tangenten $k\coloneqq\frac{3x^2+a}{2y}$, also gilt:
+\begin{equation*}
+	T_P\setminus U:f(s)=k(s-x)+y
+\end{equation*}
+Suchen wir nun die Schnittpunkte zwischen $T_P$ und $E$ erhalten wir analog zu Fall 4:
+\begin{alignat*}{4}
+	&&(k(s-x)+y)^2&=s^3+as+b\\
+	\Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
+\end{alignat*}
+Dieses kubische Polynom hat drei Nullstellen, wobei 2 Nullstellen bei $x$ liegen. Somit lässt sich erneut durch Ausmultiplizieren und Koeffizientenvergleich die x-Koordinate $w$ der dritten Nullstelle ermitteln:
+\begin{alignat*}{4}
+	&&s^3-k^2s^2-\ldots&=(s-x)^2(s-w)=s^3-(w+2x)s^2-\ldots\\
+	\Rightarrow&&k^2&=w+2x\\
+	\Leftrightarrow&&w&=k^2-2x
+\end{alignat*}
+Durch Einsetzen von w in die Geradengleichung von $T_P$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.\\
 
 \end{proof}
 \subsection{Die Gruppe $(E, +)$}

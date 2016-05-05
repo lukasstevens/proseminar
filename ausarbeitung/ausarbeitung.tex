@@ -977,22 +977,22 @@ Und es gilt:
 \end{proof}
 Mit Hilfe der Formeln aus Satz~\ref{oplus-op} können wir die Addition $P + Q \in E$ zweier Punkte explizit formulieren.
 Wir setzten $P = (p_1, p_2)$ und $Q = (q_1, q_2)$. Dann gilt 
-\begin{equation*}
+\begin{equation} \label{addition-faelle}
     P + Q = \begin{cases}
         \patinf, & \text{falls $P=-Q$ oder $P=Q=\patinf$,} \\
         P, & \text{falls $Q=\patinf$,} \\
         Q, & \text{falls $P=\patinf$,} \\
         (\omega, - \alpha (\omega - p_1) - p_2), & \text{sonst,} \\
     \end{cases}
-\end{equation*}
+\end{equation}
 wobei
-\begin{equation*}
+\begin{equation}
     \omega = \alpha^2 - p_1 - q_1 \text{ und } \alpha = 
     \begin{cases}
         \frac{p_2 - q_2}{p_1 - q_1}, & \text{falls $P \neq Q, -Q$,} \\
         \frac{3p_1^2 + a}{2p_2}, & \text{falls $P = Q \neq -P$.} \\
     \end{cases}
-\end{equation*}
+\end{equation}
 Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung~(\ref{affines-polynom}) von $E$ gemeint. \\
 \newline
 Man spricht dabei von der Sekanten-Tangenten-Konstruktion. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden ohne auf die graphische Lösung zurückzugreifen.
@@ -1049,7 +1049,7 @@ Bei elliptischen Kurven wird sich dabei die Schwierigkeit des diskreten Logarith
 Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist folgendermaßen definiert:
 %Seite 376 silverman
 \begin{defn} \label{DLP}
-    Sei $G$ eine Gruppe und seien $x,y \in G$. $y$ soll die Untergruppe sein, die durch $x$ generiert wird. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
+    Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
     \begin{equation*}
         x^m = y,
     \end{equation*}
@@ -1157,7 +1157,7 @@ Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
   \end{algorithmic}
 \end{algorithm}
 Wenn man diesen Algorithmus betrachten, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Diesen Verfahren kann auch auf beliebige Gruppen angewendet
-werden, da die Assoziativität der $+$-Operation in einer Gruppe gegeben sein muss.
+werden, da die Assoziativität der $+$-Operation in einer Gruppe gegeben sein muss. Es gibt auch noch weitere Möglichkeiten, die Skalarmultiplikation weiter zu beschleunigen. Für Beispiele siehe dazu \cite{gallant2001} und \cite{dimitrov2005}.
 
 \subsection{Angriffe}
 \subsubsection{Universelle Angriffe} 
@@ -1179,16 +1179,32 @@ Auch der Isomorphismus kann effizient berechnet werden~\cite[Seite~168]{hankerso
 Deshalb sollten diese Kurven nicht für Verschlüsselung verwendet werden. \\
 \newline
 Weitere Angriffe, die auf Isomorphismen beruhen, sind z.B.\ Weil und Tate Paarung oder der Weil Abstieg~\cite[Seite~169-170]{hankersonguide}. Die elliptische Kurve sollte entsprechend gewählt werden um solche Angriffe abzuwehren.
+
 \subsubsection{Seitenkanalangriffe}
 Bei einem Seitenkanalangriff hat der Angreifer phyische Kontrolle über das Gerät, welches für die Verschlüsselung zuständig ist.
 Das ermöglicht dem Angreifer durch Messsen von Werten wie Prozessorgeschwindigkeit und Stromverbrauch Rückschlüsse auf die Operationen, die das Gerät durchführt, zu ziehen.\\
-Seitenkanalangriffe sind bei elliptischen Kurven sehr interessant, da diese aufgrund der Schlüssellänge in Geräten verwendet werden, die wenig Speicherplatz und Rechenkapazität haben. Dazu gehören Smartcards, welche z.B. den ordnungsgemäßen Zugriff auf zahlungspflichtige TV-Sender sicherstellen. In diesem Fall befindet sich die Smartcard dann im physischen Besitz eines potentiellen Angreifers.
-Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punkts und die Addition zweier verschiedener Punkte unter den meisten Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. Es gibt mehrere Ansätze dieses Problem zu lösen.\\
+Seitenkanalangriffe sind bei elliptischen Kurven sehr interessant, da diese aufgrund der Schlüssellänge in Geräten verwendet werden, die wenig Speicherplatz und Rechenkapazität haben. Dazu gehören Smartcards, welche z.B.\ den ordnungsgemäßen Zugriff auf zahlungspflichtige TV-Sender sicherstellen. In diesem Fall befindet sich die Smartcard dann im physischen Besitz eines potentiellen Angreifers.
+Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punkts und die Addition zweier verschiedener Punkte unter einigen Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. 
+Das liegt daran, dass bei Verdopplung, bei Addition mit dem unendlich fernen Punkt und bei Addition mit dem inversen Punkt Fallunterscheidungen notwendig sind, siehe~\ref{addition-faelle}. Es gibt mehrere Ansätze dieses Problem zu lösen.\\
 Ein Lösungsansatz ist das Durchführen von Dummy-Additionen, also Additionen deren Ergebnis danach wieder verworfen wird. Jedoch kann es dem Angreifer möglich sein dies zu bemerken~\cite{moller2001}.
 Möller schlägt daher ein speziellen Encoding-Algorithmus vor, der gegen Seitenkanalangriffe unter den meisten Bedingungen absichert~\cite{moller2001}. 
 Es gibt auch noch weitere Ansätze, von denen manche bestimmte elliptische Kurven verwenden um das Problem beheben zu können~\cite{moller2001}.
-\subsection{Edwards Kurven}
 
+\subsection{Edwards Kurven}
+Wir wollen zuletzt noch eine Normalform elliptischer Kurven ansprechen, die durch ihre Form die bereits angesprochenen Seitenkanalangriffe verhindern kann.
+Eine Kurve nach Edward hat die Form $x^2 + y^2 = c^2(1+x^2+y^2)$, wobei das neutrale Element $(0,c)$ ist. 
+Alle elliptischen Kurven über nicht-binären Körpern können in diese Form gebracht werden~\cite{bernstein2007}. 
+Wenn die Kurven in dieser Form sind, dann ist die Addition deutlich einfacher als die Addition auf elliptischen Kurven in der Weierstraßform.
+Sie ist folgendermaßen definiert:
+\begin{equation*}
+    (x_1, y_1) + (x_2, y_2) = \left( \frac{x_1y_2 + y_1x_2}{c(1+x_1x_2y_1y_2)} , \frac{y_1y_2 - x_1x_2}{c(1-x_1x_2y_1y_2)} \right).
+\end{equation*}
+Wie man sehen kann sind keine Fallunterscheidungen notwendig für Dopplung und Addition mit dem neutralen oder inversen Element notwendig. 
+Damit werden Seitenkanalangriffe, die darauf basieren, dass Addition und Dopplung unterschiedlich viel Rechenleistungen benötigen, deutlich erschwert. 
+Zusätzlich ist diese Addition auch effizient und kann mit anderen Verfahren, die auf Schnelligkeit ausgelegt sind, mithalten~\cite{bernstein2007}. \\
+\newline
+Edwards Kurven sind eine mögliche Weiterentwicklung der elliptischen Kurven. Es gibt auch noch weitere Möglichkeiten elliptische Kurven anzupassen um kryptographisch interessante Probleme zu lösen. Ein Beispiel wäre die Verwendung von elliptischen Kurven um große Zahlen zu faktorisieren, was auch ein zentrales Thema der Kryptologie ist~\cite{lenstra1987}.
+Insgesamt haben elliptische Kurven durch ihre Eigenschaften eine zentrale Rolle in der Kryptologie erhalten und werden wohl auch in der Zukunft noch relevant sein.
 \end{sloppypar}
 \newpage
 \bibliographystyle{plain}

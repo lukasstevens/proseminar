@@ -750,7 +750,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	\begin{equation*}
 		\frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
 	\end{equation*}
-	1. Fall: $P=\patinf=(0:1:0)$. Dann gilt:
+	\underline{1. Fall:} $P=\patinf=(0:1:0)$. Dann gilt:
 	\begin{equation*}
 		\frac{\partial F}{\partial X}(\patinf)=\frac{\partial F}{\partial Y}(\patinf)=0,\quad \frac{\partial F}{\partial Z}(\patinf)=1
 	\end{equation*}
@@ -760,7 +760,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 	\end{equation*}
 	Die Tangente im Punkt $\patinf$ ist also genau die unendlich ferne Gerade $U$.\\
 
-	2. Fall: $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
+	\underline{2. Fall:} $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
 	\begin{equation*}
 		T_{P}=\{(u:v:w)\in P\mid (-3x^2-a)u+2yv+(y^2-2ax-3b)w=0\}
 	\end{equation*}
@@ -832,7 +832,7 @@ Das bedeutet:
 \begin{equation*}
 	Q=(u,v)\in T_P\setminus U\Leftrightarrow Q=(x,v)
 \end{equation*}
-Die Tangente ist also in diesem Fall die Parallele zur y-Achse durch den Punkt P. Formell:
+Die Tangente ist also in diesem Fall eine Parallele zur y-Achse durch den Punkt P. Formell:
 \begin{equation*}
 	T_P\setminus U=x+\mathbb{F}(0,1)
 \end{equation*}
@@ -866,9 +866,89 @@ Außerdem hat die Gerade zwei weitere affine Schnittpunkte
 wobei erneut im Fall von $P_1=P_2=(x,0)$ aus Lemma~\ref{aff-tang} mit $P_i=(x,0)$ folgt, dass die y-Achse eine Tangente an $E$ in $P_i$ ist.
 
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}\label{schnittpunkt-verkn}
+Wir definieren nun eine Verknüpfung $\oplus$ auf $E$, die die Grundlage für unsere Gruppenoperation im nächsten Kapitel bilden wird. 
+Hierfür legen wir grundsätzlich für zwei Punkte $P,Q\in E$ das Ergebnis der Verknüpfung $P\oplus Q$ als dritten Schnittpunkt der Geraden $\overline{P,Q}$ mit $E$ fest.
+Allerdings stellt sich die Frage, was passieren soll, wenn $P=Q$ gilt oder wenn die Gerade $\overline{P,Q}$ nicht drei Schnittpunkte mit $E$ besitzt.\\
+Wir treffen hierfür folgende Festlegungen für $P,Q\in E$:
+\begin{itemize}
+	\item Ist $P=Q$, so sei $\overline{P,P}\coloneqq T_P$
+	\item Ist $P=Q$ und $T_P$ hat mit $E$ nur den Schnittpunkt $P$, so sei $P\oplus P=P$
+	\item Ist $\overline{P,Q}=T_P$, aber $P\ne Q$, so sei $P\oplus Q=P$
+	\item Ist $\overline{P,Q}=T_Q$, aber $P\ne Q$, so sei $P\oplus Q=Q$
+	\item Sonst sei $P\oplus Q$ der dritte Schnittpunkt der Geraden $\overline{P,Q}$ mit $E$
+\end{itemize}
+Wir zeigen, dass die Verknüpfungsoperation $\oplus$ abgeschlossen ist und geben eine explizite Formel für die Koordinaten von $P\oplus Q$ an.
+Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im folgenden ausnutzen werden.
 \begin{thm} \label{oplus-op}
-    Definition und Beweis $\oplus$
+    Es sei $P=(x,y),Q=(u,v)\in E\setminus\{\patinf\}$. Dann gilt:
+    \begin{align*}
+	    \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
+	    P\oplus Q&=
+	    \begin{cases}
+		    \patinf, & \text{falls }P=-Q\\
+		    (w,k(w-x)+y), & \text{sonst}
+	    \end{cases}
+    \end{align*}
+    wobei
+    \begin{align*}
+	    w=k^2-x-u\quad\normalfont{und}\quad k=
+	    \begin{cases}
+		\frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
+		\frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
+	    \end{cases}
+    \end{align*}
 \end{thm}
+\begin{proof}
+\underline{1. Fall:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
+
+\underline{2. Fall:} $\patinf\oplus P$: Es gilt:
+\begin{equation*}
+	\overline{\patinf,P}=\bigl\{[\lambda(0,1,0)+\mu(x,y,1)]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
+\end{equation*}
+Ein Punkt $R\ne\patinf$ auf dieser Geraden hat somit eine Darstellung der Form:
+\begin{equation*}
+	R=\bigl\{[\lambda(0,1,0)+(x,y,1)]\mid 0\ne\lambda\in\mathbb{F}\bigr \}=(x:\lambda+y:1)
+\end{equation*}
+D.h.\ die Gerade ist affin gedeutet eine Parallele zur y-Achse durch $P$. Wir setzen $P$ und $R$ in die Gleichung der Kurve $E$ und erhalten:
+\begin{alignat*}{4}
+	&&y^2\stackrel{P\in\overline{\patinf,P}}{=}x^3+ax+b\stackrel{R\in\overline{\patinf,P}}{=}(\lambda+y)^2\\
+	\Rightarrow&&y^2=(\lambda+y)^2
+\end{alignat*}
+Es folgt also $\lambda+y=-y$, denn der Fall $\lambda=0$ würde auf den Punkt $P$ führen.\\
+Ist $y\ne 0$ ist der dritte Schnittpunk $\patinf\oplus P=-P$ gefunden.\\
+Ist $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
+
+\underline{3. Fall:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
+Falls $y=v=0$ gilt, folgt $P=Q$ und somit nach Vereinbarung $\overline{P,Q}=\overline{P,P}=T_P$. Erneut ist $T_P$ affin gedeutet eine Parallele zur y-Achse.
+Es folgt somit $P\oplus Q=\patinf$, da $\patinf$ der dritte Schnittpunkt von $T_P$ mit $E$ ist.\\
+Falls $y=-v\ne 0$ gilt, erhalten wir:
+\begin{align*}
+	\overline{P,Q}\setminus U&=\phi((x,y)+\lambda(x-x,y-v))\\
+				 &=[\mu(x,y,1)+\mu\lambda(x-x,y-v,0)]\\
+	    			 &=[\mu(x,y,1)+\mu\lambda(0,1,0)]
+\end{align*}
+Somit hat die Gerade im projektiven den dritten Schnittpunkt mit $\patinf=(0:1:0)$, also $P\oplus Q=\patinf$.\\
+
+\underline{Fall 4:} $P\oplus Q$, falls $P\ne\pm Q$: Da $P\ne Q$ gilt, und $P$ und $Q$ in $E$ liegen, gilt $x\ne u$. Wir setzen $k\coloneqq\frac{v-y}{u-x}$. Für die affine Gerade $\overline{P,Q}$ erhalten wir:
+\begin{equation*}
+	\overline{P,Q}:f(s)=k*(s-x)+y
+\end{equation*}
+Suchen wir nun die Schnittpunkte zwischen $\overline{P,Q}$ und $E$ erhalten wir:
+\begin{alignat*}{4}
+	&&(k(s-x)+y)^2&=s^3+as+b\\
+	\Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
+\end{alignat*}
+Dieses kubische Polynom hat nach Konstruktion $x$ und $u$ als Nullstellen. Durch Ausmultiplizieren und Koeffizientenvergleich können wir die x-Koordinate $w$ des dritten Schnittpunktes ermitteln:
+\begin{alignat*}{4}
+	&&s^3-k^2s^2-\ldots&=(s-x)(s-u)(s-w)\\
+	\Rightarrow&&k^2&=x+u+w\\
+	\Leftrightarrow&&w&=k^2-x-u
+\end{alignat*}
+Durch Einsetzen von w in die Geradengleichung von $\overline{P,Q}$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.\\
+
+\underline{5. Fall:}
+
+\end{proof}
 \subsection{Die Gruppe $(E, +)$}
 Die Verknüpfung $\oplus$ hat schon einige Eigenschaften, die für eine Gruppenoperation wichtig sind.
 Sie ist kommutativ und abgeschlossen. Jedoch fehlt eine wichtige Eigenschaft, nämlich die Existenz eines neutralen Elements.

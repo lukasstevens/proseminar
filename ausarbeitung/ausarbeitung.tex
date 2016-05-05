@@ -144,7 +144,8 @@
 	\end{axis}
     \end{tikzpicture}
 \end{figure}
-
+Kapitel 1-2 und 4-4.3: Kevin Kappelmann\\
+Kapitel 3 und 4.4-5: Lukas Stevens
 \newpage
 \tableofcontents % Inhaltsverzeichnis
 \listoffigures % Abbildungsverzeichnis
@@ -156,9 +157,9 @@
 \begin{sloppypar}
 
 \section{Einleitung und Motivation}
-Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primafaktorzerlegung bzw.\ dem diskreten Logarithmenproblem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
+Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primfaktorzerlegung bzw.\ dem Diskreten-Logarithmen-Problem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
 Daraus ergibt sich sowohl eine hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
-Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das diskrete Logarithmenproblem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
 Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
 Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
 \begin{table}[h]
@@ -324,7 +325,7 @@ Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3
 	a\sim b \Leftrightarrow \exists\lambda\in\fnz:\lambda a=b
 \end{equation*}
 Wir schreiben $[a]$ oder auch $(a_1:a_2:a_3)$ für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$.\\
-Man bemerke: Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ gerade den von a aufgespannten eindimensionalen Untervektorraum $\langle a \rangle=\mathbb{F}a=\{\lambda a\mid\lambda\in\mathbb{F}\}$ dar.\\
+Man beachte: Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ den von a aufgespannten eindimensionalen Untervektorraum $\langle a \rangle=\mathbb{F}a=\{\lambda a\mid\lambda\in\mathbb{F}\}$ dar.\\
 
 Weiters definieren wir uns die \textit{Quotientenmenge}, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktmenge:
 \begin{equation*}
@@ -342,7 +343,7 @@ Nun bilden wir noch die Menge aller Geraden:
 \begin{equation*}
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
-Man beachte, dass die Bedingung $[a]=P\ne Q=[b]$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also gerade den zweidimensionalen Untervektorraum $\langle a,b\rangle=\mathbb{F}a+\mathbb{F}b=\{\lambda a+\mu b\mid \lambda,\mu\in\mathbb{F}\}$ dar. 
+Man beachte, dass die Bedingung $[a]=P\ne Q=[b]$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also den zweidimensionalen Untervektorraum $\langle a,b\rangle=\mathbb{F}a+\mathbb{F}b=\{\lambda a+\mu b\mid \lambda,\mu\in\mathbb{F}\}$ dar. 
 Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen somit der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedückt:
 \begin{equation*}
 	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b\Leftrightarrow c\in\mathbb{F}a+\mathbb{F}b
@@ -386,23 +387,23 @@ und somit
 \begin{enumerate}
 	\item[(P1)] Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.
 	Die Eindeutigkeit ergibt sich aus (P2).
-	\item[(P2)] Es sei $G,H\in\mathcal{G}$ mit $P\ne Q$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
+	\item[(P2)] Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
 	\begin{align*}
-	G & = \{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\}\quad\normalfont{und}\\
-	H & =\{(x:y:z)\in\mathcal{P}\mid a'x+b'y+c'z=0\}
+	P & = \{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\}\quad\normalfont{und}\\
+	Q & =\{(x:y:z)\in\mathcal{P}\mid a'x+b'y+c'z=0\}
 	\end{align*}
 	Es folgt:
 	\begin{equation*}
-		G\cap H=\{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\land a'x+b'y+c'z=0\}
+		P\cap Q=\{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\land a'x+b'y+c'z=0\}
 	\end{equation*}
-	Dieses lineare Gleichungssystem hat als Lösungsmenge einen eindimensionalen Untervektorraum, also genau einen Punkt in $\mathcal{P}$. Folglich gilt $|G\cap H|=1$.
+	Dieses lineare Gleichungssystem hat als Lösungsmenge einen eindimensionalen Untervektorraum, also genau einen Punkt in $\mathcal{P}$. Folglich gilt $|P\cap Q|=1$.
 	\item[(P3)] Die vier Punkte $(1:0:0),(0:1:0),(0:0:1),(1:1:1)$ erfüllen die Bedingung.
 \end{enumerate}
 \end{proof}
 \begin{bsp}
-Mit Wahl von $\mathbb{F}=\mathbb{R}$ erhält man für PG(2,$\mathbb{R}$) die relle projektive Ebene, die über dasselbe Koordinatensystem, wie der euklidische Raum (\textit{``Der dreidimensionale Raum unserer Anschauung''}), definiert ist.\\
+Mit Wahl von $\mathbb{F}=\mathbb{R}$ erhält man für PG(2,$\mathbb{R}$) die relle projektive Ebene, die über dasselbe Koordinatensystem wie der euklidische Raum (\textit{``Der dreidimensionale Raum unserer Anschauung''}) definiert ist.\\
 Die projektiven Punkte entsprechen den eindimensionalen Untervektorräumen von $\mathbb{R}^3$, d.h.\ die Menge aller Geraden durch den Ursprung und die Menge der projektiven Geraden entspricht analog der Menge aller Ebenen durch den Ursprung. Der Punkt $(0,0,0)$ ist dabei nicht enthalten.\\
-Der Schnittpunkt zweier projektiven Geraden, d.h.\ anschaulich betrachtet zweier Ursprungsebenen, ergibt geanu eine Ursprungsgerade, also einen projektiven Punkt.\\
+Der Schnittpunkt zweier projektiven Geraden, d.h.\ anschaulich betrachtet zweier Ursprungsebenen, ergibt genau eine Ursprungsgerade, also einen projektiven Punkt.\\
 Wählt man zwei projektive Punkte $P,Q$, d.h.\ anschaulich betrachtet zwei Ursprungsgeraden, so ergibt sich als Verbindungsgerade $\overline{P,Q}$ die Ebene, die beide Geraden umfässt und durch den Ursprung verläuft.
 
 \begin{figure}[H]
@@ -496,7 +497,7 @@ Wir müssen zeigen, dass die unter Definition~\ref{affine-ebene} festgelegten Be
 \end{figure}
 	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie drei davon auf derselben Gerade liegen.\\
 		Lag höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
-		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existiern zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
+		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existieren zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
 		Wäre nämlich $E$ inzident zu $\overline{A,B}$, dann würde aufgrund von (P1) $A\in\overline{B,D}$ und $B\in\overline{A,C}$ folgen, was im Widerspruch zur Annahme steht. Es gilt somit $E\in\pu$.\\
 $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von (P1) $A,B\in\overline{C,D}$ gelten. Es folgt somit $E\notin\overline{C,D}$.
 \begin{figure}[H]
@@ -1059,19 +1060,19 @@ Bis jetzt haben wir uns mit den mathematischen Grundlagen rund um elliptische Ku
 Wir haben außerdem eine Operation $+$ über den elliptischen Kurven $E$ eingeführt, mit der man eine Gruppe über $E$ erhält.
 Die Frage ist nun, welche Relevanz diese Gruppe für die Kryptologie hat. \\
 In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel -, dann soll das Problem jedoch leicht zu lösen sein. \\
-Bei elliptischen Kurven wird sich dabei die Schwierigkeit des diskreten Logarithmierungsproblems zu Nutze gemacht.
-\subsection{Verschlüsselung und das diskrete Logarithmierungsproblem}
-Wir wollen zunächst das diskrete Logarithmierungsproblem wiederholen. Es ist folgendermaßen definiert:
+Bei elliptischen Kurven wird sich dabei die Schwierigkeit des Diskreten-Logarithmen-Problems zu Nutze gemacht.
+\subsection{Verschlüsselung und das Diskrete-Logarithmen-Problem}
+Wir wollen zunächst das Diskrete-Logarithmen-Problem wiederholen. Es ist folgendermaßen definiert:
 %Seite 376 silverman
 \begin{defn} \label{DLP}
     Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
     \begin{equation*}
         x^m = y,
     \end{equation*}
-    wird diskretes Logarithmierungsproblem(DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
+    wird Diskretes-Logarithmen-Problem (kurz DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
 \end{defn}
-Jede Gruppe $G$ hat ihr eigenes Logarithmierungsproblem.
-Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein diskretes Logarithmierungsproblem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das diskrete Logarithmierungsproblem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
+Jede Gruppe $G$ hat ihr eigenes Logarithmen-Problem.
+Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein Diskretes-Logarithmen-Problem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das Diskrete-Logarithmen-Problem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
 Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
 Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen, wie schwer das DLP elliptischer Kurven zu lösen ist.\\
 \newline
@@ -1100,7 +1101,7 @@ Bob behält $a$ als seinen geheimen Schlüssel. Der öffentliche Schlüssel ist 
     \item Alice berechnet $B \coloneqq bG \in E$ und $C \coloneqq bQ + \mathcal{P} \in E$.
     \item Alice sendet den Geheimtext $\mathcal{C} = (B,C)$ an Bob.
 \end{enumerate}
-Dabei kann ein Angreifer den Klartext $\mathcal{P}$ nicht effizient berechnen, da er dafür das Logarithmierungsproblem auf elliptischen Kurven lösen müsste. \\
+Dabei kann ein Angreifer den Klartext $\mathcal{P}$ nicht effizient berechnen, da er dafür das Diskrete-Logarithmen-Problem iuf elliptischen Kurven lösen müsste. \\
 \newline
 Bob hat von Alice jetzt den Geheimtext $\mathcal{C} = (B,C)$ erhalten und möchte mit Hilfe seines geheimen Schlüssels den Klartext $\mathcal{P}$ berechnen. Er berechnet dazu $-aB + C$. 
 Da $B=bG$, $C=bQ + \mathcal{P}$ und $Q = aG$ gilt, folgt:

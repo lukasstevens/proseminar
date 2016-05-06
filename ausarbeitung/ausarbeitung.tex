@@ -724,57 +724,51 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
 \end{bsp}
 
 \subsection{Singularitäten und Nullstellen des Weierstraß-Polynoms}
-Wir wollen noch ein Lemma zeigen, dass im anschließenden Kapitel zum tragen kommt:
+Wir wollen nun ein hilfreiches Lemma zeigen, dass im anschließenden Kapitel zum Tragen kommt:
 \begin{lem}
     Gegeben sei eine eine elliptische Kurve, die durch die Lösungen der vereinfachten Weierstraßgleichung~(\ref{weierstrass}) definiert ist:
     \begin{equation}
         E: Y^2Z = X^3 + aXZ^2 + bZ^3. 
     \end{equation}
-    Es gilt: Wenn die Kurve $E$ nicht-singulär ist, dann hat das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen.
+    Dann gilt: Die Kurve $E$ ist genau dann nicht-singulär ist, wenn das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen besitzt.
 \end{lem}
-\begin{proof}
-    Dazu zeigen wir, dass gilt: $E$ ist singulär $\iff$ das Polynom hat eine mehrfache Nullstelle. \\ \newline
+\begin{proof} Wir zeigen die Hin- und Rückrichtung der Aussage.\\
+    "$\Leftarrow$": \\
+    Die Rückrichtung gilt nach Definition, da bei einer mehrfachen Nullstelle die Ableitungen in diesem Punkt verschwinden.\\
     "$\Rightarrow$": \\
-    Da die Kurve singulär ist, verschwinden die Ableitungen in mindestens einem Punkt(siehe dazu \ref{singularitaeten}).
-    Wir schreiben die Weierstrassgleichung als Polynom $F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$, leiten ab und setzen die Ableitungen gleich null:
+    Da die Kurve singulär ist, verschwinden die Ableitungen in mindestens einem Punkt (siehe~\ref{singularitaeten}).
+    Wir schreiben die Weierstraß-Gleichung als Polynom $F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$, leiten ab und setzen die Ableitungen gleich null:
     \begin{equation*}
         \begin{split}
-            \frac{\partial F}{\partial X} & = -3X^2 - aZ^2 = 0 \\
-            \frac{\partial F}{\partial Y} & = 2YZ = 0 \\
-            \frac{\partial F}{\partial Z} & = Y^2 - 2aXZ - 2bZ^2 = 0.
+		\frac{\partial F}{\partial X} & = -3X^2 - aZ^2 \stackrel{!}{=} 0 \\
+            \frac{\partial F}{\partial Y} & = 2YZ \stackrel{!}{=}0 \\
+            \frac{\partial F}{\partial Z} & = Y^2 - 2aXZ - 2bZ^2\stackrel{!}{=} 0.
         \end{split}
     \end{equation*}
-    Wie man sehen kann ist der unendlich ferne Punkt $\patinf = (0:1:0)$ nicht-singulär; also können wir o.B.d.A annehmen, dass wir nur affine Punkte betrachten, d.h. wir können $Z$ gleich $1$ setzen:
+    Wie man sehen kann ist der unendlich ferne Punkt $\patinf = (0:1:0)$ nicht-singulär; also können wir o.B.d.A annehmen, dass wir nur affine Punkte betrachten, d.h.\ wir können $Z$ gleich $1$ setzen:
     \begin{equation*}
         \begin{split}
-            1) \: & \frac{\partial F}{\partial x}  = -3x^2 - a = 0 \\
-            2) \: & \frac{\partial F}{\partial y}  = 2y = 0 \Rightarrow y = 0 \\
-            3) \: & \frac{\partial F}{\partial z}  = y^2 - 2ax - 2b = 0.
+            i) \: & \frac{\partial F}{\partial x}  = -3x^2 - a = 0 \\
+            ii) \: & \frac{\partial F}{\partial y}  = 2y = 0 \Rightarrow y = 0 \\
+            iii) \: & \frac{\partial F}{\partial z}  = y^2 - 2ax - 2b = 0.
         \end{split}
     \end{equation*}
-    Da $y=0$ gilt, können wir im Anschluss o.B.d.A.\ anstatt des Polynoms $f(x,y)=y^2 - x^3 - ax -b$ das Polynom $f(x)=x^3 + ax + b$ betrachten. Weiterhin wissen wir, dass es nur eine mehrfache Nullstelle geben kann, da das Polynom vom Grad 3 ist.\\ 
-    $y=0$ in $3)$ einsetzen:
+    Da $y=0$ gilt, können wir im Anschluss anstatt des Polynoms \makebox{$f(x,y)=y^2 - x^3 - ax -b$} das Polynom $f(x)=-x^3 - ax - b$ betrachten.\\ 
+    Wir setzen $y=0$ in $iii)$ ein:
     \begin{equation*}
-        -2ax - 3b = 0 \iff -2ax = 3b.
+        -2ax - 3b = 0 \Leftrightarrow -2ax = 3b.
     \end{equation*}
-    Wenn $a=0$ gilt, dann gilt auch $b=0$. Mit $1)$ folgt dann, dass die Singularität im Punkt $(0,0)$ liegt und somit hat $f(x)$ auch eine mehrfache Nullstelle in $(0,0)$, da die Funktion und die Ableitung null sind. \\
-    Für $a \neq 0$ gilt $x= \frac{3b}{-2a}$. Einsetzen in $1)$:
+    Wenn $a=0$ gilt, dann gilt auch $b=0$. Mit $i)$ folgt dann, dass die Singularität im Punkt $(0,0)$ liegt und somit hat $f(x)$ auch eine mehrfache Nullstelle in $(0,0)$, da die Funktion und die Ableitung null sind. \\
+    Für $a \neq 0$ gilt $x= \frac{3b}{-2a}$. Wir setzen ein in $i)$:
     \begin{equation*}
-        -3 \left(\frac{3b}{-2a}\right)^2 - a = 0 \iff 4a^3 + 27b^2 = 0.
+        -3 \left(\frac{3b}{-2a}\right)^2 - a = 0 \Leftrightarrow 4a^3 + 27b^2 = 0.
     \end{equation*}
     $4a^3 + 27b^2 = 0$ ist also eine notwendige Bedingung für eine Singularität. \\
-    Wir setzen $f(x) = 0$ mit $x= \frac{3b}{-2a}$:
+    Wir setzen $f(x) \stackrel{!}{=} 0$ mit $x= \frac{3b}{-2a}$:
     \begin{equation*}
-            \left(\frac{3b}{-2a}\right)^3 + a \left(\frac{3b}{-2a}\right) + b = 0 \iff b(27b^2 - 4a^3) = 0
+	    -\left(\frac{3b}{-2a}\right)^3 - a \left(\frac{3b}{-2a}\right) - b = 0 \stackrel{a\ne 0, b\ne 0}{\Leftrightarrow} 4a^3+27b^2 = 0
     \end{equation*}
-    Es gibt also auch immer eine Nullstelle an der Stelle der Singularität, falls $4a^3 + 27b^2 = 0$ gilt und diese Nullstelle ist dann auch eine mehrfachen Nullstelle.
-    Daraus folgt, dass das Polynom $f(x)$ eine mehrfache Nullstelle hat, falls es eine Singularität gibt. \\
-    \newline
-    "$\Leftarrow$": \\
-    Die Rückrichtung gilt nach Definition, da bei einer mehrfachen Nullstelle die Ableitungen in diesem Punkt verschwinden.
-
-
-
+    Es gibt also auch immer eine Nullstelle an der Stelle der Singularität, falls $4a^3 + 27b^2 = 0$ gilt und diese Nullstelle ist dann auch eine mehrfache Nullstelle.
 \end{proof}
 
 

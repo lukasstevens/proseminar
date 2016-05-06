@@ -158,7 +158,7 @@ Kapitel 3 und 4.4-5: Lukas Stevens
 
 \section{Einleitung und Motivation}
 Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primfaktorzerlegung bzw.\ dem Diskreten-Logarithmen-Problem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
-Daraus ergibt sich sowohl eine hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
+Daraus ergibt sich sowohl ein hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
 Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
 Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
 Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
@@ -184,8 +184,7 @@ Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die 
 \end{table}
 
 Die Verwendung elliptischer Kurven in der Kryptographie wurde Mitte der 1980er Jahre von Neal Koblitz\cite{koblitz} und Victor S. Miller\cite{miller} unabhängig voneinander vorgeschlagen. Aufgrund der vorteilhaften Eigenschaften gewinnt die \textbf{Elliptische-Kurven-Kryptographie} (kurz \textbf{ECC} für Elliptic Curves Cryptography) stets mehr an Bedeutung und löst ältere Verfahren wie RSA in den verschiedensten Bereichen ab. Vor allem in Umgebungen mit begrenzten Kapazitäten, wie z.B.\ Smartcards, ist ECC bereits weit verbreitet.\\
-So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC.\cite{austria} Aber auch die Reisepässe der meisten Europäischen Staaten nutzen inzwischen meist in einer Form ECC.\cite{eu}
-
+So verwendet beispielsweise Österreich seit 2004 als Vorreiter für alle gängigen Bürgerkarten ECC~\cite{austria} und auch die Reisepässe der meisten europäischen Staaten nutzen inzwischen meist in einer Form dieses Kryptosystem.\cite{eu}
 
 \section{Grundbegriffe}
 Um elliptische Kurven einführen zu können, müssen wir uns zunächst mit affiner und projektiver Geometrie und ihrer Verwandtheit auseinander setzen. Wir führen hierfür zunächst allgemein die Begriffe der affinen und projektiven Ebene ein und konstruieren uns eine projektive Ebene \pgtwo über einen beliebigen Körper $(\mathbb{F},+,*)$.\\\\
@@ -291,7 +290,7 @@ Im wesentlichen Unterschied zu affinen Ebenen existieren in einer projektiven Eb
 
 \begin{bsp}\label{fano}
 Die \textbf{Fano-Ebene} ist das Minimalmodell einer projektiven Ebene und umfasst genau 7 Punkte (beachte: auch der Kreis gilt hier als Gerade!).\cite[Seite~9]{projmin}\\
-Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und den daraufliegenden Punkten eine affine Ebene entsteht. Dies ist kein Spezialfall sondern funktioniert immer, was wir auch im Abschnitt~\ref{konstr-aff-aus-proj} zeigen werden.
+Bemerkenswert ist die Tatsache, dass durch Entfernen einer beliebigen Gerade und den daraufliegenden Punkten eine affine Ebene entsteht. Dies ist kein Spezialfall, sondern funktioniert immer, was wir auch im Abschnitt~\ref{konstr-aff-aus-proj} zeigen werden.
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
@@ -469,7 +468,7 @@ Wählt man zwei projektive Punkte $P,Q$, d.h.\ anschaulich betrachtet zwei Urspr
 
 
 \subsubsection{Konstruktion affiner Ebenen aus projektiven Ebenen} \label{konstr-aff-aus-proj}
-Wie wir bereits im Beispiel~\ref{fano} erkannt haben, erhält man durch Entfernen einer beliebigen Gerade einer projektiven Ebene und aller sich darauf befindenden Punkten, eine affine Ebene. Dies wollen wir nun beweisen.
+Wie wir bereits im Beispiel~\ref{fano} erkannt haben, erhält man durch Entfernen einer beliebigen Gerade einer projektiven Ebene und aller sich darauf befindenden Punkten eine affine Ebene. Dies wollen wir nun beweisen.
 \begin{thm} \label{projektive-zu-affinen}
 Es sei $(\mathcal{P},\mathcal{G})$ eine projektive Ebene und $U\in\mathcal{G}$ beliebig. Wir definieren:
 \begin{equation*}
@@ -497,8 +496,8 @@ Wir müssen zeigen, dass die unter Definition~\ref{affine-ebene} festgelegten Be
  \caption{Parallelen in \pgtwo nach Entfernen einer Geraden}
 \end{figure}
 	\item[(A3)] Wegen (P3) gibt es vier verschiedene Punkte $A,B,C,D\in\mathcal{P}$, sodass nie drei davon auf derselben Gerade liegen.\\
-		Lag höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
-		Lagen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existieren zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
+		Liegt höchstens ein Punkt auf der entfernten Gerade $U$, folgt die Aussage mit den drei übrigen Punkten.\\
+		Liegen zwei der vier Punkte auf $U$, o.B.d.A.\ sei dies $A,B$, so existieren zwei Geraden $\overline{A,C}$ und $\overline{B,D}$, die sich in einem Punkt $E$ schneiden, der nicht inzident zu $U=\overline{A,B}$ ist.
 		Wäre nämlich $E$ inzident zu $\overline{A,B}$, dann würde aufgrund von (P1) $A\in\overline{B,D}$ und $B\in\overline{A,C}$ folgen, was im Widerspruch zur Annahme steht. Es gilt somit $E\in\pu$.\\
 $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von (P1) $A,B\in\overline{C,D}$ gelten. Es folgt somit $E\notin\overline{C,D}$.
 \begin{figure}[H]
@@ -655,7 +654,7 @@ Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, da
 \end{equation*}
 Wir wollen nun noch eine Einschränkung treffen: die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 
 Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw.\ 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. \\
-Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen dafür auf~\cite[Seite~44]{silverman}.  \\ \newline
+Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen hierfür auf~\cite[Seite~44]{silverman}.  \\ \newline
 %Zitat? Seite 50 Milner
 Wenn $char \: \mathbb{F} \neq 2$ und $char \: \mathbb{F} \neq 3$ gegeben ist, dann können wir die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
 \begin{equation*}
@@ -860,7 +859,7 @@ Die Steigung $k$ der affinen Gerade $y=kx+d$ entspricht somit genau der Steigung
 \begin{equation*}
 	\phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
 \end{equation*}
-Somit hat die Gerade im projektiven einen Schnittpunkt mit $\patinf=(0:1:0)$.\\
+Somit hat die Gerade im Projektiven einen Schnittpunkt mit $\patinf=(0:1:0)$.\\
 Außerdem hat die Gerade zwei weitere affine Schnittpunkte
 \begin{equation*} 
 	P_{1,2}=(x,\pm \sqrt{x^3+ax+b})
@@ -988,7 +987,7 @@ Die Definition der Verknüpfung $+$ für $P, Q \in E$ lautet folgendermaßen:
     \begin{equation*}
         P + (-P) = \patinf \oplus (P \oplus (-P)) = \patinf \oplus \patinf = \patinf.
     \end{equation*}
-    Da der Beweis für die Assoziativität sehr aufwändig ist wollen, wir diesen hier nicht erbringen und auf~\cite[Seite~20]{washington} verweisen.
+    Da der Beweis für die Assoziativität sehr aufwändig ist, wollen wir diesen hier nicht erbringen und auf~\cite[Seite~20]{washington} verweisen.
     Mit Assoziativität, Kommutativität und der Existenz eines neutralen Elements mit $\patinf$ folgt, dass es sich bei $(E, +)$ um eine abelsche Gruppe handelt.
 \end{proof}
 Mit Hilfe der Formeln aus Satz~\ref{oplus-op} können wir die Addition $P + Q \in E$ zweier Punkte explizit formulieren.
@@ -1059,7 +1058,7 @@ Es ist also auch möglich, Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}
 Bis jetzt haben wir uns mit den mathematischen Grundlagen rund um elliptische Kurven beschäftigt. Wir haben den Begriff der projektiven Ebenen eingeführt und elliptische Kurven als eine Teilmenge dieser beschrieben. 
 Wir haben außerdem eine Operation $+$ über den elliptischen Kurven $E$ eingeführt, mit der man eine Gruppe über $E$ erhält.
 Die Frage ist nun, welche Relevanz diese Gruppe für die Kryptologie hat. \\
-In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel -, dann soll das Problem jedoch leicht zu lösen sein. \\
+In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel - dann soll das Problem jedoch leicht zu lösen sein. \\
 Bei elliptischen Kurven wird sich dabei die Schwierigkeit des Diskreten-Logarithmen-Problems zu Nutze gemacht.
 \subsection{Verschlüsselung und das Diskrete-Logarithmen-Problem}
 Wir wollen zunächst das Diskrete-Logarithmen-Problem wiederholen. Es ist folgendermaßen definiert:
@@ -1073,7 +1072,7 @@ Wir wollen zunächst das Diskrete-Logarithmen-Problem wiederholen. Es ist folgen
 \end{defn}
 Jede Gruppe $G$ hat ihr eigenes Logarithmen-Problem.
 Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein Diskretes-Logarithmen-Problem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das Diskrete-Logarithmen-Problem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
-Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punkt mit sich selbst dargestellt. 
+Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punktes mit sich selbst dargestellt. 
 Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen, wie schwer das DLP elliptischer Kurven zu lösen ist.\\
 \newline
 Der erste, naive Ansatz ist das Lösen des Problems durch Ausprobieren. Es wird mit $x$ gestartet und die Gruppenoperation so lange angewandt, bis das Ergebnis $y$ lautet. 
@@ -1087,7 +1086,7 @@ Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei 
 \newline
 % Index calculus
 Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden~\cite{joux2014}. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
-Diese Angriffe verlassen sich jedoch darauf, dass die Gruppe Primzahlen besitzt. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven, bei geeigneter Wahl der Parameter, gegen diese Angriffe immun.
+Diese Angriffe verlassen sich jedoch darauf, dass die Gruppe Primzahlen besitzt. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven bei geeigneter Wahl der Parameter gegen diese Angriffe immun.
 Aufgrund dessen ist das Sicherheitsniveau von ECC im Vergleich zu RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle~\ref{keylength}.
 
 \subsection{ElGamal}
@@ -1189,7 +1188,7 @@ Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ und $P \in E(\ma
 \end{equation*}
 effizient berechnen kann, dann kann man das DLP auf elliptischen Kurven auf das DLP von $G$ reduzieren. Wie bereits erwähnt, kann das DLP auch mit subexponentieller Laufzeit gelöst werden. \\ 
 \newline
-Ein Beispiel für elliptische Kurven, für die eine solcher Isomorphismus existiert, sind die sogenannten anomalen elliptische Kurven. Eine elliptische Kurve ist \textbf{anomal}, wenn $\#E(\mathbb{F}_p) = p$, d.h.\ die Anzahl der Punkte von $E$ ist gleich der Anzahl der Elemente des Körpers $\mathbb{F}_p$. 
+Ein Beispiel für elliptische Kurven, für die eine solcher Isomorphismus existiert, sind die sogenannten anomalen elliptische Kurven. Eine elliptische Kurve ist \textbf{anomal}, wenn $\#E(\mathbb{F}_p) = p$, d.h.\ die Anzahl der Punkte von $E$ muss gleich der Anzahl der Elemente des Körpers $\mathbb{F}_p$ sein. 
 Für eine anomale Kurve $E(\mathbb{F}_p)$ gilt, dass sie isomorph zur additiven Gruppe $\mathbb{F}^+_p$ ist. In einer additiven Gruppe kann das Problem effizient durch Berechnen des inversen Elements mit Hilfe des euklidischen Algorithmus gelöst werden.
 Auch der Isomorphismus kann effizient berechnet werden~\cite[Seite~168]{hankersonguide}. Daraus folgt, dass das DLP auf diesen speziellen elliptischen Kurven effizient gelöst werden kann.
 Deshalb sollten diese Kurven nicht für Verschlüsselung verwendet werden. \\
@@ -1200,7 +1199,7 @@ Weitere Angriffe, die auf Isomorphismen beruhen, sind z.B.\ Weil und Tate Paarun
 Bei einem Seitenkanalangriff hat der Angreifer phyische Kontrolle über das Gerät, welches für die Verschlüsselung zuständig ist.
 Das ermöglicht dem Angreifer durch Messsen von Werten wie Prozessorgeschwindigkeit und Stromverbrauch Rückschlüsse auf die Operationen, die das Gerät durchführt, zu ziehen.\\
 Seitenkanalangriffe sind bei elliptischen Kurven sehr interessant, da diese aufgrund der Schlüssellänge in Geräten verwendet werden, die wenig Speicherplatz und Rechenkapazität haben. Dazu gehören Smartcards, welche z.B.\ den ordnungsgemäßen Zugriff auf zahlungspflichtige TV-Sender sicherstellen. In diesem Fall befindet sich die Smartcard dann im physischen Besitz eines potentiellen Angreifers.
-Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punkts und die Addition zweier verschiedener Punkte unter einigen Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. 
+Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punktes und die Addition zweier verschiedener Punkte unter einigen Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. 
 Das liegt daran, dass bei Verdopplung, bei Addition mit dem unendlich fernen Punkt und bei Addition mit dem inversen Punkt, Fallunterscheidungen notwendig sind (siehe~\ref{addition-faelle}). Es gibt mehrere Ansätze, dieses Problem zu lösen.\\
 Ein Lösungsansatz ist das Durchführen von Dummy-Additionen, also Additionen, deren Ergebnis wieder verworfen wird. Jedoch kann es dem Angreifer möglich sein, dies zu bemerken~\cite{moller2001}.
 Möller schlägt daher einen speziellen Encoding-Algorithmus vor, der gegen Seitenkanalangriffe unter den meisten Bedingungen absichert~\cite{moller2001}. 

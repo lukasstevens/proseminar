@@ -594,7 +594,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \end{equation*}
     schreibt, dann ist $E$ genau die Nullstellenmenge des Polynoms $F$. Bemerkenswert ist hier, dass es sich um ein \textit{homogenes Polynom} vom Grad 3 handelt, d.h.\ für jedes Summenglied $a_{k,l,m}X^kY^lZ^m$ mit $a_{k,l,m} \neq 0$ gilt $k + l + m = 3$.
 \end{defn}
-\begin{defn}
+\begin{defn} \label{singularitaeten}
 	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt
     \begin{equation*}
         \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
@@ -723,118 +723,172 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
     \end{figure}
 \end{bsp}
 
+\subsection{Singularitäten und Nullstellen des Weierstraß-Polynoms}
+Wir wollen noch ein Lemma zeigen, dass im anschließenden Kapitel zum tragen kommt:
+\begin{lem}
+    Gegeben sei eine eine elliptische Kurve, die durch die Lösungen der vereinfachten Weierstraßgleichung~(\ref{weierstrass}) definiert ist:
+    \begin{equation}
+        E: Y^2Z = X^3 + aXZ^2 + bZ^3. 
+    \end{equation}
+    Es gilt: Wenn die Kurve $E$ nicht-singulär ist, dann hat das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen.
+\end{lem}
+\begin{proof}
+    Dazu zeigen wir, dass gilt: $E$ ist singulär $\iff$ das Polynom hat eine mehrfache Nullstelle. \\ \newline
+    "$\Rightarrow$": \\
+    Da die Kurve singulär ist, verschwinden die Ableitungen in mindestens einem Punkt(siehe dazu \ref{singularitaeten}).
+    Wir schreiben die Weierstrassgleichung als Polynom $F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$, leiten ab und setzen die Ableitungen gleich null:
+    \begin{equation*}
+        \begin{split}
+            \frac{\partial F}{\partial X} & = -3X^2 - aZ^2 = 0 \\
+            \frac{\partial F}{\partial Y} & = 2YZ = 0 \\
+            \frac{\partial F}{\partial Z} & = Y^2 - 2aXZ - 2bZ^2 = 0.
+        \end{split}
+    \end{equation*}
+    Wie man sehen kann ist der unendlich ferne Punkt $\patinf = (0:1:0)$ nicht-singulär; also können wir o.B.d.A annehmen, dass wir nur affine Punkte betrachten, d.h. wir können $Z$ gleich $1$ setzen:
+    \begin{equation*}
+        \begin{split}
+            1) \: & \frac{\partial F}{\partial x}  = -3x^2 - a = 0 \\
+            2) \: & \frac{\partial F}{\partial y}  = 2y = 0 \Rightarrow y = 0 \\
+            3) \: & \frac{\partial F}{\partial z}  = y^2 - 2ax - 2b = 0.
+        \end{split}
+    \end{equation*}
+    Da $y=0$ gilt, können wir im Anschluss o.B.d.A.\ anstatt des Polynoms $f(x,y)=y^2 - x^3 - ax -b$ das Polynom $f(x)=x^3 + ax + b$ betrachten. Weiterhin wissen wir, dass es nur eine mehrfache Nullstelle geben kann, da das Polynom vom Grad 3 ist.\\ 
+    $y=0$ in $3)$ einsetzen:
+    \begin{equation*}
+        -2ax - 3b = 0 \iff -2ax = 3b.
+    \end{equation*}
+    Wenn $a=0$ gilt, dann gilt auch $b=0$. Mit $1)$ folgt dann, dass die Singularität im Punkt $(0,0)$ liegt und somit hat $f(x)$ auch eine mehrfache Nullstelle in $(0,0)$, da die Funktion und die Ableitung null sind. \\
+    Für $a \neq 0$ gilt $x= \frac{3b}{-2a}$. Einsetzen in $1)$:
+    \begin{equation*}
+        -3 \left(\frac{3b}{-2a}\right)^2 - a = 0 \iff 4a^3 + 27b^2 = 0.
+    \end{equation*}
+    $4a^3 + 27b^2 = 0$ ist also eine notwendige Bedingung für eine Singularität. \\
+    Wir setzen $f(x) = 0$ mit $x= \frac{3b}{-2a}$:
+    \begin{equation*}
+            \left(\frac{3b}{-2a}\right)^3 + a \left(\frac{3b}{-2a}\right) + b = 0 \iff b(27b^2 - 4a^3) = 0
+    \end{equation*}
+    Es gibt also auch immer eine Nullstelle an der Stelle der Singularität, falls $4a^3 + 27b^2 = 0$ gilt und diese Nullstelle ist dann auch eine mehrfachen Nullstelle.
+    Daraus folgt, dass das Polynom $f(x)$ eine mehrfache Nullstelle hat, falls es eine Singularität gibt. \\
+    \newline
+    "$\Leftarrow$": \\
+    Die Rückrichtung gilt nach Definition, da bei einer mehrfachen Nullstelle die Ableitungen in diesem Punkt verschwinden.
+
+
+
+\end{proof}
+
 
 \section{Eine Gruppe über $E$}
 Nachdem wir die Menge $E$ einer elliptischen Kurve definiert haben, wollen wir nun eine abelsche Gruppe über diese Menge konstruieren. Hierzu führen wir zunächst Tangenten für die Punktmenge elliptischer Kurven ein und stellen dann eine Verknüpfungsoperation auf.\\
 
 In den folgenden Kapiteln beschränken wir uns auf elliptische Kurven $E$ über Körpern $\mathbb{F}$ mit folgenden Voraussetzungen:
 \begin{itemize}
-	\item Es gelte $char\ \mathbb{F}\ne2,3$
-	\item $E$ sei nicht singulär, d.h.\ insbesondere das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
+    \item Es gelte $char\ \mathbb{F}\ne2,3$
+    \item $E$ sei nicht singulär, d.h.\ insbesondere das Polynom $x^3+ax+b\in\mathbb{F}[x]$ hat keine mehrfache Nullstelle.
 \end{itemize}
 
 \subsection{Tangenten elliptischer Kurven}
 \begin{defn}
-	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
-\begin{equation*}
-	T_P\coloneqq\Bigl\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\Bigr\}
-\end{equation*}
+    Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
+    \begin{equation*}
+        T_P\coloneqq\Bigl\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\Bigr\}
+    \end{equation*}
 \end{defn}
 Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält. Wie gewohnt bezeichne $U=\left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$ die unendlich ferne Gerade.
 
 \begin{lem}\label{proj-tang}
-	Es sei $P$ ein Punkt der elliptischen Kurve $E$. Dann gilt $T_P\in\mathcal{G}$ und $P\in T_P$.
+    Es sei $P$ ein Punkt der elliptischen Kurve $E$. Dann gilt $T_P\in\mathcal{G}$ und $P\in T_P$.
 \end{lem}
 \begin{proof}
-	Wir bestimmen die partiellen Ableitungen von $F$:
-	\begin{equation*}
-		\frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
-	\end{equation*}
-	\underline{Fall 1:} $P=\patinf=(0:1:0)$. Dann gilt:
-	\begin{equation*}
-		\frac{\partial F}{\partial X}(\patinf)=\frac{\partial F}{\partial Y}(\patinf)=0,\quad \frac{\partial F}{\partial Z}(\patinf)=1
-	\end{equation*}
-	Das bedeutet:
-	\begin{equation*}
-		T_{\patinf}=\{(u:v:w)\in P\mid 0u+0v+1w=0\}=\{(u:v:w)\in P\mid w=0\}=U
-	\end{equation*}
-	Die Tangente im Punkt $\patinf$ ist also genau die unendlich ferne Gerade $U$.\\
+    Wir bestimmen die partiellen Ableitungen von $F$:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
+    \end{equation*}
+    \underline{Fall 1:} $P=\patinf=(0:1:0)$. Dann gilt:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}(\patinf)=\frac{\partial F}{\partial Y}(\patinf)=0,\quad \frac{\partial F}{\partial Z}(\patinf)=1
+    \end{equation*}
+    Das bedeutet:
+    \begin{equation*}
+        T_{\patinf}=\{(u:v:w)\in P\mid 0u+0v+1w=0\}=\{(u:v:w)\in P\mid w=0\}=U
+    \end{equation*}
+    Die Tangente im Punkt $\patinf$ ist also genau die unendlich ferne Gerade $U$.\\
 
-	\underline{Fall 2:} $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
-	\begin{equation*}
-		T_{P}=\{(u:v:w)\in P\mid (-3x^2-a)u+2yv+(y^2-2ax-3b)w=0\}
-	\end{equation*}
-	$T_P$ stellt also ein lineares homogenes Gleichungssystem mit drei Variablen $u,v,w$ dar und besitzt somit als Lösungsmenge einen zweidimensionalen Untervektorraum von $\mathbb{F}^3$, falls nicht alle Koeffizienten gleich 0 sind. Hieraus folgt, dass $T_P$ eine Gerade in \pgtwo ist.\\
-	Wir zeigen nun, dass im Fall $y=0$ sofort $3x^2+a\ne0$ folgt, also immer mindestens ein Koeffizient des Gleichungssystems nicht 0 ist.\\
-	Sei also $y=0$. Dann gilt $x^3+ax+b=0$, da $P=(x:0:1)$ auf $E$ liegt. Dieses Polynom hat nach Voraussetzung keine mehrfachen Nullstellen, deshalb ist $x$ nicht Nullstelle der Ableitung $3x^2+a$, also $3x^2+a\ne0$.\\
-	Nun müssen wir noch $P\in T_P$ zeigen. Dazu setzen wir den Punkt $P$ in das Gleichungssystem für $T_P$ ein:
-	\begin{align*}
-		(-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-3ax+3y^2-3b\\
-	    &=3\underbrace{(y^2-x^3-ax-b)}_{=f(x,y)=0}\stackrel{(\ref{elliptic-curve-aff-inf})}{=}0
-	\end{align*}
-	Folglich gilt $P\in T_P$.
+    \underline{Fall 2:} $P\ne\patinf$. Es gilt also $P\notin U$ womit wir ohne Einschränkung $P=(x:y:1)$ voraussetzen können. Für die Tangente erhalten wir:
+    \begin{equation*}
+        T_{P}=\{(u:v:w)\in P\mid (-3x^2-a)u+2yv+(y^2-2ax-3b)w=0\}
+    \end{equation*}
+    $T_P$ stellt also ein lineares homogenes Gleichungssystem mit drei Variablen $u,v,w$ dar und besitzt somit als Lösungsmenge einen zweidimensionalen Untervektorraum von $\mathbb{F}^3$, falls nicht alle Koeffizienten gleich 0 sind. Hieraus folgt, dass $T_P$ eine Gerade in \pgtwo ist.\\
+    Wir zeigen nun, dass im Fall $y=0$ sofort $3x^2+a\ne0$ folgt, also immer mindestens ein Koeffizient des Gleichungssystems nicht 0 ist.\\
+    Sei also $y=0$. Dann gilt $x^3+ax+b=0$, da $P=(x:0:1)$ auf $E$ liegt. Dieses Polynom hat nach Voraussetzung keine mehrfachen Nullstellen, deshalb ist $x$ nicht Nullstelle der Ableitung $3x^2+a$, also $3x^2+a\ne0$.\\
+    Nun müssen wir noch $P\in T_P$ zeigen. Dazu setzen wir den Punkt $P$ in das Gleichungssystem für $T_P$ ein:
+    \begin{align*}
+        (-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-3ax+3y^2-3b\\
+        &=3\underbrace{(y^2-x^3-ax-b)}_{=f(x,y)=0}\stackrel{(\ref{elliptic-curve-aff-inf})}{=}0
+    \end{align*}
+    Folglich gilt $P\in T_P$.
 \end{proof}
 \begin{bsp}
-	Wir bestimmen die Tangente an $E$ über $F(X,Y,Z)=Y^2Z-X^3+2XZ^2$ im Punkt \mbox{$P=(0:0:1)$}. Die Ableitungen sind:
-	\begin{equation*}
-		\frac{\partial F}{\partial X}=-3X^2+Z,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2+4XZ
-	\end{equation*}
-	Somit folgt:
-	\begin{equation*}
-		\frac{\partial F}{\partial X}(P)=1,\quad \frac{\partial F}{\partial Y}(P)=0,\quad \frac{\partial F}{\partial Z}(P)=0
-	\end{equation*}
-	Für die Tangente ergibt sich also:
-	\begin{equation*}
-		T_P=\{(u:v:w)\in \mathcal{P}\mid u=0\}
-	\end{equation*}
-	Affin gedeutet ist $P$ der Nullpunkt und $T_P$ genau die y-Achse. Die Tangente entspricht genau dem, was man sich anschaulich als Tangente für den Punkt vorstellen würde. Dies ist in Abbildung~\ref{fig:elliptic-curves}(b) sichtbar.
+    Wir bestimmen die Tangente an $E$ über $F(X,Y,Z)=Y^2Z-X^3+2XZ^2$ im Punkt \mbox{$P=(0:0:1)$}. Die Ableitungen sind:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}=-3X^2+Z,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2+4XZ
+    \end{equation*}
+    Somit folgt:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}(P)=1,\quad \frac{\partial F}{\partial Y}(P)=0,\quad \frac{\partial F}{\partial Z}(P)=0
+    \end{equation*}
+    Für die Tangente ergibt sich also:
+    \begin{equation*}
+        T_P=\{(u:v:w)\in \mathcal{P}\mid u=0\}
+    \end{equation*}
+    Affin gedeutet ist $P$ der Nullpunkt und $T_P$ genau die y-Achse. Die Tangente entspricht genau dem, was man sich anschaulich als Tangente für den Punkt vorstellen würde. Dies ist in Abbildung~\ref{fig:elliptic-curves}(b) sichtbar.
 \end{bsp}
 Nun wollen wir die Tangenten der Kurve $E$ ins affine Übersetzen. Die affine Darstellung wird uns dabei vor allem in Abschnitt~\ref{schnittpunkt-verkn} als nützlich erweisen.
 \begin{lem}\label{aff-tang}
-	Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffasen. Dann gilt:
-	\begin{equation*}
-		T_P\setminus U =\Bigl\{(u,v)\mid \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0\Bigr\}
-	\end{equation*}
+    Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffasen. Dann gilt:
+    \begin{equation*}
+        T_P\setminus U =\Bigl\{(u,v)\mid \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0\Bigr\}
+    \end{equation*}
 \end{lem}
 \begin{proof}
-Wir bestimmen die partiellen Ableitungen von $F$ an der Stelle $P$:
-\begin{equation*}
-		\frac{\partial F}{\partial X}=-3x^2-a=\frac{\partial f}{\partial x},\quad \frac{\partial F}{\partial Y}=2y=\frac{\partial f}{\partial y},\quad \frac{\partial F}{\partial Z}=y^2-2ax-3b
-\end{equation*}
-Da $P$ auf $T_P$ liegt gilt:
-\begin{equation}\label{aff-p-in-tp}
-	\frac{\partial f}{\partial x}(P)x+\frac{\partial f}{\partial y}(P)y=-\frac{\partial F}{\partial Z}(P)
-\end{equation}
-Für einen beliebigen Punkt $Q\in\mathcal{P}$ erhalten wir:
-\begin{align*}
-	Q\in T_P\setminus U & \Leftrightarrow Q=(u:v:1)\in T_P\\
-			    & \Leftrightarrow \frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)=0\\
-	      & \stackrel{(\ref{aff-p-in-tp})}{\Leftrightarrow} \frac{\partial f}{\partial x}(P)u+\frac{\partial f}{\partial y}(P)v-\frac{\partial f}{\partial x}(P)x-\frac{\partial f}{\partial y}(P)y=0\\
-	& \Leftrightarrow \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0
-\end{align*}
-Somit gilt die Behauptung.
+    Wir bestimmen die partiellen Ableitungen von $F$ an der Stelle $P$:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}=-3x^2-a=\frac{\partial f}{\partial x},\quad \frac{\partial F}{\partial Y}=2y=\frac{\partial f}{\partial y},\quad \frac{\partial F}{\partial Z}=y^2-2ax-3b
+    \end{equation*}
+    Da $P$ auf $T_P$ liegt gilt:
+    \begin{equation}\label{aff-p-in-tp}
+        \frac{\partial f}{\partial x}(P)x+\frac{\partial f}{\partial y}(P)y=-\frac{\partial F}{\partial Z}(P)
+    \end{equation}
+    Für einen beliebigen Punkt $Q\in\mathcal{P}$ erhalten wir:
+    \begin{align*}
+        Q\in T_P\setminus U & \Leftrightarrow Q=(u:v:1)\in T_P\\
+        & \Leftrightarrow \frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)=0\\
+        & \stackrel{(\ref{aff-p-in-tp})}{\Leftrightarrow} \frac{\partial f}{\partial x}(P)u+\frac{\partial f}{\partial y}(P)v-\frac{\partial f}{\partial x}(P)x-\frac{\partial f}{\partial y}(P)y=0\\
+        & \Leftrightarrow \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0
+    \end{align*}
+    Somit gilt die Behauptung.
 \end{proof}
 Setzen wir einen Punkt $(u,v)=Q\ne P=(x,y)\ne(x,0)$ mit $Q\in T_P\setminus U$ und somit $u\ne x$ in die Tangentengleichung ein, so können wir die Steigung von $T_P\setminus U$ bestimmen:
 \begin{alignat*}{4}
-    	&&(-3x^2-a)(u-x)+2y(v-y)&=0\\
-	%dirty alignment cheat, but i'm too tired to fix it...
-	\Leftrightarrow\hspace{1.13em}&&2y(v-y)&=-(-3x^2-a)(u-x)\\
-	\stackrel{x\ne u,y\ne0}{\Leftrightarrow}&&\frac{v-y}{u-x}&=\frac{3x^2+a}{2y}
+    &&(-3x^2-a)(u-x)+2y(v-y)&=0\\
+    %dirty alignment cheat, but i'm too tired to fix it...
+    \Leftrightarrow\hspace{1.13em}&&2y(v-y)&=-(-3x^2-a)(u-x)\\
+    \stackrel{x\ne u,y\ne0}{\Leftrightarrow}&&\frac{v-y}{u-x}&=\frac{3x^2+a}{2y}
 \end{alignat*}
 Wenn wir einen Punkt $P=(x,0)\in E$ in die Tangentengleichung einsetzen, erhalten wir:
 \begin{alignat*}{4}
-    	&&(-3x^2-a)(u-x)+0(v-0)&=0\\
-	%dirty alignment cheat, but i'm too tired to fix it...
-	\Leftrightarrow\hspace{1.48em}&&(-3x^2-a)(u-x)&=0\\
-	\stackrel{-3x^2-a\ne0}{\Leftrightarrow}&&x-u&=0
+    &&(-3x^2-a)(u-x)+0(v-0)&=0\\
+    %dirty alignment cheat, but i'm too tired to fix it...
+    \Leftrightarrow\hspace{1.48em}&&(-3x^2-a)(u-x)&=0\\
+    \stackrel{-3x^2-a\ne0}{\Leftrightarrow}&&x-u&=0
 \end{alignat*}
 Das bedeutet: 
 \begin{equation*}
-	Q=(u,v)\in T_P\setminus U\Leftrightarrow Q=(x,v)
+    Q=(u,v)\in T_P\setminus U\Leftrightarrow Q=(x,v)
 \end{equation*}
 Die Tangente ist also in diesem Fall eine Parallele zur y-Achse durch den Punkt P. Formell:
 \begin{equation*}
-	T_P\setminus U=x+\mathbb{F}(0,1)
+    T_P\setminus U=x+\mathbb{F}(0,1)
 \end{equation*}
 
 \subsection{Schnittpunkte von Geraden mit elliptischen Kurven}
@@ -844,24 +898,24 @@ Bevor wir im nächsten Abschnitt eine Verknüpfungsoperation definieren, betrach
 
 \textbf{Affine Geraden der Form} $y=kx+d$ schneiden die Punktmenge $E$ wie folgt. Wir setzen $y=kx+d$ in die Gleichung~(\ref{affines-polynom}) ein und erhalten:
 \begin{equation}\label{aff-ger-elip}
-	(kx+d)^2=x^3+ax+b\Leftrightarrow 0=x^3+ax+b-(kx+d)^2
+    (kx+d)^2=x^3+ax+b\Leftrightarrow 0=x^3+ax+b-(kx+d)^2
 \end{equation}
 Dies ist eine kubische Gleichung für die x-Koordinaten der Schnittpunkte bzw.\ der Nullstellen. Somit gibt es im Allgemeinen drei Schnittpunkte der affinen Geraden mit $E$, es seien dies $(x_1,y_1),(x_2,y_2),(x_3,y_3)$.\\
 Die drei x-Koordinaten müssen nicht voneinander verschieden sein, aber falls $x_i=x_j$ für $i\ne j$ gilt, dann auch $y_i=y_j\ne 0$ und die affine Gerade ist genau die Tangente $T_P\setminus U$ an $E$ im Punkt $P=(x_i,y_i)$.
 Ist nämlich $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), muss, da $E$ nicht singulär ist und $x^3+ax+b$ somit keine mehrfache Nullstelle hat, $kx_i+d\ne 0$ gelten und aufgrund der Vielfachheit der Nullstelle die folgende Gleichung, die durch Ableiten aus Gleichung~(\ref{aff-ger-elip}) entsteht, erfüllen:
 \begin{equation*}
-	2(kx_i+d)k=3x_i^2+a \stackrel{kx_i+d\ne0}{\Leftrightarrow}k=\frac{3x_i^2+a}{2(kx_i+d)}=\frac{3x_i^2+a}{2y_i}
+    2(kx_i+d)k=3x_i^2+a \stackrel{kx_i+d\ne0}{\Leftrightarrow}k=\frac{3x_i^2+a}{2(kx_i+d)}=\frac{3x_i^2+a}{2y_i}
 \end{equation*}
 Die Steigung $k$ der affinen Gerade $y=kx+d$ entspricht somit genau der Steigung von $T_P\setminus U$. Da $P$ sowohl auf $T_P\setminus U$ als auch auf der affinen Gerade liegt, gilt folglich Gleichheit.\\
 
 \textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ im projektiven den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
 \begin{equation*}
-	\phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
+    \phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
 \end{equation*}
 Somit hat die Gerade im Projektiven einen Schnittpunkt mit $\patinf=(0:1:0)$.\\
 Außerdem hat die Gerade zwei weitere affine Schnittpunkte
 \begin{equation*} 
-	P_{1,2}=(x,\pm \sqrt{x^3+ax+b})
+    P_{1,2}=(x,\pm \sqrt{x^3+ax+b})
 \end{equation*}
 wobei erneut im Fall von $P_1=P_2=(x,0)$ aus Lemma~\ref{aff-tang} mit $P_i=(x,0)$ folgt, dass die y-Achse eine Tangente an $E$ in $P_i$ ist.
 
@@ -871,97 +925,97 @@ Hierfür legen wir grundsätzlich für zwei Punkte $P,Q\in E$ das Ergebnis der V
 Allerdings stellt sich die Frage, was passieren soll, wenn $P=Q$ gilt oder wenn die Gerade $\overline{P,Q}$ nicht drei Schnittpunkte mit $E$ besitzt.\\
 Wir treffen hierfür folgende Festlegungen für $P,Q\in E$:
 \begin{itemize}
-	\item Ist $P=Q$, so sei $\overline{P,P}\coloneqq T_P$
-	\item Ist $P=Q$ und $T_P$ hat mit $E$ nur den Schnittpunkt $P$, so sei $P\oplus P=P$
-	\item Ist $\overline{P,Q}=T_P$, aber $P\ne Q$, so sei $P\oplus Q=P$
-	\item Ist $\overline{P,Q}=T_Q$, aber $P\ne Q$, so sei $P\oplus Q=Q$
-	\item Sonst sei $P\oplus Q$ der dritte Schnittpunkt der Geraden $\overline{P,Q}$ mit $E$
+    \item Ist $P=Q$, so sei $\overline{P,P}\coloneqq T_P$
+    \item Ist $P=Q$ und $T_P$ hat mit $E$ nur den Schnittpunkt $P$, so sei $P\oplus P=P$
+    \item Ist $\overline{P,Q}=T_P$, aber $P\ne Q$, so sei $P\oplus Q=P$
+    \item Ist $\overline{P,Q}=T_Q$, aber $P\ne Q$, so sei $P\oplus Q=Q$
+    \item Sonst sei $P\oplus Q$ der dritte Schnittpunkt der Geraden $\overline{P,Q}$ mit $E$
 \end{itemize}
 Wir zeigen, dass die Verknüpfungsoperation $\oplus$ abgeschlossen ist und geben eine explizite Formel für die Koordinaten von $P\oplus Q$ an.
 Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im folgenden ausnutzen werden.
 \begin{thm} \label{oplus-op}
     Es sei $P=(x,y),Q=(u,v)\in E\setminus\{\patinf\}$. Dann gilt:
     \begin{align*}
-	    \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
-	    P\oplus Q&=
-	    \begin{cases}
-		    \patinf, & \text{falls }P=-Q\\
-		    (w,k(w-x)+y), & \text{sonst}
-	    \end{cases}
+        \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
+        P\oplus Q&=
+        \begin{cases}
+            \patinf, & \text{falls }P=-Q\\
+            (w,k(w-x)+y), & \text{sonst}
+        \end{cases}
     \end{align*}
     wobei
     \begin{align*}
-	    w=k^2-x-u\quad\normalfont{und}\quad k=
-	    \begin{cases}
-		\frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
-		\frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
-	    \end{cases}
+        w=k^2-x-u\quad\normalfont{und}\quad k=
+        \begin{cases}
+            \frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
+            \frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
+        \end{cases}
     \end{align*}
 \end{thm}
 \begin{proof}
-\underline{Fall 1:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
+    \underline{Fall 1:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
 
-\underline{Fall 2:} $\patinf\oplus P$: Es gilt:
-\begin{equation*}
-	\overline{\patinf,P}=\bigl\{[\lambda(0,1,0)+\mu(x,y,1)]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
-\end{equation*}
-Ein Punkt $R\ne\patinf$ auf dieser Geraden hat somit eine Darstellung der Form:
-\begin{equation*}
-	R=\bigl\{[\lambda(0,1,0)+(x,y,1)]\mid 0\ne\lambda\in\mathbb{F}\bigr \}=(x:\lambda+y:1)
-\end{equation*}
-D.h.\ die Gerade ist affin gedeutet eine Parallele zur y-Achse durch $P$. Wir setzen $P$ und $R$ in die Gleichung der Kurve $E$ und erhalten:
-\begin{alignat*}{4}
-	&&y^2\stackrel{P\in\overline{\patinf,P}}{=}x^3+ax+b\stackrel{R\in\overline{\patinf,P}}{=}(\lambda+y)^2\\
-	\Rightarrow&&y^2=(\lambda+y)^2
-\end{alignat*}
-Es folgt also $\lambda+y=-y$, denn der Fall $\lambda=0$ würde auf den Punkt $P$ führen.\\
-Ist $y\ne 0$ ist der dritte Schnittpunk $\patinf\oplus P=-P$ gefunden.\\
-Ist $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
+    \underline{Fall 2:} $\patinf\oplus P$: Es gilt:
+    \begin{equation*}
+        \overline{\patinf,P}=\bigl\{[\lambda(0,1,0)+\mu(x,y,1)]\mid (0,0)\ne(\lambda,\mu)\in\mathbb{F}^2\bigr \}
+    \end{equation*}
+    Ein Punkt $R\ne\patinf$ auf dieser Geraden hat somit eine Darstellung der Form:
+    \begin{equation*}
+        R=\bigl\{[\lambda(0,1,0)+(x,y,1)]\mid 0\ne\lambda\in\mathbb{F}\bigr \}=(x:\lambda+y:1)
+    \end{equation*}
+    D.h.\ die Gerade ist affin gedeutet eine Parallele zur y-Achse durch $P$. Wir setzen $P$ und $R$ in die Gleichung der Kurve $E$ und erhalten:
+    \begin{alignat*}{4}
+        &&y^2\stackrel{P\in\overline{\patinf,P}}{=}x^3+ax+b\stackrel{R\in\overline{\patinf,P}}{=}(\lambda+y)^2\\
+        \Rightarrow&&y^2=(\lambda+y)^2
+    \end{alignat*}
+    Es folgt also $\lambda+y=-y$, denn der Fall $\lambda=0$ würde auf den Punkt $P$ führen.\\
+    Ist $y\ne 0$ ist der dritte Schnittpunk $\patinf\oplus P=-P$ gefunden.\\
+    Ist $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
 
-\underline{Fall 3:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
-Falls $y=v=0$ gilt, folgt $P=Q$ und somit nach Vereinbarung $\overline{P,Q}=\overline{P,P}=T_P$. Erneut ist $T_P$ affin gedeutet eine Parallele zur y-Achse.
-Es folgt somit $P\oplus Q=\patinf$, da $\patinf$ der dritte Schnittpunkt von $T_P$ mit $E$ ist.\\
-Falls $y=-v\ne 0$ gilt, erhalten wir:
-\begin{align*}
-	\overline{P,Q}\setminus U&=\phi((x,y)+\lambda(x-x,y-v))\\
-				 &=[\mu(x,y,1)+\mu\lambda(x-x,y-v,0)]\\
-	    			 &=[\mu(x,y,1)+\mu\lambda(0,1,0)]
-\end{align*}
-Somit hat die Gerade im projektiven den dritten Schnittpunkt mit $\patinf=(0:1:0)$, also $P\oplus Q=\patinf$.\\
+    \underline{Fall 3:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
+    Falls $y=v=0$ gilt, folgt $P=Q$ und somit nach Vereinbarung $\overline{P,Q}=\overline{P,P}=T_P$. Erneut ist $T_P$ affin gedeutet eine Parallele zur y-Achse.
+    Es folgt somit $P\oplus Q=\patinf$, da $\patinf$ der dritte Schnittpunkt von $T_P$ mit $E$ ist.\\
+    Falls $y=-v\ne 0$ gilt, erhalten wir:
+    \begin{align*}
+        \overline{P,Q}\setminus U&=\phi((x,y)+\lambda(x-x,y-v))\\
+        &=[\mu(x,y,1)+\mu\lambda(x-x,y-v,0)]\\
+        &=[\mu(x,y,1)+\mu\lambda(0,1,0)]
+    \end{align*}
+    Somit hat die Gerade im projektiven den dritten Schnittpunkt mit $\patinf=(0:1:0)$, also $P\oplus Q=\patinf$.\\
 
-\underline{Fall 4:} $P\oplus Q$, falls $P\ne\pm Q$: Da $P\ne Q$ gilt, und $P$ und $Q$ in $E$ liegen, gilt $x\ne u$. Wir setzen $k\coloneqq\frac{v-y}{u-x}$. Für die affine Gerade $\overline{P,Q}$ erhalten wir:
-\begin{equation*}
-	\overline{P,Q}:f(s)=k*(s-x)+y
-\end{equation*}
-Suchen wir nun die Schnittpunkte zwischen $\overline{P,Q}$ und $E$ erhalten wir:
-\begin{alignat*}{4}
-	&&(k(s-x)+y)^2&=s^3+as+b\\
-	\Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
-\end{alignat*}
-Dieses kubische Polynom hat nach Konstruktion $x$ und $u$ als Nullstellen. Durch Ausmultiplizieren und Koeffizientenvergleich können wir die x-Koordinate $w$ des dritten Schnittpunktes ermitteln:
-\begin{alignat*}{4}
-	&&s^3-k^2s^2-\ldots&=(s-x)(s-u)(s-w)\\
-	\Rightarrow&&k^2&=x+u+w\\
-	\Leftrightarrow&&w&=k^2-x-u
-\end{alignat*}
-Durch Einsetzen von w in die Geradengleichung von $\overline{P,Q}$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.\\
+    \underline{Fall 4:} $P\oplus Q$, falls $P\ne\pm Q$: Da $P\ne Q$ gilt, und $P$ und $Q$ in $E$ liegen, gilt $x\ne u$. Wir setzen $k\coloneqq\frac{v-y}{u-x}$. Für die affine Gerade $\overline{P,Q}$ erhalten wir:
+    \begin{equation*}
+        \overline{P,Q}:f(s)=k*(s-x)+y
+    \end{equation*}
+    Suchen wir nun die Schnittpunkte zwischen $\overline{P,Q}$ und $E$ erhalten wir:
+    \begin{alignat*}{4}
+        &&(k(s-x)+y)^2&=s^3+as+b\\
+        \Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
+    \end{alignat*}
+    Dieses kubische Polynom hat nach Konstruktion $x$ und $u$ als Nullstellen. Durch Ausmultiplizieren und Koeffizientenvergleich können wir die x-Koordinate $w$ des dritten Schnittpunktes ermitteln:
+    \begin{alignat*}{4}
+        &&s^3-k^2s^2-\ldots&=(s-x)(s-u)(s-w)\\
+        \Rightarrow&&k^2&=x+u+w\\
+        \Leftrightarrow&&w&=k^2-x-u
+    \end{alignat*}
+    Durch Einsetzen von w in die Geradengleichung von $\overline{P,Q}$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.\\
 
-\underline{Fall 5:} $P\oplus Q$, falls $P=Q\ne-P$: Wir haben also $x=u$ und $y\ne 0$. Nach Vereinbarung gilt somit $\overline{P,Q}=\overline{P,P}=T_P$. Nach Lemma~\ref{aff-tang} gilt für die Steigung der affinen Tangenten $k\coloneqq\frac{3x^2+a}{2y}$, also gilt:
-\begin{equation*}
-	T_P\setminus U:f(s)=k(s-x)+y
-\end{equation*}
-Suchen wir nun die Schnittpunkte zwischen $T_P$ und $E$ erhalten wir analog zu Fall 4:
-\begin{alignat*}{4}
-	&&(k(s-x)+y)^2&=s^3+as+b\\
-	\Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
-\end{alignat*}
-Dieses kubische Polynom hat drei Nullstellen, wobei 2 Nullstellen bei $x$ liegen. Somit lässt sich erneut durch Ausmultiplizieren und Koeffizientenvergleich die x-Koordinate $w$ der dritten Nullstelle ermitteln:
-\begin{alignat*}{4}
-	&&s^3-k^2s^2-\ldots&=(s-x)^2(s-w)=s^3-(w+2x)s^2-\ldots\\
-	\Rightarrow&&k^2&=w+2x\\
-	\Leftrightarrow&&w&=k^2-2x
-\end{alignat*}
-Durch Einsetzen von w in die Geradengleichung von $T_P$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.
+    \underline{Fall 5:} $P\oplus Q$, falls $P=Q\ne-P$: Wir haben also $x=u$ und $y\ne 0$. Nach Vereinbarung gilt somit $\overline{P,Q}=\overline{P,P}=T_P$. Nach Lemma~\ref{aff-tang} gilt für die Steigung der affinen Tangenten $k\coloneqq\frac{3x^2+a}{2y}$, also gilt:
+    \begin{equation*}
+        T_P\setminus U:f(s)=k(s-x)+y
+    \end{equation*}
+    Suchen wir nun die Schnittpunkte zwischen $T_P$ und $E$ erhalten wir analog zu Fall 4:
+    \begin{alignat*}{4}
+        &&(k(s-x)+y)^2&=s^3+as+b\\
+        \Leftrightarrow\quad&&s^3+as+b-(k(s-x)+y)^2&=0
+    \end{alignat*}
+    Dieses kubische Polynom hat drei Nullstellen, wobei 2 Nullstellen bei $x$ liegen. Somit lässt sich erneut durch Ausmultiplizieren und Koeffizientenvergleich die x-Koordinate $w$ der dritten Nullstelle ermitteln:
+    \begin{alignat*}{4}
+        &&s^3-k^2s^2-\ldots&=(s-x)^2(s-w)=s^3-(w+2x)s^2-\ldots\\
+        \Rightarrow&&k^2&=w+2x\\
+        \Leftrightarrow&&w&=k^2-2x
+    \end{alignat*}
+    Durch Einsetzen von w in die Geradengleichung von $T_P$ ergibt sich somit \makebox{$P\oplus Q=(w,k(w-x)+y)$}.
 \end{proof}
 
 \subsection{Die Gruppe $(E, +)$}
@@ -1001,11 +1055,11 @@ Wir setzen $P = (x,y)$ und $Q = (u,v)$. Dann gilt
 \end{equation*}
 wobei
 \begin{equation*}
-    	    w=k^2-x-u\quad\normalfont{und}\quad k=
-	    \begin{cases}
-		\frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
-		\frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
-	    \end{cases}
+    w=k^2-x-u\quad\normalfont{und}\quad k=
+    \begin{cases}
+        \frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
+        \frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
+    \end{cases}
 \end{equation*}
 Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung~(\ref{affines-polynom}) von $E$ gemeint. \\
 \newline
@@ -1151,23 +1205,23 @@ Man kann jedoch die Assoziativität der Operation $+$ ausnutzen, um ein deutlich
 Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
 \begin{algorithm}[H]
     \caption{Multiplikation eines Skalars $n \in \mathbb{N}$ mit einem Punkt $P \in E$ }
-  \begin{algorithmic}[1]
-      \Require{$n$ lässt sich binär zerlegen in $n = n_0 + n_1 \times 2 + n_2 \times 2^2 + \dots + n_t \times 2^t$}
-    \Statex
-    \Function{multipliziere}{$n, P$}
-    \If{$n_0 = 0$} 
-    \Let{$Acc$}{$\patinf$} \Comment{$\mathcal{O}$ ist der unendlich ferne Punkt}
-    \Else
-    \Let{$Acc$}{$P$}
+    \begin{algorithmic}[1]
+        \Require{$n$ lässt sich binär zerlegen in $n = n_0 + n_1 \times 2 + n_2 \times 2^2 + \dots + n_t \times 2^t$}
+        \Statex
+        \Function{multipliziere}{$n, P$}
+        \If{$n_0 = 0$} 
+        \Let{$Acc$}{$\patinf$} \Comment{$\mathcal{O}$ ist der unendlich ferne Punkt}
+        \Else
+        \Let{$Acc$}{$P$}
+    \EndIf
+    \For{$i \gets 1 \textrm{ to } n$}
+    \Let{$P$}{$P + P$} 
+    \If{$n_i = 1$}
+    \Let{$Acc$}{$Acc + P$}
 \EndIf
-\For{$i \gets 1 \textrm{ to } n$}
-      \Let{$P$}{$P + P$} 
-      \If{$n_i = 1$}
-      \Let{$Acc$}{$Acc + P$}
-  \EndIf
       \EndFor
       \State \Return{$Acc$}
-    \EndFunction
+  \EndFunction
   \end{algorithmic}
 \end{algorithm}
 Wenn man diesen Algorithmus betrachten, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Dieses Verfahren kann auch auf beliebige Gruppen angewendet

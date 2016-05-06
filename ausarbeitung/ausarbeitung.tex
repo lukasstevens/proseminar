@@ -157,9 +157,9 @@ Kapitel 3 und 4.4-5: Lukas Stevens
 \begin{sloppypar}
 
 \section{Einleitung und Motivation}
-Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwere der Primfaktorzerlegung bzw.\ dem Diskreten-Logarithmen-Problem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
-Daraus ergibt sich sowohl ein hoher Energie- als auch Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
-Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar ist, als über Gruppen mit Ganzzahlen.
+Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwierigkeit der Primfaktorzerlegung bzw.\ dem Diskreten-Logarithmen-Problem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
+Daraus ergibt sich ein hoher Energie- und Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar is als über Gruppen mit Ganzzahlen.
 Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
 Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
 \begin{table}[h]
@@ -531,9 +531,8 @@ $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von
 %Macht Lukas
 \subsection{Die unendliche Gerade über \pgtwo}
 %Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
-Um in Abschnitt~\ref{definition-ek} elliptische Kurven genau beschreiben zu können und in~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
-Wir wählen eine Gerade $U \in \mathcal{G}$ aus, die wir aus der projektiven Ebene entfernen wollen.
-Prinzipiell kann dazu jede Gerade gewählt werden. 
+Um in Abschnitt~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
+Wir wählen eine Gerade $U \in \mathcal{G}$ aus, wobei prinzipiell dazu jede Gerade gewählt werden kann. 
 Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraß-Gleichung~(\ref{weierstrass}) zu vereinfachen. \\
 \newline
 Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h.\ $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. 
@@ -566,7 +565,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\
     \end{equation*}
     Alle Punkte der Bildmenge von $\phi$ liegen auf der Gerade $G$. Es wird nur ein Punkt nicht erreicht, nämlich der Punkt $R = (b_1 : b_2 : 0)$. Wie man sehen kann, gilt $G \cap U = R$. Es folgt $\phi(\overline{a,b}) = G \cap \pu \in \gu$.
 \end{proof}
-Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projektiven Geraden abbilden kann. Außerdem bekommen diese affinen Geraden im Projektiven dann einen Schnittpunkt, der auf der unendlich fernen Gerade $U$ liegt.
+Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projektiven Geraden abbilden kann. Außerdem bekommen diese affinen Geraden $\gu$ im Projektiven dann einen Schnittpunkt, der auf der unendlich fernen Gerade $U$ liegt.
 \subsection{Definiton elliptischer Kurven} \label{definition-ek}
 %Weierstraß-Gleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
@@ -574,7 +573,7 @@ Diese hat die folgende Punktmenge:
 \begin{equation*}
     P = \left\{(u:v:w) \mid (u,v,w) \in \ftnz \right\}
 \end{equation*}
-Nun wollen wir die Punktmenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktmenge $\mathcal{P}$ ist, d.h. $E \subseteq \mathcal{P}$. 
+Nun wollen wir die Punktmenge $E$ der elliptischen Kurve einführen, welche eine Teilmenge der Punktmenge $\mathcal{P}$ ist, d.h.\ $E \subseteq \mathcal{P}$. 
 Dazu benötigen wir Polynome mit drei Unbekannten.
 Der Polynomring mit drei Unbekannten über $\mathbb{F}$ ist mit 
 \begin{equation*}
@@ -587,7 +586,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \begin{equation*}
         Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
     \end{equation*}
-    gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf.\cite[Seite~54]{milne2006}
+    gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf~\cite[Seite~54]{milne2006}.
     Da der zugrundeliegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
     Wenn man die Gleichung als Polynom 
     \begin{equation*}
@@ -600,7 +599,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
     \begin{equation*}
         \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
     \end{equation*}
-    Man sagt auch, dass die partiellen Ableitungen des Polynoms $F$ im Punkt $P$ verschwinden. Falls die elliptische Kurve $E$ in keinem Punkt singulär ist, dann bezeichnet man sie als nicht-singulär.\cite[Seite~227]{karpfinger-kiechle}
+    Man sagt auch, dass die partiellen Ableitungen des Polynoms $F$ im Punkt $P$ verschwinden. Falls die elliptische Kurve $E$ in keinem Punkt singulär ist, dann bezeichnet man sie als nicht-singulär~\cite[Seite~227]{karpfinger-kiechle}.
 \end{defn}
 \begin{bsp}
     Die folgenden Kurven sind jeweils in einem Punkt singulär. Anschaulich gibt es damit mehrere Tangenten an diesem Punkt.
@@ -666,7 +665,7 @@ hat, umformen. Mit einer linearen Koordinatentransformation kann man die Gleichu
 \end{equation}
 herleiten~\cite[Seite~50]{milne2006}.
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
-Wir wollen nun eine affine Darstellung für elliptische Kurven herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der \textbf{unendlich ferne Punkt} \makebox{$\patinf = (0:1:0)$}, auf $E$ liegt. Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenzen, drei Möglichkeiten Punkte zu erzeugen, die 0 als Z-Koordinate besitzen: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
+Wir wollen nun eine affine Darstellung für elliptische Kurven herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der \textbf{unendlich ferne Punkt} \makebox{$\patinf = (0:1:0)$}, auf $E$ liegt. Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenzen, drei Möglichkeiten Punkte zu erzeugen, deren Z-Koordinate 0 ist: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung.\\ 
 Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~(\ref{reduziert-weierstrass}) vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
@@ -1219,7 +1218,7 @@ Damit werden Seitenkanalangriffe, die darauf basieren, dass die Addition und Dop
 Zusätzlich ist diese Addition auch effizient und kann mit anderen Verfahren, die auf Schnelligkeit ausgelegt sind, mithalten~\cite{bernstein2007}. \\
 \newline
 Edwards Kurven sind eine mögliche Weiterentwicklung der elliptischen Kurven. Es gibt auch noch weitere Möglichkeiten elliptische Kurven anzupassen um kryptographisch interessante Probleme zu lösen. Ein Beispiel wäre die Verwendung von elliptischen Kurven um große Zahlen zu faktorisieren, was auch ein zentrales Thema der Kryptologie ist~\cite{lenstra1987}.
-Insgesamt haben elliptische Kurven durch ihre Eigenschaften eine zentrale Rolle in der Kryptologie erhalten und werden wohl auch in der Zukunft eine Zentrale Rolle spielen.
+Insgesamt haben elliptische Kurven durch ihre Eigenschaften eine zentrale Rolle in der Kryptologie erhalten und werden wohl auch in der Zukunft noch relevant bleiben.
 \end{sloppypar}
 \newpage
 \bibliographystyle{plain}

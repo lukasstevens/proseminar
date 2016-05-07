@@ -241,7 +241,7 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 	\begin{equation*}
 		\mathcal{G}\coloneqq\{a+\mathbb{F}b\mid a,b\in\mathbb{F}^2\land b\ne\boldsymbol 0\}
 	\end{equation*}
-	wobei $\mathbb{F}b=\{\lambda b\mid\lambda\in\mathbb{F}\}$ den von b erzeugten eindimensionalen Untervektorraum von $\mathbb{F}^2$ darstellt. Dann ist $(\mathbb{F}^2,\mathcal{G})$ eine affine Ebene.
+	wobei $\mathbb{F}b=\langle b \rangle=\{\lambda b\mid\lambda\in\mathbb{F}\}$ den von b erzeugten eindimensionalen Untervektorraum von $\mathbb{F}^2$ darstellt. Dann ist $(\mathbb{F}^2,\mathcal{G})$ eine affine Ebene.
 \end{thm}
 \begin{proof}
 	Wir verweisen hier auf\cite[Seite~87]{karpfinger-kiechle}.
@@ -386,16 +386,16 @@ und somit
 \begin{enumerate}
 	\item[(P1)] Es sei $P,Q\in\mathcal{P}$ mit $P\ne Q$. Durch Definition unserer Menge $\mathcal{G}$ folgt direkt $\overline{P,Q}\in\mathcal{G}$.
 	Die Eindeutigkeit ergibt sich aus (P2).
-	\item[(P2)] Es sei $P,Q\in\mathcal{G}$ mit $P\ne Q$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
+	\item[(P2)] Es sei $G,H\in\mathcal{G}$ mit $G\ne H$. Es gibt also zwei linear unabhängige Vektoren $(a,b,c),(a',b',c')\in\ftnz$ mit:
 	\begin{align*}
-	P & = \{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\}\quad\normalfont{und}\\
-	Q & =\{(x:y:z)\in\mathcal{P}\mid a'x+b'y+c'z=0\}
+	G & = \{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\}\quad\normalfont{und}\\
+	H & =\{(x:y:z)\in\mathcal{P}\mid a'x+b'y+c'z=0\}
 	\end{align*}
 	Es folgt:
 	\begin{equation*}
-		P\cap Q=\{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\land a'x+b'y+c'z=0\}
+		G\cap H=\{(x:y:z)\in\mathcal{P}\mid ax+by+cz=0\land a'x+b'y+c'z=0\}
 	\end{equation*}
-	Dieses lineare Gleichungssystem hat als Lösungsmenge einen eindimensionalen Untervektorraum, also genau einen Punkt in $\mathcal{P}$. Folglich gilt $|P\cap Q|=1$.
+	Dieses lineare Gleichungssystem hat als Lösungsmenge einen eindimensionalen Untervektorraum, also genau einen Punkt in $\mathcal{P}$. Folglich gilt $|G\cap H|=1$.
 	\item[(P3)] Die vier Punkte $(1:0:0),(0:1:0),(0:0:1),(1:1:1)$ erfüllen die Bedingung.
 	\vspace{-1em}
 \end{enumerate}
@@ -532,12 +532,12 @@ $E$ kann nicht inzident zu $\overline{C,D}$ sein, denn sonst würde aufgrund von
 \subsection{Die unendliche Gerade über \pgtwo}
 %Isomorphismus von $\mathbb{F}^2 \rightarrow \mathcal{P}_U$
 Um in Abschnitt~\ref{affine-darstellung} eine affine Darstellung elliptischer Kurven herzuleiten, müssen wir $(\mathcal{P,G}) =$ \pgtwo nochmal betrachten.
-Wir wählen eine Gerade $U \in \mathcal{G}$ aus, wobei prinzipiell dazu jede Gerade gewählt werden kann. 
-Es ist jedoch von Vorteil eine bestimmte Gerade zu wählen um das Rechnen mit der Weierstraß-Gleichung~(\ref{weierstrass}) zu vereinfachen. \\
+Wir wählen dazu eine Gerade $U \in \mathcal{G}$ aus, die wir aus der projektiven Ebene entfernen wollen. Prinzipiell kann dazu jede Gerade gewählt werden. 
+Es ist jedoch von Vorteil, eine bestimmte Gerade zu wählen, um das Rechnen mit der Weierstraß-Gleichung~(\ref{weierstrass}) zu vereinfachen. \\
 \newline
 Dazu wählen wir die Verbindungsgerade $U = \overline{P,Q}$ der Punkte $P = (1:0:0)$ und $Q = (0:1:0)$, d.h.\ $U = \left\{ (x:y:z) \in \mathcal{P} \mid z = 0 \right\}$. 
 Diese Menge $U$ bezeichnen wir im Folgenden als \textbf{unendlich ferne Gerade}.
-Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$. \\ 
+Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$.
 \begin{lem}
     Gegeben sei die projektive Ebene $(\mathcal{P}, \mathcal{G}) = PG(2,\mathbb{F})$ und die unendlich ferne Gerade $U$, dann ist die Abbildung
     \begin{equation*}
@@ -652,7 +652,7 @@ Die zweite Äquivalenz folgt aus der Homogenität des Polynoms. Daraus folgt, da
     F(u,v,w) = 0 \Leftrightarrow F(\lambda u, \lambda v, \lambda w) = 0.
 \end{equation*}
 Wir wollen nun noch eine Einschränkung treffen: die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein. Wir schreiben $char \: \mathbb{F} \neq 2$ bzw.\ $char \: \mathbb{F} \neq 3$. 
-Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw.\ 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. \\
+Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$ gilt oder anders gesagt: Wenn wir das neutrale Element der Multiplikation 2 bzw.\ 3 mal addieren, dann erhalten wir nicht das neutrale Element der Addition, welches kein multiplikatives Inverses hat. \\
 Dadurch wird die Allgemeinheit für den Fall, dass $\mathbb{F}$ eine dieser Charakteristiken hat, eingeschränkt. Grundsätzlich können die folgenden Methoden auch auf Körper mit $char \: \mathbb{F}=2$ oder $char \: \mathbb{F}=3$ angewandt werden. Es sind dann jedoch meistens Fallunterscheidungen notwendig. Wir verweisen hierfür auf~\cite[Seite~44]{silverman}.  \\ \newline
 %Zitat? Seite 50 Milner
 Wenn $char \: \mathbb{F} \neq 2$ und $char \: \mathbb{F} \neq 3$ gegeben ist, dann können wir die Weierstraß-Gleichung~(\ref{weierstrass}), welche die Form
@@ -726,18 +726,18 @@ Wir können im Anschluss nur den affinen Teil betrachten, wenn wir den Punkt $\p
 \subsection{Singularitäten und Nullstellen des Weierstraß-Polynoms}
 Wir wollen nun ein hilfreiches Lemma zeigen, dass im anschließenden Kapitel zum Tragen kommt:
 \begin{lem}
-    Gegeben sei eine eine elliptische Kurve, die durch die Lösungen der vereinfachten Weierstraßgleichung~(\ref{weierstrass}) definiert ist:
+    Gegeben sei eine eine elliptische Kurve, die durch die Lösungen der vereinfachten Weierstraß-Gleichung~(\ref{weierstrass}) definiert ist:
     \begin{equation}
         E: Y^2Z = X^3 + aXZ^2 + bZ^3. 
     \end{equation}
-    Dann gilt: Die Kurve $E$ ist genau dann nicht-singulär ist, wenn das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen besitzt.
+    Dann gilt: Die Kurve $E$ ist genau dann nicht-singulär, wenn das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen besitzt.
 \end{lem}
 \begin{proof} Wir zeigen die Hin- und Rückrichtung der Aussage.\\
     "$\Leftarrow$": \\
     Die Rückrichtung gilt nach Definition, da bei einer mehrfachen Nullstelle die Ableitungen in diesem Punkt verschwinden.\\
     "$\Rightarrow$": \\
     Da die Kurve singulär ist, verschwinden die Ableitungen in mindestens einem Punkt (siehe~\ref{singularitaeten}).
-    Wir schreiben die Weierstraß-Gleichung als Polynom $F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$, leiten ab und setzen die Ableitungen gleich null:
+    Wir schreiben die Weierstraß-Gleichung als Polynom \makebox{$F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$}, leiten ab und setzen die Ableitungen gleich null:
     \begin{equation*}
         \begin{split}
 		\frac{\partial F}{\partial X} & = -3X^2 - aZ^2 \stackrel{!}{=} 0 \\
@@ -745,21 +745,21 @@ Wir wollen nun ein hilfreiches Lemma zeigen, dass im anschließenden Kapitel zum
             \frac{\partial F}{\partial Z} & = Y^2 - 2aXZ - 2bZ^2\stackrel{!}{=} 0.
         \end{split}
     \end{equation*}
-    Wie man sehen kann ist der unendlich ferne Punkt $\patinf = (0:1:0)$ nicht-singulär; also können wir o.B.d.A annehmen, dass wir nur affine Punkte betrachten, d.h.\ wir können $Z$ gleich $1$ setzen:
+    Wie man sehen kann, ist der unendlich ferne Punkt $\patinf = (0:1:0)$ nicht-singulär. Wir können also o.B.d.A nur affine Punkte betrachten, d.h.\ wir können $Z$ gleich $1$ setzen:
     \begin{equation*}
         \begin{split}
-            i) \: & \frac{\partial F}{\partial x}  = -3x^2 - a = 0 \\
-            ii) \: & \frac{\partial F}{\partial y}  = 2y = 0 \Rightarrow y = 0 \\
-            iii) \: & \frac{\partial F}{\partial z}  = y^2 - 2ax - 2b = 0.
+	    (i) \: & \frac{\partial F}{\partial x}  = -3x^2 - a = 0 \\
+	    (ii) \: & \frac{\partial F}{\partial y}  = 2y = 0 \Rightarrow y = 0 \\
+	    (iii) \: & \frac{\partial F}{\partial z}  = y^2 - 2ax - 2b = 0.
         \end{split}
     \end{equation*}
     Da $y=0$ gilt, können wir im Anschluss anstatt des Polynoms \makebox{$f(x,y)=y^2 - x^3 - ax -b$} das Polynom $f(x)=-x^3 - ax - b$ betrachten.\\ 
-    Wir setzen $y=0$ in $iii)$ ein:
+    Wir setzen $y=0$ in $(iii)$ ein:
     \begin{equation*}
         -2ax - 3b = 0 \Leftrightarrow -2ax = 3b.
     \end{equation*}
-    Wenn $a=0$ gilt, dann gilt auch $b=0$. Mit $i)$ folgt dann, dass die Singularität im Punkt $(0,0)$ liegt und somit hat $f(x)$ auch eine mehrfache Nullstelle in $(0,0)$, da die Funktion und die Ableitung null sind. \\
-    Für $a \neq 0$ gilt $x= \frac{3b}{-2a}$. Wir setzen ein in $i)$:
+    Wenn $a=0$ gilt, dann gilt auch $b=0$. Mit $(i)$ folgt dann, dass die Singularität im Punkt $(0,0)$ liegt und somit hat $f(x)$ auch eine mehrfache Nullstelle in $(0,0)$, da die Funktion und die Ableitung null sind. \\
+    Für $a \neq 0$ gilt $x= \frac{3b}{-2a}$. Wir setzen ein in $(i)$:
     \begin{equation*}
         -3 \left(\frac{3b}{-2a}\right)^2 - a = 0 \Leftrightarrow 4a^3 + 27b^2 = 0.
     \end{equation*}
@@ -849,7 +849,7 @@ Nun wollen wir die Tangenten der Kurve $E$ ins affine Übersetzen. Die affine Da
     \begin{equation*}
         \frac{\partial F}{\partial X}=-3x^2-a=\frac{\partial f}{\partial x},\quad \frac{\partial F}{\partial Y}=2y=\frac{\partial f}{\partial y},\quad \frac{\partial F}{\partial Z}=y^2-2ax-3b
     \end{equation*}
-    Da $P$ auf $T_P$ liegt gilt:
+    Da $P$ auf $T_P$ liegt, gilt:
     \begin{equation}\label{aff-p-in-tp}
         \frac{\partial f}{\partial x}(P)x+\frac{\partial f}{\partial y}(P)y=-\frac{\partial F}{\partial Z}(P)
     \end{equation}
@@ -902,7 +902,7 @@ Ist nämlich $x_i$ eine doppelte Nullstelle der Gleichung~(\ref{aff-ger-elip}), 
 \end{equation*}
 Die Steigung $k$ der affinen Gerade $y=kx+d$ entspricht somit genau der Steigung von $T_P\setminus U$. Da $P$ sowohl auf $T_P\setminus U$ als auch auf der affinen Gerade liegt, gilt folglich Gleichheit.\\
 
-\textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ im projektiven den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
+\textbf{Eine Parallele zur y-Achse} $v+\mathbb{F}(0,1)$ mit $v=(x,y)$ hat mit $E$ im Projektiven den unendlich fernen Punkt $\patinf$ gemeinsam. Es gilt nämlich:
 \begin{equation*}
     \phi(v+\lambda(0,1))=[\mu(x,y,1)+\mu\lambda(0,1,0)]
 \end{equation*}
@@ -911,7 +911,7 @@ Außerdem hat die Gerade zwei weitere affine Schnittpunkte
 \begin{equation*} 
     P_{1,2}=(x,\pm \sqrt{x^3+ax+b})
 \end{equation*}
-wobei erneut im Fall von $P_1=P_2=(x,0)$ aus Lemma~\ref{aff-tang} mit $P_i=(x,0)$ folgt, dass die y-Achse eine Tangente an $E$ in $P_i$ ist.
+wobei erneut im Fall von $P_1=P_2=(x,0)$ aus Lemma~\ref{aff-tang} mit $P_i=(x,0)$ folgt, dass die Parallele zur y-Achse eine Tangente an $E$ in $P_i$ ist.
 
 \subsection{Die Schnittpunkt-Verknüpfung $\oplus $ über $E$}\label{schnittpunkt-verkn}
 Wir definieren nun eine Verknüpfung $\oplus$ auf $E$, die die Grundlage für unsere Gruppenoperation im nächsten Kapitel bilden wird. 
@@ -947,7 +947,7 @@ Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im f
     \end{align*}
 \end{thm}
 \begin{proof}
-    \underline{Fall 1:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt $\patinf\oplus\patinf=\patinf$\\
+    \underline{Fall 1:} $\patinf\oplus\patinf$: Es gilt nach Lemma~\ref{proj-tang} $T_{\patinf}=U$ für die unendlich ferne Gerade $U$. Da $\patinf$ der einzige Schnittpunkt von $U$ und $E$ ist, gilt nach Vereinbarung $\patinf\oplus\patinf=\patinf$\\
 
     \underline{Fall 2:} $\patinf\oplus P$: Es gilt:
     \begin{equation*}
@@ -963,8 +963,8 @@ Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im f
         \Rightarrow&&y^2=(\lambda+y)^2
     \end{alignat*}
     Es folgt also $\lambda+y=-y$, denn der Fall $\lambda=0$ würde auf den Punkt $P$ führen.\\
-    Ist $y\ne 0$ ist der dritte Schnittpunk $\patinf\oplus P=-P$ gefunden.\\
-    Ist $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
+    Gilt $y\ne 0$, ist der dritte Schnittpunkt $\patinf\oplus P=-P$ gefunden.\\
+    Gilt $y=0$, dann gilt nach Lemma~\ref{aff-tang} $\overline{\patinf,P}=T_P$ und somit nach Vereinbarung $\patinf\oplus P=P=-P$.\\
 
     \underline{Fall 3:} $P\oplus Q$, falls $P=-Q$: Wir haben $x=u$.\\
     Falls $y=v=0$ gilt, folgt $P=Q$ und somit nach Vereinbarung $\overline{P,Q}=\overline{P,P}=T_P$. Erneut ist $T_P$ affin gedeutet eine Parallele zur y-Achse.
@@ -975,7 +975,7 @@ Zuvor stellen wir noch fest, dass $\oplus$ offenbar kommutativ ist, was wir im f
         &=[\mu(x,y,1)+\mu\lambda(x-x,y-v,0)]\\
         &=[\mu(x,y,1)+\mu\lambda(0,1,0)]
     \end{align*}
-    Somit hat die Gerade im projektiven den dritten Schnittpunkt mit $\patinf=(0:1:0)$, also $P\oplus Q=\patinf$.\\
+    Somit hat die Gerade im Projektiven den dritten Schnittpunkt mit $\patinf=(0:1:0)$, also $P\oplus Q=\patinf$.\\
 
     \underline{Fall 4:} $P\oplus Q$, falls $P\ne\pm Q$: Da $P\ne Q$ gilt, und $P$ und $Q$ in $E$ liegen, gilt $x\ne u$. Wir setzen $k\coloneqq\frac{v-y}{u-x}$. Für die affine Gerade $\overline{P,Q}$ erhalten wir:
     \begin{equation*}
@@ -1030,7 +1030,7 @@ Die Definition der Verknüpfung $+$ für $P, Q \in E$ lautet folgendermaßen:
     \begin{equation*}
         \patinf + P = \patinf \oplus (\patinf \oplus P) = \patinf \oplus (-P) = P
     \end{equation*}
-    Damit ist $\patinf$ das neutrale Element. Außerdem gilt noch für $P \in E$:
+    Damit ist $\patinf$ das neutrale Element. Außerdem gilt für $P \in E$:
     \begin{equation*}
         P + (-P) = \patinf \oplus (P \oplus (-P)) = \patinf \oplus \patinf = \patinf.
     \end{equation*}
@@ -1057,7 +1057,7 @@ wobei
 \end{equation*}
 Mit $a$ ist hierbei der Koeffizient von $x$ der affinen Darstellung~(\ref{affines-polynom}) von $E$ gemeint. \\
 \newline
-Man spricht dabei von der \textit{Sekanten-Tangenten-Konstruktion}. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden, ohne auf die grafische Lösung zurückzugreifen.
+Man spricht auch von der \textit{Sekanten-Tangenten-Konstruktion}. Mit dieser Formel kann die Addition in beliebigen Körpern $\mathbb{F}$ berechnet werden, ohne auf die grafische Lösung zurückzugreifen.
 Es ist also auch möglich, Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}$ zu definieren.
 \begin{bsp}
     Es ist möglich, die Punkte $P = (-1,1)$ und $Q = (0,1)$ auf $E$ über $\mathbb{R}$ grafisch zu addieren. 
@@ -1111,14 +1111,14 @@ Bei elliptischen Kurven wird sich dabei die Schwierigkeit des Diskreten-Logarith
 Wir wollen zunächst das Diskrete-Logarithmen-Problem wiederholen. Es ist folgendermaßen definiert:
 %Seite 376 silverman
 \begin{defn} \label{DLP}
-    Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N} \setminus \{0\}$, so dass gilt
+    Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N}$, so dass gilt
     \begin{equation*}
         x^m = y,
     \end{equation*}
     wird \textbf{Diskretes-Logarithmen-Problem} (kurz DLP) genannt. In der Kryptologie betrachten wir dabei meist endliche Gruppen.
 \end{defn}
 Jede Gruppe $G$ hat ihr eigenes Logarithmen-Problem.
-Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein Diskretes-Logarithmen-Problem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N} \setminus \{0\}$. Das Diskrete-Logarithmen-Problem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
+Bei einer elliptischen Kurve $E$ über dem Körper $F_p$ kann auch ein Diskretes-Logarithmen-Problem konstruiert werden. Dazu wählen wir $P,Q \in E$ und ein $m \in \mathbb{N}$. Das Diskrete-Logarithmen-Problem ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind. 
 Die skalare Multiplikation in der Gruppe $E$ des Punktes $P$ wird durch wiederholtes Addieren des Punktes mit sich selbst dargestellt. 
 Um die Sicherheit von Verschlüsselungsverfahren zu beurteilen, die die Gruppeneigenschaft der elliptischen Kurven $E$ verwenden, müssen wir überprüfen, wie schwer das DLP elliptischer Kurven zu lösen ist.\\
 \newline
@@ -1132,9 +1132,9 @@ In der Tat wurde bis jetzt noch kein Algorithmus gefunden, der das DLP auf allge
 Verschlüsselungsverfahren, die auf elliptischen Kurven basieren, sind also bei geeigneter Wahl der Domänenparameter sicher.\\
 \newline
 % Index calculus
-Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden~\cite{joux2014}. Es ist möglich diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
+Interessanterweise kann das DLP in endlichen Gruppen $\mathbb{F}_{p^n}$ in subexponentieller Laufzeit mit Hilfe sogenannter Index-Calculus-Algorithmen gelöst werden~\cite{joux2014}. Es ist möglich, diese Algorithmen so abzuwandeln, dass sie auch für Primfaktorzerlegungen und damit auch als Angriff auf RSA geeignet sind~\cite{joux2014}.
 Diese Angriffe verlassen sich jedoch darauf, dass die Gruppe Primzahlen besitzt. Da die Gruppe $(E, +)$ auf elliptische Kurven keine Primzahlen besitzt, können diese Algorithmen nur in Spezialfällen auf elliptische Kurven übertragen werden. Deswegen sind elliptische Kurven bei geeigneter Wahl der Parameter gegen diese Angriffe immun.
-Aufgrund dessen ist das Sicherheitsniveau von ECC im Vergleich zu RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle~\ref{keylength}.
+Das Sicherheitsniveau von ECC ist somit im Vergleich zu RSA bei gleicher Schlüssellänge deutlich höher. Dies erklärt auch die in der Einleitung gezeigte Tabelle~\ref{keylength}.
 
 \subsection{ElGamal}
 \subsubsection{Schlüsselgenerierung, Verschlüsselung und Entschlüsselung}
@@ -1154,7 +1154,7 @@ Da $B=bG$, $C=bQ + \mathcal{P}$ und $Q = aG$ gilt, folgt:
 \begin{equation*}
     -aB + C = -abG + bQ + \mathcal{P} = -abG + abG + \mathcal{P} = \mathcal{P}.
 \end{equation*}
-So erhält Bob den Klartext $\mathcal{P} \in E$ aus dem Geheimtext $\mathcal{C}$. In der Praxis muss man ein Verfahren festlegen, wie man eine Nachricht zu einem Punkt auf der elliptischen Kurve umwandelt.
+So erhält Bob den Klartext $\mathcal{P} \in E$ aus dem Geheimtext $\mathcal{C}$.\\In der Praxis muss man ein Verfahren festlegen, wie man eine Nachricht zu einem Punkt auf der elliptischen Kurve umwandelt.
 \subsubsection{Effiziente Berechnung des Skalarprodukts}
 % Silverman S.364
 Wir haben bereits gesehen, dass die Skalarmultiplikation $aP = Q$ mit $a \in \mathbb{N}$ und $P, Q \in E$ die zentrale Operation bei der Ver- und Entschlüsselung ist. \\
@@ -1218,18 +1218,18 @@ Dieses Verfahren lässt sich auch als Algorithmus formalisieren:
   \EndFunction
   \end{algorithmic}
 \end{algorithm}
-Wenn man diesen Algorithmus betrachten, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Dieses Verfahren kann auch auf beliebige Gruppen angewendet
+Wenn man diesen Algorithmus betrachtet, sieht man auch, dass höchstens $2\log_2{n}$ Operationen durchgeführt werden. Die Bitlänge von n wächst mit $\log_2{n}$, was auch gleich der Anzahl der Durchläufe der Schleife ist. In jedem Schleifendurchlauf wird eine Addition mit $P+P$ durchgeführt und falls $n_0 = 1$ ist, eine weitere Addition durchgeführt. Das ergibt insgesamt $2\log_2{n}$ Additionen im worst-case. Dieses Verfahren kann auch auf beliebige Gruppen angewendet
 werden, da die Assoziativität der $+$-Operation in einer Gruppe gegeben sein muss. Es gibt auch noch weitere Möglichkeiten, die Skalarmultiplikation weiter zu beschleunigen. Für Beispiele hierzu verweisen wir auf \cite{gallant2001} und \cite{dimitrov2005}.
 
 \subsection{Angriffe}
 \subsubsection{Universelle Angriffe} 
 Um sich gegen kryptographische Angriffe auf ECC zu wehren, müssen die Domänenparameter $(\mathbb{F}_p, E, G, n)$ gut gewählt werden. 
-Der naheliegenste Angriff ist der bereits beschriebene naive Angriff, bei dem die Gruppenoperation so oft auf $G$ angewendet wird, bis das Ergebnis $Q = nG$ und somit $n$ ermittelt wurde.
+Der naheliegendste Angriff ist der bereits beschriebene naive Angriff, bei dem die Gruppenoperation so oft auf $G$ angewendet wird, bis das Ergebnis $Q = nG$ und somit $n$ ermittelt wurde.
 Diesem Angriff kann leicht vorgebeugt werden, indem man $n$ groß genug wählt, sodass dieser Brute-Force impraktikabel wird.
 Des Weiteren sollte $n$ so gewählt werden, dass $n$ einen großen Primzahldivisor hat. Damit ist auch einer der besten universal anwendbaren Algorithmen, eine Kombination aus dem Pohlig-Hellman-Angriff und Pollards $\rho$ Algorithmus, nicht mehr realisierbar, da dieser darauf basiert, das Problem auf die Untergruppen mit Primzahlordnung der von $G$ erzeugten zyklischen Gruppe zu reduzieren~\cite[Seite~154-165]{hankersonguide}. 
 
 \subsubsection{Isomorphismus Angriffe}
-Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ und $P \in E(\mathbb{F}_q)$ habe eine Primzahlordnung $n$. Sei $G$ eine Gruppe mit Ordnung $n$ und $\langle P \rangle$ die von P erzeugte, zyklische Untergruppe von $E$. Da n prim ist und $\langle P \rangle$ und $G$ zyklisch sind, sind sie auch isomorph~\cite[Seite~168]{hankersonguide}. Wenn man also diesen Isomorphismus 
+Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ und $P \in E(\mathbb{F}_q)$ habe eine Primzahlordnung $p$. Sei $G$ eine Gruppe mit Ordnung $p$ und $\langle P \rangle$ die von P erzeugte, zyklische Untergruppe von $E$. Da $p$ prim ist und $\langle P \rangle$ und $G$ zyklisch sind, sind sie auch isomorph~\cite[Seite~168]{hankersonguide}. Wenn man also diesen Isomorphismus 
 \begin{equation*}
     \phi : \langle P \rangle \mapsto G
 \end{equation*}

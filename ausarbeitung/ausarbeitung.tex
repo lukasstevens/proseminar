@@ -160,7 +160,7 @@ Kapitel 3 und 4.4-5: Lukas Stevens
 \section{Einleitung und Motivation}
 Kryptosysteme wie RSA, Diffie-Hellman\footnote{In der jeweiligen Implementierung als Gruppe über ganze Zahlen} und ElGamal\footnotemark[\value{footnote}], die sich auf die Schwierigkeit der Primfaktorzerlegung bzw.\ dem Diskreten-Logarithmen-Problem über Ganzzahlen stützen, benötigen sehr große Schlüssellängen, um eine ausreichend hohe Sicherheit zu garantieren. 
 Daraus ergibt sich ein hoher Energie- und Speicherbedarf für die Berechnung der Algorithmen, was vor allem für Microchips und eingebettete Systeme ein Problem darstellt.\\
-Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar is als über Gruppen mit Ganzzahlen.
+Eine Lösung für dieses Problem sind elliptische Kurven. Diese algebraischen Kurven tragen eine Gruppenstruktur, über die das Diskrete-Logarithmen-Problem deutlich schwerer lösbar ist als über Gruppen mit Ganzzahlen.
 Kryptosysteme, die auf elliptische Kurven beruhen, kommen dadurch mit erheblich kürzeren Schlüsseln bei vergleichbarer Sicherheit aus.\cite[Seite~53]{nist}\\
 Nachfolgende Tabelle verdeutlicht diesen Sachverhalt. Spalte 1 kennzeichnet die maximale Sicherheit (in Bits) für den jeweiligen Algorithmus und der angegebenen Schlüssellänge (in Bits). Rot markierte Felder gelten als kryptographisch unsicher, grüne als aktuell sicher.
 \begin{table}[h]

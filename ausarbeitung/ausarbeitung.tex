@@ -327,7 +327,7 @@ Es sei $\mathbb{F}$ ein beliebiger Körper mit Nullelement $0$ und $\mathbb{F}^3
 Wir schreiben $[a]$ oder auch $(a_1:a_2:a_3)$ für die Äquivalenzklassen von $a=(a_1,a_2,a_3)\in\ftnz$.\\
 Man beachte: Für einen Vektor $a\in\ftnz$ stellt $[a]\cup\{\boldsymbol 0\}$ den von a aufgespannten eindimensionalen Untervektorraum $\langle a \rangle=\mathbb{F}a=\{\lambda a\mid\lambda\in\mathbb{F}\}$ dar.\\
 
-Weiters definieren wir uns die \textit{Quotientenmenge}, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktmenge:
+Weiter definieren wir uns die \textit{Quotientenmenge}, d.h.\ die Menge aller Äquivalenzklassen, als unsere Punktmenge:
 \begin{equation*}
 	\mathcal{P}\coloneqq(\ftnz)/\sim\ = \left \{[a]\mid a\in\ftnz\right \}
 \end{equation*}
@@ -344,7 +344,7 @@ Nun bilden wir noch die Menge aller Geraden:
 	\mathcal{G}\coloneqq\{\overline{P,Q}\mid P,Q\in\mathcal{P}\land P\ne Q\}
 \end{equation*}
 Man beachte, dass die Bedingung $[a]=P\ne Q=[b]$ gleichbedeutend ist mit der linearen Unabhängigkeit der Vektoren $a,b\in\mathbb{F}^3$. Für zwei Punkte $P,Q\in\mathcal{P}$ stellt $\overline{P,Q}\cup\{\boldsymbol 0\}$ also den zweidimensionalen Untervektorraum $\langle a,b\rangle=\mathbb{F}a+\mathbb{F}b=\{\lambda a+\mu b\mid \lambda,\mu\in\mathbb{F}\}$ dar. 
-Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen somit der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedückt:
+Die Menge der Punkte einer Geraden $\overline{P,Q}$ entsprechen somit der Menge der eindimensionalen Untervektorräume, die jeweils als Teilmenge in $\mathbb{F}a+\mathbb{F}b$ enthalten sind. Formell ausgedrückt:
 \begin{equation*}
 	[c]\in\overline{[a],[b]}\Leftrightarrow \mathbb{F}c\subseteq\mathbb{F}a+\mathbb{F}b\Leftrightarrow c\in\mathbb{F}a+\mathbb{F}b
 \end{equation*}
@@ -402,10 +402,10 @@ und somit
 \end{enumerate}
 \end{proof}
 \begin{bsp}
-Mit Wahl von $\mathbb{F}=\mathbb{R}$ erhält man für PG(2,$\mathbb{R}$) die relle projektive Ebene, die über dasselbe Koordinatensystem wie der euklidische Raum (\textit{``Der dreidimensionale Raum unserer Anschauung''}) definiert ist.\\
+Mit Wahl von $\mathbb{F}=\mathbb{R}$ erhält man für PG(2,$\mathbb{R}$) die reelle projektive Ebene, die über dasselbe Koordinatensystem wie der euklidische Raum (\textit{``Der dreidimensionale Raum unserer Anschauung''}) definiert ist.\\
 Die projektiven Punkte entsprechen den eindimensionalen Untervektorräumen von $\mathbb{R}^3$, d.h.\ die Menge aller Geraden durch den Ursprung und die Menge der projektiven Geraden entspricht analog der Menge aller Ebenen durch den Ursprung. Der Punkt $(0,0,0)$ ist dabei nicht enthalten.\\
 Der Schnittpunkt zweier projektiven Geraden, d.h.\ anschaulich betrachtet zweier Ursprungsebenen, ergibt genau eine Ursprungsgerade, also einen projektiven Punkt.\\
-Wählt man zwei projektive Punkte $P,Q$, d.h.\ anschaulich betrachtet zwei Ursprungsgeraden, so ergibt sich als Verbindungsgerade $\overline{P,Q}$ die Ebene, die beide Geraden umfässt und durch den Ursprung verläuft.
+Wählt man zwei projektive Punkte $P,Q$, d.h.\ anschaulich betrachtet zwei Ursprungsgeraden, so ergibt sich als Verbindungsgerade $\overline{P,Q}$ die Ebene, die beide Geraden umfasst und durch den Ursprung verläuft.
 
 \begin{figure}[H]
 \tdplotsetmaincoords{80}{100}
@@ -567,7 +567,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$.
     Alle Punkte der Bildmenge von $\phi$ liegen auf der Gerade $G$. Es wird nur ein Punkt nicht erreicht, nämlich der Punkt $R = (b_1 : b_2 : 0)$. Wie man sehen kann, gilt $G \cap U = R$. Es folgt $\phi(\overline{a,b}) = G \cap \pu \in \gu$.
 \end{proof}
 Insgesamt kann man sehen, dass man affine Geraden auf eine Teilmenge der projektiven Geraden abbilden kann. Außerdem bekommen diese affinen Geraden $\gu$ im Projektiven dann einen Schnittpunkt, der auf der unendlich fernen Gerade $U$ liegt.
-\subsection{Definiton elliptischer Kurven} \label{definition-ek}
+\subsection{Definition elliptischer Kurven} \label{definition-ek}
 %Weierstraß-Gleichung, Nullstellenmenge des Polynoms, Charakteristiken(Singularitäten), affine Koordinatentransformation?
 Wir haben bereits die projektive Ebene \pgtwo über beliebige Körper $\mathbb{F}$ eingeführt.\\
 Diese hat die folgende Punktmenge:
@@ -588,7 +588,7 @@ $F(X,Y,Z) = \sum_{k,l,m \geq 0} a_{k,l,m} \thinspace X^k Y^l Z^m \in \mathbb{F}[
         Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3
     \end{equation*}
     gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf~\cite[Seite~54]{milne2006}.
-    Da der zugrundeliegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
+    Da der zugrunde liegende Raum \pgtwo eine projektive Ebene ist, handelt es sich um eine projektive Kurve. 
     Wenn man die Gleichung als Polynom 
     \begin{equation*}
         F(X,Y,Z) = Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 -a_6Z^3
@@ -840,7 +840,7 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
 \end{bsp}
 Nun wollen wir die Tangenten der Kurve $E$ ins affine Übersetzen. Die affine Darstellung wird uns dabei vor allem in Abschnitt~\ref{schnittpunkt-verkn} als nützlich erweisen.
 \begin{lem}\label{aff-tang}
-    Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffasen. Dann gilt:
+    Für $P=(x:y:1)\in E\setminus\{\patinf\}$ dürfen wir ohne Einschränkung $P=(x,y)$ als affinen Punkt auffassen. Dann gilt:
     \begin{equation*}
         T_P\setminus U =\Bigl\{(u,v)\mid \frac{\partial f}{\partial x}(P)(u-x)+\frac{\partial f}{\partial y}(P)(v-y)=0\Bigr\}
     \end{equation*}
@@ -1106,7 +1106,7 @@ Es ist also auch möglich, Gruppen $(E, +)$ über endlichen Körpern $\mathbb{F}
 Bis jetzt haben wir uns mit den mathematischen Grundlagen rund um elliptische Kurven beschäftigt. Wir haben den Begriff der projektiven Ebenen eingeführt und elliptische Kurven als eine Teilmenge dieser beschrieben. 
 Wir haben außerdem eine Operation $+$ über den elliptischen Kurven $E$ eingeführt, mit der man eine Gruppe über $E$ erhält.
 Die Frage ist nun, welche Relevanz diese Gruppe für die Kryptologie hat. \\
-In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel - dann soll das Problem jedoch leicht zu lösen sein. \\
+In der Kryptologie sind vor allem mathematische Probleme interessant, die ohne Kenntnis bestimmter Variablen sehr schwer zu lösen sind. Wenn diese bestimmten Variablen bekannt sind - man spricht meist von einem Schlüssel - dann soll das Problem jedoch leicht zu lösen sein. \\
 Bei elliptischen Kurven wird sich dabei die Schwierigkeit des Diskreten-Logarithmen-Problems zu Nutze gemacht.
 \subsection{Verschlüsselung und das Diskrete-Logarithmen-Problem}
 Wir wollen zunächst das Diskrete-Logarithmen-Problem wiederholen. Es ist folgendermaßen definiert:
@@ -1156,7 +1156,7 @@ Da $B=bG$, $C=bQ + \mathcal{P}$ und $Q = aG$ gilt, folgt:
     -aB + C = -abG + bQ + \mathcal{P} = -abG + abG + \mathcal{P} = \mathcal{P}.
 \end{equation*}
 So erhält Bob den Klartext $\mathcal{P} \in E$ aus dem Geheimtext $\mathcal{C}$.\\In der Praxis muss man ein Verfahren festlegen, wie man eine Nachricht zu einem Punkt auf der elliptischen Kurve umwandelt.
-\subsubsection{Effiziente Berechnung des Skalarprodukts}
+\subsubsection{Effiziente Berechnung der Skalarmultiplikation}
 % Silverman S.364
 Wir haben bereits gesehen, dass die Skalarmultiplikation $aP = Q$ mit $a \in \mathbb{N}$ und $P, Q \in E$ die zentrale Operation bei der Ver- und Entschlüsselung ist. \\
 Wenn man diese naiv berechnet, d.h.\ man berechnet $(\dots (((P + P) + P) + P) \dots )$ von innen nach außen, dann verhält sich die Laufzeit offensichtlich linear im Bezug auf $a$. Die genaue Anzahl der Schritte beträgt $a-1$. \\
@@ -1244,8 +1244,8 @@ Deshalb sollten diese Kurven nicht für Verschlüsselung verwendet werden. \\
 Weitere Angriffe, die auf Isomorphismen beruhen, sind z.B.\ Weil und Tate Paarung oder der Weil Abstieg~\cite[Seite~169-170]{hankersonguide}. Die elliptische Kurve sollte entsprechend gewählt werden, um solche Angriffe abzuwehren.
 
 \subsubsection{Seitenkanalangriffe}
-Bei einem Seitenkanalangriff hat der Angreifer phyische Kontrolle über das Gerät, welches für die Verschlüsselung zuständig ist.
-Das ermöglicht dem Angreifer durch Messsen von Werten wie Prozessorgeschwindigkeit und Stromverbrauch Rückschlüsse auf die Operationen, die das Gerät durchführt, zu ziehen.\\
+Bei einem Seitenkanalangriff hat der Angreifer physische Kontrolle über das Gerät, welches für die Verschlüsselung zuständig ist.
+Das ermöglicht dem Angreifer durch Messen von Werten wie Prozessorgeschwindigkeit und Stromverbrauch Rückschlüsse auf die Operationen, die das Gerät durchführt, zu ziehen.\\
 Seitenkanalangriffe sind bei elliptischen Kurven sehr interessant, da diese aufgrund der Schlüssellänge in Geräten verwendet werden, die wenig Speicherplatz und Rechenkapazität haben. Dazu gehören Smartcards, welche z.B.\ den ordnungsgemäßen Zugriff auf zahlungspflichtige TV-Sender sicherstellen. In diesem Fall befindet sich die Smartcard dann im physischen Besitz eines potentiellen Angreifers.
 Ein großes Problem bei ECC ist, dass die Operation der Verdopplung eines Punktes und die Addition zweier verschiedener Punkte unter einigen Implementierungen unterschiedlich viel Rechenleistung benötigen, wodurch der Angreifer Rückschlüsse auf den privaten Schlüssel ziehen kann~\cite{moller2001}. 
 Das liegt daran, dass bei Verdopplung, bei Addition mit dem unendlich fernen Punkt und bei Addition mit dem inversen Punkt, Fallunterscheidungen notwendig sind (siehe~\ref{addition-faelle}). Es gibt mehrere Ansätze, dieses Problem zu lösen.\\

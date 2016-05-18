@@ -231,7 +231,9 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 \end{tikzpicture}
 \caption{Minimalmodell einer affinen Ebene}
 \end{figure}
-
+\begin{remark}
+$\cong$ bedeutet ``äquivalent bis auf Knotenumbenennung''. Die zwei Graphen sind also isomorph.
+\end{remark}
 \end{bsp}
 
 \begin{thm}
@@ -242,7 +244,7 @@ Das \textbf{Minimalmodell} einer affinen Ebene umfasst genau 4 Punkte.\cite[Seit
 	wobei $\mathbb{F}b=\langle b \rangle=\{\lambda b\mid\lambda\in\mathbb{F}\}$ den von b erzeugten eindimensionalen Untervektorraum von $\mathbb{F}^2$ darstellt. Dann ist $(\mathbb{F}^2,\mathcal{G})$ eine affine Ebene.
 \end{thm}
 \begin{proof}
-	Wir verweisen hier auf\cite[Seite~87]{karpfinger-kiechle}.
+	Die Definition unserer Geradenmenge entspricht die Menge aller eindimensionalen Unterräume über $\mathbb{F}^2$. Durch striktes Einsetzen können die drei Bedingungen (A1), (A2) und (A3) nachgeprüft werden. Für den genauen Beweis verweisen wir hier auf\cite[Seite~87]{karpfinger-kiechle}.
 \end{proof}
 
 \begin{bsp}
@@ -362,11 +364,8 @@ Jede Hyperebene $H=v+U$ lässt sich für ein geeignetes $n\in V\setminus\{\bolds
 Wobei $\langle a,b\rangle$ das Standardskalarprodukt zweier Vektoren $a,b$ darstellt.
 \end{thm}
 \begin{proof}
-	Wir verweisen hier auf\cite[Seite~189]{linalg}.
+	Die Beweisidee basiert darauf, dass man einen Vektor n wählt, der orthogonal zu H ist. Jeder Vektor, der in H liegt, muss also orthogonal zu n sein. Für den genauen Beweis verweisen wir hier auf\cite[Seite~189]{linalg}.
 \end{proof}
-\begin{remark}
-Es ergibt sich, dass $n$ ein Normalenvektor zu $H$ sein muss.
-\end{remark}
 Satz~\ref{hyperebene} lässt eine alternative Definition unserer Geraden zu, die uns oft nützlich sein wird. Da alle Geraden $\overline{P,Q}\cup\{\boldsymbol 0\}$ lineare Hyperebenen sind, gilt nämlich für ein geeignetes \mbox{$n=(n_1,n_2,n_3)\in\ftnz$}:
 \begin{equation*}
 	\overline{P,Q}=\{(a_1:a_2:a_3)\in\mathcal{P}\mid n_1a_1+n_2a_2+n_3a_3=0\}
@@ -815,7 +814,8 @@ Wir zeigen nun, dass $T_P$ eine Gerade in \pgtwo ist, die den Punkt $P$ enthält
     Sei also $y=0$. Dann gilt $x^3+ax+b=0$, da $P=(x:0:1)$ auf $E$ liegt. Dieses Polynom hat nach Voraussetzung keine mehrfachen Nullstellen, deshalb ist $x$ nicht Nullstelle der Ableitung $3x^2+a$, also $3x^2+a\ne0$.\\
     Nun müssen wir noch $P\in T_P$ zeigen. Dazu setzen wir den Punkt $P$ in das Gleichungssystem für $T_P$ ein:
     \begin{align*}
-        (-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-3ax+3y^2-3b\\
+        (-3x^2-a)x+2yy+(y^2-2ax-3b)&=-3x^3-ax+2y^2+y^2-2ax-3b\\
+	&=-3x^3-3ax+3y^2-3b\\
         &=3\underbrace{(y^2-x^3-ax-b)}_{=f(x,y)=0}\stackrel{(\ref{elliptic-curve-aff-inf})}{=}0
     \end{align*}
     Folglich gilt $P\in T_P$.

@@ -201,10 +201,8 @@
 \subsection{Die unendlich ferne Gerade}
 %------------------------------------------------
 
-%------------------------------------------------
-
 \begin{frame}
-\frametitle{\insertsection~-~\insertsubsection}
+\frametitle{\insertsection~--~\insertsubsection}
 \begin{itemize}[<+->]
 	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
 	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
@@ -243,19 +241,116 @@
 
 %------------------------------------------------
 
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{lem}
+    Gegeben sei die projektive Ebene $(\mathcal{P}, \mathcal{G}) = PG(2,\mathbb{F})$ und die unendlich ferne Gerade $U$, dann ist die Abbildung
+    \begin{equation*}
+        \phi: \mathbb{F}^2 \rightarrow \mathcal{P}_U,\ (a,b) \mapsto (a:b:1)
+    \end{equation*}
+    bijektiv und bildet Geraden auf Geraden ab, d.h. $\phi$ ist ein Isomorphismus von affinen Ebenen. 
+\end{lem}
+\end{frame}
 
 %------------------------------------------------
+\subsection{Weierstraß-Gleichung}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Erinnerung: Punktemenge von \pgtwo
+\begin{equation*}
+    P = \left\{(x:y:z) \mid (x,y,z) \in \ftnz \right\}
+\end{equation*}
+\begin{defn}
+Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstraß-Gleichung} 
+    \begin{equation*}
+        0=Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 - a_6Z^3
+    \end{equation*}
+    gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf.
+\end{defn}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{defn} 
+	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
+    \end{equation*}
+\end{defn}
+    \begin{figure}[H]
+        \centering
+        \subfloat[$y^2=x^3+x^2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    restrict y to domain = -4:4,
+                    restrict x to domain = -1:1.6,
+                    ]
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5}); 
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    ]
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {sqrt(x^3)};
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {-sqrt(x^3)};
+                \end{axis}
+            \end{tikzpicture}}
+        \caption{Kurven mit Singularitäten (Knoten und Spitze)}
+    \end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item  Wir schränken ein: Die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein: $char \: \mathbb{F} \neq 2,3$.
+	\item Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, wobei $0,1$ die neutralen Elemente der Addition bzw.\ Multiplikation von $\mathbb{F}$ sind. 
+	\item Unter diesen Voraussetzungen können wir die Weierstraß-Gleichung vereinfachen zu:
+    \begin{equation*}
+        0=Y^2Z - X^3 - aXZ^2 - bZ^3
+    \end{equation*}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item Wir betrachten die elliptische Kurve
+		\begin{equation*}
+			E=\{(x:y:z)\mid 0=y^2z - x^3 - axz^2 - bz^3\}
+		\end{equation*}
+	\item Zurück zur unendlich fernen Gerade $U=\overline{(0:1:0),(1:0:0)}$.
+	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ es liegt nur $\patinf$ auf unserer Kurve $E$.
+	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
 \section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
 \subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
-\end{frame}
 
 %------------------------------------------------
 

@@ -1,0 +1,2 @@
+let g:syntastic_tex_chktex_quiet_messages = { "level": "warnings"}
+autocmd BufWritePost presentation.tex silent exec "!make &> /dev/null &"

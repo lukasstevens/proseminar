@@ -381,7 +381,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{itemize}[<+->]
 	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil von $E$. 
 	\item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
-	\item Die Weierstraßgleichung für diese Punkte vereinfacht sich zu:
+	\item Die Weierstraß-Gleichung für diese Punkte vereinfacht sich zu:
 	\begin{equation*}
     		f(x,y) \coloneqq y^2 - x^3 - ax - b
 	\end{equation*}
@@ -553,7 +553,7 @@ Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent p
     \begin{equation*}
         x^m = y,
     \end{equation*}
-    wird \textbf{Diskretes-Logarithmen-Problem} (kury DLP) genannt.
+    wird \textbf{Diskretes-Logarithmen-Problem} (kurz DLP) genannt.
 \end{defn}
 \pause
 Über elliptische Kurven:
@@ -573,12 +573,12 @@ Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent p
 \begin{itemize}
 	\item Naives Probieren: $O(|E|)$. 
 \end{itemize}
+\pause
 Wir erinnern uns:
 \begin{itemize}[<+->]
 	\item DLP beispielsweise mit Babystep-Giantstep in $O(\sqrt{|E|})$ lösbar.
-	\item DLP mit Hilfe von Primzahlen mit Index-Calculus-Algorithmen subexponentiell lösbar.\\
-	\pause
-	\textbf{Aber:} Elliptische Kurven besitzen keine ``Primzahlen''\\
+	\item DLP mit Hilfe von Primzahlen mit Index-Calculus-Algorithmen subexponentiell lösbar.
+	\item[] \textbf{Aber:} Elliptische Kurven besitzen keine ``Primzahlen''.
 \end{itemize}
 \end{frame}
 
@@ -624,8 +624,8 @@ Beispiel: Wir wollen 13P berechnen:
 \vspace{-2em}
 \pause
 \begin{itemize}[<+->]
-	\item Fallunterscheidungen bei Addition notwendig.\\
-	\pause $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
+	\item Fallunterscheidungen bei Addition notwendig.
+	\item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
 \end{itemize}
 \end{frame}
 

@@ -90,6 +90,8 @@
 \usepackage{float}
 %% Paket für Unterabbildungen pro Abbildung
 \usepackage{subfig}
+%% Paket fuer mehrere Spalten
+\usepackage{multicol}
 
 \usepackage{forloop}
 
@@ -191,7 +193,9 @@
 
 \begin{frame}
 	\frametitle{Überblick} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
@@ -239,8 +243,8 @@
             \visible<2->{\subfloat{
                     \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
-                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
-                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {}; 
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {};
+                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {};
                         \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
                         \node at (1.5,-3) [main node] (D) [label={[label]270:$D$}] {};
                         \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
@@ -261,8 +265,8 @@
             \visible<3->{\subfloat{
                     \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
-                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
-                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {}; 
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {};
+                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {};
                         \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
                         \node at (1.5,-3) [main node] (D) [label={[label]270:$D$}] {};
                         \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
@@ -280,7 +284,7 @@
             \visible<4->{\subfloat{
                     \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
 
-                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {};
                         \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
                         \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
                         \node at (1.5,-2) [main node] (G) [label={[label]0:$G$}] {};
@@ -297,185 +301,442 @@
 
 \section{Elliptische Kurven}
 %------------------------------------------------
+\section{Einleitung}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection}
+Blubb Lukas
+\end{frame}
+
+%------------------------------------------------
+\section{Grundbegriffe}
+%------------------------------------------------
+\subsection{Affine Ebenen}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Blubb2 Lukas
+\end{frame}
+
+%------------------------------------------------
+
+\section{Elliptische Kurven}
+%------------------------------------------------
 \subsection{Die unendlich ferne Gerade}
 %------------------------------------------------
 
-%------------------------------------------------
-
 \begin{frame}
-    \frametitle{\insertsection~-~\insertsubsection}
-    \begin{itemize}
-        \item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
-        \item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
+	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
 
-            \begin{figure}[H]
-                \tdplotsetmaincoords{80}{100}
-                \begin{tikzpicture}[
-                    tdplot_main_coords,
-                    axis/.style={->,black},
-                    line/.style={thick,red},
-                    scale=0.6]
+\begin{figure}[H]
+\tdplotsetmaincoords{80}{100}
+\begin{tikzpicture}[
+		tdplot_main_coords,
+		axis/.style={->,black},
+		line/.style={thick,red},
+		scale=0.6]
 
-                    % coordinates in (z,x,y)
-                    \filldraw[
-                    draw=darkgreen,%
-                    fill=darkgreen!20,%
-                    ]          (0,-2.5,-2.5)
-                    -- (0,-2.5,2.5)
-                    -- (0,2.5,2.5)
-                    -- (0,2.5,-2.5)
-                    -- cycle;
+	% coordinates in (z,x,y)
+	\filldraw[
+		draw=darkgreen,%
+		fill=darkgreen!20,%
+	    ]          (0,-2.5,-2.5)
+		    -- (0,-2.5,2.5)
+		    -- (0,2.5,2.5)
+		    -- (0,2.5,-2.5)
+		    -- cycle;
 
-                    %draw the axes
-                    \draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
-                    \draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
-                    \draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+	%draw the axes
+	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
 
-                    \draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$Q=(1:0:0)$};
-                    \draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$P=(0:1:0)$};
-                    \node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
-                \end{tikzpicture}
-            \end{figure}
-        \item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
-    \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-%------------------------------------------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
-%------------------------------------------------
-
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-
-\begin{frame}
-    \frametitle{Paragraphs of Text}
-    Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-    Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+	\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$Q=(1:0:0)$};
+	\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$P=(0:1:0)$};
+	\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
+\end{tikzpicture}
+\end{figure}
+	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Bullet Points}
-    \begin{itemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        \item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-        \item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-        \item Nam cursus est eget velit posuere pellentesque
-        \item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-    \end{itemize}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{lem}
+    Gegeben sei die projektive Ebene $(\mathcal{P}, \mathcal{G}) = PG(2,\mathbb{F})$ und die unendlich ferne Gerade $U$, dann ist die Abbildung
+    \begin{equation*}
+        \phi: \mathbb{F}^2 \rightarrow \mathcal{P}_U,\ (a,b) \mapsto (a:b:1)
+    \end{equation*}
+    bijektiv und bildet Geraden auf Geraden ab, d.h. $\phi$ ist ein Isomorphismus von affinen Ebenen.
+\end{lem}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Weierstraß-Gleichung}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Erinnerung: Punktemenge von \pgtwo
+\begin{equation*}
+    P = \left\{(x:y:z) \mid (x,y,z) \in \ftnz \right\}
+\end{equation*}
+\begin{defn}
+Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstraß-Gleichung}
+    \begin{equation*}
+        0=Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 - a_6Z^3
+    \end{equation*}
+    gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf.
+\end{defn}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Blocks of Highlighted Text}
-    \begin{block}{Block 1}
-        %
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-    \end{block}
-
-    \begin{block}{Block 2}
-        Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-    \end{block}
-
-    \begin{block}{Block 3}
-        Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-    \end{block}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{defn}
+	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
+    \end{equation*}
+\end{defn}
+    \begin{figure}[H]
+        \centering
+        \subfloat[$y^2=x^3+x^2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    restrict y to domain = -4:4,
+                    restrict x to domain = -1:1.6,
+                    ]
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5});
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    ]
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {sqrt(x^3)};
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {-sqrt(x^3)};
+                \end{axis}
+            \end{tikzpicture}}
+        \caption{Kurven mit Singularitäten (Knoten und Spitze)}
+    \end{figure}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Multiple Columns}
-    \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-        \column{.45\textwidth} % Left column and width
-        \textbf{Heading}
-        \begin{enumerate}
-            \item Statement
-            \item Explanation
-            \item Example
-        \end{enumerate}
-
-        \column{.5\textwidth} % Right column and width
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-    \end{columns}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item  Wir schränken ein: Die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein: $char \: \mathbb{F} \neq 2,3$.
+	\item Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, wobei $0,1$ die neutralen Elemente der Addition bzw.\ Multiplikation von $\mathbb{F}$ sind.
+	\item Unter diesen Voraussetzungen können wir die Weierstraß-Gleichung vereinfachen zu:
+    \begin{equation*}
+        0=Y^2Z - X^3 - aXZ^2 - bZ^3
+    \end{equation*}
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
-\section{Second Section}
+\subsection{Affine Darstellung}
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Table}
-    \begin{table}
-        \begin{tabular}{l l l}
-            \toprule
-            \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-            \midrule
-            Treatment 1 & 0.0003262 & 0.562 \\
-            Treatment 2 & 0.0015681 & 0.910 \\
-            Treatment 3 & 0.0009271 & 0.296 \\
-            \bottomrule
-        \end{tabular}
-        \caption{Table caption}
-    \end{table}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item Wir betrachten die elliptische Kurve
+		\begin{equation*}
+			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
+		\end{equation*}
+	\item Wir erinnern uns an die unendlich fernen Gerade $U=\overline{(0:1:0),(1:0:0)}$.
+	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ es liegt nur $\patinf$ auf unserer Kurve $E$.
+	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Theorem}
-    \begin{thm}[Mass--energy equivalence]
-        $E = mc^2$
-    \end{thm}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-    \frametitle{Verbatim}
-    \begin{bsp}[Theorem Slide Code]
-        \begin{verbatim}
-            \begin{frame}
-                \frametitle{Theorem}
-                \begin{theorem}[Mass--energy equivalence]
-                    $E = mc^2$
-                \end{theorem}
-            \end{frame}\end{verbatim}
-    \end{bsp}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil von $E$.
+	\item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
+	\item Die Weierstraß-Gleichung für diese Punkte vereinfacht sich zu:
+	\begin{equation*}
+    		f(x,y) \coloneqq y^2 - x^3 - ax - b
+	\end{equation*}
+	\item Insgesamt gilt also:
+		\begin{equation*}
+		E = \left\{(x:y:1) \mid (x,y) \in \mathbb{F}^2 \land f(x,y) = 0 \right\} \cup \left\{ \patinf \right\}
+		\end{equation*}
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{Figure}
-    Uncomment the code on this slide to include your own image from the same directory as the template TeX file.
-    %\begin{figure}
-    %\includegraphics[width=0.8\linewidth]{test}
-    %\end{figure}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{figure}[H]
+        \centering
+        \subfloat[$y^2=x^3 + 0.5x + 2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis equal,
+                    scale=0.7
+                    ]
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-3:3];
+                        set yrange [-3:3];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 - 0.5*x - 2
+                    };
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3 - 2x$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.7,
+                    axis equal,
+                    ]
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-3:3];
+                        set yrange [-3:3];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 + 2*x
+                    };
+                \end{axis}
+            \end{tikzpicture}}
+        \caption{Affine Darstellung elliptischer Kurven}
+    \end{figure}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{References}
-    \footnotesize{
-        \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-            \bibitem[Smith, 2012]{p1} John Smith (2012)
-            \newblock Title of the publication
-            \newblock \emph{Journal Name} 12(3), 45 -- 678.
-        \end{thebibliography}
-    }
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{lem}
+    Gegeben sei eine eine elliptische Kurve $E$, die durch die Lösungen der vereinfachten Weierstraß-Gleichung definiert ist:
+    \begin{equation*}
+        E: Y^2Z = X^3 + aXZ^2 + bZ^3.
+    \end{equation*}
+    Dann gilt: Die Kurve $E$ ist genau dann nicht-singulär, wenn das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen besitzt.
+\end{lem}
+\end{frame}
+
+%------------------------------------------------
+\section{Eine Gruppe über $E$}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~Voraussetzungen}
+Lukas Teil. Blub
+\end{frame}
+
+%------------------------------------------------
+\subsection{Tangenten}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Blub
+\end{frame}
+
+%------------------------------------------------
+\subsection{Die Gruppenoperation}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
+\begin{equation*} \label{plus-op}
+    P + Q \coloneqq \patinf \oplus (P \oplus Q) = -(P \oplus Q).
+\end{equation*}
+\begin{thm}
+    $(E, +)$ ist eine abelsche Gruppe mit neutralem Element $\patinf$.
+\end{thm}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-    \Huge{\centerline{The End}}
+\frametitle{\insertsection~--~\insertsubsection}
+    \begin{figure}[H]
+        \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis equal,
+                    minor tick num={1},
+                    minor tick num={1},
+                    xtick={-2, 2},
+                    minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    ytick={-2, 2},
+                    scale=0.8,
+                    grid=both,
+                    ]
+
+                    \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                    \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                    % quad for label positioning
+                    \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
+                    \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-3:3];
+                        set yrange [-2:2];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 + x - 1
+                    };
+                    \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+                    \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
+                \end{axis}
+            \end{tikzpicture}
+        \caption{Grafische Addition in $(E, +)$}
+    \end{figure}
 \end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Blocks of Highlighted Text}
+\begin{block}{Block 1}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+\end{block}
+
+\begin{block}{Block 2}
+Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+\section{Anwendungen}
+%------------------------------------------------
+\subsection{Diskretes-Logarithmen-Problem}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{defn} \label{DLP}
+    Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N}$, so dass gilt
+    \begin{equation*}
+        x^m = y,
+    \end{equation*}
+    wird \textbf{Diskretes-Logarithmen-Problem} (kurz DLP) genannt.
+\end{defn}
+\pause
+Über elliptische Kurven:
+\begin{itemize}[<+->]
+	\item Wähle $P,Q \in E$ und ein $m \in \mathbb{N}$. Das DLP ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind.
+	\item Die skalare Multiplikation des Punktes $P$ wird durch wiederholtes Addieren des Punktes mit sich selbst dargestellt.
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\subsection{Sicherheit}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}
+	\item Naives Probieren: $O(|E|)$.
+\end{itemize}
+\pause
+Wir erinnern uns:
+\begin{itemize}[<+->]
+	\item DLP beispielsweise mit Babystep-Giantstep in $O(\sqrt{|E|})$ lösbar.
+	\item DLP mit Hilfe von Primzahlen mit Index-Calculus-Algorithmen subexponentiell lösbar.
+	\item[] \textbf{Aber:} Elliptische Kurven besitzen keine ``Primzahlen''.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Angriffe}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+Beispiel: Wir wollen 13P berechnen:
+\begin{figure}[H]
+        \centering
+	\begin{tikzpicture}[scale=0.9]
+            \foreach \y in {0.0, 1.0, ..., 12.0 }{
+                \draw (\y, 0) node {$P$};
+            }
+            \foreach \y in {0.5, 1.5, ..., 11.5} {
+                \draw (\y, 0) node {$+$};
+            }
+            \foreach \y in {0.5, 2.5, ..., 10.5} {
+                \draw (\y, -0.75) node {$2P$};
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y - 0.5, 0) -- (\y, -0.75);
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y + 0.5, 0) -- (\y, -0.75);
+            }
+            \foreach \y in {1.5, 5.5, ..., 9.5} {
+                \draw (\y, -1.5) node {$4P$};
+                \draw (\y, -0.75) node {$+$};
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y - 1.0, -0.75) -- (\y, -1.5);
+                \draw[shorten <= 0.25cm, shorten >= 0.25cm] (\y + 1.0, -0.75) -- (\y, -1.5);
+            }
+            \draw (3.5, -2.25) node {$8P$};
+            \draw (3.5, -1.5) node {$+$};
+            \draw[shorten <= 0.25cm, shorten >= 0.25cm] (3.5 - 2.0, -1.5) -- (3.5, -2.25);
+            \draw[shorten <= 0.25cm, shorten >= 0.25cm] (3.5 + 2.0, -1.5) -- (3.5, -2.25);
+            \draw (7.5, -2.25) node {$+$};
+            \draw (11.5, -2.25) node {$+$};
+            \draw (9.5, -2.25) node {$4P$};
+            \draw (12.0, -2.25) node {$P$};
+
+        \end{tikzpicture}
+        \caption{Effiziente Skalarmultiplikation mit Additionsbaum}
+    \end{figure}
+\vspace{-2em}
+\pause
+\begin{itemize}[<+->]
+	\item Fallunterscheidungen bei Addition notwendig.
+	\item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section*{}
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\vfill
+\center{\small{Zusammengefasst: Elliptische Kurven sind einfach super.}}
+\end{frame}
+
 %----------------------------------------------------------------------------------------
-\end{document} 
+\end{document}

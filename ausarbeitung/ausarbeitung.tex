@@ -558,7 +558,7 @@ Im dreidimensionalen Raum ist das genau die $x,y$-Ebene mit $z=0$.
     \end{equation*}
     Hierbei ist zu beachten, dass $\mu \in \fnz$ laut Definition der Äquivalenzrelation $\sim$ gilt. Man betrachte nun die Gerade
     \begin{equation*}
-        G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \ftwnz\} \right\}.
+        G \coloneqq \left\{ u(a_1 : a_2 : 1) + v(b_1 : b_2 : 0) \mid (u,v) \in \ftwnz \right\}.
     \end{equation*}
     Alle Punkte der Bildmenge von $\phi$ liegen auf der Gerade $G$. Es wird nur ein Punkt nicht erreicht, nämlich der Punkt $R = (b_1 : b_2 : 0)$. Wie man sehen kann, gilt $G \cap U = R$. Es folgt $\phi(\overline{a,b}) = G \cap \pu \in \gu$.
 \end{proof}
@@ -662,9 +662,9 @@ hat, umformen. Mit einer linearen Koordinatentransformation kann man die Gleichu
 \end{equation}
 herleiten~\cite[Seite~50]{milne2006}.
 \subsection{Affine Darstellung elliptischer Kurven} \label{affine-darstellung}
-Wir wollen nun eine affine Darstellung für elliptische Kurven herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der \textbf{unendlich ferne Punkt} \makebox{$\patinf = (0:1:0)$}, auf $E$ liegt. Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenzen, drei Möglichkeiten Punkte zu erzeugen, deren Z-Koordinate 0 ist: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
+Wir wollen nun eine affine Darstellung für elliptische Kurven herleiten. Dazu zeigen wir zunächst, dass nur ein Punkt der unendlich fernen Gerade $U$, nämlich der \textbf{unendlich ferne Punkt} \makebox{$\patinf = (0:1:0)$}, auf $E$ liegt. Für $P \in U$ gilt $P = (u:v:0)$ mit $u,v \in \mathbb{F}$. Es gibt, bis auf Äquivalenzen, drei Möglichkeiten Punkte zu erzeugen, deren z-Koordinate 0 ist: $P = (1:0:0)$, $Q = (u:v:0)$ mit $u,v \in \fnz$ und $\patinf = (0:1:0)$. 
 Wenn wir diese Punkte in die Gleichung~(\ref{reduziert-weierstrass}) einsetzen, dann löst nur $\patinf$ die Gleichung.\\ 
-Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die Z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
+Deswegen gilt für jeden Punkt $P \in E$ mit $P \neq \patinf$, dass die z-Koordinate ungleich null ist. Es gilt also $P \in \pu$, d.h.\ alle Punkte, bis auf $\patinf$, liegen auf dem affinen Teil der projektiven Ebene \pgtwo. 
 Aufgrund der Äquivalenzrelation $\sim$ können wir o.B.d.A.\ annehmen, dass $P \in \left\{(u:v:1) \mid u,v \in \mathbb{F} \right\}$. Wenn wir also nur diese Punkte betrachten, können wir die Gleichung~(\ref{reduziert-weierstrass}) vereinfachen und erhalten die affine Gleichung $y^2 = x^3 + ax + b$ oder als Polynom: 
 \begin{equation} \label{affines-polynom}
     f(x,y) \coloneqq y^2 - x^3 - ax - b
@@ -733,7 +733,7 @@ Wir wollen nun ein hilfreiches Lemma zeigen, dass im anschließenden Kapitel zum
     "$\Leftarrow$": \\
     Die Rückrichtung gilt nach Definition, da bei einer mehrfachen Nullstelle die Ableitungen in diesem Punkt verschwinden.\\
     "$\Rightarrow$": \\
-    Da die Kurve singulär ist, verschwinden die Ableitungen in mindestens einem Punkt (siehe~\ref{singularitaeten}).
+    Wir nehmen an, dass die Kurve singulär ist. Somit verschwinden die Ableitungen in mindestens einem Punkt (siehe~\ref{singularitaeten}).
     Wir schreiben die Weierstraß-Gleichung als Polynom \makebox{$F(X,Y,Z) = Y^2Z - X^3 - aXZ^2 - bZ^3$}, leiten ab und setzen die Ableitungen gleich null:
     \begin{equation*}
         \begin{split}
@@ -1039,10 +1039,10 @@ Mit Hilfe der Formeln aus Satz~\ref{oplus-op} können wir die Addition $P + Q \i
 Wir setzen $P = (x,y)$ und $Q = (u,v)$. Dann gilt 
 \begin{equation*} \label{addition-faelle}
     P + Q = \begin{cases}
-        \patinf, & \text{falls $P=-Q$ oder $P=Q=\patinf$,} \\
-        P, & \text{falls $Q=\patinf$,} \\
-        Q, & \text{falls $P=\patinf$,} \\
-        (w, - k (w - x) - y), & \text{sonst,} \\
+        \patinf, & \text{falls $P=-Q$ oder $P=Q=\patinf$} \\
+        P, & \text{falls $Q=\patinf$} \\
+        Q, & \text{falls $P=\patinf$} \\
+        (w, - k (w - x) - y), & \text{sonst} \\
     \end{cases}
 \end{equation*}
 wobei

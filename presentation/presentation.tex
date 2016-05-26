@@ -82,6 +82,7 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
+
 %% Hyperlinks für interne Referenzen
 \usepackage{hyperref}
 %% Grafiken einbinden
@@ -196,6 +197,104 @@
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
+\section{Grundbegriffe}
+\subsection{Grundbegriffe}
+%\subsection{Affine Ebenen}
+\begin{frame}
+    \frametitle{Definition affiner Ebenen}
+    \begin{definition}
+        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
+        Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine affine Ebene, wenn folgende Bedingungen erfüllt sind:
+        \begin{enumerate}
+            \item Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$. \\
+            \item Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$. \\
+            \item Es existieren drei Elemente $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$. \\
+        \end{enumerate}
+    \end{definition}
+\end{frame}
+%\subsection{Projektive Ebenen}
+\begin{frame}
+    \frametitle{Definition projektiver Ebenen}
+    \begin{definition}
+        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
+        Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine projektive Ebene, wenn folgende Bedingungen erfüllt sind:
+	\begin{enumerate}
+		\item Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$. \\
+		\item Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$.
+		\item Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen.
+	\end{enumerate}
+    \end{definition}
+\end{frame}
+%\subsection{\pgtwo}
+\begin{frame}
+    \frametitle{\pgtwo}
+\end{frame}
+%\subsection{Von projektiven zu affinen Ebenen}
+\begin{frame}
+    \frametitle{Konstruktion affiner Ebenen aus projektiven Ebenen}
+
+    \begin{figure}[H]
+        \centering
+        \scalebox{.75}{
+            \visible<2->{\subfloat{
+                    \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
+
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
+                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {}; 
+                        \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
+                        \node at (1.5,-3) [main node] (D) [label={[label]270:$D$}] {};
+                        \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
+                        \node at (2.37,-1.5) [main node] (F) [label={[label]0:$F$}] {};
+                        \node at (1.5,-2) [main node] (G) [label={[label]0:$G$}] {};
+
+                        \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (A)
+                        (B) -- (G) -- (D)
+                        (G) -- (F);
+                        \draw (G) -- (E);
+                        \draw (G) -- (A);
+                        \draw (G) -- (C);
+
+                        \draw (1.5,-2) circle [radius=1];
+
+                    \end{tikzpicture}}}
+            \qquad
+            \visible<3->{\subfloat{
+                    \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
+
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
+                        \node at (0.63,-1.5) [main node] (B) [label={[label]180:$B$}] {}; 
+                        \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
+                        \node at (1.5,-3) [main node] (D) [label={[label]270:$D$}] {};
+                        \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
+                        \node at (2.37,-1.5) [main node] (F) [label={[label]0:$F$}] {};
+                        \node at (1.5,-2) [main node] (G) [label={[label]0:$G$}] {};
+
+                        \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (A)
+                        (B) -- (G) -- (D)
+                        (G) -- (F);
+                        \draw (G) -- (E);
+                        \draw (G) -- (A);
+                        \draw (G) -- (C);
+                    \end{tikzpicture}}}
+            \qquad
+            \visible<4->{\subfloat{
+                    \begin{tikzpicture}[node distance=1.5cm,main node/.style={circle,fill=black,scale=0.75}]
+
+                        \node at (1.5,0) [main node] (A) [label={[label]180:$A$}] {}; 
+                        \node at (-0.15,-3)[main node] (C) [label={[label]270:$C$}] {};
+                        \node at (3.15,-3) [main node] (E) [label={[label]270:$E$}] {};
+                        \node at (1.5,-2) [main node] (G) [label={[label]0:$G$}] {};
+
+                        \draw (A) -- (C) -- (E)  -- (A);
+                        \draw (G) -- (E);
+                        \draw (G) -- (A);
+                        \draw (G) -- (C);
+                    \end{tikzpicture}}}
+        }
+
+    \end{figure}
+\end{frame}
+
 \section{Elliptische Kurven}
 %------------------------------------------------
 \subsection{Die unendlich ferne Gerade}
@@ -204,41 +303,41 @@
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~-~\insertsubsection}
-\begin{itemize}
-	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
-	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
+    \frametitle{\insertsection~-~\insertsubsection}
+    \begin{itemize}
+        \item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
+        \item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
 
-\begin{figure}[H]
-\tdplotsetmaincoords{80}{100}
-\begin{tikzpicture}[
-		tdplot_main_coords,
-		axis/.style={->,black},
-		line/.style={thick,red},
-		scale=0.6]
+            \begin{figure}[H]
+                \tdplotsetmaincoords{80}{100}
+                \begin{tikzpicture}[
+                    tdplot_main_coords,
+                    axis/.style={->,black},
+                    line/.style={thick,red},
+                    scale=0.6]
 
-	% coordinates in (z,x,y)
-	\filldraw[
-		draw=darkgreen,%
-		fill=darkgreen!20,%
-	    ]          (0,-2.5,-2.5)
-		    -- (0,-2.5,2.5)
-		    -- (0,2.5,2.5)
-		    -- (0,2.5,-2.5)
-		    -- cycle;
+                    % coordinates in (z,x,y)
+                    \filldraw[
+                    draw=darkgreen,%
+                    fill=darkgreen!20,%
+                    ]          (0,-2.5,-2.5)
+                    -- (0,-2.5,2.5)
+                    -- (0,2.5,2.5)
+                    -- (0,2.5,-2.5)
+                    -- cycle;
 
-	%draw the axes
-	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
-	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
-	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+                    %draw the axes
+                    \draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+                    \draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+                    \draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
 
-	\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$Q=(1:0:0)$};
-	\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$P=(0:1:0)$};
-	\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
-\end{tikzpicture}
-\end{figure}
-	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
-\end{itemize}
+                    \draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$Q=(1:0:0)$};
+                    \draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$P=(0:1:0)$};
+                    \node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
+                \end{tikzpicture}
+            \end{figure}
+        \item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -249,60 +348,61 @@
 \subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
+    \frametitle{Paragraphs of Text}
+    Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
 
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+    Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
+    \frametitle{Bullet Points}
+    \begin{itemize}
+        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        \item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
+        \item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
+        \item Nam cursus est eget velit posuere pellentesque
+        \item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
+    \frametitle{Blocks of Highlighted Text}
+    \begin{block}{Block 1}
+        %
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+    \end{block}
 
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
+    \begin{block}{Block 2}
+        Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
+    \end{block}
 
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
+    \begin{block}{Block 3}
+        Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
+    \end{block}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+    \frametitle{Multiple Columns}
+    \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
+        \column{.45\textwidth} % Left column and width
+        \textbf{Heading}
+        \begin{enumerate}
+            \item Statement
+            \item Explanation
+            \item Example
+        \end{enumerate}
 
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+        \column{.5\textwidth} % Right column and width
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
 
-\end{columns}
+    \end{columns}
 \end{frame}
 
 %------------------------------------------------
@@ -310,72 +410,72 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+    \frametitle{Table}
+    \begin{table}
+        \begin{tabular}{l l l}
+            \toprule
+            \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+            \midrule
+            Treatment 1 & 0.0003262 & 0.562 \\
+            Treatment 2 & 0.0015681 & 0.910 \\
+            Treatment 3 & 0.0009271 & 0.296 \\
+            \bottomrule
+        \end{tabular}
+        \caption{Table caption}
+    \end{table}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Theorem}
-\begin{thm}[Mass--energy equivalence]
-$E = mc^2$
-\end{thm}
+    \frametitle{Theorem}
+    \begin{thm}[Mass--energy equivalence]
+        $E = mc^2$
+    \end{thm}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{bsp}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{bsp}
+    \frametitle{Verbatim}
+    \begin{bsp}[Theorem Slide Code]
+        \begin{verbatim}
+            \begin{frame}
+                \frametitle{Theorem}
+                \begin{theorem}[Mass--energy equivalence]
+                    $E = mc^2$
+                \end{theorem}
+            \end{frame}\end{verbatim}
+    \end{bsp}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
+    \frametitle{Figure}
+    Uncomment the code on this slide to include your own image from the same directory as the template TeX file.
+    %\begin{figure}
+    %\includegraphics[width=0.8\linewidth]{test}
+    %\end{figure}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+    \frametitle{References}
+    \footnotesize{
+        \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+            \bibitem[Smith, 2012]{p1} John Smith (2012)
+            \newblock Title of the publication
+            \newblock \emph{Journal Name} 12(3), 45 -- 678.
+        \end{thebibliography}
+    }
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\Huge{\centerline{The End}}
+    \Huge{\centerline{The End}}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \end{document} 

@@ -339,8 +339,8 @@ Blubb Lukas
 	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
 	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
 
-	\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$Q=(1:0:0)$};
-	\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$P=(0:1:0)$};
+	\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$P=(1:0:0)$};
+	\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$Q=(0:1:0)$};
 	\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
 \end{tikzpicture}
 \end{figure}
@@ -854,7 +854,6 @@ Blub
                 minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
                 ytick={-2, 2},
                 scale=0.8,
-                grid=both,
                 ]
 
                 \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};

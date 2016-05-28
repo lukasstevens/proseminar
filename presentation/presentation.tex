@@ -300,7 +300,7 @@ Blubb Lukas
                         \draw (G) -- (C);
                     \end{tikzpicture}}}
         }
-
+        \caption{Von der Fano-Ebene zur minimalen affinen Ebene}
     \end{figure}
 \end{frame}
 
@@ -560,13 +560,98 @@ Blub
 %------------------------------------------------
 
 \begin{frame}
+    \frametitle{\insertsection~--~\insertsubsection}
     \begin{figure}[H]
         \centering
-        \subfloat{
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis equal,
+                ]
+
+                \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                % quad for label positioning
+                \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
+                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                    set size square;
+                    set xrange [-3:3];
+                    set yrange [-2:2];
+                    set contour base;
+                    set cntrparam levels incre 0,0.1,0;
+                    unset surface;
+                    set isosamples 1000, 1000;
+                    splot y**2 - x**3 + x - 1
+                };
+                \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{$P \oplus Q$}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Vereinbarungen}
+    \begin{figure}[H]
+        \centering
+        \setcounter{subfigure}{0}
+        \scalebox{0.7}{
+            \visible<2->{\subfloat[$P \oplus P$]{
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            axis equal,
+                            ]
+                            \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                set size square;
+                                set xrange [-2:2];
+                                set yrange [-2:2];
+                                set contour base;
+                                set cntrparam levels incre 0,0.1,0;
+                                unset surface;
+                                set isosamples 1000, 1000;
+                                splot y**2 - x**3 - x - 1 
+                            };
+                            \addplot [color=blue, domain=-1.5:1]{1.42886*x + 1.3282};
+                            \draw (-0.5,0.61372) node{\textbullet};
+                        \end{axis}
+                    \end{tikzpicture}}}
+            \qquad
+            \visible<3->{\subfloat[$P \oplus P=P$]{
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            axis equal,
+                            ]
+
+                            \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                set size square;
+                                set xrange [-2:2];
+                                set yrange [-2:2];
+                                set contour base;
+                                set cntrparam levels incre 0,0.1,0;
+                                unset surface;
+                                set isosamples 1000, 1000;
+                                splot y**2 - x**3 + x - 1
+                            };
+                            \draw[color=blue] ({axis cs:-1.3247,0}|-{rel axis cs:0,0}) -- ({axis cs:-1.3247,0}|-{rel axis cs:0,1});
+                            \draw (-1.3247,0) node{\textbullet};
+                        \end{axis}
+                    \end{tikzpicture}}}
+        }
+        \caption{Vereinbarungen(1)}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Vereinbarungen}
+    \begin{figure}[H]
+        \centering
+        \setcounter{subfigure}{0}
+        \subfloat[$P \oplus Q = P$]{
             \begin{tikzpicture}
                 \begin{axis}[
                     axis equal,
-                    scale=1.0
+                    scale=0.8,
+                    ytick={-2,2},
+                    xtick={-2,2},
                     ]
                     \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
                         set size square;
@@ -576,14 +661,166 @@ Blub
                         set cntrparam levels incre 0,0.1,0;
                         unset surface;
                         set isosamples 1000, 1000;
-                        splot y**2 - x**3 - x - 1 
+                        splot y**2 - x**3 + x 
                     };
-                    \addplot [color=blue, domain = -1.5:1, samples = 300, unbounded coords=jump]
-                    {1.42886*x + 1.3282};
-                \draw (-0.5,0.61372) node[label={290:\footnotesize $P$}](P){\textbullet};
+                    \addplot [color=blue, domain=-1.5:1.75]{0.839146*x + -0.274337};
+                    \draw (-0.25,-0.484123) node[outer sep=0pt, inner sep=0pt, label={270:\footnotesize $P$}](P) {\textbullet};
+                    \draw (1.2042, 0.73621) node[inner sep=0pt, label={300:\footnotesize $Q$}](Q) {\textbullet};
                 \end{axis}
             \end{tikzpicture}}
+        \caption{Vereinbarungen(2)}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Kommutativität und Abgeschlossenheit}
+    \begin{columns}
+        \column[t]{.50\textwidth}
+        Fallunterscheidung für $P \oplus Q = R$:
+        \begin{enumerate}
+            \item<2-> {\makebox[3cm]{$P = Q = \patinf$: \hfill} $\patinf \oplus \patinf = \patinf$}
+            \item<3-> {\makebox[3cm]{$P = \patinf$: \hfill} $\patinf \oplus Q = -Q$}
+            \item<5-> {\makebox[3cm]{$P = -Q$: \hfill} $P \oplus (-P) = \patinf$}
+            \item<7-> {\makebox[3cm]{$P \neq \pm Q$: \hfill} $P \oplus Q = R$}
+            \item<9-> {\makebox[3cm]{$P = Q \neq -P$: \hfill} $P \oplus P = R$}
+        \end{enumerate}
+        \column[t]{.50\textwidth}
+        \setcounter{subfigure}{0}
+        \only<4>{
+            \begin{figure}[H]
+                \centering
+                \scalebox{0.7}{
+                    \subfloat[$\patinf \oplus Q=-Q$]{
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                axis equal,
+                                ]
+
+                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                    set size square;
+                                    set xrange [-2:2];
+                                    set yrange [-2:2];
+                                    set contour base;
+                                    set cntrparam levels incre 0,0.1,0;
+                                    unset surface;
+                                    set isosamples 1000, 1000;
+                                    splot y**2 - x**3 + x - 1
+                                };
+                                \draw[color=blue] ({axis cs:0.5,0}|-{rel axis cs:0,0}) -- ({axis cs:0.5,0}|-{rel axis cs:0,1});
+                                \draw (0.5,0.790569) node[outer sep=0pt, label={300:\footnotesize $R = -Q$}](R) {\textbullet};
+                                \draw (0.5,-0.790569) node[inner sep=0pt, label={300:\footnotesize $Q$}](Q) {\textbullet};
+                            \end{axis}
+                        \end{tikzpicture}}}
+            \end{figure}
+        }
+        \only<6>{
+            \begin{figure}[H]
+                \centering
+                \scalebox{0.7}{
+                    \subfloat[$P \oplus (-P) = \patinf$]{
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                axis equal,
+                                ]
+
+                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                    set size square;
+                                    set xrange [-2:2];
+                                    set yrange [-2:2];
+                                    set contour base;
+                                    set cntrparam levels incre 0,0.1,0;
+                                    unset surface;
+                                    set isosamples 1000, 1000;
+                                    splot y**2 - x**3 + x - 1
+                                };
+                                \draw[color=blue] ({axis cs:0.5,0}|-{rel axis cs:0,0}) -- ({axis cs:0.5,0}|-{rel axis cs:0,1});
+                                \draw (0.5,0.790569) node[outer sep=0pt, label={300:\footnotesize $Q=-P$}](R) {\textbullet};
+                                \draw (0.5,-0.790569) node[inner sep=0pt, label={300:\footnotesize $P$}](Q) {\textbullet};
+                            \end{axis}
+                        \end{tikzpicture}}}
+            \end{figure}
+        }
+        \only<8>{
+            \begin{figure}[H]
+                \centering
+                \scalebox{0.7}{
+                    \subfloat[$P \oplus Q = R$]{
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                axis equal,
+                                ]
+
+                                \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                                % quad for label positioning
+                                \draw (1,1) node[label={90:\footnotesize $R$}](R){\textbullet};
+                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                    set size square;
+                                    set xrange [-3:3];
+                                    set yrange [-2:2];
+                                    set contour base;
+                                    set cntrparam levels incre 0,0.1,0;
+                                    unset surface;
+                                    set isosamples 1000, 1000;
+                                    splot y**2 - x**3 + x - 1
+                                };
+                                \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+                            \end{axis}
+                        \end{tikzpicture}}}
+
+            \end{figure}
+        }
+        \only<10>{
+            \begin{figure}[H]
+                \centering
+                \scalebox{0.7}{
+                    \subfloat[$P \oplus P = R$]{
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                axis equal,
+                                ytick={-2,2},
+                                xtick={-2,2},
+                                ]
+                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                    set size square;
+                                    set xrange [-2:2];
+                                    set yrange [-2:2];
+                                    set contour base;
+                                    set cntrparam levels incre 0,0.1,0;
+                                    unset surface;
+                                    set isosamples 1000, 1000;
+                                    splot y**2 - x**3 + x 
+                                };
+                                \addplot [color=blue, domain=-1.5:1.75]{0.839146*x + -0.274337};
+                                \draw (-0.25,-0.484123) node[outer sep=0pt, inner sep=0pt, label={270:\footnotesize $P$}](P) {\textbullet};
+                                \draw (1.2042, 0.73621) node[inner sep=0pt, label={300:\footnotesize $R$}](R) {\textbullet};
+                            \end{axis}
+                        \end{tikzpicture}}}
+            \end{figure}
+        }
+    \end{columns}
+\end{frame}
+\begin{frame}
+    \frametitle{Mathematische Beschreibung der $\oplus$-Verknüpfung}
+    \begin{thm}
+    Es sei $P=(x,y),Q=(u,v)\in E\setminus\{\patinf\}$. Dann gilt:
+    \begin{align*}
+        \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
+        P\oplus Q&=
+        \begin{cases}
+            \patinf, & \text{falls }P=-Q\\
+            (w,k(w-x)+y), & \text{sonst}
+        \end{cases}
+    \end{align*}
+    wobei
+    \begin{align*}
+        w=k^2-x-u\quad\normalfont{und}\quad k=
+        \begin{cases}
+            \frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
+            \frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
+        \end{cases}
+    \end{align*}
+    \end{thm}
 \end{frame}
 
 %------------------------------------------------

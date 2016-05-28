@@ -540,7 +540,10 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 
 \begin{frame}
 \frametitle{\insertsection~--~Voraussetzungen}
-Lukas Teil. Blub
+\begin{itemize}
+    \item Es gelte $char\ \mathbb{F}\ne2,3$
+    \item $E$ sei nicht singulär.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -553,58 +556,89 @@ Blub
 \end{frame}
 
 %------------------------------------------------
-\subsection{Die Gruppenoperation}
+\subsection{Die Verknüpfung $\oplus$}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
-\begin{equation*} \label{plus-op}
-    P + Q \coloneqq \patinf \oplus (P \oplus Q) = -(P \oplus Q).
-\end{equation*}
-\begin{thm}
-    $(E, +)$ ist eine abelsche Gruppe mit neutralem Element $\patinf$.
-\end{thm}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
     \begin{figure}[H]
         \centering
+        \subfloat{
             \begin{tikzpicture}
                 \begin{axis}[
                     axis equal,
-                    minor tick num={1},
-                    minor tick num={1},
-                    xtick={-2, 2},
-                    minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
-                    minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
-                    ytick={-2, 2},
-                    scale=0.8,
-                    grid=both,
+                    scale=1.0
                     ]
-
-                    \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
-                    \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
-                    % quad for label positioning
-                    \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
-                    \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
                     \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
                         set size square;
-                        set xrange [-3:3];
+                        set xrange [-2:2];
                         set yrange [-2:2];
                         set contour base;
                         set cntrparam levels incre 0,0.1,0;
                         unset surface;
                         set isosamples 1000, 1000;
-                        splot y**2 - x**3 + x - 1
+                        splot y**2 - x**3 - x - 1 
                     };
-                    \addplot [thick, color=blue, domain=-2.5:2.5] {1};
-                    \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
+                    \addplot [color=blue, domain = -1.5:1, samples = 300, unbounded coords=jump]
+                    {1.42886*x + 1.3282};
+                \draw (-0.5,0.61372) node[label={290:\footnotesize $P$}](P){\textbullet};
                 \end{axis}
-            \end{tikzpicture}
+            \end{tikzpicture}}
+    \end{figure}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Die Gruppenoperation}
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{\insertsection~--~\insertsubsection}
+    Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
+    \begin{equation*} \label{plus-op}
+        P + Q \coloneqq \patinf \oplus (P \oplus Q) = -(P \oplus Q).
+    \end{equation*}
+    \begin{thm}
+        $(E, +)$ ist eine abelsche Gruppe mit neutralem Element $\patinf$.
+    \end{thm}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{\insertsection~--~\insertsubsection}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis equal,
+                minor tick num={1},
+                minor tick num={1},
+                xtick={-2, 2},
+                minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                ytick={-2, 2},
+                scale=0.8,
+                grid=both,
+                ]
+
+                \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                % quad for label positioning
+                \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
+                \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
+                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                    set size square;
+                    set xrange [-3:3];
+                    set yrange [-2:2];
+                    set contour base;
+                    set cntrparam levels incre 0,0.1,0;
+                    unset surface;
+                    set isosamples 1000, 1000;
+                    splot y**2 - x**3 + x - 1
+                };
+                \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+                \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
+            \end{axis}
+        \end{tikzpicture}
         \caption{Grafische Addition in $(E, +)$}
     \end{figure}
 \end{frame}
@@ -618,20 +652,20 @@ Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{defn} \label{DLP}
-    Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N}$, so dass gilt
-    \begin{equation*}
-        x^m = y,
-    \end{equation*}
-    wird \textbf{Diskretes-Logarithmen-Problem} (kurz DLP) genannt.
-\end{defn}
-\pause
-Über elliptische Kurven:
-\begin{itemize}[<+->]
-	\item Wähle $P,Q \in E$ und ein $m \in \mathbb{N}$. Das DLP ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind.
-	\item Die skalare Multiplikation des Punktes $P$ wird durch wiederholtes Addieren des Punktes mit sich selbst dargestellt.
-\end{itemize}
+    \frametitle{\insertsection~--~\insertsubsection}
+    \begin{defn} \label{DLP}
+        Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N}$, so dass gilt
+        \begin{equation*}
+            x^m = y,
+        \end{equation*}
+        wird \textbf{Diskretes-Logarithmen-Problem} (kurz DLP) genannt.
+    \end{defn}
+    \pause
+    Über elliptische Kurven:
+    \begin{itemize}[<+->]
+        \item Wähle $P,Q \in E$ und ein $m \in \mathbb{N}$. Das DLP ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind.
+        \item Die skalare Multiplikation des Punktes $P$ wird durch wiederholtes Addieren des Punktes mit sich selbst dargestellt.
+    \end{itemize}
 
 \end{frame}
 
@@ -640,17 +674,17 @@ Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{itemize}
-	\item Naives Probieren: $O(|E|)$.
-\end{itemize}
-\pause
-Wir erinnern uns:
-\begin{itemize}[<+->]
-	\item DLP beispielsweise mit Babystep-Giantstep in $O(\sqrt{|E|})$ lösbar.
-	\item DLP mit Hilfe von Primzahlen mit Index-Calculus-Algorithmen subexponentiell lösbar.
-	\item[] \textbf{Aber:} Elliptische Kurven besitzen keine ``Primzahlen''.
-\end{itemize}
+    \frametitle{\insertsection~--~\insertsubsection}
+    \begin{itemize}
+        \item Naives Probieren: $O(|E|)$.
+    \end{itemize}
+    \pause
+    Wir erinnern uns:
+    \begin{itemize}[<+->]
+        \item DLP beispielsweise mit Babystep-Giantstep in $O(\sqrt{|E|})$ lösbar.
+        \item DLP mit Hilfe von Primzahlen mit Index-Calculus-Algorithmen subexponentiell lösbar.
+        \item[] \textbf{Aber:} Elliptische Kurven besitzen keine ``Primzahlen''.
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -658,11 +692,11 @@ Wir erinnern uns:
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-Beispiel: Wir wollen 13P berechnen:
-\begin{figure}[H]
+    \frametitle{\insertsection~--~\insertsubsection}
+    Beispiel: Wir wollen 13P berechnen:
+    \begin{figure}[H]
         \centering
-	\begin{tikzpicture}[scale=0.9]
+        \begin{tikzpicture}[scale=0.9]
             \foreach \y in {0.0, 1.0, ..., 12.0 }{
                 \draw (\y, 0) node {$P$};
             }
@@ -692,12 +726,12 @@ Beispiel: Wir wollen 13P berechnen:
         \end{tikzpicture}
         \caption{Effiziente Skalarmultiplikation mit Additionsbaum}
     \end{figure}
-\vspace{-2em}
-\pause
-\begin{itemize}[<+->]
-	\item Fallunterscheidungen bei Addition notwendig.
-	\item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
-\end{itemize}
+    \vspace{-2em}
+    \pause
+    \begin{itemize}[<+->]
+        \item Fallunterscheidungen bei Addition notwendig.
+        \item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -705,9 +739,9 @@ Beispiel: Wir wollen 13P berechnen:
 %------------------------------------------------
 
 \begin{frame}
-\Huge{\centerline{The End}}
-\vfill
-\center{\small{Zusammengefasst: Elliptische Kurven sind einfach super.}}
+    \Huge{\centerline{The End}}
+    \vfill
+    \center{\small{Zusammengefasst: Elliptische Kurven sind einfach super.}}
 \end{frame}
 
 %----------------------------------------------------------------------------------------

@@ -1,4 +1,3 @@
-BUILD_DIR=build
 TARGET=presentation
 
 .PHONY: all clean watch

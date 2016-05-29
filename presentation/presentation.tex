@@ -854,7 +854,8 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{frame}
     \frametitle{\insertsection~--~\insertsubsection}
     \begin{figure}[H]
-        \centering
+      \centering
+      \subfloat{
         \begin{tikzpicture}
             \begin{axis}[
                 axis equal,
@@ -864,28 +865,59 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
                 minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
                 minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
                 ytick={-2, 2},
-                scale=0.8,
+                scale=0.7,
                 ]
-
-                \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
-                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
-                % quad for label positioning
-                \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
-                \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
                 \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
                     set size square;
-                    set xrange [-3:3];
-                    set yrange [-2:2];
+                    set xrange [-2:2];
+                    set yrange [-2.2:2.2];
                     set contour base;
                     set cntrparam levels incre 0,0.1,0;
                     unset surface;
                     set isosamples 1000, 1000;
                     splot y**2 - x**3 + x - 1
                 };
+	         \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                % quad for label positioning
+                \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
+                \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
+
                 \addplot [thick, color=blue, domain=-2.5:2.5] {1};
                 \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
             \end{axis}
-        \end{tikzpicture}
+	\end{tikzpicture}}
+	\qquad
+            \subfloat{
+                        \begin{tikzpicture}
+                            \begin{axis}[
+			        axis equal,
+				minor tick num={1},
+				minor tick num={1},
+				xtick={-2, 2},
+				minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+				minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+				ytick={-2, 2},
+				scale=0.7,
+                                ]
+                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                                    set size square;
+				    set xrange [-2:2];
+				    set yrange [-2.2:2.2];
+                                    set contour base;
+                                    set cntrparam levels incre 0,0.1,0;
+                                    unset surface;
+                                    set isosamples 1000, 1000;
+                                    splot y**2 - x**3 + x 
+                                };
+                                \addplot [color=blue, domain=-1.5:1.75]{0.839146*x + -0.274337};
+                                \draw (-0.25,-0.484123) node[outer sep=0pt, inner sep=0pt, label={270:\footnotesize $P$}](P) {\textbullet};
+                                \draw (1.2042, 0.73621) node[inner sep=0pt, label={0:\footnotesize $P\oplus P$}] {\textbullet};
+				\draw (1.2042,-0.73621) node[outer sep=0pt, inner sep=0pt, label={350:\footnotesize $P+P$}](P) {\textbullet};
+
+	                	\draw [dashed, thick, color=blue] (1.2042,-0.73621) -- (1.2042,0.73621);
+                            \end{axis}
+                        \end{tikzpicture}}
         \caption{Grafische Addition in $(E, +)$}
     \end{figure}
 \end{frame}

@@ -393,10 +393,12 @@ Erinnerung: Punktemenge von \pgtwo
 \end{equation*}
 \begin{defn}
 Wir definieren:
+\vspace{-3mm}
 \begin{equation*}
 	    F(X,Y,Z)\coloneqq Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 - a_6Z^3
 \end{equation*}
 Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstraß-Gleichung}
+\vspace{-3mm}
 \begin{equation*}
 	    F(X,Y,Z)=0
 \end{equation*}
@@ -405,52 +407,6 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{defn}
-	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
-    \begin{equation*}
-        \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
-    \end{equation*}
-\end{defn}
-    \begin{figure}[H]
-        \centering
-        \subfloat[$y^2=x^3+x^2$]{
-            \begin{tikzpicture}
-                \begin{axis}[
-                    scale=0.4,
-                    ticks = none,
-                    axis equal,
-                    restrict y to domain = -4:4,
-                    restrict x to domain = -1:1.6,
-                    ]
-                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
-                    ({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
-                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
-                    ({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5});
-                \end{axis}
-            \end{tikzpicture}}
-        \qquad
-        \subfloat[$y^2=x^3$]{
-            \begin{tikzpicture}
-                \begin{axis}[
-                    scale=0.4,
-                    ticks = none,
-                    axis equal,
-                    ]
-                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
-                    {sqrt(x^3)};
-                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
-                    {-sqrt(x^3)};
-                \end{axis}
-            \end{tikzpicture}}
-        \caption{Kurven mit Singularitäten (Knoten und Spitze)}
-    \end{figure}
-\end{frame}
-
-%------------------------------------------------
-
 \begin{frame}
 \frametitle{\insertsection~--~\insertsubsection}
 \begin{itemize}[<+->]
@@ -542,6 +498,51 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
                 \end{axis}
             \end{tikzpicture}}
         \caption{Affine Darstellung elliptischer Kurven}
+    \end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{defn}
+	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
+    \begin{equation*}
+        \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
+    \end{equation*}
+\end{defn}
+    \begin{figure}[H]
+        \centering
+        \subfloat[$y^2=x^3+x^2$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    restrict y to domain = -4:4,
+                    restrict x to domain = -1:1.6,
+                    ]
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, { (x/(x^3 - 1))^1.5});
+                    \addplot [color=red, domain = -4:4, samples = 300, unbounded coords=jump]
+                    ({1/(x^3 - 1)}, {-(x/(x^3 - 1))^1.5});
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat[$y^2=x^3$]{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    scale=0.4,
+                    ticks = none,
+                    axis equal,
+                    ]
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {sqrt(x^3)};
+                    \addplot [color=red, domain=-2:2, samples=300, unbounded coords=jump]
+                    {-sqrt(x^3)};
+                \end{axis}
+            \end{tikzpicture}}
+        \caption{Kurven mit Singularitäten (Knoten und Spitze)}
     \end{figure}
 \end{frame}
 

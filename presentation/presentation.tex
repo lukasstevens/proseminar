@@ -137,6 +137,7 @@
 % Zitate
 \usepackage{cite}
 % Tabellen
+\usepackage{colortbl}
 \definecolor{lightblue}{HTML}{8ADAF2}
 \definecolor{lightred}{HTML}{F2A28A}
 \definecolor{lightgreen}{HTML}{A6F28A}
@@ -185,6 +186,36 @@
 \titlepage % Print the title page as the first slide
 \end{frame}
 
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+\section{Einleitung}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection}
+\begin{table}[h]
+\centering
+	\begin{tabular}{| c | c | c |}
+	\hline
+	\rowcolor{lightblue}
+	Sicherheitsniveau & RSA/Diffie-Hellman & Elliptische-Kurven\\ \hline
+	\rowcolor{lightred}
+	$\le80$ 	& 1024 & 160-223 \\ \hline
+	\rowcolor{lightgreen}
+	112 	& 2048 & 224-255 \\ \hline
+	\rowcolor{lightgreen}
+	128 	& 3072 & 256-383 \\ \hline
+	\rowcolor{lightgreen}
+	192 	& 7680 & 384-511 \\ \hline
+	\rowcolor{lightgreen}
+	256 	& 15360 & 512+ \\ \hline
+	\end{tabular}
+\caption{Vergleich Schlüssellängen}
+\end{table}
+\end{frame}
+
 %------------------------------------------------
 % Overview slide
 %------------------------------------------------
@@ -196,17 +227,6 @@
 \end{multicols}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
-%	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
-\section{Einleitung}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{\insertsection}
-Blubb Lukas
-\end{frame}
-
 %------------------------------------------------
 
 \section{Grundbegriffe}
@@ -216,7 +236,7 @@ Blubb Lukas
     \begin{definition}
         Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine affine Ebene, wenn folgende Bedingungen erfüllt sind:
-        \begin{enumerate}
+        \begin{enumerate}[<+->]
             \item Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$. \\
             \item Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$. \\
             \item Es existieren drei Elemente $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$. \\
@@ -229,7 +249,7 @@ Blubb Lukas
     \begin{definition}
         Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine projektive Ebene, wenn folgende Bedingungen erfüllt sind:
-	\begin{enumerate}
+	\begin{enumerate}[<+->]
 		\item Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$. \\
 		\item Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$.
 		\item Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen.
@@ -547,12 +567,26 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \end{frame}
 
 %------------------------------------------------
-\subsection{Tangenten}
+\subsection{Tangenten und Geraden}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-Blub
+\frametitle{Tangenten}
+\begin{defn}
+    Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
+    \begin{equation*}
+        T_P\coloneqq\left\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\right\}
+    \end{equation*}
+\end{defn}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Geraden}
+    \begin{enumerate}[<+->]
+        \item Unendlich ferne Gerade $U$
+        \item Affine Geraden: $y = kx +d$
+        \item Parallele zur $y$-Achse: $v + \lambda (0,1)$ mit $v=(x,y)$ und $\lambda \in \mathbb{F}$
+    \end{enumerate}
 \end{frame}
 
 %------------------------------------------------
@@ -642,9 +676,9 @@ Blub
 
 \begin{frame}
     \frametitle{Vereinbarungen}
+    \setcounter{subfigure}{0}
     \begin{figure}[H]
         \centering
-        \setcounter{subfigure}{0}
         \subfloat[$P \oplus Q = P$]{
             \begin{tikzpicture}
                 \begin{axis}[
@@ -685,7 +719,6 @@ Blub
             \item<9-> {\makebox[3cm]{$P = Q \neq -P$: \hfill} $P \oplus P = R$}
         \end{enumerate}
         \column[t]{.50\textwidth}
-        \setcounter{subfigure}{0}
         \only<4>{
             \begin{figure}[H]
                 \centering
@@ -803,23 +836,23 @@ Blub
 \begin{frame}
     \frametitle{Mathematische Beschreibung der $\oplus$-Verknüpfung}
     \begin{thm}
-    Es sei $P=(x,y),Q=(u,v)\in E\setminus\{\patinf\}$. Dann gilt:
-    \begin{align*}
-        \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
-        P\oplus Q&=
-        \begin{cases}
-            \patinf, & \text{falls }P=-Q\\
-            (w,k(w-x)+y), & \text{sonst}
-        \end{cases}
-    \end{align*}
-    wobei
-    \begin{align*}
-        w=k^2-x-u\quad\normalfont{und}\quad k=
-        \begin{cases}
-            \frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
-            \frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
-        \end{cases}
-    \end{align*}
+        Es sei $P=(x,y),Q=(u,v)\in E\setminus\{\patinf\}$. Dann gilt:
+        \begin{align*}
+            \patinf\oplus\patinf&=\patinf,\quad \patinf\oplus P=(x,-y)\eqqcolon-P\quad\normalfont{und}\\
+            P\oplus Q&=
+            \begin{cases}
+                \patinf, & \text{falls }P=-Q\\
+                (w,k(w-x)+y), & \text{sonst}
+            \end{cases}
+        \end{align*}
+        wobei
+        \begin{align*}
+            w=k^2-x-u\quad\normalfont{und}\quad k=
+            \begin{cases}
+                \frac{v-y}{u-x}, & \text{falls }P\ne\pm Q\\
+                \frac{3x^2+a}{2y}, & \text{falls }P=Q\ne -P
+            \end{cases}
+        \end{align*}
     \end{thm}
 \end{frame}
 

@@ -373,11 +373,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{frame}
 \frametitle{\insertsection~--~\insertsubsection}
 \begin{itemize}[<+->]
-	\item Wir betrachten die elliptische Kurve
-		\begin{equation*}
-			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
-		\end{equation*}
-	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
+	\item Betrachte $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
 	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
 		\begin{figure}[H]
 		\tdplotsetmaincoords{80}{100}
@@ -407,6 +403,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 			\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
 		\end{tikzpicture}
 		\end{figure}
+	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
 \end{itemize}
 \end{frame}
 
@@ -415,7 +412,14 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{frame}
 \frametitle{\insertsection~--~\insertsubsection}
 \begin{itemize}[<+->]
-	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
+	\item Wir betrachten die elliptische Kurve
+		\begin{equation*}
+			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
+		\end{equation*}
+	\item und die unendlich ferne Gerade
+	\begin{equation*}
+			U=\{(x:y:0)\mid a,b\in\mathbb{F}\}
+	\end{equation*}
 	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ der einzige Punkt von U, der auf der Kurve $E$ liegt, ist $\patinf$.
 	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
 \end{itemize}

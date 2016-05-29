@@ -327,48 +327,7 @@
 %------------------------------------------------
 \section{Elliptische Kurven}
 %------------------------------------------------
-\subsection{Die unendlich ferne Gerade}
-%------------------------------------------------
 
-\begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{itemize}[<+->]
-	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
-	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
-
-\begin{figure}[H]
-\tdplotsetmaincoords{80}{100}
-\begin{tikzpicture}[
-		tdplot_main_coords,
-		axis/.style={->,black},
-		line/.style={thick,red},
-		scale=0.6]
-
-	% coordinates in (z,x,y)
-	\filldraw[
-		draw=darkgreen,%
-		fill=darkgreen!20,%
-	    ]          (0,-2.5,-2.5)
-		    -- (0,-2.5,2.5)
-		    -- (0,2.5,2.5)
-		    -- (0,2.5,-2.5)
-		    -- cycle;
-
-	%draw the axes
-	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
-	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
-	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
-
-	\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$P=(1:0:0)$};
-	\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$Q=(0:1:0)$};
-	\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
-\end{tikzpicture}
-\end{figure}
-	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
-\end{itemize}
-\end{frame}
-
-%------------------------------------------------
 \subsection{Weierstraß-Gleichung}
 %------------------------------------------------
 
@@ -418,11 +377,50 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 		\begin{equation*}
 			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
 		\end{equation*}
-	\item Wir erinnern uns an die unendlich ferne Gerade $U=\overline{(0:1:0),(1:0:0)}$.
+	\item Wähle $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
+	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
+		\begin{figure}[H]
+		\tdplotsetmaincoords{80}{100}
+		\begin{tikzpicture}[
+				tdplot_main_coords,
+				axis/.style={->,black},
+				line/.style={thick,red},
+				scale=0.6]
+
+			% coordinates in (z,x,y)
+			\filldraw[
+				draw=darkgreen,%
+				fill=darkgreen!20,%
+			    ]          (0,-2.5,-2.5)
+				    -- (0,-2.5,2.5)
+				    -- (0,2.5,2.5)
+				    -- (0,2.5,-2.5)
+				    -- cycle;
+
+			%draw the axes
+			\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+			\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+			\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+
+			\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$P=(1:0:0)$};
+			\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$Q=(0:1:0)$};
+			\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
+		\end{tikzpicture}
+		\end{figure}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{\insertsection~--~\insertsubsection}
+\begin{itemize}[<+->]
+	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
 	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ der einzige Punkt von U, der auf der Kurve $E$ liegt, ist $\patinf$.
 	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
 \end{itemize}
 \end{frame}
+
 
 %------------------------------------------------
 

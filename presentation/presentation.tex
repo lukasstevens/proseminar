@@ -369,19 +369,6 @@
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{lem}
-    Gegeben sei die projektive Ebene $(\mathcal{P}, \mathcal{G}) = PG(2,\mathbb{F})$ und die unendlich ferne Gerade $U$, dann ist die Abbildung
-    \begin{equation*}
-        \phi: \mathbb{F}^2 \rightarrow \mathcal{P}_U,\ (a,b) \mapsto (a:b:1)
-    \end{equation*}
-    bijektiv und bildet Geraden auf Geraden ab, d.h. $\phi$ ist ein Isomorphismus von affinen Ebenen.
-\end{lem}
-\end{frame}
-
-%------------------------------------------------
 \subsection{Weierstraß-Gleichung}
 %------------------------------------------------
 
@@ -431,8 +418,8 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 		\begin{equation*}
 			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
 		\end{equation*}
-	\item Wir erinnern uns an die unendlich fernen Gerade $U=\overline{(0:1:0),(1:0:0)}$.
-	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ es liegt nur $\patinf$ auf unserer Kurve $E$.
+	\item Wir erinnern uns an die unendlich ferne Gerade $U=\overline{(0:1:0),(1:0:0)}$.
+	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ der einzige Punkt von U, der auf der Kurve $E$ liegt, ist $\patinf$.
 	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
 \end{itemize}
 \end{frame}
@@ -442,7 +429,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{frame}
 \frametitle{\insertsection~--~\insertsubsection}
 \begin{itemize}[<+->]
-	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil von $E$.
+	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil $E\setminus U$.
 	\item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
 	\item Die Weierstraß-Gleichung für diese Punkte vereinfacht sich zu:
 	\begin{equation*}

@@ -548,19 +548,6 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
-\begin{lem}
-    Gegeben sei eine eine elliptische Kurve $E$, die durch die Lösungen der vereinfachten Weierstraß-Gleichung definiert ist:
-    \begin{equation*}
-        E: Y^2Z = X^3 + aXZ^2 + bZ^3.
-    \end{equation*}
-    Dann gilt: Die Kurve $E$ ist genau dann nicht-singulär, wenn das Polynom $f(x) = x^3 + ax + b$ keine mehrfachen Nullstellen besitzt.
-\end{lem}
-\end{frame}
-
-%------------------------------------------------
 \section{Eine Gruppe über $E$}
 %------------------------------------------------
 
@@ -950,6 +937,8 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 
 \begin{frame}
     \frametitle{\insertsection~--~\insertsubsection}
+Wie sicher ist das DLP über elliptische Kurven?
+    \pause
     \begin{itemize}
         \item Naives Probieren: $O(|E|)$.
     \end{itemize}
@@ -971,7 +960,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
     Beispiel: Wir wollen 13P berechnen:
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[scale=0.9]
+        \begin{tikzpicture}[scale=0.8]
             \foreach \y in {0.0, 1.0, ..., 12.0 }{
                 \draw (\y, 0) node {$P$};
             }
@@ -1006,6 +995,27 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
     \begin{itemize}[<+->]
         \item Fallunterscheidungen bei Addition notwendig.
         \item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
+    \end{itemize}
+    \pause
+Lösung:
+    \begin{itemize}[<+->]
+        \item Dummy-Additionen
+	\item Edwards-Kurven benötigen keine Fallunterscheidungen
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+    \frametitle{\insertsection~--~\insertsubsection}
+    Weitere Angriffe:
+    \begin{itemize}
+        \item Isomorphismus-Angriffe
+	\item Angriffe durch Reduzierung auf Untergruppen
+    \end{itemize}
+    \pause
+    Lösung:
+    \begin{itemize}
+	 \item Geeignete Parameter für die Kurve wählen (NIST-Vorschläge)
     \end{itemize}
 \end{frame}
 

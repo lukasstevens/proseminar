@@ -549,21 +549,21 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \end{frame}
 
 %------------------------------------------------
-\subsection{Tangenten und Geraden}
+\subsection{Schnittpunkte von Tangenten und Geraden  mit elliptischen Kurven}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Tangenten}
-\begin{defn}
-    Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
-    \begin{equation*}
-        T_P\coloneqq\left\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\right\}
-    \end{equation*}
-\end{defn}
+    \frametitle{Tangenten elliptischer Kurven}
+    \begin{defn}
+        Es sei $P$ ein Punkt der elliptischen Kurve $E$. Wir definieren die Tangente an $E$ im Punkt $P$:
+        \begin{equation*}
+            T_P\coloneqq\left\{(u:v:w)\in\mathcal{P}\mid\frac{\partial F}{\partial X}(P)u+\frac{\partial F}{\partial Y}(P)v+\frac{\partial F}{\partial Z}(P)w=0\right\}
+        \end{equation*}
+    \end{defn}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Geraden}
+    \frametitle{Schnittpunkte mit Geraden}
     \begin{enumerate}[<+->]
         \item Unendlich ferne Gerade $U$
         \item Affine Geraden: $y = kx +d$
@@ -860,70 +860,70 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 \begin{frame}
     \frametitle{\insertsection~--~\insertsubsection}
     \begin{figure}[H]
-      \centering
-      \subfloat{
-        \begin{tikzpicture}
-            \begin{axis}[
-                axis equal,
-                minor tick num={1},
-                minor tick num={1},
-                xtick={-2, 2},
-                minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
-                minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
-                ytick={-2, 2},
-                scale=0.7,
-                ]
-                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
-                    set size square;
-                    set xrange [-2:2];
-                    set yrange [-2.2:2.2];
-                    set contour base;
-                    set cntrparam levels incre 0,0.1,0;
-                    unset surface;
-                    set isosamples 1000, 1000;
-                    splot y**2 - x**3 + x - 1
-                };
-	         \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
-                \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
-                % quad for label positioning
-                \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
-                \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
+        \centering
+        \subfloat{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis equal,
+                    minor tick num={1},
+                    minor tick num={1},
+                    xtick={-2, 2},
+                    minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    ytick={-2, 2},
+                    scale=0.7,
+                    ]
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-2:2];
+                        set yrange [-2.2:2.2];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 + x - 1
+                    };
+                    \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};
+                    \draw (-1,1) node[label={270:\footnotesize $P$}](P){\textbullet};
+                    % quad for label positioning
+                    \draw (1,1) node[label={90:\footnotesize $P \oplus Q \quad $}](PQ){\textbullet};
+                    \draw (1,-1) node[label={0:\footnotesize $P + Q$}](PQP){\textbullet};
 
-                \addplot [thick, color=blue, domain=-2.5:2.5] {1};
-                \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
-            \end{axis}
-	\end{tikzpicture}}
-	\qquad
-            \subfloat{
-                        \begin{tikzpicture}
-                            \begin{axis}[
-			        axis equal,
-				minor tick num={1},
-				minor tick num={1},
-				xtick={-2, 2},
-				minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
-				minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
-				ytick={-2, 2},
-				scale=0.7,
-                                ]
-                                \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
-                                    set size square;
-				    set xrange [-2:2];
-				    set yrange [-2.2:2.2];
-                                    set contour base;
-                                    set cntrparam levels incre 0,0.1,0;
-                                    unset surface;
-                                    set isosamples 1000, 1000;
-                                    splot y**2 - x**3 + x 
-                                };
-                                \addplot [color=blue, domain=-1.5:1.75]{0.839146*x + -0.274337};
-                                \draw (-0.25,-0.484123) node[outer sep=0pt, inner sep=0pt, label={270:\footnotesize $P$}](P) {\textbullet};
-                                \draw (1.2042, 0.73621) node[inner sep=0pt, label={0:\footnotesize $P\oplus P$}] {\textbullet};
-				\draw (1.2042,-0.73621) node[outer sep=0pt, inner sep=0pt, label={350:\footnotesize $P+P$}](P) {\textbullet};
+                    \addplot [thick, color=blue, domain=-2.5:2.5] {1};
+                    \draw [dashed, thick, color=blue] (1,1) -- (1,-1);
+                \end{axis}
+            \end{tikzpicture}}
+        \qquad
+        \subfloat{
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis equal,
+                    minor tick num={1},
+                    minor tick num={1},
+                    xtick={-2, 2},
+                    minor xtick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    minor ytick={-1.5,-1,-0.5,0,0.5,1,1.5},
+                    ytick={-2, 2},
+                    scale=0.7,
+                    ]
+                    \addplot +[no markers, raw gnuplot, thin, color=red] gnuplot {
+                        set size square;
+                        set xrange [-2:2];
+                        set yrange [-2.2:2.2];
+                        set contour base;
+                        set cntrparam levels incre 0,0.1,0;
+                        unset surface;
+                        set isosamples 1000, 1000;
+                        splot y**2 - x**3 + x 
+                    };
+                    \addplot [color=blue, domain=-1.5:1.75]{0.839146*x + -0.274337};
+                    \draw (-0.25,-0.484123) node[outer sep=0pt, inner sep=0pt, label={270:\footnotesize $P$}](P) {\textbullet};
+                    \draw (1.2042, 0.73621) node[inner sep=0pt, label={0:\footnotesize $P\oplus P$}] {\textbullet};
+                    \draw (1.2042,-0.73621) node[outer sep=0pt, inner sep=0pt, label={350:\footnotesize $P+P$}](P) {\textbullet};
 
-	                	\draw [dashed, thick, color=blue] (1.2042,-0.73621) -- (1.2042,0.73621);
-                            \end{axis}
-                        \end{tikzpicture}}
+                    \draw [dashed, thick, color=blue] (1.2042,-0.73621) -- (1.2042,0.73621);
+                \end{axis}
+            \end{tikzpicture}}
         \caption{Grafische Addition in $(E, +)$}
     \end{figure}
 \end{frame}
@@ -960,7 +960,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 
 \begin{frame}
     \frametitle{\insertsection~--~\insertsubsection}
-Wie sicher ist das DLP über elliptische Kurven?
+    Wie sicher ist das DLP über elliptische Kurven?
     \pause
     \begin{itemize}
         \item Naives Probieren: $O(|E|)$.
@@ -1020,10 +1020,10 @@ Wie sicher ist das DLP über elliptische Kurven?
         \item[] $\Rightarrow$ Rückschlüsse über Schlüssel mit Seitenkanalangriff möglich.
     \end{itemize}
     \pause
-Lösung:
+    Lösung:
     \begin{itemize}[<+->]
         \item Dummy-Additionen
-	\item Edwards-Kurven benötigen keine Fallunterscheidungen
+        \item Edwards-Kurven benötigen keine Fallunterscheidungen
     \end{itemize}
 \end{frame}
 
@@ -1033,12 +1033,12 @@ Lösung:
     Weitere Angriffe:
     \begin{itemize}
         \item Isomorphismus-Angriffe
-	\item Angriffe durch Reduzierung auf Untergruppen
+        \item Angriffe durch Reduzierung auf Untergruppen
     \end{itemize}
     \pause
     Lösung:
     \begin{itemize}
-	 \item Geeignete Parameter für die Kurve wählen (NIST-Vorschläge)
+        \item Geeignete Parameter für die Kurve wählen (NIST-Vorschläge)
     \end{itemize}
 \end{frame}
 

@@ -258,7 +258,40 @@
 \end{frame}
 \begin{frame}
     \frametitle{\pgtwo}
+\tdplotsetmaincoords{80}{100}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+		tdplot_main_coords,
+		axis/.style={->,black,thick},
+		line/.style={thick,red},
+		scale=1]
+
+	% coordinates in (z,x,y)
+	\filldraw[
+		draw=darkgreen,%
+		fill=darkgreen!20,%
+	    ]          (-8,-2.5,0)
+		    -- (-8,2.5,0)
+		    -- (8,2.5,0)
+		    -- (8,-2.5,0)
+		    -- cycle;
+
+	%draw the axes
+	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+
+	\draw[line] (2,3,0) -- (-2,-3,0) node[anchor=east]{$P=(3:0:-2)$};
+	\draw[line,blue] (6,3,0) -- (-6,-3,0) node[anchor=east]{$Q=(1:0:-2)$};
+	\node[darkgreen] at (8,-3.0,0) {$\overline{P,Q}$};
+
+\end{tikzpicture}
+\caption{Projektive Punkte und Geraden}
+\end{figure}
+
 \end{frame}
+
 \begin{frame}
     \frametitle{Konstruktion affiner Ebenen aus projektiven Ebenen}
 

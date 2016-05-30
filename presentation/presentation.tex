@@ -190,11 +190,11 @@
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
-\section{Einleitung}
+\section*{Einleitung}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection}
+\frametitle{Sicherheitsvergleich}
 \begin{table}[h]
 \centering
 	\begin{tabular}{| c | c | c |}
@@ -333,7 +333,7 @@
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Definition}
 Erinnerung: Punktemenge von \pgtwo
 \begin{equation*}
     P = \left\{(x:y:z) \mid (x,y,z) \in \ftnz \right\}
@@ -356,7 +356,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Vereinfachung}
 \begin{itemize}[<+->]
 	\item  Wir schränken ein: Die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein: $char \: \mathbb{F} \neq 2,3$.
 	\item Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, wobei $0,1$ die neutralen Elemente der Addition bzw.\ Multiplikation von $\mathbb{F}$ sind.
@@ -372,7 +372,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Unendlich ferne Gerade}
 \begin{itemize}[<+->]
 	\item Betrachte $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
 	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
@@ -411,7 +411,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Unendlich ferner Punkt}
 \begin{itemize}[<+->]
 	\item Wir betrachten die elliptische Kurve
 		\begin{equation*}
@@ -430,7 +430,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{ }
 \begin{itemize}[<+->]
 	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil $E\setminus U$.
 	\item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
@@ -448,7 +448,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Grafische Darstellungen}
 \begin{figure}[H]
         \centering
         \subfloat[$y^2=x^3 + 0.5x + 2$]{
@@ -495,7 +495,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~\insertsubsection}
+\frametitle{Singulärtäten}
 \begin{defn}
 	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
     \begin{equation*}
@@ -542,7 +542,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{\insertsection~--~Voraussetzungen}
+\frametitle{Voraussetzungen}
 \begin{itemize}
     \item Es gelte $char\ \mathbb{F}\ne2,3$
     \item $E$ sei nicht singulär.
@@ -577,7 +577,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Idee}
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
@@ -846,7 +846,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Definition}
     Wir definieren die Verknüpfung $+$ für $P, Q \in E$ folgendermaßen:
     \begin{equation*} \label{plus-op}
         P + Q \coloneqq \patinf \oplus (P \oplus Q) = -(P \oplus Q).
@@ -859,7 +859,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Grafische Darstellung}
     \begin{figure}[H]
         \centering
         \subfloat{
@@ -938,7 +938,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Definition}
     \begin{defn} \label{DLP}
         Sei $G$ eine Gruppe und seien $x,y \in G$. Das Finden von $m \in \mathbb{N}$, so dass gilt
         \begin{equation*}
@@ -960,7 +960,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Analyse}
     Wie sicher ist das DLP über elliptische Kurven?
     \pause
     \begin{itemize}
@@ -980,7 +980,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Addition}
     Beispiel: Wir wollen 13P berechnen:
     \begin{figure}[H]
         \centering
@@ -1030,7 +1030,7 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
 
 %------------------------------------------------
 \begin{frame}
-    \frametitle{\insertsection~--~\insertsubsection}
+    \frametitle{Sonstige}
     Weitere Angriffe:
     \begin{itemize}
         \item Isomorphismus-Angriffe

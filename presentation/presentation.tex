@@ -234,7 +234,7 @@
 \begin{frame}
     \frametitle{Definition affiner Ebenen}
     \begin{definition}
-        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
+        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(\mathcal{A})$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine affine Ebene, wenn folgende Bedingungen erfüllt sind:
         \begin{enumerate}[<+->]
             \item Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$. \\
@@ -247,7 +247,7 @@
 \begin{frame}
     \frametitle{Definition projektiver Ebenen}
     \begin{definition}
-        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(A)$.
+        Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(\mathcal{A})$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine projektive Ebene, wenn folgende Bedingungen erfüllt sind:
 	\begin{enumerate}[<+->]
 		\item Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$. \\
@@ -582,6 +582,8 @@ Eine elliptische Kurve $E\subseteq P$ ist durch die Lösung der \textbf{Weierstr
         \begin{tikzpicture}
             \begin{axis}[
                 axis equal,
+                ytick={-2,2},
+                xtick={-2,2},
                 ]
 
                 \draw (0,1) node[label={260:\footnotesize $Q$}](Q){\textbullet};

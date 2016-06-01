@@ -1,14 +1,14 @@
-TARGET=presentation
+TARGET=praesentation
 
 .PHONY: all clean watch
 
 OPTIONS=-bibtex -pdf -pdflatex="pdflatex --shell-escape"
 
-all:
+all: $(TARGET).tex
 	latexmk $(OPTIONS) $(TARGET).tex
-force:
+force: $(TARGET).tex
 	latexmk -gg $(OPTIONS) $(TARGET).tex
-watch:
+watch: $(TARGET).tex
 	latexmk -pvc $(OPTIONS) $(TARGET).tex
 clean:
-	rm -rf *.aux *.bbl *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.gnuplot *.table *.toc
+	rm -rf *.nav *.snm *.vrb *.aux *.bbl *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.gnuplot *.table *.toc

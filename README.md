@@ -1,3 +1,3 @@
 #Proseminar: Algebraische Methoden der Kryptologie
-This is a paper about elliptic curves and their uses in cryptographie.
-It was written as part of the "Proseminar" in the bachelor curriculum.
+Dies ist eine Seminararbeit zum Thema elliptische Kurven und deren Anwendung in der Kryptographie. 
+Die Arbeit wurde als Teil des Proseminars "Algebraische Methoden der Kryptologie" verfasst, welches vom Lehrstuhl für IT-Sicherheit an der Technischen Universität München angeboten wurde. 

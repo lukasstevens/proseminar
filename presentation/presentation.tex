@@ -183,7 +183,7 @@
 \begin{document}
 
 \begin{frame}
-\titlepage % Print the title page as the first slide
+    \titlepage % Print the title page as the first slide
 \end{frame}
 
 
@@ -194,26 +194,26 @@
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Sicherheitsvergleich}
-\begin{table}[h]
-\centering
-	\begin{tabular}{| c | c | c |}
-	\hline
-	\rowcolor{lightblue}
-	Sicherheitsniveau & RSA/Diffie-Hellman & Elliptische-Kurven\\ \hline
-	\rowcolor{lightred}
-	$\le80$ 	& 1024 & 160-223 \\ \hline
-	\rowcolor{lightgreen}
-	112 	& 2048 & 224-255 \\ \hline
-	\rowcolor{lightgreen}
-	128 	& 3072 & 256-383 \\ \hline
-	\rowcolor{lightgreen}
-	192 	& 7680 & 384-511 \\ \hline
-	\rowcolor{lightgreen}
-	256 	& 15360 & 512+ \\ \hline
-	\end{tabular}
-\caption{Vergleich Schlüssellängen}
-\end{table}
+    \frametitle{Sicherheitsvergleich}
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{| c | c | c |}
+            \hline
+            \rowcolor{lightblue}
+            Sicherheitsniveau & RSA/Diffie-Hellman & Elliptische-Kurven\\ \hline
+            \rowcolor{lightred}
+            $\le80$ 	& 1024 & 160-223 \\ \hline
+            \rowcolor{lightgreen}
+            112 	& 2048 & 224-255 \\ \hline
+            \rowcolor{lightgreen}
+            128 	& 3072 & 256-383 \\ \hline
+            \rowcolor{lightgreen}
+            192 	& 7680 & 384-511 \\ \hline
+            \rowcolor{lightgreen}
+            256 	& 15360 & 512+ \\ \hline
+        \end{tabular}
+        \caption{Vergleich Schlüssellängen}
+    \end{table}
 \end{frame}
 
 %------------------------------------------------
@@ -221,10 +221,10 @@
 %------------------------------------------------
 
 \begin{frame}
-	\frametitle{Überblick} % Table of contents slide, comment this block out to remove it
-\begin{multicols}{2}
-\tableofcontents
-\end{multicols}
+    \frametitle{Überblick} % Table of contents slide, comment this block out to remove it
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
 \end{frame}
 
 %------------------------------------------------
@@ -236,7 +236,7 @@
     \begin{definition}
         Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(\mathcal{A})$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine affine Ebene, wenn folgende Bedingungen erfüllt sind:
-	\begin{enumerate}[<+(1)->]
+        \begin{enumerate}[<+(1)->]
             \item Zu je zwei Elementen $a, b\in \mathcal{A}$ mit $a\ne b$ existiert genau ein $G\in\mathcal{G}$ mit $a, b \in G$. \\
             \item Zu $G\in\mathcal{G}$ und $a\in\mathcal{A}\setminus G$ existiert genau ein $G'\in\mathcal{G}$ mit $a\in G'$ und $G\cap G'=\emptyset$. \\
             \item Es existieren drei Elemente $a,b,c\in\mathcal{A}$ mit $c\notin\overline{a,b}$. \\
@@ -249,47 +249,47 @@
     \begin{definition}
         Es sei $\mathcal{A}$ eine Menge von Punkten und $\mathcal{G}$ eine Menge von Geraden mit $\mathcal{G} \subseteq Pot(\mathcal{A})$.
         Bei $(\mathcal{A},\mathcal{G})$ handelt es sich um eine projektive Ebene, wenn folgende Bedingungen erfüllt sind:
-	\begin{enumerate}[<+(1)->]
-		\item Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$. \\
-		\item Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$.
-		\item Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen.
-	\end{enumerate}
+        \begin{enumerate}[<+(1)->]
+            \item Zu je zwei Elementen $P, Q\in \mathcal{P}$ mit $P\ne Q$ existiert genau ein $G\in\mathcal{G}$ mit $P, Q \in G$. \\
+            \item Für je zwei $G,H\in\mathcal{G}$ mit $G\ne H$ gilt $|G\cap H|=1$.
+            \item Es existieren vier verschiedene Elemente in $\mathcal{P}$, sodass immer höchstens zwei davon in jedem beliebigen $G\in\mathcal{G}$ liegen.
+        \end{enumerate}
     \end{definition}
 \end{frame}
 \begin{frame}
     \frametitle{\pgtwo}
-\tdplotsetmaincoords{80}{100}
-\pause
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[
-		tdplot_main_coords,
-		axis/.style={->,black,thick},
-		line/.style={thick,red},
-		scale=0.9]
+    \tdplotsetmaincoords{80}{100}
+    \pause
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            tdplot_main_coords,
+            axis/.style={->,black,thick},
+            line/.style={thick,red},
+            scale=0.9]
 
-	% coordinates in (z,x,y)
-	\filldraw[
-		draw=darkgreen,%
-		fill=darkgreen!20,%
-	    ]          (-8,-2.5,0)
-		    -- (-8,2.5,0)
-		    -- (8,2.5,0)
-		    -- (8,-2.5,0)
-		    -- cycle;
+            % coordinates in (z,x,y)
+            \filldraw[
+            draw=darkgreen,%
+            fill=darkgreen!20,%
+            ]          (-8,-2.5,0)
+            -- (-8,2.5,0)
+            -- (8,2.5,0)
+            -- (8,-2.5,0)
+            -- cycle;
 
-	%draw the axes
-	\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
-	\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
-	\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+            %draw the axes
+            \draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+            \draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+            \draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
 
-	\draw[line] (2,3,0) -- (-2,-3,0) node[anchor=east]{$P=(3:0:-2)$};
-	\draw[line,blue] (6,3,0) -- (-6,-3,0) node[anchor=east]{$Q=(1:0:-2)$};
-	\node[darkgreen] at (8,-3.0,0) {$\overline{P,Q}$};
+            \draw[line] (2,3,0) -- (-2,-3,0) node[anchor=east]{$P=(3:0:-2)$};
+            \draw[line,blue] (6,3,0) -- (-6,-3,0) node[anchor=east]{$Q=(1:0:-2)$};
+            \node[darkgreen] at (8,-3.0,0) {$\overline{P,Q}$};
 
-\end{tikzpicture}
-\caption{Projektive Punkte und Geraden in \pgtwo}
-\end{figure}
+        \end{tikzpicture}
+        \caption{Projektive Punkte und Geraden in \pgtwo}
+    \end{figure}
 
 \end{frame}
 
@@ -367,38 +367,38 @@
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Definition}
-Erinnerung: Punktemenge von \pgtwo
-\begin{equation*}
-	\mathcal{P} = \left\{(x:y:z) \mid (x,y,z) \in \ftnz \right\}
-\end{equation*}
-\vspace{-6mm}
-\begin{defn}
-Wir setzen:
-\vspace{-3mm}
-\begin{equation*}
-	    F(X,Y,Z)\coloneqq Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 - a_6Z^3
-\end{equation*}
-Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textbf{Weierstraß-Gleichung}
-\vspace{-3mm}
-\begin{equation*}
-	    F(X,Y,Z)=0
-\end{equation*}
+    \frametitle{Definition}
+    Erinnerung: Punktemenge von \pgtwo
+    \begin{equation*}
+        \mathcal{P} = \left\{(x:y:z) \mid (x,y,z) \in \ftnz \right\}
+    \end{equation*}
+    \vspace{-6mm}
+    \begin{defn}
+        Wir setzen:
+        \vspace{-3mm}
+        \begin{equation*}
+            F(X,Y,Z)\coloneqq Y^2Z + a_1XYZ + a_3YZ^2 - X^3 - a_2X^2Z - a_4XZ^2 - a_6Z^3
+        \end{equation*}
+        Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textbf{Weierstraß-Gleichung}
+        \vspace{-3mm}
+        \begin{equation*}
+            F(X,Y,Z)=0
+        \end{equation*}
         gegeben, wobei $a_i \in \mathbb{F}$ gilt und die Lösung keine Singularitäten besitzen darf.
-\end{defn}
+    \end{defn}
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Vereinfachung}
-\begin{itemize}[<+->]
-	\item  Wir schränken ein: Die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein: $char \: \mathbb{F} \neq 2,3$.
-	\item Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, wobei $0,1$ die neutralen Elemente der Addition bzw.\ Multiplikation von $\mathbb{F}$ sind.
-	\item Unter diesen Voraussetzungen können wir die Weierstraß-Gleichung vereinfachen zu:
-    \begin{equation*}
-        0=Y^2Z - X^3 - aXZ^2 - bZ^3
-    \end{equation*}
-\end{itemize}
+    \frametitle{Vereinfachung}
+    \begin{itemize}[<+->]
+        \item  Wir schränken ein: Die \textit{Charakteristik} des Körpers $\mathbb{F}$ soll nicht 2 und nicht 3 sein: $char \: \mathbb{F} \neq 2,3$.
+        \item Dies bedeutet, dass $1 + 1 \neq 0$ bzw.\ $1 + 1 + 1 \neq 0$, wobei $0,1$ die neutralen Elemente der Addition bzw.\ Multiplikation von $\mathbb{F}$ sind.
+        \item Unter diesen Voraussetzungen können wir die Weierstraß-Gleichung vereinfachen zu:
+            \begin{equation*}
+                0=Y^2Z - X^3 - aXZ^2 - bZ^3
+            \end{equation*}
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -406,84 +406,84 @@ Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textb
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Unendlich ferne Gerade}
-\begin{itemize}[<+->]
-	\item Betrachte $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
-	\item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
-		\begin{figure}[H]
-		\tdplotsetmaincoords{80}{100}
-		\begin{tikzpicture}[
-				tdplot_main_coords,
-				axis/.style={->,black},
-				line/.style={thick,red},
-				scale=0.6]
+    \frametitle{Unendlich ferne Gerade}
+    \begin{itemize}[<+->]
+        \item Betrachte $U\coloneqq\overline{P,Q}$ mit $P=(1:0:0),Q=(0:1:0)$.
+        \item U ist im dreidimensionalen Raum genau die x,y-Ebene mit $z=0$.
+            \begin{figure}[H]
+                \tdplotsetmaincoords{80}{100}
+                \begin{tikzpicture}[
+                    tdplot_main_coords,
+                    axis/.style={->,black},
+                    line/.style={thick,red},
+                    scale=0.6]
 
-			% coordinates in (z,x,y)
-			\filldraw[
-				draw=darkgreen,%
-				fill=darkgreen!20,%
-			    ]          (0,-2.5,-2.5)
-				    -- (0,-2.5,2.5)
-				    -- (0,2.5,2.5)
-				    -- (0,2.5,-2.5)
-				    -- cycle;
+                    % coordinates in (z,x,y)
+                    \filldraw[
+                    draw=darkgreen,%
+                    fill=darkgreen!20,%
+                    ]          (0,-2.5,-2.5)
+                    -- (0,-2.5,2.5)
+                    -- (0,2.5,2.5)
+                    -- (0,2.5,-2.5)
+                    -- cycle;
 
-			%draw the axes
-			\draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
-			\draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
-			\draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
+                    %draw the axes
+                    \draw[axis] (0,-3,0) -- (0,3,0) node[anchor=west]{$x$};
+                    \draw[axis] (0,0,-3) -- (0,0,3) node[anchor=west]{$y$};
+                    \draw[axis] (10,0,0) -- (-10,0,0) node[anchor=west]{$z$};
 
-			\draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$P=(1:0:0)$};
-			\draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$Q=(0:1:0)$};
-			\node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
-		\end{tikzpicture}
-		\end{figure}
-	\item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
-\end{itemize}
+                    \draw[line] (0,-2,0) -- (0,2,0) node[anchor=north]{$P=(1:0:0)$};
+                    \draw[line,blue] (0,0,-2) -- (0,0,2) node[anchor=east]{$Q=(0:1:0)$};
+                    \node[darkgreen] at (11,5.9,0) {$U=\overline{P,Q}$};
+                \end{tikzpicture}
+            \end{figure}
+        \item Wir bezeichnen $U$ als die \textbf{unendlich ferne Gerade}.
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Unendlich ferner Punkt}
-\begin{itemize}[<+->]
-	\item Wir betrachten die elliptische Kurve
-		\begin{equation*}
-			E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
-		\end{equation*}
-	\item und die unendlich ferne Gerade
-	\begin{equation*}
-			U=\{(x:y:0)\mid a,b\in\mathbb{F}\}
-	\end{equation*}
-	\item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ der einzige Punkt von U, der auf der Kurve $E$ liegt, ist $\patinf$.
-	\item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
-\end{itemize}
+    \frametitle{Unendlich ferner Punkt}
+    \begin{itemize}[<+->]
+        \item Wir betrachten die elliptische Kurve
+            \begin{equation*}
+                E=\{(X:Y:Z)\mid 0=Y^2Z - X^3 - aXZ^2 - bZ^3\}
+            \end{equation*}
+        \item und die unendlich ferne Gerade
+            \begin{equation*}
+                U=\{(x:y:0)\mid x,y\in\mathbb{F}\}
+            \end{equation*}
+        \item Es gilt: $U\cap E=(0:1:0)\eqqcolon\patinf$, d.h.\ der einzige Punkt von U, der auf der Kurve $E$ liegt, ist $\patinf$.
+        \item Wir bezeichnen $\patinf$ als den \textbf{unendlich fernen Punkt}.
+    \end{itemize}
 \end{frame}
 
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{ }
-\begin{itemize}[<+->]
-	\item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil $E\setminus U$.
-	\item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
-	\item Die Weierstraß-Gleichung für diese Punkte vereinfacht sich zu:
-	\begin{equation*}
-    		f(x,y) \coloneqq y^2 - x^3 - ax - b
-	\end{equation*}
-	\item Insgesamt gilt also:
-		\begin{equation*}
-		E = \left\{(x:y:1) \mid (x,y) \in \mathbb{F}^2 \land f(x,y) = 0 \right\} \cup \left\{ \patinf \right\}
-		\end{equation*}
-\end{itemize}
+    \frametitle{ }
+    \begin{itemize}[<+->]
+        \item Für alle anderen Punkte $P\in E$ ist die z-Koordinate $\ne 0$, d.h.\ alle Punkte außer $\patinf$ liegen im affinen Teil $E\setminus U$.
+        \item Wir können also $P \in \left\{(x:y:1) \mid x,y \in \mathbb{F} \right\}$ annehmen.
+        \item Die Weierstraß-Gleichung für diese Punkte vereinfacht sich zu:
+            \begin{equation*}
+                f(x,y) \coloneqq y^2 - x^3 - ax - b
+            \end{equation*}
+        \item Insgesamt gilt also:
+            \begin{equation*}
+                E = \left\{(x:y:1) \mid (x,y) \in \mathbb{F}^2 \land f(x,y) = 0 \right\} \cup \left\{ \patinf \right\}
+            \end{equation*}
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Grafische Darstellungen}
-\begin{figure}[H]
+    \frametitle{Grafische Darstellungen}
+    \begin{figure}[H]
         \centering
         \subfloat[$y^2=x^3 + 0.5x + 2$]{
             \begin{tikzpicture}
@@ -529,14 +529,14 @@ Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textb
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Singularitäten}
-\begin{defn}
-	Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
-    \begin{equation*}
-        \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
-    \end{equation*}
-\end{defn}
-\pause
+    \frametitle{Singularitäten}
+    \begin{defn}
+        Eine Kurve $E$ ist \textbf{singulär} in einem Punkt \mbox{$P=(a:b:c)\in E$}, wenn gilt:
+        \begin{equation*}
+            \frac{\partial F}{\partial X}(P) = \frac{\partial F}{\partial Y}(P) =  \frac{\partial F}{\partial Z}(P) = 0
+        \end{equation*}
+    \end{defn}
+    \pause
     \begin{figure}[H]
         \centering
         \subfloat[$y^2=x^3+x^2$]{
@@ -577,11 +577,11 @@ Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textb
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Voraussetzungen}
-\begin{itemize}
-    \item Es gelte $char\ \mathbb{F}\ne2,3$
-    \item $E$ sei nicht singulär.
-\end{itemize}
+    \frametitle{Voraussetzungen}
+    \begin{itemize}
+        \item Es gelte $char\ \mathbb{F}\ne2,3$
+        \item $E$ sei nicht singulär.
+    \end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -599,13 +599,13 @@ Eine elliptische Kurve $E\subseteq \mathcal{P}$ ist durch die Lösung der \textb
 \end{frame}
 
 \begin{frame}
-	\frametitle{Tangente $T_{\mathcal{O}}$ an $\patinf$}
-Vereinfachte Weierstraß-Gleichung:
+    \frametitle{Tangente $T_{\mathcal{O}}$ an $\patinf$}
+    Vereinfachte Weierstraß-Gleichung:
     \begin{equation*}
-	F(X,Y,Z)=Y^2Z - X^3 - aXZ^2 - bZ^3
+        F(X,Y,Z)=Y^2Z - X^3 - aXZ^2 - bZ^3
     \end{equation*}
     Partielle Ableitungen:
-\begin{equation*}
+    \begin{equation*}
         \frac{\partial F}{\partial X}=-3X^2-aZ^2,\quad \frac{\partial F}{\partial Y}=2YZ,\quad \frac{\partial F}{\partial Z}=Y^2-2aZX-3bZ^2
     \end{equation*}
 \end{frame}
@@ -1008,7 +1008,7 @@ Vereinfachte Weierstraß-Gleichung:
     \begin{itemize}[<+->]
         \item Wähle $P,Q \in E$ und ein $m \in \mathbb{N}$. Das DLP ist dann die Lösung der Gleichung $mP = Q$, wobei $P$ und $Q$ bekannt sind.
         \item $mP$ bedeutet: ``Addiere m-mal P''\\
-	Beispiel: $4P=P+P+P+P$
+            Beispiel: $4P=P+P+P+P$
     \end{itemize}
 
 \end{frame}
